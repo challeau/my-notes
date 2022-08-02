@@ -38,8 +38,17 @@ Once an element is selected, it is possible to change its properties. Any change
 
 There are a number of methods that allow us to dynamically add or modify DOM elements:
 
-| METHOD                       | EFFECT                                                                                     |
+| METHOD                       | DESCRIPTION                                                                                |
 |------------------------------|--------------------------------------------------------------------------------------------|
-| *.createElement(tag)*        |                                                                                            |
-| *.appendChild(exlem)*        |                                                                                            |
+| *.createElement(tag)*        | create an HTML element                                                                     |
+| *.appendChild(elem)*         | add an HTML element                                                                        |
+| *.removeChild(elem)*         | remove an HTML element                                                                     |
 | *.setAttribute(name, value)* | sets *value* to the attribute *name* (creates a new attribute if it doesn't already exist) |
+| *document.write(text)*       | write into the HTML output stream                                                          |
+
+
+# ADDING EVENTS HANDLERS
+
+The addEventListener() method attaches an event handler to an element (without overwriting existing event handlers).
+
+```elem.addEventListener(event, function)```
