@@ -36,12 +36,10 @@ Once an element is selected, it is possible to change its properties. Any change
 
 # DOM MANIPULATION
 
-There are a number of mathods that allow us to dynamically add or modify DOM elements:
+There are a number of methods that allow us to dynamically add or modify DOM elements:
 
 | METHOD                       | EFFECT                                                                                     |
 |------------------------------|--------------------------------------------------------------------------------------------|
 | *.createElement(tag)*        |                                                                                            |
 | *.appendChild(exlem)*        |                                                                                            |
 | *.setAttribute(name, value)* | sets *value* to the attribute *name* (creates a new attribute if it doesn't already exist) |
-|                              |                                                                                            |
-|                              |                                                                                            |
