@@ -43,11 +43,11 @@ Classes are in fact "special functions", and just as you can define function exp
 To declare a class, you use the class keyword with the name of the class :
 
 ``` 
-	class myClass {
-		contructor (var1, var2) {
-			this.var1 = var1
-			this.var2 = var2
-		}
+class myClass {
+	contructor (var1, var2) {
+		this.var1 = var1
+		this.var2 = var2
+	}
 }
 ```
 > Always add a method named constructor()!
@@ -60,25 +60,25 @@ Class expressions can be named or unnamed. The name given to a named class expre
 
 ```
 // unnamed
-	let myClass = class {
-		contructor (var1, var2) {
-			this.var1 = var1
-			this.var2 = var2
-		}
-	};
+let myClass = class {
+	contructor (var1, var2) {
+		this.var1 = var1
+		this.var2 = var2
+	}
+};
 	
-	console.log(myClass.name);
-	// output: "myClass"
+console.log(myClass.name);
+// output: "myClass"
 
 // named
-	myClass = class myClass2 {
-		contructor (var1, var2) {
-			this.var1 = var1
-			this.var2 = var2
-		}
+myClass = class myClass2 {
+	contructor (var1, var2) {
+		this.var1 = var1
+		this.var2 = var2
 	}
-	console.log(myClass.name);
-	// output: "myClass2"
+}
+console.log(myClass.name);
+// output: "myClass2"
 ```
 
 Class expressions must be declared before they can be used (they are subject to the same hoisting restrictions as class expressions).
@@ -86,7 +86,7 @@ Class expressions must be declared before they can be used (they are subject to 
 ## Instantiating with a class
 Creating an object can be done by using the keyword **new** followed by the class name.
 ```
-	let newObject = new myClass(var1, var2);
+let newObject = new myClass(var1, var2);
 ```
 The constructor method is called automatically when a new object is created. 
 
@@ -107,23 +107,23 @@ The keyword **new** execute the constructor of the invoked class and adds the me
 Class methods are created with the same syntax as object methods.
 
 ```
-	class myClass {
-		constructor() { ... }
-		method_1() { ... }
-		method_2() { ... }
-		method_3() { ... }
-	}
+class myClass {
+	constructor() { ... }
+	method_1() { ... }
+	method_2() { ... }
+	method_3() { ... }
+}
 ```
 
 ### Field declarations
 
 ```
-	class myClass {
-		myVar = 0;
-		myVar2;
-		constructor() { ... }
-		method() { ... }
-	}
+class myClass {
+	myVar = 0;
+	myVar2;
+	constructor() { ... }
+	method() { ... }
+}
 ```
 We don't need keywords like let, const, or var to declare fields.
 By declaring fields up-front, class definitions become more self-documenting, and the fields are always present.
@@ -134,17 +134,17 @@ Fields can be declared with or without a default value.
 The **extends** keyword is used in class declarations or class expressions to create a class as a child of another class.
 
 ```
-	class myClass {
-		myVar = 0;
-		myVar2;
-		constructor() { ... }
-		myMethod() { ... }
-	}
+class myClass {
+	myVar = 0;
+	myVar2;
+	constructor() { ... }
+	myMethod() { ... }
+}
 	
-	class myChildClass extends myClass {
-		myvar2 = 1;
-		myMethod() { // redefined here, takes precedence}
-	}
+class myChildClass extends myClass {
+	myvar2 = 1;
+	myMethod() { // redefined here, takes precedence}
+}
 ```
 
 > If there is a constructor present in the subclass, it needs to first call super() before using "this". <br> For similar methods, the child's method takes precedence over parent's method. <br> Note that classes cannot extend regular (non-constructible) objects. 
