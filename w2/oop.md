@@ -24,12 +24,12 @@ When a function is called as a method of an object, its **this** is set to the o
 
 ## Summary
 
-	- In an object method, this refers to the object.
-	- Alone, this refers to the global object.
-	- In a function, this refers to the global object.
-	- In a function, in strict mode, this is undefined.
-	- In an event, this refers to the element that received the event.
-	- Methods like call(), apply(), and bind() can refer this to any object.
+- In an object method, this refers to the object.
+- Alone, this refers to the global object.
+- In a function, this refers to the global object.
+- In a function, in strict mode, this is undefined.
+- In an event, this refers to the element that received the event.
+- Methods like call(), apply(), and bind() can refer this to any object.
 
 
 # CLASSES
