@@ -17,7 +17,7 @@ JavaScript provides two important _async methods: **setTimeout()** and **setInte
 Synthax:
 ```
 const timeoutId = setTimeout(callbackFunction [, 'delay]);
-cleartimeout(timeoutId);
+clearTimeout(timeoutId);
 ```
 
 **setTimeout()** returns an ID in the form of a *Timeout instance* in node, or an *integer* in web.
@@ -36,6 +36,7 @@ setTimeout(() => clearTimeout(timeout), 9000);
 Syntax:
 ```
 const intervalId = setInterval(callbackFunction, delay);
+clearInterval(intervalId);
 ```
 The return value of **setIterval()** is the same as **setTimeout()**.
 
