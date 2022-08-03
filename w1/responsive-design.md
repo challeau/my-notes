@@ -19,8 +19,8 @@
 
 # RANDOM
 
--Changing flexbox-direction can be good for responsive tiled websites.
--It's possible to hide/display different things with media queries and ```display: none;```.
--It's better to load lighter images on mobile (3G lol) >> ```<source media="">```
--Prefer relative sizes duh
--Combine z-indexes and relative positioning to overlay elements
+- Changing flexbox-direction can be good for responsive tiled websites.
+- It's possible to hide/display different things with media queries and ```display: none;```.
+- It's better to load lighter images on mobile (3G lol) >> ```<source media="">```
+- Prefer relative sizes duh
+- Combine z-indexes and relative positioning to overlay elements
