@@ -7,6 +7,7 @@
 **em/rem**: sizes. em is relative to parent’s font size and rem is relative to the html font size
 
 # POSITIONING
+
 | position | result                                                                                                                                                                                                       |
 |----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | static   | the element is not positioned in any special way                                                                                                                                                             |
@@ -17,6 +18,7 @@
 
 
 # RANDOM
+
 -Changing flexbox-direction can be good for responsive tiled websites.
 -It's possible to hide/display different things with media queries and ```display: none;```.
 -It's better to load lighter images on mobile (3G lol) >> ```<source media="">```
