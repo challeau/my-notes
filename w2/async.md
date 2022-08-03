@@ -15,14 +15,17 @@ JavaScript provides two important _async methods: **setTimeout()** and **setInte
 > **setTimeout()** sets a timer that executes a callback function once the timer expires.<br>**clearTimeout()** cancels a timeout previously established by calling **setTimeout()**. 
 
 Synthax:
-```const timeoutId = setTimeout(callbackFunction [, 'delay]);
+```
+const timeoutId = setTimeout(callbackFunction [, 'delay]);
 cleartimeout(timeoutId);
 ```
 
 **setTimeout()** returns an ID in the form of a *Timeout instance* in node, or an *integer* in web.
 This means that the code below works in a browser or in node, even though timeout will be a different type depending on the environment:
-```const timeout = setTimeout(() => console.log('FINISHED'), 10000)
-setTimeout(() => clearTimeout(timeout), 9000)```
+```
+const timeout = setTimeout(() => console.log('FINISHED'), 10000);
+setTimeout(() => clearTimeout(timeout), 9000);
+```
 
 
 
@@ -31,6 +34,8 @@ setTimeout(() => clearTimeout(timeout), 9000)```
 > **setInterval()** calls a function repeatedly with a fixed delayed time between each call.<br> **clearInterval()** cancels a timed, repeating action which was previously established by a call to **setInterval()**.
 
 Syntax:
-```const intervalId = setInterval(callbackFunction, delay);```
+```
+const intervalId = setInterval(callbackFunction, delay);
+```
 The return value of **setIterval()** is the same as **setTimeout()**.
 

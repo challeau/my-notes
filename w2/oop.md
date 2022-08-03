@@ -87,9 +87,7 @@ Class expressions must be declared before they can be used (they are subject to 
 ## Instantiating with a class
 
 Creating an object can be done by using the keyword **new** followed by the class name.
-```
-let newObject = new myClass(var1, var2);
-```
+```let newObject = new myClass(var1, var2);```
 The constructor method is called automatically when a new object is created. 
 
 ## Class body and method definitions

@@ -46,9 +46,20 @@ There are a number of methods that allow us to dynamically add or modify DOM ele
 | *.setAttribute(name, value)* | sets *value* to the attribute *name* (creates a new attribute if it doesn't already exist) |
 | *document.write(text)*       | write into the HTML output stream                                                          |
 
+# .toggle()
+
+The **toggle()** method of the DOMTokenList interface removes an existing token from the list or, if it doesn't exist, it's added to the list.
+
+Syntax:
+```toggle(token [, force]);```
+
+token: a string representing the token you want to toggle.<br>
+force: if included, turns the toggle into a one way-only operation. If set to *false*, then token will only be removed, but not added. If set to *true*, then token will only be added, but not removed.
+
+It returns a boolean value indicating whether token is in the list after the call or not. 
 
 # ADDING EVENTS HANDLERS
 
 The addEventListener() method attaches an event handler to an element (without overwriting existing event handlers).
 
-```elem.addEventListener(event, function)```
+```elem.addEventListener(event, function);```
