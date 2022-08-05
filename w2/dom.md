@@ -23,6 +23,7 @@ Once an element is selected, it is possible to change its properties. Any change
 | PROPERTY         | GETS/SETS | WHAT                                     |
 |------------------|-----------|------------------------------------------|
 | *.innerHTML*     | G/S       | the HTML content                         |
+| *.textContent*   | G/S       | the text content                         |
 | *.style*         | G/S       | the inline style                         |
 | *.className*     | G/S       | the value of the class attribute         |
 | *.classList*     | G         | a collection of all the class attributes |
