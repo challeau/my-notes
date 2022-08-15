@@ -1,8 +1,0 @@
-
-# DEFINITION
-
->  An Application Programming Interface or API is a **software intermediary** that allows two applications to talk to each other.
-
-In contrast to a user interface, which connects a computer to a person, an application programming interface **connects computers or pieces of software to each other**. It is not intended to be used directly by a person (the end user) other than a computer programmer who is incorporating it into the software.
-
-An API is often made up of different parts which act as tools or services that are available to the programmer. The calls that make up the API are also known as subroutines, methods, requests, or endpoints. An API specification defines these calls, meaning that it explains how to use or implement them. 
