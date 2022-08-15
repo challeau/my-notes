@@ -102,7 +102,7 @@ The ```.then()``` block is only ran if the Promise is **resolved**.
 
 ### .catch()
 
->  ```.catch()``` takes as argument a callback will be passed the rejection value of the Promise once it is rejected. It method returns another pending Promise.
+>  ```.catch()``` takes as argument a callback will be passed the rejection value of the Promise once it is rejected. It returns another pending Promise.
 
 The ```.then()``` block is only ran if the Promise is **rejected**. 
 If an Error is thrown in the ```.then()``` block, the code execution stops and the Error is forwarded to the closest ```.catch()``` block.
