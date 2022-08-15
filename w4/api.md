@@ -23,14 +23,18 @@ The term API is often used to refer to web APIs, which allow communication betwe
 It is a web development concept, usually limited to a web application's client-side, and thus usually does not include web server or browser implementation details.
 
 ## Server side
+
+> extends the functionality of a web server.
+
 A server-side web API is a programmatic interface consisting of **one or more publicly exposed endpoints to a defined request–response message system**, typically expressed in JSON or XML, which is exposed via the web —most commonly by means of an HTTP-based web server.
 
-> extend the functionality of a web server.
 
 ## Client side
-A client-side web API is a programmatic interface to **extend functionality within a web browser or other HTTP client**. Originally these were most commonly in the form of native plug-in browser extensions however most newer ones target standardized JavaScript bindings.
 
 > extends the functionality of a web browser.
+
+A client-side web API is a programmatic interface to **extend functionality within a web browser or other HTTP client**. Originally these were most commonly in the form of native plug-in browser extensions however most newer ones target standardized JavaScript bindings.
+
 <br />
 
 # JSON
