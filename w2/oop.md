@@ -43,7 +43,7 @@ Classes are in fact "special functions", and just as you can define function exp
 ### Class declaration
 To declare a class, you use the class keyword with the name of the class :
 
-``` 
+```  javascript
 class myClass {
 	contructor (var1, var2) {
 		this.var1 = var1
@@ -59,7 +59,7 @@ An important difference between function declarations and class declarations is 
 
 Class expressions can be named or unnamed. The name given to a named class expression is local to the class's body. However, it can be accessed via the name property. 
 
-```
+``` javascript
 // unnamed
 let myClass = class {
 	contructor (var1, var2) {
@@ -87,7 +87,9 @@ Class expressions must be declared before they can be used (they are subject to 
 ## Instantiating with a class
 
 Creating an object can be done by using the keyword **new** followed by the class name.
-```let newObject = new myClass(var1, var2);```
+``` javascript
+let newObject = new myClass(var1, var2);
+```
 The constructor method is called automatically when a new object is created. 
 
 ## Class body and method definitions
@@ -106,7 +108,7 @@ The keyword **new** execute the constructor of the invoked class and adds the me
 
 Class methods are created with the same syntax as object methods.
 
-```
+``` javascript
 class myClass {
 	constructor() { ... }
 	method_1() { ... }
@@ -136,7 +138,7 @@ The **apply** method allows manual invocation of a function.
 
 ### Field declarations
 
-```
+``` javascript
 class myClass {
 	myVar = 0;
 	myVar2;
@@ -152,7 +154,7 @@ Fields can be declared with or without a default value.
 
 The **extends** keyword is used in class declarations or class expressions to create a class as a child of another class.
 
-```
+``` javascript
 class myClass {
 	myVar = 0;
 	myVar2;
