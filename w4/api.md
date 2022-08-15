@@ -1,7 +1,9 @@
 
 # DEFINITION
 
->  An Application Programming Interface or API is a **software intermediary** that allows two applications to talk to each other. An API simplifies programming by **abstracting the underlying implementation** and only exposing objects or actions the developer needs.
+>  An Application Programming Interface or API is a **software intermediary** that allows two applications to talk to each other.
+
+An API simplifies programming by **abstracting the underlying implementation** and only exposing objects or actions the developer needs.
 
 In contrast to a user interface, which connects a computer to a person, an application programming interface **connects computers or pieces of software to each other**. It is not intended to be used directly by a person (the end user) other than a computer programmer who is incorporating it into the software.
 
@@ -22,10 +24,12 @@ It is a web development concept, usually limited to a web application's client-s
 
 ## Server side
 A server-side web API is a programmatic interface consisting of **one or more publicly exposed endpoints to a defined request–response message system**, typically expressed in JSON or XML, which is exposed via the web —most commonly by means of an HTTP-based web server.
+
 > extend the functionality of a web server.
 
 ## Client side
 A client-side web API is a programmatic interface to **extend functionality within a web browser or other HTTP client**. Originally these were most commonly in the form of native plug-in browser extensions however most newer ones target standardized JavaScript bindings.
+
 > extends the functionality of a web browser.
 <br />
 
@@ -64,7 +68,8 @@ Fetch provides a generic definition of **Request** and **Response** objects (and
 
 ### Promise
 
-> A Promise is a **proxy for a value not necessarily known when the promise is created**. 
+> A Promise is a **proxy for a value not necessarily known when the promise is created**.
+
 It allows you to **associate handlers with an asynchronous action's eventual success value or failure reason**. This lets asynchronous methods return values like synchronous methods: instead of immediately returning the final value, the asynchronous method returns a promise to supply the value at some point in the future.
 
 A Promise is in one of these states:
