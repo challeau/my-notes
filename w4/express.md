@@ -57,8 +57,8 @@ npm init --yes ; npm install express ; touch app.js
 
 ## Start a server
 
+In ```app.js``` :
 ``` javascript
-// this incl
 var express = require('express');
 
 // this creates an Express application:
@@ -74,6 +74,13 @@ app.get('/', (request, response) => {
 // app.listen(port, [host], [backlog], [callback]])
 app.listen(3000);
 ```
+
+In the terminal:
+- ```npm init -y```: initialize the folder,
+- ```npm install express```: install express,
+- ```npm install -D nodemon```: install nodemon as a Dev dependency,
+- ``` "dev": "nodemon ./app.js"``` in ```package.json```: alias to run the server,
+- ```npm run dev``` to launch the server.
 
 ## nodemon
 
