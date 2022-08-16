@@ -8,9 +8,9 @@
 Unlike libraries that are just a collection of functions and/or classes that you have to call yourself, **frameworks are in charge of the flow**: they make a call to your code and provide you with some space to write down details.
 
 Many web frameworks provide:
-	- **Packages for database access**, e.g. for saving your data permanently,
-	- **Templating engines**, e.g. for making dynamic HTML (or something like HTML),
-	- **Session management**, e.g. for keeping track of users).
+- **Packages for database access**, e.g. for saving your data permanently,
+- **Templating engines**, e.g. for making dynamic HTML (or something like HTML),
+- **Session management**, e.g. for keeping track of users).
 
 Frameworks often promote code reuse for keeping your code DRY.
 
@@ -29,22 +29,22 @@ HTTP defines a set of request methods to indicate the desired action to be perfo
 The GET method **requests a representation of the specified resource**. Requests using GET should **only retrieve data**.
 
 GET requests:
-	- Can be cached,
-	- Remain in the browser history,
-	- Can be bookmarked,
-	- Should never be used to send sensitive data,
-	- Have length restrictions.
+- Can be cached,
+- Remain in the browser history,
+- Can be bookmarked,
+- Should never be used to send sensitive data,
+- Have length restrictions.
 
 
 ## POST
 The POST method **submits an entity to the specified resource**, often causing a change in state or side effects on the server.
 
 POST requests:
-	- Are never cached,
-	- Do not remain in the browser history,
-	- Cannot be bookmarked,
-	- Are better for sensitive data,
-	- Have no restrictions on data length.
+- Are never cached,
+- Do not remain in the browser history,
+- Cannot be bookmarked,
+- Are better for sensitive data,
+- Have no restrictions on data length.
 <br />
 
 # INTRO TO EXPRESS
