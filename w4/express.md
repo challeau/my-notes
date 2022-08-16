@@ -14,9 +14,9 @@ Many web frameworks provide:
 
 Frameworks often promote code reuse for keeping your code DRY.
 
-## EXPRESS JS
+## Express JS
 
-ExpressJS, or simply Express, is a **web application framework for Node.js**, released as free and open-source software under the MIT License.
+ExpressJS, or simply Express, is a **web application framework for Node.js**, released as free and open-source software under the MIT License. <br />
 It is designed for **building web applications and APIs**. It is the de facto standard server framework for NodeJS, and the backend part of the MERN stack.
 <br />
 
@@ -83,7 +83,7 @@ nodemon is a tool that helps develop Node.js based applications by **automatical
 
 > Static files are **any content that can be delivered to an end-user without having to be generated, modified, or processed**.
 
-The server delivers the same file to each user, making static content one of the simplest and most efficient content types to transmit over the Internet.
+The server delivers the same file to each user, making static content one of the simplest and most efficient content types to transmit over the Internet. <br />
 Static files are things like images, CSS, and client-side JavaScript that are sent directly from the server to the browser, with no modification needed.
 
 Express has built-in support for serving these kinds of files ; typically they are saved in a folder called **public**.
@@ -93,8 +93,8 @@ Express has built-in support for serving these kinds of files ; typically they a
 app.use(express.static('public'));
 ```
 
-Express looks up the files relative to the static directory, so **the name of the static directory is not part of the URL**. 
-You don’t have to put public/ in the relative path when want to use anything from the public folder -the app will know that if the static file is what you want to show/use, and it will look for it inside public folder by default.
+Express looks up the files relative to the static directory, so **the name of the static directory is not part of the URL**. <br />
+You don’t have to put public/ in the relative path when want to use anything from the public folder -the app will know that if the static file is what you want to show/use, and it will look for it inside public folder by default.  <br />
 **e.g.** localhost:3000/images/cool-cat.jpg instead of localhost:3000/public/images/cool-cat.jpg
 
 
