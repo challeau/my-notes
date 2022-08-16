@@ -31,12 +31,21 @@ function foo2() {
   return Promise.resolve(1);
 }
 
-// but this returns false:
+// but if the value is a promise:
 const p = new Promise((res, rej) => {
   res(1);
 });
 
-console.log(foo1() === p); // false
+async function asyncReturn() {
+  return p;
+}
+
+function basicReturn() {
+  return Promise.resolve(p);
+}
+
+console.log(p === basicReturn()); // true
+console.log(p === asyncReturn()); // false
 ```
 
 ## AWAIT
@@ -106,6 +115,3 @@ const firstObj = responseJson[0];
 const response = await fetch("https://some.api");
 const firstObj = await response.json()[0];
 ```
-
-## Returning awaited code
-
