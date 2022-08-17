@@ -21,8 +21,9 @@ Database systems provide a number of properties:
 - **Concurrency**: many clients can connect to a database simultaneously.
 - **Data abstractions**: data can be stored using complex data types.
 - **High-level query language**.
+<br />
 
-## MongoDB
+# MongoDB
 
 > MongoDB is a cross-platform, document-oriented, non-relational, distributed database program.
 
@@ -37,6 +38,7 @@ In practice:
 - **Documents can be nested** to express hierarchical relationships and to store structures such as arrays.
 - Every document will be given an hexadecimal `_id` if one isn't specified during creation.
 
+
 ## CRUD
 
 > **create**, **read**, **update**, and **delete** (CRUD) are the four basic operations of **persistent storage**.
@@ -45,6 +47,22 @@ CRUD is also sometimes used to describe user interface conventions that facilita
 
 CRUD in SQLs --> insert, select, update, delete.
 
+Most of these operations will require queries.
+
+
+### Query Logical Operators
+
+| Operator | Synthax                                         | selects the documents...                                                                  |
+|----------|-------------------------------------------------|-------------------------------------------------------------------------------------------|
+| $and     | { $and: [ {<exp1>}, ... , {<expN>} ] }          | that satisfy all expressions                                                              |
+| $or      | { $or: [ {<exp1>}, ... {<expN>} ] }             | that satisfy either expressions                                                           |
+| $nor     | { $nor: [ {<exp1>}, ... {<expN>} ] }            | that fail all expressions                                                                 |
+| $not     | { <field> : { $not: { <exp> } } }               | that fail an expression                                                                   |
+| $ne      | { <field> : { $ne : <value> } }                 | where the specified field isn't equal to the specified value, or do not contain the field |
+| $in      | { field: { $in: [<value1>, ... <valueN> ] } }   | where the specified field's value equals any value in the specified array                 |
+| $nin     | { field: { $nin: [ <value1>, ... <valueN> ] } } | where the specified field's value is not in the specified array or it does not exist      |
+
+
 ### Create
 
 The create commands insert new documents into a collection. If the collection doesn’t exist, the operation will create it.
@@ -52,10 +70,15 @@ The create commands insert new documents into a collection. If the collection do
 Commands:
 
 ``` javascript
-db.collection.insertOne(doc)		// Adds a document to the collection
-db.collection.insertMany([docs])	// Adds one or more documents to the collection
-db.collection.insert(doc)			// Same as .insertOne() but deprecated
+// Add a document to the collection
+db.collection.insertOne(doc);
+db.collection.insert(doc);		// deprecated
+
+// Add one or more documents to the collection
+db.collection.insertMany([docs]);
+
 ```
+
 
 ### Read
 
@@ -63,62 +86,68 @@ The read command retrieves documents from the database and reads their contents.
 
 Commands: 
 ``` javascript
+// Select documents that match the <query_filter> and the fields specified in the projection object:
 db.collection.find(query_filter, projection);
-// query_filter > object that specifies which documents to return
-// projection > object that allows us to return only certain fields from those documents
 
-db.collection.find({<field>: <value>});		// Select all documents where <field> matches <value>.
-db.enemies.find({});							// Select all documents. the empty object can be ommited.
+// Select all documents where <field> matches <value>:
+db.collection.find( {<field>: <value>} );
 
-db.collection.find(							// Operators can be used by wrapping operator and value in an object.
-    { <field>: { <operator>: <value>} }
-  );
+// Select all documents
+db.enemies.find({});
+db.enemies.find();
 
-db.enemies.find({},							// Will return the 1st property because its set to 1.
-				{ <property1>: 1, <property2>: 0 } // Won't return the 2nd property because its set to 0.
-	);
+// Operators can be used by wrapping operator and value in an object:
+db.collection.find( { <field>: { <operator>: <value>} } );
+
+// Fields set to 1 in the projection object will be returned, fileds set to 0 won't:
+db.enemies.find({},	{ <field1>: 1, <field2>: 0 } );
 ```
 
 Operators:
-| Mongo Operators | Description |
-|-----------------|-------------|
-| $eq             | ==          |
-| $ne             | !=          |
-| $gt             | >           |
-| $gte            | >=          |
-| $lt             | <           |
-| $lte            | <=          |
+| Mongo Operator | Description |
+|----------------|-------------|
+| $eq            | ==          |
+| $ne            | !=          |
+| $gt            | >           |
+| $gte           | >=          |
+| $lt            | <           |
+| $lte           | <=          |
+
 
 ### Update
 The update commands allow us to update some fields in the document or replace a document:
 
 ``` javascript
-db.collection.updateOne (<filter>, <update>)	// Updates the first document that matches <filter>.
-// filter > object to match. If several are matched the first one is update with this command.
-// update > field to be updated in the document.
+// Update the first document that matches <filter> according to the rules set by <update>:
+db.collection.updateOne(<filter>, <update>);
 
-db.collection.updateMany(<filter>, <update>)	// Updates all documents that match <filter>.
-db.collection.replaceOne(<filter>, <update>)	// Replaces the <filter> document with the <update> document.
+// Update all documents that match <filter>:
+db.collection.updateMany(<filter>, <update>);
+
+// Replace the first document that matches  <filter> with the <update> document:
 // Replacing a document does not change its _id value. The _id field is immutable.
+db.collection.replaceOne(<filter>, <update>);	
 ```
+
 
 ### Delete
 
 The delete commands remove documents from our collections.
 
 ``` javascript
-db.employees.deleteOne(<filter>);	// deletes the first document that matches the filter object
+// Delete the first document that matches the filter object:
+db.employees.deleteOne(<filter>);
 
-db.employees.deleteMany(<filter>);	// deletes all documents that match the filter object
-db.employees.deleteMany({});	// deletes all documents
+// Delete all documents that match the filter object
+db.employees.deleteMany(<filter>);
 
+// Delete all documents
+db.employees.deleteMany({});
+db.employees.deleteMany();
 ```
 <br />
 
-# MONGODB BASICS
+# BASICS
 
 Start the database: ```sudo service mongod start```.
-
 Import a database from a JSON file: ```mongoimport --db dbName --collection collectionName --file fileName.json --jsonArray```
-
-
