@@ -51,36 +51,36 @@ POST requests:
 
 ## Installation
 
-``` bash
-npm init --yes ; npm install express ; touch app.js
-```
 
 ## Start a server
 
+In the terminal:
+``` bash
+npm init --yes ;			# initialize the folder
+npm install express ;		# install express
+npm install -D nodemon ;	# install nodemon as a Dev dependency
+# add alias "dev": "nodemon ./app.js" in package.json
+npm run dev					# launch the server
+```
+
 In ```app.js``` :
 ``` javascript
+// import a package
 var express = require('express');
 
-// this creates an Express application:
+// create an Express application:
 var app = express();
 
-// this defines what to do when a get request is called:
+// define what to do when a get request is called:
 // app.get(route, callback(request, response));
 app.get('/', (request, response) => {
 	response.send("Hello world!");   // sends an object to the requesting client
 });
 
-// this binds and listens for connections on the specified port
+// bind and listen for connections on the specified port
 // app.listen(port, [host], [backlog], [callback]])
 app.listen(3000);
 ```
-
-In the terminal:
-- ```npm init -y```: initialize the folder,
-- ```npm install express```: install express,
-- ```npm install -D nodemon```: install nodemon as a Dev dependency,
-- ``` "dev": "nodemon ./app.js"``` in ```package.json```: alias to run the server,
-- ```npm run dev``` to launch the server.
 
 ## nodemon
 
@@ -107,7 +107,7 @@ You don’t have to put public/ in the relative path when want to use anything f
 
 # ROUTING
 
-> Routing refers to how an application’s endpoints (URIs) respond to client requests.
+> Routing refers to how an application’s endpoints (URIs) respond to client requests. A route is simply a page/URL/URI.
 
 You **define routing using methods** of the Express app object that correspond to HTTP methods. For example, **```app.get()```** to handle GET requests and **```app.post()```** to handle POST requests.
 
