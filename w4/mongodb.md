@@ -14,13 +14,13 @@ The DBMS software additionally encompasses the core facilities provided to admin
 The sum total of the **database**, the **DBMS** and the **associated applications** can be referred to as a **database system**. Often the term "database" is also used loosely to refer to any of the DBMS, the database system or an application associated with the database.
 
 Database systems provide a number of properties:
-	- **Persistence**:  data still exists after the server is turned off.
-	- **Reliability**: data can always be accessed.
-	- **Efficiency**: data is accessed faster than through regular file-based parsing.
-	- **Scalability**: increasing infrastructure capacity is easy.
-	- **Concurrency**: many clients can connect to a database simultaneously.
-	- **Data abstractions**: data can be stored using complex data types.
-	- **High-level query language**.
+- **Persistence**:  data still exists after the server is turned off.
+- **Reliability**: data can always be accessed.
+- **Efficiency**: data is accessed faster than through regular file-based parsing.
+- **Scalability**: increasing infrastructure capacity is easy.
+- **Concurrency**: many clients can connect to a database simultaneously.
+- **Data abstractions**: data can be stored using complex data types.
+- **High-level query language**.
 
 ## MongoDB
 
@@ -33,9 +33,9 @@ Database systems provide a number of properties:
 **Distributed**: data is stored **across different physical locations**. It may be stored in multiple computers located in the same physical location; or maybe dispersed over a network of interconnected computers.
 
 In practice:
-	- MongoDB stores data as **JSON documents**. The document data model **maps naturally to objects in application code**, making it simple for developers to learn and use. The fields in a JSON document can vary from document to document.
-	- **Documents can be nested** to express hierarchical relationships and to store structures such as arrays.
-	- Every document will be given an hexadecimal `_id` if one isn't specified during creation.
+- MongoDB stores data as **JSON documents**. The document data model **maps naturally to objects in application code**, making it simple for developers to learn and use. The fields in a JSON document can vary from document to document.
+- **Documents can be nested** to express hierarchical relationships and to store structures such as arrays.
+- Every document will be given an hexadecimal `_id` if one isn't specified during creation.
 
 ## CRUD
 
