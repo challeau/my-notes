@@ -52,22 +52,23 @@ Most of these operations will require queries.
 
 ### Query Logical Operators
 
-| Operator | Synthax                                         | selects the documents...                                                                  |
-|----------|-------------------------------------------------|-------------------------------------------------------------------------------------------|
-| $and     | { $and: [ {<exp1>}, ... , {<expN>} ] }          | that satisfy all expressions                                                              |
-| $or      | { $or: [ {<exp1>}, ... {<expN>} ] }             | that satisfy either expressions                                                           |
-| $nor     | { $nor: [ {<exp1>}, ... {<expN>} ] }            | that fail all expressions                                                                 |
-| $not     | { <field> : { $not: { <exp> } } }               | that fail an expression                                                                   |
-| $ne      | { <field> : { $ne : <value> } }                 | where the specified field isn't equal to the specified value, or do not contain the field |
-| $in      | { field: { $in: [<value1>, ... <valueN> ] } }   | where the specified field's value equals any value in the specified array                 |
-| $nin     | { field: { $nin: [ <value1>, ... <valueN> ] } } | where the specified field's value is not in the specified array or it does not exist      |
+| Operator   | Synthax                                    | selects the documents...                                                                                   |
+|------------|--------------------------------------------|------------------------------------------------------------------------------------------------------------|
+| $and       | { $and: [ {<exp1>}, ... , {<expN>} ] }     | that satisfy all <expressions>                                                                             |
+| $or        | { $or: [ {<exp1>}, ... {<expN>} ] }        | that satisfy either <expressions>                                                                          |
+| $nor       | { $nor: [ {<exp1>}, ... {<expN>} ] }       | that fail all <expressions>                                                                                |
+| $not       | { <field> : { $not: { <exp> } } }          | that fail an <expression>                                                                                  |
+| $ne        | { <field> : { $ne : <value> } }            | where <field> isn't equal to <value>, or do not contain <field>                                            |
+| $in        | { field: { $in: [<value1>, ... ] } }       | where <field>'s value equals any value in the specified array                                              |
+| $nin       | { field: { $nin: [ <value1>, ... ] } }     | where <field>'s value is not in the specified array or it does not exist                                   |
+| $elemMatch | { field: { $elemMatch: { <exp1>, ... } } } | that contain a field with at least one element that matches all the <expressions>                          |
+| $exists    | { field: { $exists: <boolean> } }          | that contain <field> (even if it's null) if <boolean> is true or does not contain it if <boolean> is false |
+| $type      | { field: { $type: <BSON type1>, ... } }    | where the value of <field> is an instance of the specified BSON type                                       |
 
 
 ### Create
 
 The create commands insert new documents into a collection. If the collection doesn’t exist, the operation will create it.
-
-Commands:
 
 ``` javascript
 // Add a document to the collection
@@ -82,9 +83,8 @@ db.collection.insertMany([docs]);
 
 ### Read
 
-The read command retrieves documents from the database and reads their contents. 
+The read command retrieves documents from the database and reads their contents.
 
-Commands: 
 ``` javascript
 // Select documents that match the <query_filter> and the fields specified in the projection object:
 db.collection.find(query_filter, projection);
@@ -115,7 +115,7 @@ Operators:
 
 
 ### Update
-The update commands allow us to update some fields in the document or replace a document:
+The update commands allow us to update some fields in the document or replace a document.
 
 ``` javascript
 // Update the first document that matches <filter> according to the rules set by <update>:
