@@ -15,7 +15,7 @@ fi
 # init server, install dependencies and setup nodemon
 echo "Setting up server..."
 npm init -y
-npm install express
+npm install express mongoose
 npm install -D nodemon
 sed -ie 's/\"test\": \"echo \\\"Error: no test specified\\\" && exit 1\"/\"dev\": \"nodemon ./app.js\"/g' ./package.json
 npm run dev
