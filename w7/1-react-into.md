@@ -5,7 +5,6 @@
 
 > A **software framework** is a **universal, reusable software environment** used to facilitate the development of software applications, products, and solutions.
 <br/>
-
 A framework serves as a development environment and a set of tools and commonly includes:
 - Support programs.
 - Compilers/transpilers
@@ -17,7 +16,6 @@ A framework serves as a development environment and a set of tools and commonly 
 
 > **React** is a **front-end JavaScript library** used to create front-end applications that run in the browser.
 <br/>
-
 React allows developers to create robust web applications that handle dynamic changes in the data without reloading the page. Besides Web apps, we can also use React for developing Android and iOS mobile apps. This is done through the cross-platform framework called React Native.
 <br/>
 
