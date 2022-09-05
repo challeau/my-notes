@@ -321,7 +321,8 @@ Built-in validators:
 
 Mongoose getters and setters allow you to **execute custom logic** when getting or setting a property on a Mongoose document. 
 
-**Getters** let you **transform data in MongoDB** into a more user friendly form, and **setters** let you **transform user data before it gets to MongoDB**.
+**Getters** let you **transform data in MongoDB** into a more user friendly form,
+**Setters** let you **transform user data before it gets to MongoDB**.<br />
 \>\> Getters do not impact the underlying data stored in MongoDB.
 
 
