@@ -4,12 +4,8 @@
 .\#*
 *\#
 
-# ignore private notes
-private/
+# ignore node files
+node_modules/
+package-lock.json
 
-# jekyll
-_site
-.sass-cache
-.jekyll-cache
-.jekyll-metadata
-vendor
+private/

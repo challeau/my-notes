@@ -1,3 +1,4 @@
+
 # ESSENTIAL JAVASCRIPT
 
 JavaScript (JS) is a **lightweight**, **interpreted**, **dynamic** programming language. 

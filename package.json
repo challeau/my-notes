@@ -1,0 +1,18 @@
+{
+    "name": "my-notes",
+    "version": "1.0.0",
+    "description": "All my notes in one place.",
+    "main": "app.js",
+    "scripts": {
+	"test": "echo \"Error: no test specified\" && exit 1",
+	"build": "node app.js"
+    },
+    "keywords": [],
+    "author": "challeau",
+    "license": "ISC",
+    "dependencies": {
+	"express": "^4.18.2",
+	"marked": "^9.1.2"
+    },
+    "homepage": "https://challeau.github.io/my-notes"
+}
