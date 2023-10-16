@@ -19,6 +19,6 @@ jobs:
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
     - run: npm ci
-    - run: CI=true node app.js
+    - run: CI=true npm run build
     env:
      CI: true
