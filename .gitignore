@@ -6,3 +6,10 @@
 
 # ignore private notes
 private/
+
+# jekyll
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
