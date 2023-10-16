@@ -3,3 +3,6 @@
 \#*
 .\#*
 *\#
+
+# ignore private notes
+private/
