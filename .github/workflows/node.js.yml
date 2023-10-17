@@ -8,6 +8,9 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+
+env:
+  CI: true
  
 jobs:
   build:
@@ -22,5 +25,3 @@ jobs:
       uses: actions/setup-node@v3
     - run: npm ci
     - run: CI=true npm run build
-      env:
-	CI: true
