@@ -1,35 +1,28 @@
 const marked = require('marked');
 const fs = require('fs');
 const express = require('express');
-const path = require('path');
-const dirname = path.resolve();
 
 const app = express();
 const PORT = 3000;
 
-// set up the routing
-const home = (req, res) => {
-    //show this file when the "/" is requested
-    res.sendFile(dirname+"/src/home.html");
-};
-
-const routes = (app) => {
-    // home page
-    app.route('/').get(home);
-    // GET home page.
-    app.route('/home').get(home);
+function getRessource(ressource) {
+    let text = fs.readFileSync(`./ressources/${ressource}.md`, 'utf8');
+    return marked.parse(text);
 }
 
-app.get('/', (request, response) => {
-    fs.readFile('./ressources/js.md', 'utf8', (err, data) => {
-	if (err) {
-	    console.error(err);
-	    return;
-	}
-	response.send(marked.parse(data));
-    });
+app.get('/', (req, res) => {
+    res.send(getRessource('react'));
 });
+
+app.get('/js', (req, res) => {
+    res.send(getRessource('js'));
+});
+
+app.get('/react', (req, res) => {
+    res.send(getRessource('react'));
+});
+
 
 app.listen(PORT);
 
-console.log('iss all good :)')
+console.log('iss all good :)');
