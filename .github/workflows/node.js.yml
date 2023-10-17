@@ -11,14 +11,16 @@ on:
  
 jobs:
   build:
-
     runs-on: ubuntu-latest
-    
+    strategy:
+      matrix:
+        node-version: [20.x]
+
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
     - run: npm ci
     - run: CI=true npm run build
-    env:
-     CI: true
+      env:
+	CI: true
