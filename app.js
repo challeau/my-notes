@@ -1,7 +1,7 @@
 const marked = require('marked');
 const fs = require('fs');
 const express = require('express');
-import path from 'path';
+const path = require('path');
 const __dirname = path.resolve();
 
 const app = express();
