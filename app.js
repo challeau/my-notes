@@ -6,7 +6,6 @@ const dirname = path.resolve();
 
 const app = express();
 const PORT = 3000;
-const HOST = '0.0.0.0';
 
 // set up the routing
 const home = (req, res) => {
@@ -31,4 +30,6 @@ app.get('/', (request, response) => {
     });
 });
 
-app.listen(PORT, HOST);
+app.listen(PORT);
+
+console.log('iss all good :)')
