@@ -1,17 +1,20 @@
 {
-    "name": "my-notes",
-    "version": "1.0.0",
-    "description": "All my notes in one place.",
-    "main": "app.js",
-    "scripts": {
-	"test": "echo \"Error: no test specified\" && exit 1",
-	"build": "CI=true node app.js"
-    },
-    "keywords": [],
-    "author": "challeau",
-    "license": "ISC",
-    "dependencies": {
-	"express": "^4.18.2",
-	"marked": "^9.1.2"
-    }
+  "name": "my-notes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "jsdom": "^22.1.0",
+    "marked": "^9.1.2",
+    "nodemon": "^3.0.1",
+    "pug": "^3.0.2",
+    "sanitize-html": "^2.11.0"
+  }
 }
