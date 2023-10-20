@@ -1,4 +1,7 @@
-# REACT NOTES
+
+[//]: # (TITLE React)
+
+# REACT
 
 > React is an **unopinionated library** for **building user interfaces** based on **components**.
 
