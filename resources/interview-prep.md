@@ -1,5 +1,6 @@
 
 [//]: # (TITLE Mind ur business)
+[//]: # (ENDPOINT /int)
 
 # INTERVIEW PREP
 

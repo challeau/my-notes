@@ -1,5 +1,6 @@
 
 [//]: # (TITLE React)
+[//]: # (ENDPOINT /react)
 
 # REACT
 

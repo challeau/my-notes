@@ -1,5 +1,6 @@
 
 [//]: # (TITLE JavaScript)
+[//]: # (ENDPOINT /js)
 
 # ESSENTIAL JAVASCRIPT
 
