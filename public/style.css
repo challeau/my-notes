@@ -1,5 +1,6 @@
 :root {
     --transparent-pink: #FFC8DD38;
+    --transparent-lilac: #CDB4DB4F;
     --light-pink: #FFC8DD;
     --bright-pink: #FF85B1;
     --pink: #FFAFCC;
@@ -24,10 +25,10 @@
 body {
     min-height: 100vh;
     height: fit-content;
-    margin: 0;
     padding: 0;
+    margin: 0;
     word-wrap: break-word;
-    background-color: var(--white);
+    background-color: var(--beige);
     color: var(--brown);
     font-family: 'Quicksand', sans-serif;
     font-weight: 500;
@@ -39,9 +40,11 @@ body {
 }
 
 h1 {
-    color: var(--lilac);
+    color: var(--bright-lilac);
     font-size: 3.5em;
     font-family: 'Shrikhand', sans-serif;
+    -webkit-text-fill-color: var(--lilac);
+    -webkit-text-stroke: 3px;
     margin-top: 0;
 }
 
@@ -68,71 +71,9 @@ blockquote {
 
 p > code {
     background-color: #BDE0FE6E;
-  padding: 0.3em;
-  border-radius: 0.5em;
-  color: var(--brown);
-}
-
-.double-turts {
-    position: relative;
-}
-
-/* NAVBAR */
-#navbar {
-    width: 15vw;
-    height: 100%;
-    font-size: 1.2em;
-}
-
-#navbar ul {
-    width: 15vw;
-    position: fixed;
-    left: 0;
-    height: 100%;
-    background-color: var(--beige);
-    list-style-type: none;
-    list-style-position: inside;
-    margin: 0;
-    padding: 0;
-}
-
-#navBar .title {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: flex-end;
-    justify-content: flex-end;
-    gap: 0.5vw;
-    margin-bottom: 1em;
-}
-
-#navBar img {
-    height: 8vh;
-    transform: scaleX(-1);
-}
-
-#navbar h3 {
-    margin: 0;
+    padding: 0.3em;
+    border-radius: 0.5em;
     color: var(--brown);
-}
-
-#navbar li {
-    width: 100%;
-    padding: 0.5em 1em;
-}
-
-#navbar a {
-    text-decoration: none;
-    padding: 0.5em 0;
-    cursor: pointer;
-    color: var(--brown);
-}
-
-#navbar a:hover, #navbar a.active {
-    color: var(--pink);
-}
-
-#navBar li:has(a:hover), #navBar li:has(a.active){
-    background-color: var(--blue);
 }
 
 /* CONTENT */

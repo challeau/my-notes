@@ -1,0 +1,95 @@
+.navContainer {
+    width: 15vw;
+}
+
+#navBar {
+    width: 15vw;
+    height: 100vh;
+    position: fixed;
+    font-size: 1.2em;
+    background-color: var(--beige);
+}
+
+#navBar > * {
+    width: 15vw;
+    list-style-type: none;
+    list-style-position: inside;
+}
+
+#navBar .title {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 1em;
+    padding: 1em;
+}
+
+#navBar img {
+    height: 7vh;
+    transform: scaleX(-1);
+}
+
+#navBar h3 {
+    margin: 0;
+    color: var(--bright-green);
+}
+
+#navBar ul {
+    padding: 0;
+    margin: 0 0 1em;
+}
+
+#navBar li {
+    width: 100%;
+    padding: 0.5em 1em;
+}
+
+#navBar a {
+    text-decoration: none;
+    padding: 0.5em 0;
+    cursor: pointer;
+    color: var(--brown);
+}
+
+.folder li:not(.folded, .folderTitle) {
+    background-color: var(--transparent-lilac);
+    border-left: 5px solid var(--lilac);
+}
+#navBar li.active { background-color: var(--transparent-lilac); }
+
+#navBar li.active a {
+    color: var(--bright-lilac);
+    font-weight: 700;
+}
+
+#navBar a:hover {
+    color: var(--bright-lilac);
+}
+
+#navBar .activeFolder {
+    background-color: var(--lilac);
+}
+
+#navBar .folder:hover {
+    background-color: var(--transparent-lilac);
+}
+
+#navBar .folderTitle {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5em;
+}
+
+#navBar .folded {
+    display: none;
+    overflow: hidden;
+}
+
+/* #navBar .folder li:not(:first-child) { */
+/*     padding-left: 2.5em; */
+/*     background-color: var(--lilac); */
+/* } */
