@@ -24,6 +24,7 @@
     justify-content: flex-end;
     gap: 1em;
     padding: 1em;
+    
 }
 
 #navBar img {
@@ -33,6 +34,7 @@
 
 #navBar h3 {
     margin: 0;
+    font-size: 2em;
     color: var(--bright-green);
 }
 

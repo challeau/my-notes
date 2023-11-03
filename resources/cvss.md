@@ -15,6 +15,24 @@ The benefits of CVSS include the provision of a standardized vendor and platform
 
 <br>
 
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
+
+- [CVSS](#cvss)
+    - [1 - Metrics](#1---metrics)
+    - [2 - Scoring](#2---scoring)
+- [3 - Data representation](#3---data-representation)
+    - [4 - Python CVSS](#4---python-cvss)
+    - [5 - Other standards](#5---other-standards)
+        - [5.1 CPE](#51-cpe)
+        - [5.2 CVEs](#52-cves)
+    - [7. 🤔](#7-🤔)
+        - [7.1 Vulnerability vs weakness](#71-vulnerability-vs-weakness)
+    - [SOURCES](#sources)
+
+<!-- markdown-toc end -->
+
+
 ## 1 - Metrics
 
 CVSS is composed of three metric groups:
