@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 584 226">
+
+  <metadata id="metadata5">image/svg+xml</metadata>
+  <defs>
+
+    <linearGradient id="gradient_arrow" x1="1.7" y1="0" x2="0" y2="0.6">
+       <stop stop-color="#999" offset="0"/>
+       <stop stop-color="white" offset="1"/>
+    </linearGradient>
+
+    <linearGradient id="gradient_base_group" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="white"/>
+      <stop offset="100%" stop-color="#d7c2e1"/>
+    </linearGradient>
+
+    <linearGradient id="gradient_temp_group" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="white"/>
+      <stop offset="100%" stop-color="#e0e0b0"/>
+    </linearGradient>
+
+    <linearGradient id="gradient_env_group" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="white"/>
+      <stop offset="100%" stop-color="#cceeee"/>
+    </linearGradient>
+
+    <linearGradient id="gradient_optional_box" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="white" offset="0"/>
+      <stop stop-color="#ddd" offset="1"/>
+    </linearGradient>
+
+    <path stroke-width="1" id="arrow" d="m0,76 l0,-34  a30,30 0 0 1 30,-30  l10,0 l0,-4 l5,8 l-5,8 l0,-4 l-12,0  a21,21 0 0 0 -19,19  l0,37 l-9,0 z" />
+    <path stroke-width="1" id="arrow_longer_upright" d="m0,76 l0,-54  a30,30 0 0 1 30,-30  l10,0 l0,-4 l5,8 l-5,8 l0,-4 l-12,0  a21,21 0 0 0 -19,19  l0,57 l-9,0 z" />
+    <path stroke-width="1" id="arrow_longer_horizontal" d="m0,76 l0,-34  a30,30 0 0 1 30,-30  l40,0 l0,-4 l5,8 l-5,8 l0,-4 l-42,0  a21,21 0 0 0 -19,19  l0,37 l-9,0 z" />
+
+    <g id="thermometer">
+      <path stroke-width="1" id="therm_outside" fill="#e0e0e0" d="m6,50 a10,10 0 1 0 9,0 l 0,-30 l -9,0 l 0,30 z"/>
+
+      <path stroke-width="1" id="therm_outside" fill="white" d="m15,20 l 0,-20 l -9,0 l 0,20"/>
+
+      <path stroke-width="0.7" id="therm_inside" d="m12,47 l3,0 m-3,-4 l3,0 m-3,-4 l3,0 m-3,-4 l3,0 m-3,-4 l3,0 m-3,-4 l3,0 m-3,-4 l3,0"/>
+    </g>
+
+    <g id="note_and_pen">
+      <path stroke-width="1" id="doc_outside" fill="gray" fill-opacity="0.15" d="m1,1 l0,35 l30,0 l0,-35     z"/>
+
+      <path stroke-width="0.7" id="doc_lines" fill-opacity="0" d="m6,6 l20,0 m-20,4 l20,0 m-20,4 l20,0 m-20,4 l20,0 m-20,4 l20,0 m-20,4 l20,0 m-20,4 l20,0 "/>
+
+      <path stroke-width="0.7" id="doc_pen" fill="white" fill-opacity="1" d="m12,29 l7,-3 l24,-21 l-3,-3 l-24,21 z"/>
+    </g>
+
+    <g id="triple_text_balloon">
+      <rect id="balloon_back"   stroke-width="1px" width="90" height="30" rx="12" x="12" y="0"/>
+      <rect id="balloon_middle" stroke-width="1px" width="90" height="30" rx="12" x="6" y="6"/>
+      <rect id="balloon_front"  stroke-width="1px" width="90" height="30" rx="12" x="0" y="12"/>
+    </g>
+
+  </defs>
+
+  <rect id="arrow_line_back_left" fill="url(#gradient_arrow)" stroke="black" stroke-width="1" width="170" height="8" x="84" y="39"/>
+  <rect id="arrow_line_back_right" fill="url(#gradient_arrow)" stroke="black" stroke-width="1" width="150" height="8" x="240" y="39"/>
+
+  <use xlink:href="#arrow" stroke="black" fill="url(#gradient_arrow)" x="44" y="27"/>
+  <use xlink:href="#arrow" stroke="black" fill="url(#gradient_arrow)" x="210" y="27"/>
+  <use xlink:href="#arrow_longer_horizontal" stroke="black" fill="url(#gradient_arrow)" x="360" y="27"/>
+
+  <use xlink:href="#thermometer" stroke="black" x="470" y="8"/>
+  <use xlink:href="#note_and_pen" stroke="black" x="536" y="40"/>
+  <text x="486" y="11"  font-size="8"  font-family="Helvetica, Arial, sans-serif" xml:space="preserve" font-weight="normal">10</text>
+  <text x="489" y="58"  font-size="8"  font-family="Helvetica, Arial, sans-serif" xml:space="preserve" font-weight="normal">0</text>
+  <text x="508" y="66"  font-size="20" font-family="Helvetica, Arial, sans-serif" xml:space="preserve" font-weight="normal">+</text>
+  <text x="481" y="90"  font-size="11" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" xml:space="preserve" font-weight="normal">CVSS</text>
+  <text x="481" y="102" font-size="11" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" xml:space="preserve" font-weight="normal">Score</text>
+  <text x="552" y="90"  font-size="11" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" xml:space="preserve" font-weight="normal">Vector</text>
+  <text x="552" y="102" font-size="11" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" xml:space="preserve" font-weight="normal">String</text>
+
+  <rect id="balloon_optional" fill="url(#gradient_optional_box)" stroke="black" stroke-width="1px" stroke-dasharray="3 2" width="274" height="116" rx="10" x="150" y="102"/>
+
+  <g id="balloon_base" transform="translate(10,152)">
+    <use xlink:href="#triple_text_balloon" stroke="#5f2a87" fill="url(#gradient_base_group)"/>
+    <text x="45" y="31" id="text_base" font-size="11" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" xml:space="preserve" font-weight="normal">Base Metrics</text>
+  </g>
+
+  <g id="balloon_temporal" transform="translate(160,152)">
+    <use xlink:href="#triple_text_balloon" stroke="#87822a" fill="url(#gradient_temp_group)"/>
+    <text x="45" y="25" id="text_base" font-size="11" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" xml:space="preserve" font-weight="normal">Temporal</text>
+    <text x="45" y="37" id="text_base" font-size="11" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" xml:space="preserve" font-weight="normal">Metrics</text>
+  </g>
+
+  <g id="balloon_environmental" transform="translate(310,152)">
+    <use xlink:href="#triple_text_balloon" stroke="#454591" fill="url(#gradient_env_group)"/>
+    <text x="45" y="25" id="text_base" font-size="11" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" xml:space="preserve" font-weight="normal">Environmental</text>
+    <text x="45" y="37" id="text_base" font-size="11" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" xml:space="preserve" font-weight="normal">Metrics</text>
+  </g>
+
+  <use xlink:href="#arrow_longer_upright" stroke="black" fill="url(#gradient_arrow)" x="130" y="-123" transform="scale(1 -1)" />
+  <use xlink:href="#arrow_longer_upright" stroke="black" fill="url(#gradient_arrow)" x="274" y="-123" transform="scale(1 -1)" />
+
+  <text x="4" y="126" font-size="11" font-family="Helvetica, Arial, sans-serif" xml:space="preserve" font-weight="normal">Exploit(AV, AC, PR, UI),</text>
+  <text x="4" y="140" font-size="11" font-family="Helvetica, Arial, sans-serif" xml:space="preserve" font-weight="normal">Impact(C, I, A), S</text>
+
+  <text x="180" y="132" font-size="11" font-family="Helvetica, Arial, sans-serif" xml:space="preserve" font-weight="normal">Temp(E, RL, RC)</text>
+  <text x="324" y="132" font-size="11" font-family="Helvetica, Arial, sans-serif" xml:space="preserve" font-weight="normal">Env(CR, IR, AR, …)</text>
+
+  <text x="280" y="210" font-size="11" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" xml:space="preserve" font-weight="normal">Optional Metrics</text>
+
+</svg>
