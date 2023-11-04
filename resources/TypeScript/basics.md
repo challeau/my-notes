@@ -1,5 +1,5 @@
 
-[//]: # (TITLE Typescript)
+[//]: # (TITLE TS basics)
 [//]: # (ENDPOINT /ts)
 
 # ESSENTIAL TYPESCRIPT
