@@ -1,8 +1,64 @@
 
-[//]: # (TITLE Python)
+[//]: # (TITLE PY basics)
 [//]: # (ENDPOINT /py)
 
 # ESSENTIAL PYTHON
+
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
+
+- [1 - Data](#1---data)
+    - [1.1 Argument types](#11-argument-types)
+        - [1.1.1 Default argument](#111-default-argument)
+        - [1.1.2 Positional arguments](#112-positional-arguments)
+        - [1.1.3 Keyword (named) arguments](#113-keyword-named-arguments)
+        - [1.1.4 Variable-length arguments (*args and **kwargs)](#114-variable-length-arguments-args-and-kwargs)
+    - [1.2 Data types: sequences](#12-data-types-sequences)
+        - [2.1 Iterables that aren't sequences](#21-iterables-that-arent-sequences)
+        - [2.2 Lists](#22-lists)
+        - [2.3 Tuples](#23-tuples)
+        - [2.4 Sets](#24-sets)
+        - [2.5 Empty boxes](#25-empty-boxes)
+- [3 - Classes](#3---classes)
+    - [3.1 Class objects](#31-class-objects)
+        - [Instance objects](#instance-objects)
+    - [3.2 Methods](#32-methods)
+        - [3.2.1 Class methods](#321-class-methods)
+        - [3.2.2 Static methods](#322-static-methods)
+        - [3.2.3 Special methods](#323-special-methods)
+        - [3.2.4 In sum....](#324-in-sum)
+    - [3.3 Inheritance](#33-inheritance)
+        - [3.3.1 Multiple inheritance](#331-multiple-inheritance)
+        - [3.3.2 Method Resolution Order](#332-method-resolution-order)
+    - [3.4 Private Variables](#34-private-variables)
+    - [3.5 Keywords](#35-keywords)
+        - [3.5.1 `super()`](#351-super)
+        - [3.5.2 `__new__()` vs `__init__()`](#352-__new__-vs-__init__)
+    - [3.6 Generators](#36-generators)
+- [4 - Decorators](#4---decorators)
+    - [4.1 Syntax](#41-syntax)
+    - [4.2 Decorate functions with arguments](#42-decorate-functions-with-arguments)
+    - [4.3 Returning Values From Decorated Functions](#43-returning-values-from-decorated-functions)
+    - [4.4 Decorating classes](#44-decorating-classes)
+    - [4.5 Stateful Decorators](#45-stateful-decorators)
+        - [About functools](#about-functools)
+    - [4.6 Fun facts](#46-fun-facts)
+- [5 - Logging](#5---logging)
+    - [5.1 Logging functions](#51-logging-functions)
+    - [5.2 Logging to a file](#52-logging-to-a-file)
+    - [5.3 Advantages over `print()`](#53-advantages-over-print)
+- [6 - Virtual environments](#6---virtual-environments)
+    - [6.1 `virtualenv`](#61-virtualenv)
+        - [6.1.1 Python discovery](#611-python-discovery)
+        - [6.1.2 Creators](#612-creators)
+        - [6.1.3 Seeders](#613-seeders)
+        - [6.1.4 Activators](#614-activators)
+    - [6.2 `pyenv`](#62-pyenv)
+- [SOURCES](#sources)
+
+<!-- markdown-toc end -->
+
+
 
 ## 1 - Data
 
@@ -550,7 +606,7 @@ Once activated, it prefixes the PATH environment variable with `~/.pyenv/shims`,
 `pyenv` also makes the process of downloading and installing multiple Python versions easier, using the command pyenv install.
 
 
-## SOURCES
+## Sources
 
 ### Classes:
 - [Decorators <3](https://realpython.com/primer-on-python-decorators/#stateful-decorators)

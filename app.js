@@ -1,7 +1,7 @@
 const fs = require("fs");
 const express = require("express");
 const path = require("path");
-const lib = require("./tools.js");
+const lib = require("./lib.js");
 
 
 // APP SETUP

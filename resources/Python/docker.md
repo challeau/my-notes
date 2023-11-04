@@ -4,9 +4,49 @@
 
 # Docker
 
-> Docker is an open platform for **developing**, **shipping**, and **running applications**. Docker enables the separation of applications from infrastructure so software can be delivered quickly.
+Docker is an open platform for **developing**, **shipping**, and **running applications**. Docker enables the separation of applications from infrastructure so software can be delivered quickly.
 
-<br/>
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
+
+- [1 - Containers](#1---containers)
+- [2 - Images](#2---images)
+- [3 - Dockerfile format](#3---dockerfile-format)
+    - [3.1 FROM](#31-from)
+    - [3.2 RUN](#32-run)
+        - [3.2.1 RUN --mount](#321-run---mount)
+        - [3.2.2 RUN --network](#322-run---network)
+    - [3.3 CMD](#33-cmd)
+    - [3.4 LABEL](#34-label)
+    - [3.5 EXPOSE](#35-expose)
+    - [3.6 ENV](#36-env)
+    - [3.7 ADD](#37-add)
+    - [3.8 COPY](#38-copy)
+        - [COPY --link and ADD --link](#copy---link-and-add---link)
+    - [3.9 ENTRYPOINT](#39-entrypoint)
+        - [CMD and ENTRYPOINT](#cmd-and-entrypoint)
+    - [3.10 VOLUME](#310-volume)
+    - [3.11 USER](#311-user)
+    - [3.12 WORKDIR](#312-workdir)
+    - [3.13 ARG](#313-arg)
+        - [3.13.1 Using ARG variables](#3131-using-arg-variables)
+        - [3.13.2 Predefined ARGs](#3132-predefined-args)
+        - [3.13.3 Impact on build caching](#3133-impact-on-build-caching)
+    - [3.14 ONBUILD](#314-onbuild)
+    - [3.15 STOPSIGNAL](#315-stopsignal)
+    - [3.16 HEALTHCHECK](#316-healthcheck)
+    - [3.17 SHELL](#317-shell)
+- [4 - `.dockerignore`](#4---dockerignore)
+- [5 - Best practices](#5---best-practices)
+- [6 - Docker and Python](#6---docker-and-python)
+    - [6.1 Setup](#61-setup)
+    - [6.2 Run a database in a container](#62-run-a-database-in-a-container)
+    - [6.3 Connect the application to the database](#63-connect-the-application-to-the-database)
+- [7 - Use Compose to develop locally](#7---use-compose-to-develop-locally)
+- [SOURCES](#sources)
+
+<!-- markdown-toc end -->
+
 
 ## 1 - Containers
 
@@ -19,7 +59,6 @@ Containers differ from Virtual Machines in the sense that VMs are completely iso
 
 Generally, containers boot up faster and can communicate between each other thanks to networks, or with the host thanks to volumes and bind mounts.
 
-<br/>
 
 ## 2 - Images
 
@@ -37,7 +76,6 @@ $ docker build [-t <CUSTOM_TAG_NAME>] [-f <SOURCE_FILE>] <path>
 - `-f` specifies the path for the Dockerfile (if it isn't `.`).
 - `path` specifies where the copy should be built.
 
-<br/>
 
 ## 3 - Dockerfile format
 
@@ -58,7 +96,6 @@ Minimizing the number of steps in your image may improve build and pull performa
 
 You can sort multi-line instructions with \ before a newline.
 
-<br/>
 
 ### 3.1 FROM
 
@@ -79,7 +116,6 @@ FROM busybox:$VERSION
 ARG VERSION
 RUN echo $VERSION > image_version
 ```
-<br/>
 
 `FROM` can appear multiple times within a single Dockerfile to create multiple images or use one build stage as a dependency for another.
 
@@ -91,7 +127,6 @@ The optional `--platform` flag can be used to specify the platform of the image 
 <br/>
 Global build arguments can be used in the value of this flag, for example automatic platform ARGs allow you to force a stage to native build platform (`--platform=$BUILDPLATFORM`), and use it to cross-compile to the target platform inside the stage.
 
-<br/>
 
 ### 3.2 RUN
 
@@ -117,7 +152,6 @@ Note that the exec form is parsed as a JSON array, which means that you must use
 
 The cache for `RUN` instructions can be invalidated by using `docker build --no-cache`.
 
-<br/>
 
 #### 3.2.1 RUN --mount
 
@@ -138,7 +172,6 @@ Mount types:
 | `secret`         | Allow the build container to access secure files such as private keys without baking them into the image. |
 | `ssh`            | Allow the build container to access SSH keys via SSH agents, with support for passphrases.                |
 
-<br/>
 
 #### 3.2.2 RUN --network
 
@@ -155,7 +188,6 @@ Network types:
 | none              | Run with no network access.<br/>`pip` will only be able to install the packages provided in the tarfile, which can be controlled by an earlier build stage. |
 | host              | Run in the host’s network environment.                                                                                                                      | 
 
-<br/>
 
 ### 3.3 CMD
 
@@ -178,7 +210,6 @@ If `CMD` is used to provide default arguments for the `ENTRYPOINT` instruction, 
 
 > Do not confuse `RUN` with `CMD`. `RUN` actually runs a command and commits the result; `CMD` does not execute anything at build time, but specifies the intended command for the image.
 
-<br/>
 
 ### 3.4 LABEL
 
@@ -197,7 +228,6 @@ To view an image’s labels, use the `docker image inspect` command. You can use
 docker image inspect --format='' myimage
 ```
 
-<br/>
 
 ### 3.5 EXPOSE
 
@@ -213,7 +243,6 @@ Regardless of the `EXPOSE` settings, you can override them at runtime by using t
 $ docker run -p 80:80/tcp -p 80:80/udp ...
 ```
 
-<br/>
 
 ### 3.6 ENV
 
@@ -241,7 +270,6 @@ The environment variables set using `ENV` will persist when a container is run f
 
 Environment variable persistence can cause unexpected side effects. For example, setting `ENV DEBIAN_FRONTEND=noninteractive` changes the behavior of `apt-get`, and may confuse users of your image.
 
-<br/>
 
 ### 3.7 ADD
 
@@ -265,7 +293,6 @@ All new files and directories are created with a UID and GID of 0, unless the op
 > The `--chown` feature is only supported on Dockerfiles used to build Linux containers, and will not work on Windows containers.
 <br/>Since user and group ownership concepts do not translate between Linux and Windows, the use of `/etc/passwd` and `/etc/group` for translating user and group names to IDs restricts this feature to only be viable for Linux OS-based containers.
 
-<br/>
 
 `ADD` obeys the following rules:
 - The `<src>` path must be inside the context of the build; you cannot `ADD ../something /something`, because the first step of a `docker build` is to send the context directory (and subdirectories) to the docker daemon.
@@ -276,7 +303,6 @@ All new files and directories are created with a UID and GID of 0, unless the op
 - If multiple `<src>` resources are specified, either directly or due to the use of a wildcard, then <dest> must be a directory, and it must end with a slash `/`.
 - If `<dest>` doesn't exist, it is created along with all missing directories in its path.
 
-<br/>
 
 The checksum of a remote file can be verified with the `--checksum` flag:
 ```dockerfile
@@ -295,7 +321,6 @@ ADD git@git.example.com:foo/bar.git /bar
 ```
 This Dockerfile can be built with `docker build --ssh` or `buildctl build --ssh`.
 
-<br/>
 
 ### 3.8 COPY
 
@@ -317,7 +342,6 @@ Optionally, `COPY` accepts a flag `--from=<name>` that can be used to set the so
 
 `COPY` follows the same rules as `ADD`, except that it only duplicates files/directories in a specified location and **in their existing format**. This means that it doesn't deal with extracting a compressed file, but rather copies it as-is.
 
-<br/>
 
 #### COPY --link and ADD --link
 
@@ -372,7 +396,6 @@ The shell form prevents any `CMD` or `docker run` command line arguments from be
 
 You can use the exec form of `ENTRYPOINT` to set fairly stable default commands and arguments and then use either form of `CMD` to set additional defaults that are more likely to be changed.
 
-<br/>
 
 #### CMD and ENTRYPOINT
 
@@ -390,11 +413,9 @@ The table below shows what command is executed for different `ENTRYPOINT`/`CMD` 
 | `CMD [“exec_cmd”, “p1_cmd”]` | `exec_cmd p1_cmd`            | `/bin/sh -c exec_entry p1_entry` | `exec_entry p1_entry exec_cmd p1_cmd`   |
 | `CMD exec_cmd p1_cmd`        | `/bin/sh -c exec_cmd p1_cmd` | `/bin/sh -c exec_entry p1_entry` | `/bin/sh -c exec_cmd p1_cmd`            |
 
-<br/>
 
-> If `CMD` is defined from the base image, setting `ENTRYPOINT` will reset `CMD` to an empty value. In this scenario, `CMD` must be defined in the current image to have a value.
+If `CMD` is defined from the base image, setting `ENTRYPOINT` will reset `CMD` to an empty value. In this scenario, `CMD` must be defined in the current image to have a value.
 
-<br/>
 
 ### 3.10 VOLUME
 
@@ -419,7 +440,6 @@ Keep the following things in mind about volumes in the Dockerfile:
 - The list is parsed as a JSON array. You must enclose words with double quotes (`"`) rather than single quotes (`'`).
 - The host directory (mountpoint) is, by its nature, host-dependent. This is to preserve image portability, since a given host directory can’t be guaranteed to be available on all hosts. For this reason, you can't mount a host directory from within the Dockerfile. You must specify the mountpoint when you create or run the container.
 
-<br/>
 
 ### 3.11 USER
 
@@ -432,7 +452,6 @@ USER <UID>[:<GID>]
 ```
 The `USER` instruction sets the username (or UID) and optionally the user group (or GID) to use as the default user and group for the remainder of the current stage. The specified user is used for `RUN` instructions and at runtime, runs the relevant `ENTRYPOINT` and `CMD` commands.
 
-<br/>
 
 ### 3.12 WORKDIR
 
@@ -463,7 +482,6 @@ If not specified, the default working directory is `/`. In practice, if you aren
 <br/>
 Therefore, to avoid unintended operations in unknown directories, it is best practice to set your `WORKDIR` explicitly.
 
-<br/>
 
 ### 3.13 ARG
 
@@ -476,7 +494,6 @@ A Dockerfile may include one or more `ARG` instructions.
 
 > It is not recommended to use build-time variables for passing secrets like github keys, user credentials etc. Build-time variable values are visible to any user of the image with the `docker history` command.
 
-<br/>
 
 An `ARG` variable definition comes into effect from the line on which it is defined in the Dockerfile, not from the argument’s use on the command-line or elsewhere. For example, consider this Dockerfile:
 
@@ -496,7 +513,6 @@ The `USER` at line 2 evaluates to `some_user` since the `user` variable is defin
 
 An `ARG` instruction goes out of scope at the end of the build stage where it was defined. To use an arg in multiple stages, each stage must include the `ARG` instruction.
 
-<br/>
 
 #### 3.13.1 Using ARG variables
 
@@ -522,7 +538,6 @@ Using the second Dockerfile example, `CONT_IMG_VER` is still persisted in the im
 
 The **variable expansion** technique in this example allows you to pass arguments from the command line and persist them in the final image by leveraging the `ENV` instruction. 
 
-<br/>
 
 #### 3.13.2 Predefined ARGs
 
@@ -535,8 +550,6 @@ Docker has a set of predefined `ARG` variables that you can use without a corres
 
 To use these, pass them on the command line using the `--build-arg` flag.
 
-
-<br/>
 
 #### 3.13.3 Impact on build caching
 
@@ -569,7 +582,6 @@ RUN echo $CONT_IMG_VER
 ```
 Line 3 does not cause a cache miss because the value of `CONT_IMG_VER` is a constant (hello). As a result, the environment variables and values used on the `RUN` (line 4) doesn't change between builds.
 
-<br/>
 
 ### 3.14 ONBUILD
 
@@ -583,7 +595,6 @@ Any build instruction can be registered as a trigger.
 
 This is useful if you are building an image which will be used as a base to build other images, for example an application build environment or a daemon which may be customized with user-specific configuration.
 
-<br/>
 
 ### 3.15 STOPSIGNAL
 
@@ -597,7 +608,6 @@ The default is `SIGTERM` if not defined.
 The image's default `STOPSIGNAL` can be overridden per container, using the `--stop-signal` flag on `docker run` and `docker create`.
 
 
-<br/>
 
 ### 3.16 HEALTHCHECK
 
@@ -637,7 +647,6 @@ To help debug failing probes, any output text (UTF-8 encoded) that the command w
 
 When the health status of a container changes, a `health_status` event is generated with the new status.
 
-<br/>
 
 ### 3.17 SHELL
 ```dockerfile
@@ -656,7 +665,6 @@ It affects `RUN`, `CMD`, and `ENTRYPOINT` if they're in a shell form.
 The `SHELL` instruction could also be used to modify the way in which a shell operates. For example, using `SHELL cmd /S /C /V:ON|OFF` on Windows, delayed environment variable expansion semantics could be modified.
 <br/>It can also be used on Linux should an alternate shell be required such as `zsh`, `csh`, `tcsh` and others.
 
-<br/>
 
 ## 4 - `.dockerignore`
 
@@ -666,7 +674,6 @@ If you have stuff in your directory that is not needed by your build, you’ll h
 
 You can remedy this situation by adding a `.dockerignore` file where you can specify the list of folders and files that should be ignored in the build context.
 
-<br/>
 
 ## 5 - Best practices
 
@@ -679,8 +686,6 @@ You can remedy this situation by adding a `.dockerignore` file where you can spe
 - Minimize the number of layers: limit the number of `RUN`, `ADD`, and `COPY`.
 - Sort multi-line arguments alpha-numerically.
 - Leverage build cache.
-
-<br/>
 
 
 ## 6 - Docker and Python
@@ -707,8 +712,6 @@ Remember to publish the ports when running the container:
 $ docker run --publish 8000:5000 python-docker
 ```
 
-<br/>
-
 ### 6.2 Run a database in a container
 
 First, create volumes -one for the data and one for configuration of MySQL (eg):
@@ -732,8 +735,6 @@ $ docker run --rm -d -v mysql:/var/lib/mysql \      # -d: detached
   mysql
 ```
 
-<br/>
-
 ### 6.3 Connect the application to the database
 
 After updating `app.py` to use MySQL as a datastore (adding routes and connections), update `requirements.txt` to include the new dependencies (mysql-connector-python), and re-build the image.
@@ -747,8 +748,6 @@ $ docker run \
   -p 8000:5000 \
   python-docker-dev
 ```
-
-<br/>
 
 ## 7 - Use Compose to develop locally
 
@@ -792,7 +791,7 @@ $ docker-compose -f docker-compose.dev.yml up --build
 The `--build` flag tells Docker to compile the image and then start the containers.
 
 
-## SOURCES
+## Sources
 - [Docker reference](https://docs.docker.com/engine/reference/builder/)
 - [Docker best practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
 - [Docker and python](https://docs.docker.com/language/python/build-images/)

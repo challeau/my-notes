@@ -4,6 +4,42 @@
 
 # ESSENTIAL TYPESCRIPT
 
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
+
+- [1 - Typing](#1---typing)
+    - [1.1 Simple types](#11-simple-types)
+    - [1.2 Special types](#12-special-types)
+    - [1.3 Arrays and Tuples](#13-arrays-and-tuples)
+    - [1.4 Objects](#14-objects)
+    - [1.5 Enums](#15-enums)
+- [2 - Type Aliases and Interfaces](#2---type-aliases-and-interfaces)
+- [3 - Union types](#3---union-types)
+- [4 - Functions](#4---functions)
+- [5 - Type casting](#5---type-casting)
+- [6 - Classes](#6---classes)
+    - [6.1 Basics](#61-basics)
+    - [6.2 Inheritance](#62-inheritance)
+    - [6.3 Abstract classes](#63-abstract-classes)
+- [7 - Generics](#7---generics)
+    - [7.1 Functions](#71-functions)
+    - [7.2 Classes](#72-classes)
+    - [7.3 Type Aliases](#73-type-aliases)
+    - [7.4 Default Value](#74-default-value)
+- [8 - Utility Types](#8---utility-types)
+    - [8.1 Partial](#81-partial)
+    - [8.2 Required](#82-required)
+    - [8.3 Record](#83-record)
+    - [8.4 Omit](#84-omit)
+    - [8.5 Pick](#85-pick)
+    - [8.6 Exclude](#86-exclude)
+    - [8.7 ReturnType](#87-returntype)
+    - [8.8 Parameters](#88-parameters)
+- [9 - keyof](#9---keyof)
+
+<!-- markdown-toc end -->
+
+
 ## 1 - Typing
 
 Type assignment can be explicit or implicit:
@@ -17,7 +53,6 @@ let firstName = "Amir";
 
 Implicit assignment forces TypeScript to infer the value. TypeScript may not always properly infer what the type of a variable may be. In such cases, it will set the type to `any`, which disables type checking.
 
-<br/>
 
 ### 1.1 Simple types
 
@@ -25,7 +60,6 @@ Implicit assignment forces TypeScript to infer the value. TypeScript may not alw
 
 ❌ Don’t ever use the types `Number`, `String`, `Boolean`, `Symbol`, or `Object`. These types refer to non-primitive boxed objects that are almost never used appropriately in JavaScript code.
 
-<br/>
 
 ### 1.2 Special types
 
@@ -38,7 +72,6 @@ TypeScript has special types that may not refer to any specific type of data:
 | `never`                | throws an error whenever it is defined                                                 |
 | `undefined`<br/>`null` | refer to the Javascript primitives.                                                    |
 
-<br/>
 
 ### 1.3 Arrays and Tuples
 
@@ -75,7 +108,6 @@ const [x, y] = graph;
 
 *Note: you can use `.push()` on an initialized tuple but there won't be any type safety after the last defined member.*
 
-<br/>
 
 ### 1.4 Objects
 
@@ -103,7 +135,6 @@ nameAgeMap.Jake = 25;                                   // no error
 nameAgeMap.Amir = "Fifty";                              // throws an error
 ```
 
-<br/>
 
 ### 1.5 Enums
 
@@ -137,7 +168,6 @@ enum CardinalDirections {
 ```
 *Note: technically, you can mix and match string and numeric enum values, but it is **not** recommended to do so.*
 
-<br/>
 
 ## 2 - Type Aliases and Interfaces
 
@@ -181,7 +211,6 @@ const rectangle: Rectangle = {
 };
 ```
 
-<br/>
 
 Interfaces can extend each other's definition thanks to the `extends` keyword:
 ```typecript
@@ -196,7 +225,6 @@ const coloredRectangle: ColoredRectangle = {
 };
 ```
 
-<br/>
 
 ## 3 - Union types
 
@@ -211,7 +239,6 @@ printStatusCode(404);       // works
 printStatusCode('404');     // also works
 ```
 
-<br/>
 
 ## 4 - Functions
 
@@ -260,7 +287,6 @@ const negateFunction: Negate = (value) => value * -1;
 
 Use the return type `void` for callbacks whose value will be ignored, NOT `any`. Using void is safer because it prevents you from accidentally using a return value in an unchecked way.
 
-<br/>
 
 ## 5 - Type casting
 
@@ -287,7 +313,6 @@ console.log(((x as unknown) as string).length)  // undefined
 ```
 *Note: casting with `<>` doesn't work in TSX, the Typescript equivalent to JSX.*
 
-<br/>
 
 ## 6 - Classes
 
@@ -330,7 +355,6 @@ class Person{
 }
 ```
 
-<br/>
 
 ### 6.2 Inheritance
 
@@ -355,7 +379,6 @@ class Rectangle implements Shape {
 ```
 Here, the new class `Rectangle` can be treated as the same "sort of thing" as `Shape`, but it is not a child of it. It could be passed to any method where `Shape` is required, regardless of having a different parent than `Shape`.
 
-<br/>
 
 In contrast, `extends`is more like classic inheritance:
 ```typescript
@@ -369,7 +392,6 @@ The new class `Square` is a child of `Rectangle`. It has all the properties and 
 
 *Note: newer versions of TypeScript allow explicitly marking the re-implementations with the `override` keyword.*
 
-<br/>
 
 ### 6.3 Abstract classes
 
@@ -398,8 +420,6 @@ class Rectangle extends Polygon {
 
 > Abstract classes cannot be directly instantiated, as they do not have all their members implemented.
 
-<br/>
-
 ## 7 - Generics
 
 Generics allow creating 'type variables' which can be used to create classes, functions & type aliases that don't need to explicitly define the types that they use.
@@ -420,7 +440,6 @@ console.log(result);                                   // ['hello', 420]
 
 ```
 
-<br/>
 
 ### 7.2 Classes
 
@@ -449,7 +468,6 @@ value.setValue(10);
 console.log(value.toString());        // myNumber: 10
 ```
 
-<br/>
 
 ### 7.3 Type Aliases
 
@@ -459,7 +477,6 @@ type Wrapped<T> = { value: varType };
 const wrappedValue: Wrapped<number> = { value: 10 };
 ```
 
-<br/>
 
 ### 7.4 Default Value
 
@@ -476,7 +493,6 @@ class NamedValue<varType = string> {
 }
 ```
 
-<br/>
 
 ## 8 - Utility Types
 
@@ -495,7 +511,6 @@ let pointPart: Partial<Point> = {};
 pointPart.x = 10;
 ```
 
-<br/>
 
 ### 8.2 Required
 
@@ -514,7 +529,6 @@ let myCar: Required<Car> = {
 }
 ```
 
-<br/>
 
 ### 8.3 Record
 
@@ -528,7 +542,6 @@ const nameAgeMap: Record<string, number> = {
 
 > `Record<string, number>` is equivalent to `{ [key: string]: number }`.
 
-<br/>
 
 ### 8.4 Omit
 
@@ -545,7 +558,6 @@ const bob: Omit<Person, 'age' | 'location'> = {
 };
 ```
 
-<br/>
 
 ### 8.5 Pick
 
@@ -561,8 +573,6 @@ const bob: Pick<Person, 'name'> = {
     name: 'Bob'
 };
 ```
-
-<br/>
 
 ### 8.6 Exclude
 
@@ -585,7 +595,6 @@ const point: ReturnType<PointGenerator> = {
 };
 ```
 
-<br/>
 
 ### 8.8 Parameters
 
@@ -598,7 +607,6 @@ const point: Parameters<PointPrinter>[0] = {
 };
 ```
 
-<br/>
 
 ## 9 - keyof
 
@@ -631,11 +639,3 @@ function createStringPair(property: keyof StringMap, value: string): StringMap {
 }
 ```
 
-<br/>
-
-## 10 - Null & Undefined
-
-```typecript
-```
-
-<br/>

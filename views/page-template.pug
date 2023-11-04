@@ -13,14 +13,14 @@ mixin navFolder(name, links)
 mixin navbar(dirs, links)
   div.navContainer
     div(id='navBar')
-      div.title
-        h3 Index
-        img(src="assets/turt.png")
+      h3.title Index
       each files, folder in dirs
         +navFolder(folder, files)
       ul.lonelyLink
         each page in links
           +navLink(page.title, page.endpoint, '')
+      
+      img(src="assets/turt.png")
 
 doctype html
 html

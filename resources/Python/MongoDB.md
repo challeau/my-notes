@@ -2,14 +2,32 @@
 [//]: # (TITLE MongoDB)
 [//]: # (ENDPOINT /py-mongo)
 
-# MongoDB with Python and Flask
+# MongoDB & Python
 
 Python's native dictionary and list data types make it second only to JavaScript for manipulating JSON documents — and well-suited to working with BSON.
 
 PyMongo, the standard MongoDB driver library for Python, is easy to use and offers an intuitive API for accessing databases, collections, and documents.
 Objects retrieved from MongoDB through PyMongo are compatible with dictionaries and lists, so we can easily manipulate, iterate, and print them.
 
-<br/>
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
+
+- [1 - Connecting Python and MongoDB Atlas](#1---connecting-python-and-mongodb-atlas)
+- [2 - CRUD](#2---crud)
+    - [2.1 C - creating a collection and inserting documents](#21-c---creating-a-collection-and-inserting-documents)
+    - [2.2 R - querying](#22-r---querying)
+        - [2.2.1 Count documents](#221-count-documents)
+        - [2.2.2 Query selectors](#222-query-selectors)
+        - [2.2.3 Use case: request URL to ObjectId](#223-use-case-request-url-to-objectid)
+    - [2.3 U - Update documents](#23-u---update-documents)
+    - [2.4 D - Delete documents](#24-d---delete-documents)
+- [3 - Creating data models](#3---creating-data-models)
+    - [3.1 Flask and MongoDB](#31-flask-and-mongodb)
+    - [3.2 Create models](#32-create-models)
+    - [3.3 Query](#33-query)
+
+<!-- markdown-toc end -->
+
 
 ## 1 - Connecting Python and MongoDB Atlas
 
@@ -36,7 +54,6 @@ def get_database():
 ```
 An important note about databases (and collections) in MongoDB is that they are created lazily - they're created when the first document is inserted into them.
 
-<br/>
 
 ## 2 - CRUD
 
@@ -53,7 +70,6 @@ collection = db.collection
 
 ```
 
-<br/>
 
 To insert documents, gather your data in a dict and use `.insert_one()` or `.insert_many()`:
 ```python
@@ -78,7 +94,6 @@ collection.insert_many(famous_creeps)
 `insert_many()` (bulk inserts) returns an instance of the `InsertManyResult` object. Get a list of the `_id`s of the inserted documents with its `inserted_ids` attribute.<br/>
 `insert_one()` returns an instance of the `InsertOneResult` object. List the `_id` of the inserted document with its `inserted_id` attribute.
 
-<br/>
 
 After inserting the first document, the collection has actually been created on the server. We can verify this by listing all the collections in our database:
 ```python
@@ -89,7 +104,6 @@ db.list_collection_names()
 Data in MongoDB is represented (and stored) using JSON-style documents. In PyMongo we use dictionaries to represent documents.<br/>
 Note that documents can contain native Python types (like `datetime.datetime` instances) which will be automatically converted to and from the appropriate BSON types.
 
-<br/>
 
 ### 2.2 R - querying
 
@@ -128,7 +142,6 @@ Comparison:
 | $lt        | <           |
 | $lte       | <=          |
 
-<br/>
 
 Logical:
 
@@ -139,7 +152,6 @@ Logical:
 | $nor | returns all documents that fail to match all clauses             |
 | $or  | returns all documents that match the conditions of either clause |
 
-<br/>
 
 Element:
 
@@ -148,7 +160,6 @@ Element:
 | $exists | matches documents that have the specified field       |
 | $type   | selects documents if a field is of the specified type |
 
-<br/>
 
 Array:
 
@@ -158,7 +169,6 @@ Array:
 | $elemMatch | selects documents if element in the array field matches all the specified $elemMatch conditions |
 | $size      | selects documents if the array field is a specified size                                        |
 
-<br/>
 
 Projection:
 
@@ -169,7 +179,6 @@ Projection:
 | $meta      | projects the document's score assigned during $text operation                          |
 | $slice     | limits the number of elements projected from an array. Supports skip and limit slices  |
 
-<br/>
 
 #### 2.2.3 Use case: request URL to ObjectId
 
@@ -183,7 +192,6 @@ def get(post_id):
     document = client.db.collection.find_one({'_id': ObjectId(post_id)})
 ```
 
-<br/>
 
 ### 2.3 U - Update documents
 
@@ -197,13 +205,11 @@ MongoDB CRUD allows users to update documents in three different ways:
 | `db.collection.update_many(<query_selector>, {$set: {<updated_fields>}})` | updates all documents that match the query         |
 | `db.collection.replace_one(<query_selector>, {$set: {<updated_fields>}})` | replaces the first document that matches the query |
 
-<br/>
 
 ### 2.4 D - Delete documents
 
 Use `delete_one()` or `delete_many()`.
 
-<br/>
 
 ## 3 - Creating data models
 
@@ -243,4 +249,3 @@ user.update(name="nicky")                           # UPDATE
 user.delete()                                       # DELETE
 ```
 
-<br/>

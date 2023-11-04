@@ -15,7 +15,6 @@ marked.use({
   }]
 });
 
-
 /**
  * Convert md files to HTML and collect its metadata.
  * @param {Dirent} files - The files to convert.
@@ -63,6 +62,8 @@ function getResources(files, resourcePath, dir="") {
 	    let parsedHTML = sanitizeHtml(marked.parse(text), {
 		allowedTags: sanitizeHtml.defaults.allowedTags.concat([ 'img' ])
 	    });
+
+	    // addTOCid(parsedHTML);
 
 	    resources.push({text: parsedHTML, metadata: metadata});
 	}

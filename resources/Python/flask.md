@@ -4,6 +4,23 @@
 
 # FLASK
 
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
+
+- [X - Internationalization and localization](#x---internationalization-and-localization)
+    - [X.1 Flask-Babel](#x1-flask-babel)
+        - [X.1.1 Configuration](#x11-configuration)
+        - [X.1.2 For complex applications](#x12-for-complex-applications)
+    - [X.2 Formatting dates](#x2-formatting-dates)
+    - [X.3 Formatting Numbers](#x3-formatting-numbers)
+    - [X.4 Translations](#x4-translations)
+        - [X.4.1 Using translations](#x41-using-translations)
+        - [X.4.2 Translating Applications](#x42-translating-applications)
+- [Sources](#sources)
+
+<!-- markdown-toc end -->
+
+
 ## X - Internationalization and localization
 
 In computing, internationalization and localization, often abbreviated i18n and L10n, are means of adapting computer software to different languages, regional peculiarities and technical requirements of a target locale.
@@ -14,7 +31,6 @@ Localization is the process of adapting internationalized software for a specifi
 
 A locale is a set of parameters that defines the user's language, region and any special variant preferences that the user wants to see in their user interface. Usually a locale identifier consists of at least a language code and a country/region code.
 
-<br/>
 
 ### X.1 Flask-Babel
 
@@ -22,7 +38,6 @@ A locale is a set of parameters that defines the user's language, region and any
  
 It has builtin support for date formatting with timezone support as well as a very simple and friendly interface to gettext translations.
 
-<br/>
 
 #### X.1.1 Configuration
 
@@ -43,7 +58,6 @@ The babel object itself can be used to configure the babel support further. Babe
 - `BABEL_TRANSLATION_DIRECTORIES`: a semi-colon (`;`) separated string of absolute and relative (to the app root) paths to translation folders. Defaults to `translations`.
 - `BABEL_DOMAIN`: the message domain used by the application. Defaults to `messages`.
 
-<br/>
 
 #### X.1.2 For complex applications
 
@@ -75,7 +89,6 @@ def get_timezone():
         return user.timezone
 ```
 
-<br/>
 
 ### X.2 Formatting dates
 
@@ -85,7 +98,6 @@ They all accept a `datetime.datetime` (or `datetime.date`, `datetime.time` and `
 
 > The application should use naive datetime objects internally that use UTC as timezone. On formatting it will automatically convert into the user’s timezone in case it differs from UTC.
 
-<br/>
 
 To play with the date formatting from the console, you can use the `test_request_context()` method:
 ```python
@@ -113,7 +125,6 @@ And again with a different language:
 u'Donnerstag, 5. M\xe4rz 1987 17:12'
 ```
 
-<br/>
 
 ### X.3 Formatting Numbers
 
@@ -145,7 +156,6 @@ With a different language:
 '1E4'
 ```
 
-<br/>
 
 ### X.4 Translations
 
@@ -173,7 +183,6 @@ class MyForm(formlibrary.FormBase):
     success_message = lazy_gettext(u'The form was successfully saved.')
 ```
 
-<br/>
 
 #### X.4.2 Translating Applications
 
@@ -184,7 +193,7 @@ After that, it’s time to create a `.pot` file: a file that contains all the st
 More info [here](https://python-babel.github.io/flask-babel/#translating-applications)
 
 
-## SOURCES
+## Sources
 
 - [Huge Flask tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)
 - [Flask-Python-Mongodb](https://www.mongodb.com/developer/languages/python/flask-python-mongodb/)

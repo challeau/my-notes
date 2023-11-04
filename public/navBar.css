@@ -1,17 +1,14 @@
-.navContainer {
-    width: 15vw;
-}
+.navContainer { width: 13vw; }
 
 #navBar {
-    width: 15vw;
+    width: 13vw;
     height: 100vh;
     position: fixed;
-    font-size: 1.2em;
     background-color: var(--beige);
 }
 
 #navBar > * {
-    width: 15vw;
+    width: 13vw;
     list-style-type: none;
     list-style-position: inside;
 }
@@ -29,12 +26,15 @@
 
 #navBar img {
     height: 7vh;
-    transform: scaleX(-1);
+    width: auto;
+    position: absolute;
+    right: 1vw;
+    bottom: 1vw;
 }
 
 #navBar h3 {
     margin: 0;
-    font-size: 2em;
+    font-size: 1.4em;
     color: var(--bright-green);
 }
 
@@ -55,28 +55,20 @@
     color: var(--brown);
 }
 
-.folder li:not(.folded, .folderTitle) {
-    background-color: var(--transparent-lilac);
-    border-left: 5px solid var(--lilac);
-}
-#navBar li.active { background-color: var(--transparent-lilac); }
+.folder li:not(.folded, .folderTitle) { background-color: var(--transparent-pink); }
+
+#navBar li.active { background-color: var(--transparent-pink); }
 
 #navBar li.active a {
-    color: var(--bright-lilac);
+    color: var(--bright-pink);
     font-weight: 700;
 }
 
-#navBar a:hover {
-    color: var(--bright-lilac);
-}
+#navBar a:hover { color: var(--bright-pink); }
 
-#navBar .activeFolder {
-    background-color: var(--lilac);
-}
+#navBar .activeFolder { background-color: var(--pink); }
 
-#navBar .folder:hover {
-    background-color: var(--transparent-lilac);
-}
+#navBar .folderTitle:hover:not(.activeFolder) { background-color: var(--transparent-pink); }
 
 #navBar .folderTitle {
     cursor: pointer;
@@ -90,8 +82,3 @@
     display: none;
     overflow: hidden;
 }
-
-/* #navBar .folder li:not(:first-child) { */
-/*     padding-left: 2.5em; */
-/*     background-color: var(--lilac); */
-/* } */

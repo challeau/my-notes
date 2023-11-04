@@ -4,7 +4,22 @@
 
 # REACT
 
-> React is an **unopinionated library** for **building user interfaces** based on **components**.
+React is an **unopinionated library** for **building user interfaces** based on **components**.
+
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
+
+- [1 - Components](#1---components)
+    - [1.1 - Defining components](#11---defining-components)
+    - [1.2 - Using components](#12---using-components)
+    - [1.3 - Writing JSX](#13---writing-jsx)
+    - [1.4 - Props](#14---props)
+    - [1.5 - Conditional rendering](#15---conditional-rendering)
+    - [1.6 - Rendering lists](#16---rendering-lists)
+    - [1.7 - Purity](#17---purity)
+
+<!-- markdown-toc end -->
+
 
 ## 1 - Components
 

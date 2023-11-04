@@ -1,5 +1,5 @@
 
-[//]: # (TITLE JavaScript)
+[//]: # (TITLE JS basics)
 [//]: # (ENDPOINT /js)
 
 # ESSENTIAL JAVASCRIPT
@@ -9,6 +9,33 @@ JavaScript (JS) is a **lightweight**, **interpreted**, **dynamic** programming l
 While it is most well-known as the **scripting language** for Web pages, many non-browser environments also use it, such as Node.js, Apache CouchDB and Adobe Acrobat.
 
 JavaScript supports object-oriented, imperative, and declarative styles.
+
+
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
+
+- [1 - Functions](#1---functions)
+    - [1.1 Function declaration](#11-function-declaration)
+    - [1.2 Function expression](#12-function-expression)
+- [2 - Arguments and parameters](#2---arguments-and-parameters)
+    - [2.1 Parameters](#21-parameters)
+    - [2.2 The `arguments` object](#22-the-arguments-object)
+    - [2.3 Destructuring](#23-destructuring)
+    - [2.4 Call-by-sharing](#24-call-by-sharing)
+- [3 - Arrow functions](#3---arrow-functions)
+- [4 - Closures](#4---closures)
+- [5 - Modules](#5---modules)
+    - [5.1 Exporting](#51-exporting)
+    - [5.2 Importing](#52-importing)
+    - [5.3 Top level await](#53-top-level-await)
+- [4 - Quirks](#4---quirks)
+    - [4.1 Hoisting](#41-hoisting)
+    - [4.2 Interpreted or compiled?](#42-interpreted-or-compiled)
+        - [Compilation:](#compilation)
+        - [Interpretation:](#interpretation)
+        - [JIT compilation:](#jit-compilation)
+
+<!-- markdown-toc end -->
 
 
 ## 1 - Functions

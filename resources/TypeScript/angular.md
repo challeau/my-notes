@@ -11,7 +11,50 @@ As a platform, Angular includes:
 - A collection of well-integrated libraries that cover a wide variety of features, including routing, forms management, client-server communication, and more,
 - A suite of developer tools to help you develop, build, test, and update your code.
 
-<br/>
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
+
+- [1 - CLI installation](#1---cli-installation)
+- [2 - Components](#2---components)
+- [3 - Templates](#3---templates)
+    - [3.1 Interpolate contents --> {{ }}](#31-interpolate-contents-----)
+    - [3.2 Property binding --> [ ]](#32-property-binding-----)
+    - [3.3 Event listeners --> ( )](#33-event-listeners-----)
+    - [3.4 Directives](#34-directives)
+- [4 - Passing data](#4---passing-data)
+    - [4.1 Passing down: `@Input()`](#41-passing-down-input)
+    - [4.1.1. Child configuration](#411-child-configuration)
+        - [4.1.2 Parent configuration](#412-parent-configuration)
+    - [4.2 Passing up: `@Output()`](#42-passing-up-output)
+        - [4.2.1 Child configuration](#421-child-configuration)
+        - [4.2.2 Parent configuration](#422-parent-configuration)
+- [5 - Navigation](#5---navigation)
+    - [5.1 Imports](#51-imports)
+    - [5.2 Define a basic route](#52-define-a-basic-route)
+    - [5.3 Route order](#53-route-order)
+    - [5.4 Getting route information](#54-getting-route-information)
+    - [5.5 Redirects](#55-redirects)
+    - [5.6 Nesting routes](#56-nesting-routes)
+- [6 - Dependency Injetion: services](#6---dependency-injetion-services)
+- [7 - Forms](#7---forms)
+    - [7.1 Chosing an apporach ](#71-chosing-an-apporach)
+        - [7.1.1 Key advantages](#711-key-advantages)
+        - [7.1.2 Key differences](#712-key-differences)
+        - [7.1.3 Scalability](#713-scalability)
+    - [7.2 Setting up the form model](#72-setting-up-the-form-model)
+        - [7.2.1 Common form foundation classes](#721-common-form-foundation-classes)
+    - [7.2.2. In reactive forms](#722-in-reactive-forms)
+        - [7.2.3 In template-driven forms](#723-in-template-driven-forms)
+    - [7.3 Data flow in forms](#73-data-flow-in-forms)
+    - [7.4 Form validation](#74-form-validation)
+    - [7.5 `FormBuilder`](#75-formbuilder)
+        - [7.5.1 Specs](#751-specs)
+        - [7.5.2 Usage:](#752-usage)
+- [Deploy](#deploy)
+- [Tools](#tools)
+
+<!-- markdown-toc end -->
+
 
 ## 1 - CLI installation
 
@@ -38,7 +81,7 @@ ng serve --open
 ## 2 - Components
 
 Components define areas of responsibility in the UI that let you reuse sets of UI functionality.
-<br/>Angular's component model offers strong encapsulation and an intuitive application structure.
+Angular's component model offers strong encapsulation and an intuitive application structure.
 
 A component includes a TypeScript class with a `@Component()` decorator, an HTML template, and styles.
 
@@ -71,14 +114,14 @@ This generator creates starter files for the three parts of the component: `name
 
 It also adds it to the `AppModule` file to make it accessible from other components of the application.
 
-<br/>
+
 
 ## 3 - Templates
 
 Every component has an HTML template that declares how that component renders. You define this template either inline or by file path.
 
 
-### 3.1 Interpolate contents --> {{ }}
+### 3.1 Interpolate contents --> `{{ }}`
 
 Example template:
 ```html
@@ -99,7 +142,7 @@ export class HelloWorldInterpolationComponent {
 }
 ```
 
-### 3.2 Property binding --> [ ]
+### 3.2 Property binding --> `[ ]`
 
 Set values for properties and attributes of HTML elements and pass values to your application's presentation logic:
 
@@ -130,7 +173,7 @@ If you had an expression that changed the value of something else that you were 
 As a best practice, use only properties and methods that return values.
 
 
-### 3.3 Event listeners --> ( )
+### 3.3 Event listeners --> `( )`
 
 Declare event listeners to listen for and respond to user actions by specifying the event name in parentheses:
 ```html
@@ -140,7 +183,7 @@ content_copy
 </button>
 ```
 
-<br/>
+
 
 The following is a combined example of Interpolation, Property Binding, and Event Binding within an Angular template:
 
@@ -230,7 +273,7 @@ Template:
 <p [contentEditable]="canEdit">{{ message }}</p>
 ```
 
-<br/>
+
 
 ## 4 - Passing data
 
@@ -272,7 +315,7 @@ Template:
 </p>
 ```
 
-<br/>
+
 
 #### 4.1.2 Parent configuration
 
@@ -293,7 +336,7 @@ export class AppComponent {
 
 To watch for changes on an `@Input()` property, use `OnChanges`, one of Angular's lifecycle hooks.
 
-<br/>
+
 
 ### 4.2 Passing up: `@Output()`
 
@@ -359,7 +402,7 @@ Template:
   <li *ngFor="let item of items">{{item}}</li>
 </ul>
 ```
-<br/>
+
 
 ## 5 - Navigation
 
@@ -367,7 +410,7 @@ Template:
 
 Make sure that you have `<base href="/">` in the `<head>` of your `index.html` file. This assumes that the app folder is the application root, and uses "/".
 
-<br/>
+
 
 ### 5.1 Imports
 
@@ -379,7 +422,7 @@ import { SecondComponent } from './second/second.component';
 
 Import the `AppRoutingModule` into `AppModule` and add it to the `imports` array (auto if CLI).
 
-<br/>
+
 
 ### 5.2 Define a basic route
 
@@ -396,7 +439,7 @@ There are three fundamental building blocks to creating a route:
   - Add links to the two components and assign the `routerLink` attribute to the route you want to link.
   - Update your component template to include `<router-outlet>`. This element informs Angular to update the application view with the component for the selected route.
 
-<br/>
+
 
 ### 5.3 Route order
 
@@ -421,7 +464,7 @@ Use a route to pass this type of information to your application components. To 
       this.route.queryParams.subscribe(params => { this.name = params['name']; }); 
   }
   ```
-<br/>
+
 
 ### 5.5 Redirects
 
@@ -434,7 +477,7 @@ const routes: Routes = [
   { path: '**', component: PageNotFoundComponent },                     // Wildcard route for a 404 page
 ];
 ```
-<br/>
+
 
 ### 5.6 Nesting routes
 
@@ -451,7 +494,7 @@ Nested routes are called child routes. To set them up:
     },
   ];
   ```
-<br/>
+
 
 ## 6 - Dependency Injetion: services
 
@@ -465,7 +508,7 @@ In Angular, dependencies are typically services, but they also can be values, su
 
 A component can delegate certain tasks to services, such as fetching data from the server, validating user input, or logging directly to the console. By defining such processing tasks in an injectable service class, you make those tasks available to any component.
 
-<br/> 
+ 
 
 
 Services can be generated with:
@@ -489,7 +532,7 @@ export class HeroService {
 ```
 The `@Injectable()` decorator specifies that Angular can use this class in the DI system. The metadata, `providedIn: 'root'`, means that the `ExampleService` is visible throughout the application.
 
-<br/>
+
 
 To inject a service as a dependency into a component (or another service), you can use component's `constructor()` and supply a constructor argument with the dependency type. 
 ```typescript
@@ -498,7 +541,7 @@ export class ExampleComponent {
   constructor(private backend: BackendService, private example: ExampleService){}
 }
 ```
-<br/>
+
 
 ## 7 - Forms
 
@@ -510,10 +553,10 @@ Angular provides two different approaches to handling user input through forms: 
 
 | FORMS               | DETAILS                                                                                                                                                                            |
 |---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| reactive            | - direct, explicit access to the underlying form's object model.<br/>- more scalable, reusable, and testable.                                                                      |
-| template<br/>driven | - rely on directives in the template to create and manipulate the underlying object model.<br/>- straightforward to add to an app, but they don't scale as well as reactive forms. |
+| reactive            | - direct, explicit access to the underlying form's object model.- more scalable, reusable, and testable.                                                                      |
+| templatedriven | - rely on directives in the template to create and manipulate the underlying object model.- straightforward to add to an app, but they don't scale as well as reactive forms. |
 
-If forms are a key part of your application, or you're already using reactive patterns for building your application, use reactive forms.<br/>
+If forms are a key part of your application, or you're already using reactive patterns for building your application, use reactive forms.
 If you have very basic form requirements and logic that can be managed solely in the template, template-driven forms could be a good fit.
 
 #### 7.1.2 Key differences
@@ -533,7 +576,7 @@ Reactive forms are more scalable than template-driven forms. They provide direct
 
 Template-driven forms focus on simple scenarios and are not as reusable. They abstract away the underlying form API, and use asynchronous data flow between the view and the data model. The abstraction of template-driven forms also affects testing. Tests are deeply reliant on manual change detection execution to run properly, and require more setup.
 
-<br/>
+
 
 ### 7.2 Setting up the form model
 
@@ -596,7 +639,6 @@ In reactive forms, each form element in the view is directly linked to the form 
 
 In template-driven forms, each form element is linked to a directive that manages the form model internally.
 
-<br/>
 
 ### 7.4 Form validation
 
@@ -607,7 +649,6 @@ Validation is an integral part of managing any set of forms. Whether you're chec
 | Reactive forms        | Define custom validators as functions that receive a control to validate                                 |
 | Template-driven forms | Tied to template directives, and must provide custom validator directives that wrap validation functions | 
 
-<br/>
 
 ### 7.5 `FormBuilder`
 
@@ -686,8 +727,6 @@ Template:
 </form>
 ```
 
-<br/>
-
 ## Deploy
 
 Run an app locally:
@@ -699,23 +738,4 @@ $ ng serve (--port 4201)
 Building:
 ```commandline
 $ ng build
-```
-
-<br/>
-
-
-
-## Tools
-
-<br/>
-
-Component:
-```typescript
-// xx.component.ts
-
-```
-
-Template:
-```html
-<!-- xx.component.html -->
 ```

@@ -4,7 +4,54 @@
 
 # MongoEngine and Eve
 
-# 1. MongoEngine
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
+
+- [1. MongoEngine](#1-mongoengine)
+- [1.1. Defining documents](#11-defining-documents)
+    - [1.1.1. Schemas](#111-schemas)
+    - [1.1.2. Fields](#112-fields)
+        - [List fields](#list-fields)
+        - [Embedded documents](#embedded-documents)
+        - [Dictionary Fields](#dictionary-fields)
+        - [Reference fields](#reference-fields)
+- [1.2. CRUD ](#12-crud)
+    - [1.2.1. Adding data - C U](#121-adding-data---c-u)
+    - [1.2.2. Accessing data - R](#122-accessing-data---r)
+    - [1.2.3. Removing data - D](#123-removing-data---d)
+- [1.3. Aggregation operations](#13-aggregation-operations)
+    - [1.3.1. Aggregation pipelines](#131-aggregation-pipelines)
+    - [1.3.2. Stages](#132-stages)
+- [2. Eve](#2-eve)
+- [2.1. HATEOAS](#21-hateoas)
+- [2.2. Interactions with the database](#22-interactions-with-the-database)
+    - [2.2.1. Inserting](#221-inserting)
+        - [Inserting a single document](#inserting-a-single-document)
+        - [Bulk inserting](#bulk-inserting)
+        - [Data validation](#data-validation)
+    - [2.2.2. Updating](#222-updating)
+        - [Conditional Requests](#conditional-requests)
+        - [Data Integrity and Concurrency Control](#data-integrity-and-concurrency-control)
+- [2.3. Rendering](#23-rendering)
+- [2.4. Filtering and sorting](#24-filtering-and-sorting)
+    - [2.4.1. Filtering](#241-filtering)
+    - [2.4.1. Sorting](#241-sorting)
+- [2.5. Event Hooks](#25-event-hooks)
+    - [2.5.1. Pre-Request event hooks](#251-pre-request-event-hooks)
+        - [Dynamic lookup filters](#dynamic-lookup-filters)
+    - [2.5.2. Post-Request Event Hooks](#252-post-request-event-hooks)
+    - [2.5.3. Database event hooks](#253-database-event-hooks)
+        - [Fetch events](#fetch-events)
+        - [Insert events](#insert-events)
+        - [Replace events](#replace-events)
+        - [Update events](#update-events)
+        - [Delete events](#delete-events)
+    - [2.5.4. Aggregation event hooks](#254-aggregation-event-hooks)
+
+<!-- markdown-toc end -->
+
+
+## 1 - MongoEngine
 
 > MongoEngine is an Object-Document Mapper, written in Python for working with MongoDB.
 
@@ -20,11 +67,10 @@ import mongoengine
 mongengine.connect(<db_name>)
 ```
 
-<br/>
 
-## 1.1. Defining documents
+### 1.1 Defining documents
 
-### 1.1.1. Schemas
+#### 1.1.1 Schemas
 
 MongoDB is **schemaless**, which means that no schema is enforced by the database: we may add and remove fields however we want.
 <br/>However, defining schemas for our documents can help to iron out bugs involving incorrect types or missing fields, and also allow us to define utility methods on our documents in the same way that traditional ORMs do.
@@ -46,9 +92,8 @@ class ImagePost(Post):
     image_path = StringField()
 ```
 
- <br/>
 
-### 1.1.2. Fields
+#### 1.1.2 Fields
 
 By default, fields are not required. To make a field mandatory, set the `required` keyword argument of a field to `True`. Fields also may have validation constraints available (such as `max_length` in the example above).
 
@@ -56,7 +101,7 @@ Fields may also take default values, which will be used if a value is not provid
 
 <br/>
 
-#### List fields
+##### List fields
 
 MongoDB allows storing lists of items. To add a list of items to a `Document`, use the `ListField` field type. `ListField` takes another field object as its first argument, which specifies which type elements may be stored within the list:
 ```python
@@ -64,9 +109,7 @@ class Page(Document):
     tags = ListField(StringField(max_length=50))
 ```
 
-<br/>
-
-#### Embedded documents
+##### Embedded documents
 MongoDB has the ability to embed documents within other documents. Schemata may be defined for these embedded documents, just as they may be for regular documents. To create an embedded document, just define a document as usual, but inherit from `EmbeddedDocument` rather than `Document`:
 ```python
 class Comment(EmbeddedDocument):
@@ -83,9 +126,8 @@ comment2 = Comment(content='Nice article!')
 page = Page(comments=[comment1, comment2])
 ```
 
-<br/>
 
-#### Dictionary Fields
+##### Dictionary Fields
 
 Often, an embedded document may be used instead of a dictionary. Generally, embedded documents are recommended as dictionaries don't support validation or custom field types. However, sometimes you will not know the structure of what you want to store; in this situation a `DictField` is appropriate: 
 ```python
@@ -95,9 +137,8 @@ class SurveyResponse(Document):
     answers = DictField()
 ```
 
-<br/>
 
-#### Reference fields
+##### Reference fields
 
 References may be stored to other documents in the database using the `ReferenceField`. Pass in another document class as the first argument to the constructor, then simply assign document objects to the field:
 ```python
@@ -134,11 +175,10 @@ class Post(Document):
     author = ReferenceField(User, reverse_delete_rule=CASCADE)
 ```
 
-<br/>
 
-## 1.2. CRUD 
+### 1.2 CRUD 
 
-### 1.2.1. Adding data - C U
+#### 1.2.1 Adding data - C U
 
 First, create an instance of the document to be added:
 ```python
@@ -154,9 +194,8 @@ you.save()
 
 If you change a field on an object that has already been saved and then call `save()` again, the document will be updated.
 
-<br/>
 
-### 1.2.2. Accessing data - R
+#### 1.2.2 Accessing data - R
 
 Each document class/subclass has an `objects` attribute, which is used to access the documents in the database collection associated with that class:
 ```python
@@ -187,9 +226,8 @@ Aggregation functions may also be used on `QuerySet` objects:
 num_posts = Post.objects(tags='mongodb').count()
 ```
 
-<br/>
 
-### 1.2.3. Removing data - D
+#### 1.2.3 Removing data - D
 
 You can delete a single `Document` instance byb calling its `delete` method:
 ```python
@@ -197,16 +235,14 @@ bad_user = User.objects.first()
 bad_user.delete()
 ```
 
-<br/>
 
 Or you can delete all documents in a matching query:
 ```python
 User.objects(name="me").delete()
 ```
 
-<br/>
 
-## 1.3. Aggregation operations
+### 1.3 Aggregation operations
 
 > Aggregation operations process multiple documents and return computed results.
 
@@ -215,7 +251,7 @@ You can use aggregation operations to:
 - Perform operations on the grouped data to return a single result.
 - Analyze data changes over time.
 
-### 1.3.1. Aggregation pipelines
+#### 1.3.1 Aggregation pipelines
 
 > An aggregation pipeline consists of one or more stages that process documents.
 
@@ -241,7 +277,7 @@ db.collection.aggregate(
 
 Aggregation pipelines run with the `db.collection.aggregate()` method do not modify documents in a collection, unless the pipeline contains a `$merge` or `$out` stage.
 
-### 1.3.2. Stages
+#### 1.3.2 Stages
 
 Find the complete list [here](https://www.mongodb.com/docs/manual/meta/aggregation-quick-reference/#stages).
 
@@ -261,7 +297,7 @@ Find the complete list [here](https://www.mongodb.com/docs/manual/meta/aggregati
 
 
 
-# 2. Eve
+## 2 - Eve
 
 > Eve is an open source Python REST API framework designed for human beings. It allows to effortlessly build and deploy highly customizable, fully featured RESTful Web Services.
 
@@ -289,9 +325,8 @@ if __name__ == '__main__':
     app.run()
 ```
 
-<br/>
 
-## 2.1. HATEOAS
+### 2.1 HATEOAS
 
 API entry points adhere to the HATEOAS principle, a constraint of the REST application architecture that lets us use the hypermedia links in the API response contents. It allows the client to dynamically navigate to the appropriate resources by traversing the hypermedia links.
 
@@ -324,9 +359,8 @@ HATEOAS is enabled by default. Each GET response includes a `_links` section. Li
 ```
 HATEOAS links are always relative to the API entry point, so if your API home is at `examples.com/api/v1`, the `self` link in the above example would mean that the `people` endpoint is located at `examples.com/api/v1/people`.
 
-<br/>
 
-## 2.2. Interactions with the database
+### 2.2 Interactions with the database
 
 > By default, Eve APIs are read-only.  
 
@@ -354,9 +388,9 @@ RESOURCE_METHODS = ['GET', 'POST', 'DELETE']
 ITEM_METHODS = ['GET', 'PATCH', 'PUT', 'DELETE']
 ```
 
-### 2.2.1. Inserting
+#### 2.2.1 Inserting
 
-#### Inserting a single document
+##### Inserting a single document
 
 ```commandline
 curl -d '{"firstname": "barack", "lastname": "obama"}' -H 'Content-Type: application/json' http://myapi.com/people
@@ -366,9 +400,8 @@ The response payload will just contain the relevant document metadata (`status`,
 
 When a `201 Created` is returned following a POST request, the `Location` header is also included with the response. Its value is the URI to the new document.
 
-<br/>
 
-#### Bulk inserting
+##### Bulk inserting
 
 Just enclose the documents in a JSON file:
 ```commandline
@@ -379,9 +412,8 @@ When multiple documents are submitted the API takes advantage of MongoDB bulk in
 
 In case of successful multiple inserts, keep in mind that the `Location` header only returns the URI of the first created document.
 
-<br/>
 
-#### Data validation
+##### Data validation
 
 > Data validation is provided out-of-the-box.
 
@@ -423,7 +455,6 @@ schema = {
 }
 ```
 
-<br/>
 
 Data validation is based on the Cerberus validation system, therefore it is extensible: you can adapt it to your specific use case.
 
@@ -434,11 +465,9 @@ As a matter of fact, Eve's MongoDB data-layer itself extends Cerberus validation
 Both settings have a global scope and will apply to all endpoints. You can then enable or disable HTTP methods at individual endpoint level:
 
 
-<br/>
+#### 2.2.2 Updating
 
-### 2.2.2. Updating
-
-#### Conditional Requests
+##### Conditional Requests
 
 Each resource representation provides information on the last time it was updated (`Last-Modified`), along with a hash value computed on the representation itself (`ETag`).
 
@@ -452,9 +481,8 @@ Or the `If-None-Match` header:
 curl -H "If-None-Match: 1234567890123456789012345678901234567890" -i http://myapi.com/people/521d6840c437dc0002d1203c
 ```
 
-<br/>
 
-#### Data Integrity and Concurrency Control
+##### Data Integrity and Concurrency Control
 
 API responses include a ETag header which also allows for proper concurrency control. An ETag is a hash value representing the current state of the resource on the server.
 <br/> Concurrency control applies to all edition methods: PATCH (edit), PUT (replace), DELETE (delete).
@@ -471,9 +499,8 @@ If your use case requires, you can opt to completely disable concurrency control
 
 Alternatively, ETag match checks can be made optional by the client if `ENFORCE_IF_MATCH` is disabled. 
 
-<br/>
 
-## 2.3. Rendering
+### 2.3 Rendering
 
 Eve responses are automatically rendered as JSON. To get the response in XML, imply set the request Accept header:
 ```commandline
@@ -494,11 +521,10 @@ Inbound documents (for inserts and edits) are in JSON format.
 
 > At least one renderer must always be enabled.
 
-<br/>
 
-## 2.4. Filtering and sorting
+### 2.4 Filtering and sorting
 
-### 2.4.1. Filtering
+#### 2.4.1 Filtering
 
 Query strings are supported, allowing for filtering and sorting. Both native Mongo queries and Python conditional expressions are supported.
 
@@ -525,9 +551,8 @@ Both syntaxes allow for conditional and logical `And`/`Or` operators, however ne
 
 Filters are enabled by default on all document fields. However, the API maintainer can choose to blacklist some, disable them all and/or whitelist allowed ones.
 
-<br/>
 
-### 2.4.1. Sorting
+#### 2.4.1 Sorting
 
 Sorting is supported as well:
 ```
@@ -537,7 +562,6 @@ Would return documents sorted by city and then by lastname (descending).
 
 > Prepending a minus sign to the field name reverses the sorting order for that field.
 
-<br/>
 
 The MongoDB data layer also supports native MongoDB syntax:
 ```
@@ -546,11 +570,10 @@ http://myapi.com/people?sort=[("lastname", -1)]
 
 Sorting is enabled by default and can be disabled both globally and/or at resource level. It is also possible to set the default sort at every API endpoints.
 
-<br/>
 
-## 2.5. Event Hooks
+### 2.5 Event Hooks
 
-### 2.5.1. Pre-Request event hooks
+#### 2.5.1 Pre-Request event hooks
 
 When a GET/HEAD, POST, PATCH, PUT, DELETE request is received, both a `on_pre_<method>` and a `on_pre_<method>_<resource>` event is raised. You can subscribe to these events with multiple callback functions:
 
@@ -572,17 +595,15 @@ app.run()
 
 Callbacks will receive the resource being requested, the original `flask.request` object and the current lookup dictionary as arguments (only exception being the `on_pre_POST` hook which does not provide a lookup argument).
 
-<br/>
 
-#### Dynamic lookup filters
+##### Dynamic lookup filters
 
 Since the lookup dictionary will be used by the data layer to retrieve resource documents, developers may choose to alter it in order to add custom logic to the lookup query.
 
 Altering the lookup dictionary at runtime would have similar effects to applying Predefined Database Filters via configuration. However, you can only set static filters via configuration whereas by hooking to the `on_pre_<METHOD>` events you are allowed to set dynamic filters instead, which allows for additional flexibility.
 
-<br/>
 
-### 2.5.2. Post-Request Event Hooks
+#### 2.5.2 Post-Request Event Hooks
 
 When a GET, POST, PATCH, PUT, DELETE method has been executed, both a `on_post_<method>` and `on_post_<method>_<resource>` event is raised. You can subscribe to these events with multiple callback functions.
 
@@ -604,9 +625,8 @@ app.run()
 
 Callbacks will receive the resource accessed, original `flask.request` object and the response payload.
 
-<br/>
 
-### 2.5.3. Database event hooks
+#### 2.5.3 Database event hooks
 
 Database event hooks work like request event hooks. These events are fired before and after a database action. Here is an example of how events are configured:
 ```python
@@ -641,17 +661,15 @@ The events are fired for resources and items if the action is available for both
 | Delete  | items<br/><br/><br/><br/><br/>ressources | before<br/><br/>after<br/><br/><br/>before<br/><br/><br/><br/>after | `on_delete_item(resource_name, item)`<br/>`on_delete_item_<resource_name>(item)`<br/>`on_deleted_item(resource_name, item)`<br/>`on_deleted_item_<resource_name>(item)`<br/><br/>`on_delete_resource(resource_name)`<br/>`on_delete_resource_<resource_name>()`<br/>`on_delete_resource_originals(originals, lookup)`<br/>`on_delete_resource_originals_<resource_name>(originals, lookup)`<br/>`on_deleted_resource(resource_name)`<br/>`on_deleted_resource_<resource_name>()` |
 
 
-<br/>
 
-#### Fetch events
+##### Fetch events
 
 They are raised when items have just been read from the database and are about to be sent to the client. Registered callback functions can manipulate the items as needed before they are returned to the client.
 
 >  item fetch events will work with Document Versioning for specific document versions like `?version=5` and all document versions with `?version=all.` 
 
-<br/>
 
-#### Insert events
+##### Insert events
 
 When a POST requests hits the API and new items are about to be stored in the database, these events are fired:
 - `on_insert` for every resource endpoint.
@@ -665,23 +683,20 @@ After the items have been inserted, these two events are fired:
 
 > Items passed to these events as arguments come in a list. And only those items that passed validation are sent.
 
-<br/>
 
-#### Replace events
+##### Replace events
 
 In the method signatures, `item` is the new item which is about to be stored and `original` is the item in the database that is being replaced. Callback functions could hook into these events to arbitrarily add or update item fields, or to perform other accessory action.
 
-<br/>
 
-#### Update events
+##### Update events
 
 In the method signatures, updates stands for updates being applied to the item and original is the item in the database that is about to be updated. Callback functions could hook into these events to arbitrarily add or update fields in updates, or to perform other accessory action.
 
 > `last_modified` and `etag` headers will always be consistent with the state of the items on the database (they won’t be updated to reflect changes eventually applied by the callback functions).
 
-<br/>
 
-#### Delete events
+##### Delete events
 
 Callback functions could hook into these events to perform accessory actions, but you can’t arbitrarily abort the delete operation at this point (use Data Validation).
 
@@ -690,9 +705,8 @@ If you were brave enough to enable the DELETE command on resource endpoints (all
 
 Note that those two events are are useful in order to perform some business logic before the actual remove operation given the look-up and the list of originals.
 
-<br/>
 
-### 2.5.4. Aggregation event hooks
+#### 2.5.4 Aggregation event hooks
 
 You can also attach one or more callbacks to your aggregation endpoints. The `before_aggregation` event is fired when an aggregation is about to be performed. Any attached callback function will receive both the endpoint name and the aggregation pipeline as arguments. The pipeline can then be altered if needed.
 
@@ -714,4 +728,3 @@ app = Eve()
 app.after_aggregation += alter_documents
 ```
 
-<br/>
