@@ -60,15 +60,16 @@ Flexbox is designed to make it easy for us to **lay things out in one dimension*
 
 It's an inner display type, which means that all the items we want to align must be in a container.
 
-![container](container.png)
+<!-- <img src="" alt="lol"/> -->
+![center-eg](container.png)
 
 We start by defining our container as a flex container with the `display` property:
 
 ```html
 <div class="container">
-  <div class="one">One</div>
-  <div class="two">Two</div>
-  <div class="three">Three</div>
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
 </div>
 
 <style>
@@ -81,7 +82,7 @@ We start by defining our container as a flex container with the `display` proper
 
 This will display all the items in a row:
 
-![result](flex.png)
+![center-eg](flex.png)
 
 
 The layout can be further modified with the help of flexbox properties.
@@ -167,5 +168,5 @@ This allows the default alignment to be overridden for individual flex items.
 
 ## Sources
 
-[Responsive design - MDN](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design)
-[Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+ - [Layout - MDN](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout)
+ - [Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)

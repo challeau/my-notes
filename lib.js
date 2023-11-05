@@ -15,6 +15,12 @@ marked.use({
   }]
 });
 
+
+function handleTOC(doc) {
+    
+}
+
+
 /**
  * Convert md files to HTML and collect its metadata.
  * @param {Dirent} files - The files to convert.
@@ -59,11 +65,13 @@ function getResources(files, resourcePath, dir="") {
 	    if (dir)
 		metadata.folder = dir.split('/').pop();
 
+	    // parse the file's contents into HTML
 	    let parsedHTML = sanitizeHtml(marked.parse(text), {
 		allowedTags: sanitizeHtml.defaults.allowedTags.concat([ 'img' ])
 	    });
 
-	    // addTOCid(parsedHTML);
+	    // allow anchor jumping for the table of contents
+	    handleTOC(parsedHTML);
 
 	    resources.push({text: parsedHTML, metadata: metadata});
 	}
@@ -93,5 +101,6 @@ function getNavData(resources) {
 
     return ([dirs, rest]);
 }
+
 
 module.exports = { getResources, getNavData };
