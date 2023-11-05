@@ -10,7 +10,7 @@ PyMongo, the standard MongoDB driver library for Python, is easy to use and offe
 Objects retrieved from MongoDB through PyMongo are compatible with dictionaries and lists, so we can easily manipulate, iterate, and print them.
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-**Table of Contents**
+##### Table of contents
 
 - [1 - Connecting Python and MongoDB Atlas](#1---connecting-python-and-mongodb-atlas)
 - [2 - CRUD](#2---crud)

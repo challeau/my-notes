@@ -12,14 +12,14 @@ As a platform, Angular includes:
 - A suite of developer tools to help you develop, build, test, and update your code.
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-**Table of Contents**
+##### Table of contents
 
 - [1 - CLI installation](#1---cli-installation)
 - [2 - Components](#2---components)
 - [3 - Templates](#3---templates)
-    - [3.1 Interpolate contents --> {{ }}](#31-interpolate-contents-----)
-    - [3.2 Property binding --> [ ]](#32-property-binding-----)
-    - [3.3 Event listeners --> ( )](#33-event-listeners-----)
+    - [3.1 Interpolate contents --> `{{ }}`](#31-interpolate-contents-----)
+    - [3.2 Property binding --> `[ ]`](#32-property-binding-----)
+    - [3.3 Event listeners --> `( )`](#33-event-listeners-----)
     - [3.4 Directives](#34-directives)
 - [4 - Passing data](#4---passing-data)
     - [4.1 Passing down: `@Input()`](#41-passing-down-input)
@@ -51,7 +51,6 @@ As a platform, Angular includes:
         - [7.5.1 Specs](#751-specs)
         - [7.5.2 Usage:](#752-usage)
 - [Deploy](#deploy)
-- [Tools](#tools)
 
 <!-- markdown-toc end -->
 

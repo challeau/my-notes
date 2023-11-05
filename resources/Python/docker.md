@@ -7,7 +7,7 @@
 Docker is an open platform for **developing**, **shipping**, and **running applications**. Docker enables the separation of applications from infrastructure so software can be delivered quickly.
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-**Table of Contents**
+##### Table of contents
 
 - [1 - Containers](#1---containers)
 - [2 - Images](#2---images)
@@ -43,7 +43,7 @@ Docker is an open platform for **developing**, **shipping**, and **running appli
     - [6.2 Run a database in a container](#62-run-a-database-in-a-container)
     - [6.3 Connect the application to the database](#63-connect-the-application-to-the-database)
 - [7 - Use Compose to develop locally](#7---use-compose-to-develop-locally)
-- [SOURCES](#sources)
+- [Sources](#sources)
 
 <!-- markdown-toc end -->
 

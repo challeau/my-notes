@@ -5,7 +5,7 @@
 # ESSENTIAL TYPESCRIPT
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-**Table of Contents**
+##### Table of contents
 
 - [1 - Typing](#1---typing)
     - [1.1 Simple types](#11-simple-types)

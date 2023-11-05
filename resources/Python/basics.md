@@ -5,7 +5,7 @@
 # ESSENTIAL PYTHON
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-**Table of Contents**
+##### Table of contents
 
 - [1 - Data](#1---data)
     - [1.1 Argument types](#11-argument-types)
@@ -54,7 +54,10 @@
         - [6.1.3 Seeders](#613-seeders)
         - [6.1.4 Activators](#614-activators)
     - [6.2 `pyenv`](#62-pyenv)
-- [SOURCES](#sources)
+- [Sources](#sources)
+    - [Classes:](#classes)
+    - [Python related:](#python-related)
+    - [Others: ](#others)
 
 <!-- markdown-toc end -->
 

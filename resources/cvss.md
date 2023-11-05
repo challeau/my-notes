@@ -14,7 +14,7 @@ Scores range from 0 to 10, with **10 being the most severe**.
 The benefits of CVSS include the provision of a standardized vendor and platform agnostic vulnerability scoring methodology. It is an open framework, providing transparency to the individual characteristics and methodology used to derive a score.
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-**Table of Contents**
+##### Table of contents
 
 - [1 - Metrics](#1---metrics)
 - [2 - Scoring](#2---scoring)
@@ -23,7 +23,7 @@ The benefits of CVSS include the provision of a standardized vendor and platform
 - [5 - Other standards](#5---other-standards)
     - [5.1 CPE](#51-cpe)
     - [5.2 CVEs](#52-cves)
-- [7. Thinking material 🤔](#7-thinking-material-🤔)
+- [7. Thinking material](#7-thinking-material)
     - [7.1 Vulnerability vs weakness](#71-vulnerability-vs-weakness)
 - [Sources](#sources)
 
@@ -289,7 +289,7 @@ Other names of CVE IDs:
 CVE Records, CVE Identifiers, CVE names, CVE numbers, or CVEs.
 
 
-## 7. Thinking material 🤔
+## 7. Thinking material
 
 ### 7.1 Vulnerability vs weakness
 

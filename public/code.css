@@ -1,0 +1,48 @@
+/* CODE HIGHLIGHTING */
+pre {
+    font-family: 'Space Mono', sans-serif;
+    padding: 1em;
+    margin: 1em;
+    width: fit-content;
+    max-width: 100%;
+    background-color: var(--black);
+    color: var(--white);
+    border-radius: 1em !important;
+}
+
+.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    background-color: var(--black);
+    color: var(--white);
+}
+
+.hljs-punctuation {
+    color: var(--white) !important;
+}
+
+.hljs-string, .hljs-built_in {
+    color: var(--pink) !important;
+}
+
+.hljs-number, .hljs-attr {
+    color: var(--bright-blue) !important;
+}
+
+.hljs-title {
+    color: var(--bright-yellow) !important;
+}
+
+.hljs-keyword, .hljs-type, .hljs-operator, .hljs-tag, .hljs-name {
+    color: var(--bright-pink) !important;
+}
+
+.hljs-params, .hljs-variable {
+    color: var(--bright-lilac) !important;
+}
+
+.hljs-comment {
+    color: #826E75 !important;
+}
+

@@ -5,7 +5,7 @@
 # FLASK
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-**Table of Contents**
+##### Table of contents
 
 - [X - Internationalization and localization](#x---internationalization-and-localization)
     - [X.1 Flask-Babel](#x1-flask-babel)

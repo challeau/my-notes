@@ -12,7 +12,7 @@ JavaScript supports object-oriented, imperative, and declarative styles.
 
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-**Table of Contents**
+##### Table of contents
 
 - [1 - Functions](#1---functions)
     - [1.1 Function declaration](#11-function-declaration)

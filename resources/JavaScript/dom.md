@@ -6,7 +6,7 @@
 The Document Object Model (DOM) is an API for HTML and XML documents. It provides a **structured representation of the document** and defines a way that the structure can be accessed from JavaScript. This allows us to change the document structure, style or the content from JavaScript.
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-##### Table of Contents
+##### Table of contents
 
 - [1 - `Element`](#1---element)
     - [1.1 Properties](#11-properties)

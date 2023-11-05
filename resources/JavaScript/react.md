@@ -7,7 +7,7 @@
 React is an **unopinionated library** for **building user interfaces** based on **components**.
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-**Table of Contents**
+##### Table of contents
 
 - [1 - Components](#1---components)
     - [1.1 - Defining components](#11---defining-components)

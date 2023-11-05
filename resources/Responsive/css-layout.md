@@ -13,7 +13,7 @@
 
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-**Table of Contents**
+##### Table of contents
 
 - [1 - Normal flow](#1---normal-flow)
 - [2 - The `display` property](#2---the-display-property)
