@@ -39,12 +39,12 @@ The Document Object Model (DOM) is an API for HTML and XML documents. It provide
 
 ### 1.2 Methods
 
-
 | Property                   | Description                                                                                                      |
 |----------------------------|------------------------------------------------------------------------------------------------------------------|
 | `.addEventListener()`      | registers an event handler to a specific event type on the element                                               |
 | `.after()`<br/>`.before()` | inserts a set of Node objects or strings in the children list of the element's parent, just after the element    |
 | `.append()`                | inserts a set of Node objects or strings after the last child of the element                                     |
+| `.insertBefore()`          | inserts a node before a reference node as a child of a specified parent node                                     |
 | `.hasAttribute()`          | returns a boolean value indicating if the element has the specified attribute or not                             |
 | `.matches()`               | returns a boolean value indicating whether or not the element would be selected by the specified selector string |
 | `.remove()`                | removes the element from the children list of its parent                                                         |
@@ -55,7 +55,6 @@ The Document Object Model (DOM) is an API for HTML and XML documents. It provide
 
 
 ## 2 - Selecting
-
 
 Every website can be accessed by the JavaScript DOM using the `document` object, which is instantiated automatically when the page is rendered.
 It provides functionality globally to the `document`, like how to obtain the page's URL and create new elements in the `document`.

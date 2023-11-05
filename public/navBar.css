@@ -37,7 +37,7 @@
 #navBar h3 {
     margin: 0;
     font-size: 1.4em;
-    color: var(--bright-green);
+    color: var(--brown);
 }
 
 #navBar ul {
@@ -57,9 +57,9 @@
     color: var(--brown);
 }
 
-.folder li:not(.folded, .folderTitle) { background-color: var(--transparent-pink); }
+.folder li:not(.folded, .folderTitle) { background-color: #73596312; }
 
-#navBar li.active { background-color: var(--transparent-pink); }
+#navBar li.active { background-color: #73596312; }
 
 #navBar li.active a {
     color: var(--bright-pink);
@@ -68,7 +68,7 @@
 
 #navBar a:hover { color: var(--bright-pink); }
 
-#navBar .activeFolder { background-color: var(--pink); }
+#navBar .activeFolder { background-color: var(--dark-beige); }
 
 #navBar .folderTitle:hover:not(.activeFolder) { background-color: var(--transparent-pink); }
 
