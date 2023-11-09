@@ -175,6 +175,20 @@ blockquote {
     max-width: 100%;
 }
 
+.content div:has(pre + p > img[alt="center-eg"]),
+.content div:has(p + p > img[alt="center-eg"]) {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly; 
+    
+}
+
+.content div:has(pre + pre) {
+    display: flex;
+    align-items: start;
+    justify-content: space-evenly; 
+}
+
 .content h5[id='#table-of-contents'] {
     font-size: 1em;
     color: var(--bright-pink);

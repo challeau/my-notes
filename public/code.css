@@ -8,6 +8,7 @@ pre {
     background-color: var(--black);
     color: var(--white);
     border-radius: 1em !important;
+    position: relative;
 }
 
 .hljs {

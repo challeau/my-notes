@@ -70,7 +70,7 @@
 
 #navBar .activeFolder { background-color: var(--dark-beige); }
 
-#navBar .folderTitle:hover:not(.activeFolder) { background-color: var(--transparent-pink); }
+#navBar .folderTitle:hover:not(.activeFolder) { background-color: #73596312; }
 
 #navBar .folderTitle {
     cursor: pointer;
