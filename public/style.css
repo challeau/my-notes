@@ -53,15 +53,22 @@ h1 {
     line-height: 1em;
 }
 
-h2 { color: var(--bright-blue); }
+h2 {
+    color: var(--bright-blue);
+    font-size: 1.5em;
+}
 
-h3 { color: var(--bright-green); }
+h3 {
+    color: var(--bright-green);
+    font-size: 1.2em;
+}
 
 h4 { color: var(--bright-pink);}
 
+h5 { color: var(--lilac); }
+
 h2, h3 {
     margin: 2em 0 0.5em;
-    font-size: 1.5em;
     font-weight: 700;
 }
 
@@ -72,8 +79,8 @@ h4, h5 { margin: 1.5em 0 0 0.5em; }
 table {
     table-layout: fixed;
     border-collapse: collapse;
-    max-width: 90%;
-    background-color: var(--beige);
+    max-width: 100%;
+    background-color: #efe7dd87;
     border-radius: 0.5em;
     margin: 0.5em auto;
 }
@@ -89,17 +96,23 @@ tbody tr td:not(:last-child) { border-right: 2px dashed  var(--dark-beige); }
 
 thead tr th:not(:last-child) { border-right: 2px dashed var(--bright-lilac); }
 
+tbody tr th { border-top: 2px dashed var(--bright-lilac); }
+
 tbody tr:not(:last-child) td { border-bottom: 2px solid var(--dark-beige); }
 
-tbody tr:last-child td:first-child { border-radius: 0 0 0 0.5em; }
+tbody tr:last-child *:first-child { border-radius: 0 0 0 0.5em; }
 
-tr th:first-child { border-radius: 0.5em 0 0; }
+thead tr th:first-child { border-radius: 0.5em 0 0; }
 
-tr th:last-child { border-radius: 0 0.5em 0 0; }
+thead tr th:last-child { border-radius: 0 0.5em 0 0; }
 
-tbody tr:last-child td:last-child { border-radius: 0 0 0.5em 0; }
+tbody tr:last-child td:last-child, { border-radius: 0 0 0.5em 0; }
 
 tbody tr:hover td { background-color:  var(--dark-beige); }
+
+td > ul { padding-left: 0.8em; }
+
+td li { max-width: 100% !important; }
 
 
 /* OTHER */
@@ -113,7 +126,7 @@ blockquote {
 }
 
 *:not(pre) > code {
-    background-color: var(--transparent-blue);
+    background-color: var(--beige);
     padding: 0.3em;
     border-radius: 0.5em;
 }
@@ -130,7 +143,7 @@ blockquote {
     line-height: 1.3em;
 }
 
-.content > h2 + h3, .content > h3 + h4 {
+.content > h2 + h3, .content > h3 + h4, .content > h4 + h5 {
     margin-top: 0;
 }
 
@@ -204,4 +217,8 @@ blockquote {
 }
 
 .content #TOC::before { display: none; }
+
+/* Nav folder and TOC folding */
+.titleClicked { transform: rotate(90deg); }
+
 

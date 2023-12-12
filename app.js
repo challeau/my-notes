@@ -2,7 +2,7 @@ const fs = require("fs");
 const express = require("express");
 const path = require("path");
 const lib = require("./lib.js");
-
+const marked = require("marked");
 
 // APP SETUP
 const app = express();
@@ -12,6 +12,18 @@ const resourcePath = path.join(__dirname, "./resources/");
 app.set("view engine", "pug");
 app.use(express.static(__dirname + "/public"));
 
+// MARKED SETUP
+// Adding the path to the images folder when parsing img tags with marked
+marked.use({
+    extensions: [{
+	name: 'image',
+	renderer(token) {
+	    const imagePath = path.join('assets/imgs', token.href);
+	    let ret = `<img src="${imagePath}" alt="${token.text}"/>`;
+	    return ret;
+	}
+    }]
+});
 
 // ROUTING
 fs.readdir(resourcePath, (err, files) => {

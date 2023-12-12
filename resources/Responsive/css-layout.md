@@ -40,6 +40,13 @@
         - [4.4.2 Area-based placement](#442-area-based-placement)
     - [4.5 Nesting grids](#45-nesting-grids)
 - [5 - Floats](#5---floats)
+- [6 - Positioning](#6---positioning)
+    - [6.1 Static positioning](#61-static-positioning)
+    - [6.2 Relative positioning](#62-relative-positioning)
+    - [6.3 Absolute positioning](#63-absolute-positioning)
+    - [6.4 Fixed positioning](#64-fixed-positioning)
+    - [6.5 Sticky positioning](#65-sticky-positioning)
+    - [6.6 `z-index`](#66-z-index)
 - [Sources](#sources)
 
 <!-- markdown-toc end -->
@@ -465,7 +472,7 @@ To stop an element following the floated image to go up, set its clear property:
 
 Positioning allows you **to take elements out of normal document flow** and make them behave differently, for example, by sitting on top of one another or by always remaining in the same place inside the browser viewport. 
 
-`top`, `bottom`, `left`, and `right` are used alongside `position` to specify exactly where to move the positioned element to. The values of these properties **represent the offset** and can take **any units** you'd reasonably expect: `px`, `mm`, `rem`, `%`...
+The **inset properties** (`top`, `bottom`, `left`, and `right`) are used alongside `position` to specify exactly where to move the positioned element to. The values of these properties **represent the offset** and can take **any units** you'd reasonably expect: `px`, `mm`, `rem`, `%`...
 
 ### 6.1 Static positioning
 
@@ -475,13 +482,44 @@ Static positioning is **the default**. The element will be in its normal postiti
 
 Relative positioning allows us to **modify the final position** of an element, once it has taken its place in the normal flow. This means that the space the element takes in the normal flow will be oreserved, but the element will appear at a different spot on the screen.
 
+![center-eg](relative.png)
+
 ### 6.3 Absolute positioning
+
+Absolute position is similar to relativce positioning **but the element's space in the normal flow won't be kept.**
+
+An absolutely positioned element **no longer exists in the normal document flow**. Instead, it sits on its own layer separate from everything else. This is very useful: it means that we can create isolated UI features that don't interfere with the layout of other elements on the page.
+
+The inset properties behave in a different way with absolute positioning. Rather than positioning the element based on its relative position within the normal document flow, they specify the **distance the element should be from each of the containing element's sides**.
+
+Which element is the "containing element" of an absolutely positioned element? This is very much **dependent on the position property of the ancestors** of the positioned element.
+
+> The **container must have its position set** in order to be used as the **positioning context**, as a reference for an element with an absolute position. A way to do this is to set the container's position to `relative` without any inset property.
+
+If no ancestor elements have their position property explicitly defined, then by default all ancestor elements will have a static position. The result of this is the **absolutely positioned element will be contained in the initial containing block**. The initial containing block has the dimensions of the viewport and is also the block that contains the `<html>` element. In other words, the absolutely positioned element will be displayed outside of the `<html>` element and be positioned relative to the initial viewport.
+
+![center-eg](absolute.png)
 
 
 ### 6.4 Fixed positioning
 
+**Fixed positioning** works in exactly the same way as absolute positioning, with one key difference: whereas absolute positioning fixes an element in place relative to its nearest positioned ancestor, fixed positioning *usually* **fixes an element in place relative to the visible portion of the viewport**. 
+
+An **exception** to this occurs if one of the element's ancestors is a **fixed containing block** because its `transform` property has a value other than `none`.
 
 ### 6.5 Sticky positioning
+
+Sticky positioning is basically a **hybrid between relative and fixed position**. It allows a positioned element to **act like it's relatively positioned until it's scrolled to a certain threshold** (for example 10px from the top of the viewport if `top: 10px;`), **after which it becomes fixed**.
+
+Sticky elements are "sticky" **relative to the nearest ancestor with a "scrolling mechanism"**, created when `overflow` is `hidden`, `scroll`, `auto`, or `overlay`.
+
+> **At least one** inset property needs to be set to a **non-auto** value for the axis on which the element needs to be made sticky. If both inset properties for an axis are set to `auto`, on that axis the sticky value will behave as relative.
+
+### 6.6 `z-index`
+
+When elements start to overlap, `z-index` determines the **stacking order**, the position of elements on the z-axis (depth). **Only positioned elements** can be moved up or down the stacking order.
+
+By default, positioned elements all have a `z-index` of `auto`, which is effectively 0. `z-index` only accepts unitless index values. The highest value will be on top.
 
 
 ## Sources

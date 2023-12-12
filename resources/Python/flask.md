@@ -4,21 +4,93 @@
 
 # FLASK
 
+Flask is a **micro web framework** written in Python. It is classified as a microframework because it **does not require particular tools or libraries**. It has no database abstraction layer, form validation, or any other components where pre-existing third-party libraries provide common functions.
+
+A Flask application can be as simple as a single file. However, as a project gets bigger, it becomes overwhelming to keep all the code in one file. Python projects use packages to organize code into multiple modules that can be imported where needed.
+
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 ##### Table of contents
 
 - [X - Internationalization and localization](#x---internationalization-and-localization)
-    - [X.1 Flask-Babel](#x1-flask-babel)
-        - [X.1.1 Configuration](#x11-configuration)
-        - [X.1.2 For complex applications](#x12-for-complex-applications)
-    - [X.2 Formatting dates](#x2-formatting-dates)
-    - [X.3 Formatting Numbers](#x3-formatting-numbers)
-    - [X.4 Translations](#x4-translations)
-        - [X.4.1 Using translations](#x41-using-translations)
-        - [X.4.2 Translating Applications](#x42-translating-applications)
+    - [X.1 - Flask-Babel](#x1---flask-babel)
+        - [X.1.1 - Configuration](#x11---configuration)
+        - [X.1.2 - For complex applications](#x12---for-complex-applications)
+    - [X.2 - Formatting dates](#x2---formatting-dates)
+    - [X.3 - Formatting Numbers](#x3---formatting-numbers)
+    - [X.4 - Translations](#x4---translations)
+        - [X.4.1 - Using translations](#x41---using-translations)
+        - [X.4.2 - Translating Applications](#x42---translating-applications)
 - [Sources](#sources)
 
 <!-- markdown-toc end -->
+
+
+ -  1: Hello, World! (this article)
+ -  2: Templates
+ -  3: Web Forms
+ -  4: Database
+ -  5: User Logins
+ -  6: Profile Page and Avatars
+ -  7: Error Handling
+ -  8: Followers
+ -  9: Pagination
+ -  10: Email Support
+ -  11: Facelift
+ -  12: Dates and Times
+ -  13: I18n and L10n
+ -  14: Ajax
+ -  15: A Better Application Structure
+ -  16: Full-Text Search
+ -  17: Deployment on Linux
+ -  18: Deployment on Heroku
+ -  19: Deployment on Docker Containers
+ -  20: Some JavaScript Magic
+ -  21: User Notifications
+ -  22: Background Jobs
+ -  23: Application Programming Interfaces (APIs)
+
+
+## 1 - Application Setup
+
+### 1.1 - Creating the app
+
+```python
+# app/__init__.py
+from flask import Flask
+
+app = Flask(__name__)
+app.config.from_pyfile('config.py')
+
+from app import routes
+```
+
+The script above simply **creates the application object** as an instance of class `Flask` imported from the flask package. The `__name__` variable passed to the `Flask` class is a Python predefined variable, which is set to the name of the module in which it is used. Flask uses the location of the module passed here as a starting point when it needs to load associated resources such as template files.
+
+The application then imports the `routes` module. The routes module is **imported at the bottom** as a **workaround to circular imports**. You are going to see that the `routes` module **needs to import the app** variable defined in this script, so putting one of the reciprocal imports at the bottom avoids the error that results from the mutual references between these two files.
+
+`app.config.from_pyfile()` overrides the default configuration with values taken from the config.py file in the instance folder if it exists. 
+
+### 1.2 - Routing
+
+The routes are the **different URLs that the application implements**. In Flask, handlers for the application routes are written as Python functions, called **view functions**. View functions are **mapped to one or more route URLs** so that Flask knows what logic to execute when a client requests a given URL.
+
+```python
+# app/routes.py
+
+from app import app
+
+@app.route('/')
+@app.route('/index')
+def index():
+    return "Hello, World!"
+```
+
+The `@app.route` decorator **creates an association between the URL given as an argument and the function**. In this example there are two decorators associated with `index()`, so when a web browser requests either of these two URLs, Flask is going to invoke this function and pass the return value of it back to the browser as a response. 
+
+### 1.3 - Env file
+
+
+
 
 
 ## X - Internationalization and localization
@@ -32,14 +104,14 @@ Localization is the process of adapting internationalized software for a specifi
 A locale is a set of parameters that defines the user's language, region and any special variant preferences that the user wants to see in their user interface. Usually a locale identifier consists of at least a language code and a country/region code.
 
 
-### X.1 Flask-Babel
+### X.1 - Flask-Babel
 
 > Flask-Babel is an extension to Flask that adds i18n and l10n support to any Flask application with the help of babel, pytz and speaklater.
  
 It has builtin support for date formatting with timezone support as well as a very simple and friendly interface to gettext translations.
 
 
-#### X.1.1 Configuration
+#### X.1.1 - Configuration
 
 To get started all you need to do is to instantiate a Babel object after configuring the application:
 ```python
@@ -59,7 +131,7 @@ The babel object itself can be used to configure the babel support further. Babe
 - `BABEL_DOMAIN`: the message domain used by the application. Defaults to `messages`.
 
 
-#### X.1.2 For complex applications
+#### X.1.2 - For complex applications
 
 For more complex applications you might want to have multiple applications for different users which is where selector functions come in handy.
 
@@ -90,7 +162,7 @@ def get_timezone():
 ```
 
 
-### X.2 Formatting dates
+### X.2 - Formatting dates
 
 To format dates you can use the `format_datetime()`, `format_date()`, `format_time()` and `format_timedelta()` functions.
 <br/>
@@ -126,7 +198,7 @@ u'Donnerstag, 5. M\xe4rz 1987 17:12'
 ```
 
 
-### X.3 Formatting Numbers
+### X.3 - Formatting Numbers
 
 To format numbers you can use the `format_number()`, `format_decimal()`, `format_currency()`, `format_percent()` and `format_scientific()` functions.
 
@@ -157,9 +229,9 @@ With a different language:
 ```
 
 
-### X.4 Translations
+### X.4 - Translations
 
-#### X.4.1 Using translations
+#### X.4.1 - Using translations
 
 For that, Flask uses `gettext` together with Babel. The idea of `gettext` is that you can mark certain strings as translatable and a tool will pick all those up, collect them in a separate file for you to translate. At runtime the original strings (which should be English) will be replaced by the language you selected.
 
@@ -184,7 +256,7 @@ class MyForm(formlibrary.FormBase):
 ```
 
 
-#### X.4.2 Translating Applications
+#### X.4.2 - Translating Applications
 
 First you need to mark all the strings you want to translate in your application with `gettext()` or `ngettext()`.
 

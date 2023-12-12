@@ -1,0 +1,22 @@
+mixin navLink(name, endpoint, specialClass)
+  li(class=(name === title ? specialClass + " active" : specialClass))
+    a(href=endpoint)= name
+
+mixin navFolder(name, links)
+    ul.folder
+      li.folderTitle
+        span(class="material-symbols-outlined ")= "chevron_right"
+        span= name
+      each page in links
+        +navLink(page.title, page.endpoint, "folded")
+
+mixin navbar(dirs, links)
+  div.navContainer
+    div(id="navBar")
+      h3.title Index
+      each files, folder in dirs
+        +navFolder(folder, files)
+      ul.lonelyLink
+        each page in links
+          +navLink(page.title, page.endpoint, "")
+

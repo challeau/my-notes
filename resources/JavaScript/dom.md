@@ -3,19 +3,19 @@
 
 # DOM MANIPULATION
 
-The Document Object Model (DOM) is an API for HTML and XML documents. It provides a **structured representation of the document** and defines a way that the structure can be accessed from JavaScript. This allows us to change the document structure, style or the content from JavaScript.
+The **Document Object Model** (DOM) is an API for HTML and XML documents. It provides a **structured representation of the document** and defines a way that the structure can be accessed from JavaScript. This allows us to change the document structure, style or the content from JavaScript.
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 ##### Table of contents
 
 - [1 - `Element`](#1---element)
-    - [1.1 Properties](#11-properties)
-    - [1.2 Methods](#12-methods)
+    - [1.1 - Properties](#11---properties)
+    - [1.2 - Methods](#12---methods)
 - [2 - Selecting](#2---selecting)
 - [3 - Editing](#3---editing)
-    - [3.1 Properties](#31-properties)
-    - [3.2 Methods of the `document` object](#32-methods-of-the-document-object)
-    - [3.3 `.toggle()`](#33-toggle)
+    - [3.1 - Properties](#31---properties)
+    - [3.2 - Methods of the `document` object](#32---methods-of-the-document-object)
+    - [3.3 - `.toggle()`](#33---toggle)
 
 <!-- markdown-toc end -->
 
@@ -23,7 +23,7 @@ The Document Object Model (DOM) is an API for HTML and XML documents. It provide
 
 `Element` is the most general base class from which all element objects (i.e. objects that represent elements) in a `Document` inherit. It only has methods and properties common to all kinds of elements.
 
-### 1.1 Properties
+### 1.1 - Properties
 
 | Property                                            | Returns                                                                 |
 |-----------------------------------------------------|-------------------------------------------------------------------------|
@@ -37,7 +37,7 @@ The Document Object Model (DOM) is an API for HTML and XML documents. It provide
 | `.firstElementChild`<br/>`.lastElementChild`        | the first/last child element                                            |
 | `.nextElementSibling`<br/>`.previousElementSibling` | the element immediately after/before the element in the tree, or `null` |
 
-### 1.2 Methods
+### 1.2 - Methods
 
 | Property                   | Description                                                                                                      |
 |----------------------------|------------------------------------------------------------------------------------------------------------------|
@@ -73,7 +73,7 @@ Thanks to the `document` object, we can reference elements based on class, ID, a
 
 ## 3 - Editing
 
-### 3.1 Properties
+### 3.1 - Properties
 Once an element is selected, it is possible to change its properties. Any change made with JavaScript will be immediately reflected in the HTML.
 
 | Property         | Gets/Sets | Target                                   |
@@ -91,7 +91,7 @@ Once an element is selected, it is possible to change its properties. Any change
 | `.parentElement` | G         | the parent element                       |
 
 
-### 3.2 Methods of the `document` object
+### 3.2 - Methods of the `document` object
 
 
 There are a number of methods that allow us to dynamically add or modify DOM elements:
@@ -105,17 +105,17 @@ There are a number of methods that allow us to dynamically add or modify DOM ele
 | `document.write(text)`       | write into the HTML output stream                                        
 
 
-### 3.3 `.toggle()`
+### 3.3 - `.toggle()`
 
 The `.toggle()` method of the DOMTokenList interface (or element) removes an existing token from the list or, if it doesn't exist, it's added to the list.
 
 Syntax:
+
 ``` javascript
 elem.classList.toggle(token [, force]);
 ```
 
-`token`: a string representing the token you want to toggle.
-
-`force`: if included, turns the toggle into a one way-only operation. If set to *false*, then token will only be removed, but not added. If set to *true*, then token will only be added, but not removed.
+ - `token`: a string representing the token you want to toggle.
+ - `force`: if included, turns the toggle into a one way-only operation. If set to *false*, then token will only be removed, but not added. If set to *true*, then token will only be added, but not removed.
 
 It returns a boolean value indicating whether token is in the list after the call or not. 

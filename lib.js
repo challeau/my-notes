@@ -3,23 +3,6 @@ const sanitizeHtml = require("sanitize-html");
 const fs = require("fs");
 const path = require("path");
 
-// Adding the path to the images folder when parsing img tags
-marked.use({
- extensions: [{
-    name: 'image',
-     renderer(token) {
-	 const imagePath = path.join('assets/imgs', token.href);
-	 let ret = `<img src="${imagePath}" alt="${token.text}"/>`;
-	 return ret;
-     }
-  }]
-});
-
-
-function handleTOC(doc) {
-    
-}
-
 
 /**
  * Convert md files to HTML and collect its metadata.
@@ -69,9 +52,6 @@ function getResources(files, resourcePath, dir="") {
 	    let parsedHTML = sanitizeHtml(marked.parse(text), {
 		allowedTags: sanitizeHtml.defaults.allowedTags.concat([ 'img' ])
 	    });
-
-	    // allow anchor jumping for the table of contents
-	    handleTOC(parsedHTML);
 
 	    resources.push({text: parsedHTML, metadata: metadata});
 	}

@@ -16,8 +16,7 @@ function getSiblings(element){
 // Unfolds a folder.
 function unfold(element){
     element.classList.toggle("activeFolder");
-    const rotation = element.firstChild.style.transform === '' ? 'rotate(90deg)' : '';
-    element.firstChild.style.transform = rotation;
+    element.firstChild.classList.toggle("titleClicked");
     getSiblings(element).forEach(e => e.classList.toggle("folded"));
 }
 
