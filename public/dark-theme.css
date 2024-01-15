@@ -1,0 +1,46 @@
+:root {
+    --dark-pink: #C74774;
+    --dark-blue: #4674A0;
+    --grey: #48474d;
+    --dark-grey: #383640;
+}
+
+/* DARK THEME */
+body.dark {
+    background: radial-gradient(circle at top, var(--dark-pink) , var(--dark-blue));
+    background-size: cover;
+    color: var(--white);
+}
+
+body.dark .content {
+    background-color: var(--black);
+}
+
+body.dark h1 { -webkit-text-fill-color: var(--lilac); color: var(--beige) }
+
+/* NAVBAR */
+body.dark #navBar {
+    background-color: var(--black);
+     color: var(--white);
+}
+
+body.dark #navBar a { color: var(--white) }
+
+body.dark #navBar a:hover, #navBar li.active a { color: var(--bright-pink); }
+
+body.dark .navBtn {
+    background-color: var(--black);
+}
+
+body.dark .navBtn:hover,
+body.dark #navBar .activeFolder {
+    background-color: var(--grey);
+}
+
+
+body.dark .folder li:not(.folded, .folderTitle),
+body.dark #navBar li.active,
+body.dark #navBar .folderTitle:hover:not(.activeFolder) {
+    background-color: var(--dark-grey);
+}
+

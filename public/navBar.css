@@ -1,4 +1,37 @@
-.navContainer { width: 13vw; }
+.navContainer { width: 0 }
+
+.navBtn {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+
+    width: 3vw;
+    height: 3vw;
+    margin: 1em;
+
+    border-radius: 50%;
+    background: var(--white);
+    transition: background .3s ease-in-out;
+    cursor: pointer;
+}
+
+.navBtn:not(.open), #themeBtn {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.navBtn:hover, .navBtn.open {
+    background: var(--beige);
+}
+
+.navBtn.open {
+    margin: 1em;
+}
+
+#themeBtn {
+    bottom: 1em;
+}
 
 #navBar {
     width: 13vw;
@@ -6,6 +39,7 @@
     height: 100vh;
     position: fixed;
     background-color: var(--beige);
+    transition: display 1s ease-in;
 }
 
 #navBar > * {
@@ -16,28 +50,11 @@
 }
 
 #navBar .title {
-    width: 100%;
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: flex-end;
-    justify-content: flex-end;
-    gap: 1em;
-    padding: 1em;
-    
-}
-
-#navBar img {
-    height: auto;
-    width: 5vh;
-    position: absolute;
-    right: 1vw;
-    bottom: 1vw;
-}
-
-#navBar h3 {
-    margin: 0;
+    display: block;
+    padding: 1em 0 1em 5vw;
     font-size: 1.4em;
     color: var(--brown);
+    
 }
 
 #navBar ul {
@@ -80,7 +97,7 @@
     gap: 0.5em;
 }
 
-#navBar .folded {
+.navContainer .folded {
     display: none;
     overflow: hidden;
 }

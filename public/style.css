@@ -1,23 +1,27 @@
 :root {
-    --transparent-blue: #BDE0FE66;
-    --transparent-pink: #FFC8DD38;
-    --transparent-lilac: #CDB4DB4F;
-    --light-pink: #FFC8DD;
-    --bright-pink: #FF85B1;
     --pink: #FFAFCC;
     --lilac: #CDB4DB;
-    --bright-lilac: #BE9FD1;
-    --light-blue: #BDE0FE;
     --blue: #A2D2FF;
-    --bright-blue: #86C6FD;
     --green: #C0DB80;
-    --bright-green: #B0D260;
     --yellow: #FCF6BD;
-    --bright-yellow: #F9EE8A;
     --brown: #735963;
     --black: #28262C;
     --white: #FEF8EC;
     --beige: #efe7dd;
+
+    --transparent-pink: #FFC8DD38;
+    --transparent-lilac: #CDB4DB4F;
+    --transparent-blue: #BDE0FE66;
+    
+    --light-pink: #FFC8DD;
+    --light-blue: #BDE0FE;
+
+    --bright-pink: #FF85B1;
+    --bright-lilac: #BE9FD1;
+    --bright-blue: #86C6FD;
+    --bright-green: #B0D260;
+    --bright-yellow: #F9EE8A;
+
     --dark-beige: #73596324;
 }
 
@@ -37,7 +41,6 @@ body {
     font-weight: 500;
     display: flex;
     justify-content: flex-start;
-    gap: 10em;
     background: radial-gradient(circle at top, var(--light-pink) , var(--light-blue));
     background-size: cover;
 }
@@ -136,7 +139,7 @@ blockquote {
 .content {
     height: fit-content;
     width: 65vw;
-    margin: 1em;
+    margin: 1em auto;
     padding: 5em;
     background-color: var(--white);
     border-radius: 2em;
@@ -186,6 +189,7 @@ blockquote {
     display: block;
     margin: auto;
     max-width: 100%;
+    border-radius: .5em;
 }
 
 .content div:has(pre + p > img[alt="center-eg"]),

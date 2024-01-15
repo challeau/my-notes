@@ -2,7 +2,7 @@
 [//]: # (TITLE Angular)
 [//]: # (ENDPOINT /angular)
 
-# ANGULAR
+# Angular
 
 > Angular is a development platform built on TypeScript.
 

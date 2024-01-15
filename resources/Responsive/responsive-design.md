@@ -1,7 +1,7 @@
 [//]: # (TITLE Responsive design)
 [//]: # (ENDPOINT /responsive)
 
-# RESPONSIVE DESIGN
+# Responsive design
 
 Responsive web design is a **web design approach** to make web pages **render well on all screen sizes** and resolutions while ensuring good usability. It is the way to design for a multi-device web.
 

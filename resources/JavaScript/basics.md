@@ -2,7 +2,7 @@
 [//]: # (TITLE JS basics)
 [//]: # (ENDPOINT /js)
 
-# ESSENTIAL JAVASCRIPT
+# Essential JavaScript
 
 JavaScript (JS) is a **lightweight**, **interpreted**, **dynamic** programming language. 
 

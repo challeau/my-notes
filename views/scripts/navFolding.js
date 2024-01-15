@@ -20,7 +20,7 @@ function unfold(element){
     getSiblings(element).forEach(e => e.classList.toggle("folded"));
 }
 
-// collapsing folders
+// Collapsing folders.
 for (let folder of folders) {
     let siblings = getSiblings(folder);
 

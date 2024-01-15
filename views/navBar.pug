@@ -11,12 +11,30 @@ mixin navFolder(name, links)
         +navLink(page.title, page.endpoint, "folded")
 
 mixin navbar(dirs, links)
-  div.navContainer
-    div(id="navBar")
-      h3.title Index
+  div.navContainer.folded
+    div(id="navFoldBtn" class="navBtn")
+      span(class="material-symbols-outlined ")= "menu"
+    div(id="navBar").folded
+      a(class="title" href="/")= "Index"
       each files, folder in dirs
         +navFolder(folder, files)
       ul.lonelyLink
         each page in links
           +navLink(page.title, page.endpoint, "")
+    div(id="themeBtn" class="navBtn")
+      span(class="material-symbols-outlined ")= "dark_mode"
 
+  script.
+    // NavBar folding
+    let navContainer = document.getElementsByClassName("navContainer")[0];
+    let navFoldBtn = document.getElementById("navFoldBtn");
+    let navBar = document.getElementById("navBar");
+
+    navFoldBtn.addEventListener("click", () => {
+      navBar.classList.toggle("folded");
+      navContainer.style.width = navContainer.style.width == "13vw" ? "0" : "13vw";
+      navFoldBtn.classList.toggle("open");
+    });
+
+    // Theme
+    document.getElementById("themeBtn").addEventListener("click", () => document.body.classList.toggle("dark"))

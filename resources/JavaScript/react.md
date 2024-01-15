@@ -4,7 +4,7 @@
 
 “’”
 
-# REACT
+# React
 
 React is an **unopinionated library** for **building user interfaces** based on **components**.
 

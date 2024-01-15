@@ -236,17 +236,17 @@ This ability is where IP gets its name. An internet is a series of two or more c
 
 The **Transmission Control Protocol** is a **connection-oriented Transport layer protocol**. 
 
-TCP lets a device **reliably send a packet to another device** on the same network or on a different network. TCP **ensures that each packet is delivered if at all possible**. It does so by **establishing a connection** with the receiving device and **then sending the packets**. If a packet doesn’t arrive, TCP **resends** the packet. The connection is closed only after the packet has been successfully delivered or an unrecoverable error condition has occurred.
+TCP lets a device **reliably send a packet to another device** on the same network or on a different network. TCP **ensures that each packet is delivered if at all possible**. It does so by **establishing a connection** with the receiving device and **then sending the packets**. If a packet doesn't arrive, TCP **resends** the packet. The connection is closed only after the packet has been successfully delivered or an unrecoverable error condition has occurred.
 
-One key aspect of TCP is that it’s **always used for one-to-one communications**. In other words, TCP allows a single network device to exchange data with another single network device. TCP isn’t used to broadcast messages to multiple network recipients.
+One key aspect of TCP is that it's **always used for one-to-one communications**. In other words, TCP allows a single network device to exchange data with another single network device. TCP isn't used to broadcast messages to multiple network recipients.
 
 
 #### 4.4.3 - UDP
 
-The **User Datagram Protocol** is a **connectionless Transport layer protocol** that is used when the **overhead of a connection isn’t required**. Hence, UDP is **datagram-oriented**.
+The **User Datagram Protocol** is a **connectionless Transport layer protocol** that is used when the **overhead of a connection isn't required**. Hence, UDP is **datagram-oriented**.
 
-UDP **places a packet on the network** via the IP protocol, then it **forgets** about it. UDP **doesn’t guarantee that the packet actually arrives** at its destination. 
-Most applications that use UDP simply **wait for any replies** expected as a result of packets sent via UDP. If a reply doesn’t arrive within a certain period of time, the application either sends the packet again or gives up.
+UDP **places a packet on the network** via the IP protocol, then it **forgets** about it. UDP **doesn't guarantee that the packet actually arrives** at its destination. 
+Most applications that use UDP simply **wait for any replies** expected as a result of packets sent via UDP. If a reply doesn't arrive within a certain period of time, the application either sends the packet again or gives up.
 
 #### 4.4.4 - TCP vs UDP
 

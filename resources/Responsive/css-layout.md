@@ -2,7 +2,7 @@
 [//]: # (TITLE CSS Layout)
 [//]: # (ENDPOINT /layout)
 
-# CSS LAYOUT
+# CSS layout
 
 
 **CSS page layout** techniques allow us to take elements contained in a web page and **control where they're positioned** relative to:
