@@ -19,31 +19,29 @@ pre {
     color: var(--white);
 }
 
-.hljs-punctuation {
-    color: var(--white) !important;
-}
+.hljs-comment { color: var(--brown) !important; }
 
-.hljs-string, .hljs-built_in {
-    color: var(--pink) !important;
-}
+.hljs-punctuation { color: var(--white) !important; }
 
-.hljs-number, .hljs-attr {
-    color: var(--bright-blue) !important;
-}
+.hljs-string { color: var(--bright-yellow) !important; }
 
-.hljs-title {
-    color: var(--bright-yellow) !important;
-}
+.hljs-built_in,
+.hljs-meta,
+.hljs-number,
+.hljs-attr,
+.hljs-title.class_ { color: var(--bright-blue) !important; }
 
-.hljs-keyword, .hljs-type, .hljs-operator, .hljs-tag, .hljs-name {
-    color: var(--bright-pink) !important;
-}
+.hljs-title.function_ { color: var(--bright-green) !important; }
 
-.hljs-params, .hljs-variable {
-    color: var(--bright-lilac) !important;
-}
+.hljs-keyword,
+.hljs-type,
+.hljs-operator,
+.hljs-tag { color: var(--bright-pink) !important; }
 
-.hljs-comment {
-    color: #826E75 !important;
-}
+.hljs-literal,
+.hljs-name { color: var(--pink) !important; }
 
+.hljs-params { color: var(--lilac) !important; }
+
+.hljs-selector-class,
+.hljs-variable.language_ { color: var(--bright-lilac) !important; }

@@ -50,7 +50,11 @@ function getResources(files, resourcePath, dir="") {
 
 	    // parse the file's contents into HTML
 	    let parsedHTML = sanitizeHtml(marked.parse(text), {
-		allowedTags: sanitizeHtml.defaults.allowedTags.concat([ 'img' ])
+		allowedAttributes: {
+		    a: [ 'href', 'name', 'target' ],
+		    img: [ 'src', 'srcset', 'alt', 'title', 'width', 'height', 'loading' ],
+		    code: [ 'class' ]},
+		allowedTags: sanitizeHtml.defaults.allowedTags.concat([ 'img', 'code' ])
 	    });
 
 	    resources.push({text: parsedHTML, metadata: metadata});

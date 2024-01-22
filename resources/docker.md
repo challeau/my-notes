@@ -71,7 +71,7 @@ To create one, all the steps necessary to build the application should be writte
 Then the image can be built with the `docker build` command, which will create a **local copy** of the image. To publish it, use `docker push <name>`.
 
 ```bash
-$ docker build [-t <CUSTOM_TAG_NAME>] [-f <SOURCE_FILE>] <path>
+docker build [-t <CUSTOM_TAG_NAME>] [-f <SOURCE_FILE>] <path>
 ```
 
 - `-t` sets the optional tag name of the image.
@@ -81,7 +81,7 @@ $ docker build [-t <CUSTOM_TAG_NAME>] [-f <SOURCE_FILE>] <path>
 
 ## 3 - Dockerfile format
 
-```dockerfile
+```docker
 # Comment
 INSTRUCTION arguments
 ```
@@ -103,20 +103,20 @@ You can sort multi-line instructions with `\` before a newline.
 
 A Dockerfile must begin with a `FROM` instruction, which specifies the **Parent Image** from which you are building.
 
-```dockerfile
+```docker
 FROM [--platform=<platform>] <image>[@<digest>] [AS <name>]
 ```
 
 `FROM` may come only after parser directives, comments, and globally scoped `ARG`s:
 
-```dockerfile
+```docker
 ARG  CODE_VERSION=latest
 FROM base:${CODE_VERSION} 
 ```
 
 An `ARG` **declared before** a `FROM` is **outside the build stage**, so it **can't be used in any instruction after** a `FROM`. To use the default value of an `ARG` declared before the first `FROM` use an `ARG` instruction without a value:
 
-```dockerfile
+```docker
 ARG VERSION=latest
 FROM busybox:$VERSION
 ARG VERSION
@@ -138,7 +138,7 @@ Global build arguments can be used in the value of this flag, for example automa
 
 The `RUN` instruction will **execute any commands in a new layer on top of the current image** and **commit the results**. The resulting committed image will be **used for the next step** in the Dockerfile.
 
-```dockerfile
+```docker
 # the shell form. The command is run in a shell, which by default is
 # /bin/sh -c on Linux or cmd /S /C on Windows.
 RUN <command>
@@ -153,7 +153,7 @@ Layering `RUN` instructions and generating commits conforms to the core concepts
 
 To use a different shell than `/bin/bash`, use the exec form passing in the desired shell:
 
-```dockerfile
+```docker
 RUN ["/bin/bash", "-c", "echo hello"] 
 ```
 
@@ -164,7 +164,7 @@ The **cache** for `RUN` instructions can be **invalidated** by using `docker bui
 
 #### 3.2.1 - RUN --mount
 
-```dockerfile
+```docker
 RUN --mount=[type=<TYPE>][,option=<value>[,option=<value>]...]
 ```
 
@@ -184,7 +184,7 @@ Mount types:
 
 #### 3.2.2 - RUN --network
 
-```dockerfile
+```docker
 RUN --network=<TYPE>
 ```
 
@@ -205,7 +205,7 @@ The main purpose of a `CMD` is to **provide defaults for an executing container*
 
 There can **only be one** `CMD` instruction in a Dockerfile. If you list more than one `CMD` then only the **last one** will take effect.
 
-```dockerfile
+```docker
 # the exec form. This is the preferred form.
 CMD ["executable","param1","param2"]
 
@@ -226,7 +226,7 @@ If `CMD` is used to provide default arguments for the `ENTRYPOINT` instruction, 
 
 The `LABEL` instruction **adds metadata** to an image. A `LABEL` is a key-value pair. To include spaces within a `LABEL` value, use quotes and backslashes as you would in command-line parsing.
 
-```dockerfile
+```docker
 LABEL <key>=<value> <key>=<value> <key>=<value> ...
 ```
 
@@ -235,7 +235,7 @@ An image can have more than one label. You can specify multiple labels on a sing
 Labels included in base or parent images (images in the `FROM` line) are **inherited** by your image. If a label already exists but with a different value, the **most-recently-applied value overrides** any previously-set value.
 
 To view an image's labels, use the `docker image inspect` command. You can use the `--format` option to show just the labels:
-```commandline
+```bash
 docker image inspect --format='' myimage
 ```
 
@@ -244,7 +244,7 @@ docker image inspect --format='' myimage
 
 The `EXPOSE` instruction informs Docker that the **container listens on the specified network ports** at runtime. You can specify whether the port listens on TCP or UDP, and the **default is TCP** if the protocol is not specified.
 
-```dockerfile
+```docker
 EXPOSE <port> [<port>/<protocol>...]
 ```
 
@@ -254,8 +254,8 @@ The `EXPOSE` instruction **does not actually publish the port**. It **functions 
 
 Regardless of the `EXPOSE` settings, you can override them at runtime by using the `-p` flag:
 
-```commandline
-$ docker run -p 80:80/tcp -p 80:80/udp ...
+```bash
+docker run -p 80:80/tcp -p 80:80/udp ...
 ```
 
 
@@ -263,13 +263,13 @@ $ docker run -p 80:80/tcp -p 80:80/udp ...
 
 The `ENV` instruction **sets the environment variable** `<key>` to the value `<value>`. This value will be in the environment for **all subsequent instructions** in the build stage and can be replaced inline in many as well.
 
-```dockerfile
+```docker
 ENV <key>=<value> ...
 ```
 
 The value will be interpreted for other environment variables, so quote characters will be removed if they are not escaped. Like command line parsing, quotes and backslashes can be used to include spaces within values:
 
-```dockerfile
+```docker
 ENV MY_NAME="John Doe"
 ENV MY_DOG=Rex\ The\ Dog
 ENV MY_CAT=fluffy
@@ -295,7 +295,7 @@ Multiple `<src>` resources may be specified but if they are files or directories
 
 The `<dest>` is an absolute path, or a path relative to `WORKDIR`.
 
-```dockerfile
+```docker
 ADD [--chown=<user>:<group>] [--checksum=<checksum>] <src> ... <dest>
 
 # OR 
@@ -324,18 +324,18 @@ Since user and group ownership concepts do not translate between Linux and Windo
 
 The **checksum** of a remote file can be verified with the `--checksum` flag:
 
-```dockerfile
+```docker
 ADD --checksum=sha256:244...68d https://mirrors.edge.kernel.org/pub/linux/kernel/Historic/linux-0.01.tar.gz /
 ```
 
 You can **add a git repository to an image directly**, without using the git command inside the image:
 
-```docekrfile
+```docker
 ADD [--keep-git-dir=<boolean>] <git ref> <dir>
 ```
 To add a private repo **via SSH**, create a Dockerfile with the following form:
 
-```dockerfile
+```docker
 # syntax = docker/dockerfile-upstream:master-labs
 FROM alpine
 ADD git@git.example.com:foo/bar.git /bar
@@ -351,7 +351,7 @@ The `COPY` instruction **copies new files or directories** from `<src>` and **ad
 
 Multiple `<src>` resources may be specified but the paths of files and directories will be interpreted as **relative to the source of the context of the build**. Each `<src>` may contain wildcards and matching will be done using Go's `filepath.Match` rules.
 
-```dockerfile
+```docker
 COPY [--chown=<user>:<group>] <src> ... <dest>
 
 # OR
@@ -372,7 +372,7 @@ When `--link` is used your source files are copied into an **empty destination d
 
 This:
 
-```dockerfile
+```docker
 # syntax=docker/dockerfile:1
 FROM alpine
 COPY --link /foo /bar
@@ -380,7 +380,7 @@ COPY --link /foo /bar
 
 Is equivalent to doing two builds and merging all the layers of both images together:
 
-```dockerfile
+```docker
 FROM alpine
 
 # and
@@ -404,7 +404,7 @@ An `ENTRYPOINT` allows you to **configure a container that will run as an execut
 
 You can **override** the `ENTRYPOINT` instruction using the `docker run --entrypoint` flag.
 
-```dockerfile
+```docker
 # the shell form
 ENTRYPOINT command param1 param2
 
@@ -476,7 +476,7 @@ If `CMD` is defined from the base image, setting `ENTRYPOINT` will reset `CMD` t
 The `VOLUME` instruction **creates a mount point** with the specified **name** and marks it as holding externally mounted volumes from native host or other containers. 
 The `docker run` command **initializes the newly created volume with any data that exists at the specified location** within the base image.
 
-```dockerfile
+```docker
 # JSON array
 VOLUME ["/data"]
 
@@ -498,7 +498,7 @@ Keep the following things in mind about volumes in the Dockerfile:
 
 The `USER` instruction **sets the username** (or UID) and **optionally the user group** (or GID) to use as the **default user and group** for the remainder of the current stage. The specified user is used for `RUN` instructions and at runtime, runs the relevant `ENTRYPOINT` and `CMD` commands.
 
-```dockerfile
+```docker
 USER <user>[:<group>]
 
 # OR
@@ -510,13 +510,13 @@ USER <UID>[:<GID>]
 The `WORKDIR` instruction **sets the working directory** for any `RUN`, `CMD`, `ENTRYPOINT`, `COPY` and `ADD` instructions **that follow** it in the Dockerfile.
 If the `WORKDIR` doesn't exist, it will be **created** even if it's not used in any subsequent Dockerfile instruction.
 
-```dockerfile
+```docker
 WORKDIR /path/to/workdir
 ```
 
 The `WORKDIR` instruction **can be used multiple times in a Dockerfile**. If a relative path is provided, it will be relative to the path of the previous `WORKDIR` instruction. For example:
 
-```dockerfile
+```docker
 WORKDIR /a
 WORKDIR b
 WORKDIR c
@@ -525,7 +525,7 @@ RUN pwd  # output: /a/b/c
 
 The `WORKDIR` instruction **can resolve environment variables** previously set using `ENV`. You can only use environment variables explicitly set in the Dockerfile. For example:
 
-```dockerfile
+```docker
 ENV DIRPATH=/path
 WORKDIR $DIRPATH/$DIRNAME
 RUN pwd  # output: /path/$DIRNAME
@@ -538,7 +538,7 @@ If not specified, **the default working directory is** `/`. In practice, if you 
 
 The `ARG` instruction defines a **variable that users can pass** at build-time to the builder with the `docker build` command using the `--build-arg <varname>=<value>` flag. A Dockerfile may include **one or more** `ARG` instructions.
 
-```dockerfile
+```docker
 ARG <name>[=<default value>]
 ```
 
@@ -546,7 +546,7 @@ ARG <name>[=<default value>]
 
 **An `ARG` variable definition comes into effect from the line on which it is defined in the Dockerfile**, not from the argument's use on the command-line or elsewhere. For example, consider this Dockerfile:
 
-```dockerfile
+```docker
 FROM busybox
 USER ${user:-some_user}
 ARG user
@@ -556,8 +556,8 @@ USER $user
 
 A user builds this file by calling:
 
-```commandline
-$ docker build --build-arg user=what_user .
+```bash
+docker build --build-arg user=what_user .
 ```
 
 The `USER` at line 2 evaluates to `some_user` since the `user` variable is defined on the subsequent line 3. The `USER` at line 4 evaluates to `what_user` as `user` is defined and the `what_user` value was passed on the command line. Prior to its definition by an `ARG` instruction, any use of a variable results in an empty string.
@@ -571,7 +571,7 @@ You can use an `ARG` or an `ENV` instruction to **specify variables** that are a
 
 Consider these Dockerfiles, built with `docker build --build-arg CONT_IMG_VER=v2.0.1 .`:
 
-```dockerfile
+```docker
 # ENV overrides                     # ARG is used if provided
 FROM ubuntu                         FROM ubuntu
 ARG CONT_IMG_VER                    ARG CONT_IMG_VER
@@ -611,7 +611,7 @@ All predefined `ARG` variables are exempt from caching unless there is a matchin
 
 Consider these Dockerfiles, that are all subject to a cache miss on line 3:
 
-```dockerfile
+```docker
 FROM ubuntu                     FROM ubuntu             FROM ubuntu
 ARG CONT_IMG_VER                ARG CONT_IMG_VER        ARG CONT_IMG_VER
 RUN echo $CONT_IMG_VER          RUN echo hello          ENV CONT_IMG_VER=$CONT_IMG_VER
@@ -626,7 +626,7 @@ In #3, the miss happens because the variable's value in the `ENV` references the
 
 If an `ENV` instruction overrides an `ARG` instruction of the same name like this:
 
-```dockerfile
+```docker
 FROM ubuntu
 ARG CONT_IMG_VER
 ENV CONT_IMG_VER=hello
@@ -640,7 +640,7 @@ Line 3 does not cause a cache miss because the value of `CONT_IMG_VER` is a cons
 
 The `ONBUILD` instruction **adds to the image a trigger instruction** to be executed at a later time, **when the image is used as the base for another build**. The trigger will be executed in the context of the downstream build, **as if it had been inserted immediately after the** `FROM` instruction in the downstream Dockerfile.
 
-```dockerfile
+```docker
 ONBUILD <INSTRUCTION>
 ```
 
@@ -654,7 +654,7 @@ This is **useful if you are building an image which will be used as a base to bu
 The `STOPSIGNAL` instruction **sets the system call signal that will be sent to the container to exit**. This signal can be a signal name in the format `SIG<NAME>`, for instance `SIGKILL`, or an unsigned number that matches a position in the kernel's syscall table, for instance 9. 
 The **default** is `SIGTERM` if not defined.
 
-```dockerfile
+```docker
 STOPSIGNAL signal
 ```
 
@@ -668,7 +668,7 @@ The `HEALTHCHECK` instruction **tells Docker how to test a container** to check 
 
 There **can only be one** `HEALTHCHECK` instruction in a Dockerfile. If you list more than one then only the last `HEALTHCHECK` will take effect.
 
-```dockerfile
+```docker
 HEALTHCHECK [OPTIONS] CMD command   # check container health by running a command inside the container.
 
 # OR
@@ -692,7 +692,7 @@ The options that can appear before CMD are:
 
 For example, to check every five minutes or so that a web-server is able to serve the site's main page within three seconds:
 
-```dockerfile
+```docker
 HEALTHCHECK --interval=5m --timeout=3s \
   CMD curl -f http://localhost/ || exit 1
 ```
@@ -706,7 +706,7 @@ When the health status of a container changes, a `health_status` event is genera
 
 The `SHELL` instruction **allows the default shell used for the shell form of commands to be overridden**. The default shell on Linux is `["/bin/sh", "-c"]`, and on Windows is `["cmd", "/S", "/C"]`. The `SHELL` instruction must be written in **JSON form** in a Dockerfile.
 
-```dockerfile
+```docker
 SHELL ["executable", "parameters"]
 ```
 
@@ -746,7 +746,7 @@ You can remedy this situation by adding a `.dockerignore` file where you can spe
 ### 6.1 Setup
 
 Python provides an official image that already has all the tools and packages needed to run a Python application:
-```dockerfile
+```docker
 # syntax=docker/dockerfile:1            --> get latest Docker parser
 FROM python:3.8-slim-buster
 
@@ -761,26 +761,26 @@ CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
 ```
 
 Remember to publish the ports when running the container:
-```commandline
-$ docker run --publish 8000:5000 python-docker
+```bash
+docker run --publish 8000:5000 python-docker
 ```
 
 ### 6.2 Run a database in a container
 
 First, create volumes -one for the data and one for configuration of MySQL (eg):
-```commandline
-$ docker volume create mysql
-$ docker volume create mysql_config
+```bash
+docker volume create mysql
+docker volume create mysql_config
 ```
 
 Then, create a network so the application and the database can communicate:
-```commandline
-$ docker network create mysqlnet
+```bash
+docker network create mysqlnet
 ```
 
 Now we can run MySQL in a container and attach to the volumes and network we created above:
-```commandline
-$ docker run --rm -d -v mysql:/var/lib/mysql \      # -d: detached
+```bash
+docker run --rm -d -v mysql:/var/lib/mysql \      # -d: detached
   -v mysql_config:/etc/mysql -p 3306:3306 \         # -v: use volumes
   --network mysqlnet \                              # --network: specify the network
   --name mysqldb \                                  # --name: give our container a name
@@ -793,8 +793,8 @@ $ docker run --rm -d -v mysql:/var/lib/mysql \      # -d: detached
 After updating `app.py` to use MySQL as a datastore (adding routes and connections), update `requirements.txt` to include the new dependencies (mysql-connector-python), and re-build the image.
 
 Then, add the container to the database network and run our container:
-```commandline
-$ docker run \
+```bash
+docker run \
   --rm -d \
   --network mysqlnet \
   --name rest-server \
@@ -838,8 +838,8 @@ Compose files allow us to store all the parameters we need to pass to `docker ru
 `docker-compose` automatically creates a network and connects the services to it. 
 
 To start the application, run:
-```commandline
-$ docker-compose -f docker-compose.dev.yml up --build
+```bash
+docker-compose -f docker-compose.dev.yml up --build
 ```
 The `--build` flag tells Docker to compile the image and then start the containers.
 

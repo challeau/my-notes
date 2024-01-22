@@ -24,13 +24,14 @@ for (let h of headings){
 // allow folding of TOC
 let arrow = document.createElement("span");
 arrow.innerText = "chevron_right";
-arrow.className = "material-symbols-outlined titleClicked";
+arrow.className = "material-symbols-outlined";
 
 let tocTitle = document.getElementById("#table-of-contents");
 tocTitle.insertBefore(arrow, tocTitle.firstChild);
 
 let toc = tocTitle.nextElementSibling;
 toc.id="TOC";
+toc.style.display = "none";
 
 // scroll to section on user click
 for (let li of toc.children) {

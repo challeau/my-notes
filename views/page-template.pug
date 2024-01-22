@@ -6,7 +6,9 @@ html
     title= title
 
     // code highlighting
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js")
+    script(src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/languages/dockerfile.min.js")
 
     script.
       hljs.highlightAll();
@@ -17,13 +19,14 @@ html
     // no indexing
     meta(name="robots", content="noindex")
 
-  body.dark
+  body
+    script.
+      document.body.classList = localStorage.getItem("theme") || "light";
     +navbar(navDirs, navLinks)
 
     div.content
       | !{content}
 
   script
-    include ./scripts/navFolding.js
     include ./scripts/toc.js
 

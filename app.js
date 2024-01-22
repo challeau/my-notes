@@ -12,17 +12,17 @@ const resourcePath = path.join(__dirname, "./resources/");
 app.set("view engine", "pug");
 app.use(express.static(__dirname + "/public"));
 
-// MARKED SETUP
-// Adding the path to the images folder when parsing img tags with marked
+// Adding the language as a class for code parsing
 marked.use({
-    extensions: [{
-	name: 'image',
-	renderer(token) {
-	    const imagePath = path.join('assets/imgs', token.href);
-	    let ret = `<img src="${imagePath}" alt="${token.text}"/>`;
-	    return ret;
-	}
-    }]
+    extensions: [
+	{
+	    name: 'image',
+	    renderer(token) {
+		const imagePath = path.join('assets/imgs', token.href);
+		let ret = `<img src="${imagePath}" alt="${token.text}"/>`;
+		return ret;
+	    }
+	}]
 });
 
 // ROUTING
@@ -32,12 +32,11 @@ fs.readdir(resourcePath, (err, files) => {
 
     // home page
     app.get('/', (req, res) => {
-	res.render("page-template",
+	res.render("index",
 		   {
-		       title: "Charlottes' notes",
+		       title: "Charlotte's notes",
 		       navDirs: navDirs,
-		       navLinks: navLinks,
-		       content: fs.readFileSync(__dirname + "/views/index.html", "utf8")
+		       navLinks: navLinks
 		   });
     });
 

@@ -140,7 +140,7 @@ nameAgeMap.Amir = "Fifty";                              // throws an error
 
 An enum is a special "class" that represents a group of constants (unchangeable variables). Enums come in two flavors: string and numeric.
 
-```typecript
+```typescript
 // NUMERIC ENUMS
 // by default the first value is 0 and the rest is auto-incremented
 enum CardinalDirections {
@@ -177,7 +177,7 @@ Aliases and Interfaces allows types to be easily shared between different variab
 Aliases allow defining types with a custom name.
 Interfaces are similar but only apply to object types.
 
-```typecript
+```typescript
 // aliasing
 type CarYear = number;
 type CarType = string;
@@ -213,7 +213,7 @@ const rectangle: Rectangle = {
 
 
 Interfaces can extend each other's definition thanks to the `extends` keyword:
-```typecript
+```typescript
 interface ColoredRectangle extends Rectangle {
     color: string
 };
@@ -230,7 +230,7 @@ const coloredRectangle: ColoredRectangle = {
 
 Union types are used when a value can be more than a single type.
 
-```typecript
+```typescript
 function printStatusCode(code: string | number) {
     console.log(`My status code is ${code}.`)
 }
@@ -244,7 +244,7 @@ printStatusCode('404');     // also works
 
 TypeScript has a specific syntax for typing function parameters and return values.
 
-```typecript
+```typescript
 // specify the return type
 function myFunctionThatReturns(): number {
     return 66;
@@ -292,7 +292,7 @@ Use the return type `void` for callbacks whose value will be ignored, NOT `any`.
 
 Casting is the process of overriding a type. It doesn't actually change the type of the data within the variable.
 
-```typecript
+```typescript
 // with as
 let x: unknown = 'hello';
 console.log((x as string).length);      // 5
@@ -320,7 +320,7 @@ TypeScript adds types and visibility modifiers to JavaScript classes.
 
 ### 6.1 Basics
 
-```typecript
+```typescript
 // typing
 class Person {
     name: string;
@@ -398,7 +398,7 @@ The new class `Square` is a child of `Rectangle`. It has all the properties and 
 Classes can be written in a way that allows them to be used as a base class for other classes without having to implement all the members. This is done by using the `abstract` keyword. Members that are left unimplemented also use the `abstract` keyword.
 
 
-```typecript
+```typescript
 abstract class Polygon {
     public abstract getArea(): number;
 
@@ -430,7 +430,7 @@ Generics make it easier to write reusable code.
 
 Generics with functions help make more generalized methods which more accurately represent the types used and returned:
 
-```typecript
+```typescript
 function createPair<type1, type2>(var1: type1, var2: type2): [type1, type2] {
     return [var1, var2];
 }
@@ -443,7 +443,7 @@ console.log(result);                                   // ['hello', 420]
 
 ### 7.2 Classes
 
-```typecript
+```typescript
 class NamedValue<varType> {
     private _value: varType | undefined;
     
@@ -471,7 +471,7 @@ console.log(value.toString());        // myNumber: 10
 
 ### 7.3 Type Aliases
 
-```typecript
+```typescript
 type Wrapped<T> = { value: varType };
 
 const wrappedValue: Wrapped<number> = { value: 10 };
@@ -481,7 +481,7 @@ const wrappedValue: Wrapped<number> = { value: 10 };
 ### 7.4 Default Value
 
 Generics can be assigned default values which apply if no other value is specified or inferred:
-```typecript
+```typescript
 class NamedValue<varType = string> {
     private _value: varType | undefined;
 
@@ -501,7 +501,7 @@ class NamedValue<varType = string> {
 ### 8.1 Partial
 
 `Partial` changes all the properties in an object to be optional.
-```typecript
+```typescript
 interface Point {
     x: number;
     y: number;
@@ -515,7 +515,7 @@ pointPart.x = 10;
 ### 8.2 Required
 
 `Required` changes all the properties in an object to be required.
-```typecript
+```typescript
 interface Car {
     make: string;
     model: string;
@@ -533,7 +533,7 @@ let myCar: Required<Car> = {
 ### 8.3 Record
 
 `Record` is a shortcut to defining an object type with a specific key type and value type.
-```typecript
+```typescript
 const nameAgeMap: Record<string, number> = {
     'Alice': 21,
     'Bob': 25
@@ -546,7 +546,7 @@ const nameAgeMap: Record<string, number> = {
 ### 8.4 Omit
 
 `Omit` removes keys from an object type.
-```typecript
+```typescript
 interface Person {
     name: string;
     age: number;
@@ -562,7 +562,7 @@ const bob: Omit<Person, 'age' | 'location'> = {
 ### 8.5 Pick
 
 `Pick` removes all but the specified keys from an object type.
-```typecript
+```typescript
 interface Person {
     name: string;
     age: number;
@@ -577,7 +577,7 @@ const bob: Pick<Person, 'name'> = {
 ### 8.6 Exclude
 
 `Exclude` removes types from a union.
-```typecript
+```typescript
 type Primitive = string | number | boolean
 const value: Exclude<Primitive, string> = true;
 ```
@@ -587,7 +587,7 @@ const value: Exclude<Primitive, string> = true;
 ### 8.7 ReturnType
 
 `ReturnType` extracts the return type of a function type.
-```typecript
+```typescript
 type PointGenerator = () => { x: number; y: number; };
 const point: ReturnType<PointGenerator> = {
     x: 10,
@@ -599,7 +599,7 @@ const point: ReturnType<PointGenerator> = {
 ### 8.8 Parameters
 
 `Parameters` extracts the parameter types of a function type as an array.
-```typecript
+```typescript
 type PointPrinter = (p: { x: number; y: number; }) => void;
 const point: Parameters<PointPrinter>[0] = {
     x: 10,
@@ -613,7 +613,7 @@ const point: Parameters<PointPrinter>[0] = {
 `keyof` is a keyword in TypeScript which is used to extract the key type from an object type.
 
 When used on an object type with explicit keys, `keyof` creates a union type with those keys:
-```typecript
+```typescript
 interface Person {
     name: string;
     age: number;
@@ -632,7 +632,7 @@ printPersonProperty(person, "name");      // Printing person property name: "Max
 ```
 
 `keyof` can also be used with index signatures to extract the index type:
-```typecript
+```typescript
 type StringMap = { [key: string]: unknown };
 function createStringPair(property: keyof StringMap, value: string): StringMap {
     return { [property]: value };

@@ -404,7 +404,7 @@ While it's impure to change objects that were created before the call, it's comp
 
 <div>
 
-```javscript
+```javascript
 // BAD --> modification of a varirable declared
 //         outside of the componenet's scope
 

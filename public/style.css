@@ -131,7 +131,7 @@ blockquote {
 *:not(pre) > code {
     background-color: var(--beige);
     padding: 0.3em;
-    border-radius: 0.5em;
+    border-radius: 0.5em !important;
 }
 
 
@@ -144,6 +144,7 @@ blockquote {
     background-color: var(--white);
     border-radius: 2em;
     line-height: 1.3em;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .content > h2 + h3, .content > h3 + h4, .content > h4 + h5 {
@@ -151,12 +152,15 @@ blockquote {
 }
 
 .content a {
-    color: #916997;
+    color: var(--bright-blue);
     text-decoration: none;
     cursor: pointer;
 }
 
-.content a:hover { color: var(--bright-lilac); }
+.content a:hover {
+    border-bottom: 2px solid var(--blue);
+    padding-bottom: 2.7px;
+}
 
 .content > ul {
     position: relative;

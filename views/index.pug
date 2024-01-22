@@ -1,0 +1,43 @@
+include ./navBar.pug
+
+doctype html
+html
+  head
+    title= title
+
+    // code highlighting
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js")
+
+    script.
+      hljs.highlightAll();
+
+    // style
+    include ./styles.pug
+    link(rel="stylesheet", type="text/css", href="index.css")
+
+    // no indexing
+    meta(name="robots", content="noindex")
+
+  body.dark
+    +navbar(navDirs, navLinks)
+
+    div.content
+      h1 Charlotte's Notes
+      p This is a collection of my Web Development notes so I can access it from anywhere with an internet connection.
+      p These notes contain my work, and some text copied from software documentation.
+
+      div.index
+        each links, subject in navDirs
+          p.subject= subject
+          ul.indexList
+            each page in links
+              li
+                a(href=page.endpoint)= page.title
+  
+        p.subject Other
+        ul.indexList
+          each page in navLinks
+            li
+              a(href=page.endpoint)= page.title
+
+

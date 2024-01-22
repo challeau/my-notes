@@ -198,7 +198,7 @@ ITEM_METHODS = ['GET', 'PATCH', 'PUT', 'DELETE']
 
 #### 3.1.1 - Inserting a single document
 
-```commandline
+```bash
 curl -d '{"firstname": "barack", "lastname": "obama"}' -H 'Content-Type: application/json' http://myapi.com/people
 ```
 
@@ -211,7 +211,7 @@ When a `201 Created` is returned following a POST request, the `Location` header
 
 Just enclose the documents in a JSON file:
 
-```commandline
+```bash
 curl -d '[{"firstname": "barack", "lastname": "obama"}, {"firstname": "mitt", "lastname": "romney"}]' -H 'Content-Type: application/json' http://myapi.com/people
 ```
 
@@ -270,13 +270,13 @@ Data validation is **based on the Cerberus validation system**, therefore it is 
 
 These headers allow clients to perform conditional requests by using the `If-Modified-Since` header:
 
-```commandline
+```bash
 curl -H "If-Modified-Since: Wed, 05 Dec 2012 09:53:07 GMT" -i http://myapi.com/people/521d6840c437dc0002d1203c
 ```
 
 Or the `If-None-Match` header:
 
-```commandline
+```bash
 curl -H "If-None-Match: 1234567890123456789012345678901234567890" -i http://myapi.com/people/521d6840c437dc0002d1203c
 ```
 
@@ -302,7 +302,7 @@ Eve responses are **automatically rendered as JSON**. Inbound documents (for ins
 
 To get the response in XML, simply set the request `Accept` header:
 
-```commandline
+```bash
 curl -H "Accept: application/xml" -i http://myapi.com
 ```
 

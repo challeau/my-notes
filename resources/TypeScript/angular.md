@@ -60,18 +60,18 @@ As a platform, Angular includes:
 > **Requirements**: node.js, npm.
 
 Install:
-```commandline
+```bash
 npm install -g @angular/cli
 ```
 
 Create a workspace:
-```commandline
+```bash
 ng new my-app
 ```
 The `ng new` command prompts you for information about features to include in the initial app. Accept the defaults by pressing the Enter or Return key.
 
 The Angular CLI includes a server, for you to build and serve your app locally. From the project directory, run:
-```commandline
+```bash
 ng serve --open
 ```
 
@@ -105,7 +105,7 @@ To use this component, you write the following in a template:
 
 To automatically generate a component, run:
 
-````commandline
+````bash
 ng generate component <name>
 ````
 
@@ -511,7 +511,7 @@ A component can delegate certain tasks to services, such as fetching data from t
 
 
 Services can be generated with:
-```commandline
+```bash
 ng generate service exampleService
 ```
 
@@ -729,12 +729,12 @@ Template:
 ## Deploy
 
 Run an app locally:
-```commandline
-$ npm install
-$ ng serve (--port 4201)
+```bash
+npm install
+ng serve (--port 4201)
 ```
 
 Building:
-```commandline
-$ ng build
+```bash
+ng build
 ```

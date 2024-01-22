@@ -1,7 +1,9 @@
+// Navigation link == a page
 mixin navLink(name, endpoint, specialClass)
   li(class=(name === title ? specialClass + " active" : specialClass))
     a(href=endpoint)= name
 
+// Navigation folder == a subject
 mixin navFolder(name, links)
     ul.folder
       li.folderTitle
@@ -10,11 +12,12 @@ mixin navFolder(name, links)
       each page in links
         +navLink(page.title, page.endpoint, "folded")
 
+// NAVBAR
 mixin navbar(dirs, links)
-  div.navContainer.folded
+  div.navContainer
     div(id="navFoldBtn" class="navBtn")
       span(class="material-symbols-outlined ")= "menu"
-    div(id="navBar").folded
+    div(id="navBar")
       a(class="title" href="/")= "Index"
       each files, folder in dirs
         +navFolder(folder, files)
@@ -25,16 +28,52 @@ mixin navbar(dirs, links)
       span(class="material-symbols-outlined ")= "dark_mode"
 
   script.
-    // NavBar folding
+    // Folding the NavBar with the menu button
     let navContainer = document.getElementsByClassName("navContainer")[0];
     let navFoldBtn = document.getElementById("navFoldBtn");
     let navBar = document.getElementById("navBar");
 
     navFoldBtn.addEventListener("click", () => {
-      navBar.classList.toggle("folded");
+      navBar.style.left = navBar.style.left == "0px" ? "-20vw" : "0px";
       navContainer.style.width = navContainer.style.width == "13vw" ? "0" : "13vw";
       navFoldBtn.classList.toggle("open");
     });
 
-    // Theme
-    document.getElementById("themeBtn").addEventListener("click", () => document.body.classList.toggle("dark"))
+    // Folding the Folders
+    // Returns all the argument's siblings.
+    function getSiblings(element){
+      let siblings = [];
+      let nextSibling = element.nextElementSibling;
+
+      while (nextSibling){
+        siblings.push(nextSibling);
+        nextSibling = nextSibling.nextElementSibling;
+      }
+      return siblings;
+    }
+
+    // Unfolds a folder.
+    function unfold(element){
+      element.classList.toggle("activeFolder");
+      element.firstChild.classList.toggle("titleClicked");
+      getSiblings(element).forEach(e => e.classList.toggle("folded"));
+    }
+
+    let folders = document.getElementsByClassName("folderTitle");
+
+    // Collapsing folders.
+    for (let folder of folders){
+      let siblings = getSiblings(folder);
+
+      if (siblings.find(s => s.classList.contains("active")))
+        unfold(folder, folders);
+
+      folder.addEventListener("click", () => unfold(folder));
+    }
+
+    // Handles dark/light mode
+    document.getElementById("themeBtn").addEventListener("click", () => {
+      localStorage.setItem("theme", document.body.classList.contains("dark") ? "light" : "dark");
+      document.body.classList.toggle("dark")
+    })
+

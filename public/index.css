@@ -1,0 +1,13 @@
+.index { margin-top: 5vh; }
+
+.index h2 { color: var(--bright-pink); }
+
+.index .subject {
+    font-size: 1.2em;
+    font-weight: 700;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--beige);
+    margin-bottom: 0;
+}
+
+.indexList { margin: 1vh 0 3vh 1vw; }

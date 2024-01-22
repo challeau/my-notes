@@ -1,4 +1,7 @@
-.navContainer { width: 0 }
+.navContainer {
+    width: 0;
+    transition: width .4s ease-in-out;
+}
 
 .navBtn {
     position: fixed;
@@ -17,29 +20,26 @@
     cursor: pointer;
 }
 
-.navBtn:not(.open), #themeBtn {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
+.navBtn:not(.open), #themeBtn { box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; }
 
-.navBtn:hover, .navBtn.open {
-    background: var(--beige);
-}
+.navBtn:hover, .navBtn.open { background: var(--beige); }
 
-.navBtn.open {
-    margin: 1em;
-}
+.navBtn.open { margin: 1em; }
 
-#themeBtn {
-    bottom: 1em;
-}
+#themeBtn { bottom: 1em; }
 
 #navBar {
+    position: fixed;
+    left: -20vw;
+    top: 0;
+    transition: left .4s ease-in-out;
+
     width: 13vw;
     min-width: max-content;
     height: 100vh;
-    position: fixed;
+
     background-color: var(--beige);
-    transition: display 1s ease-in;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 #navBar > * {
