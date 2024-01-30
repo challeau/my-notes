@@ -53,8 +53,10 @@ function getResources(files, resourcePath, dir="") {
 		allowedAttributes: {
 		    a: [ 'href', 'name', 'target' ],
 		    img: [ 'src', 'srcset', 'alt', 'title', 'width', 'height', 'loading' ],
-		    code: [ 'class' ]},
-		allowedTags: sanitizeHtml.defaults.allowedTags.concat([ 'img', 'code' ])
+		    code: [ 'class' ],
+		    input: ['checked', 'type']
+		},
+		allowedTags: sanitizeHtml.defaults.allowedTags.concat([ 'img', 'code', 'input' ])
 	    });
 
 	    resources.push({text: parsedHTML, metadata: metadata});

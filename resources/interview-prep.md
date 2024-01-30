@@ -47,9 +47,16 @@ By using a library, you control the flow of the program. When you use a framewor
 - radix sort: non-comparative, places numbers in "buckets" according to the least or most significant digit. Each bucket is then sorted with another algo or recursively.
 
 
-## 3 - Presentation
+## 3 - Prep
 
-### 3.1 - Who am i?
+- [ ] Web App Architecture
+- [ ] Design patterns
+- [ ] Vue.js
+
+
+## 4 - Presentation
+
+### 4.1 - Who am i?
 
 - commence le developement a l'ecole 42, ou j'ai pu realiser de nombreux projets en C, notamment de l'algo, de l'imagerie 3D from scratch, bas niveau.<br>ca m'a permi d'acquerir une bonne connaissance de la machine, et des concepts fondamentaux de la programation -> algos essentiels, compilation, bonnes pratiques.
 - envie de me specialiser dans le web --> appris en solo + formation fullstack a Ironhack pour approfondir et valoriser mes competences. j'y ai eu un titre RNCP de niveau 6.<br>Stac MERN: MongoDB, express, React et Node. Plusieurs apps et API, projet final compagnon ACNH avec une API pour la data des creatures qu'on attrape dans le jeux.
@@ -63,7 +70,7 @@ Python -  back --> flask, eve, redis
 BDD    -  MongoDB, bases en SQL
 
 
-### 3.2 - XMCO
+### 4.2 - XMCO
 
 front Angular/Typescript.
 
@@ -85,12 +92,12 @@ Refactor des comptes clients et des autorisations d'acces pour permettre a des p
 Decide de partir pcq j'avais l'impression d'avoir fait le tour du projet, envie d'apprendre de nouvelles technos et pas d'evolution
 
 
-### 3.3 - Ce que je cherche
+### 4.3 - Ce que je cherche
 
 Un poste a Paris, avec du TT qui me propose de nouveux defis techniques et de continuer a developper mes competences. Bonus si le taff a un sens.
 
 
-### 3.4 - Questions
+### 4.4 - Questions
 
 - quelle stack tech
 - a quels types de projets s'attendre 

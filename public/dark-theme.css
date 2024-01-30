@@ -54,33 +54,22 @@ body.dark *:not(pre) > code { background-color: var(--dark-grey); }
 body.dark blockquote { background-color: var(--dark-grey);}
 
 
-body.dark .content > ul::before {
-    content: "";
-    width: 0.7%;
-    height: 100%;
-    background-color: var(--grey);
-    border-radius: 1em;
-    position: absolute;
-    right: 100%;
-    top: 1%;
-}
+body.dark .content > ul::before { background-color: var(--grey); }
 
-body.dark .content li {
-    padding: 0.3em 0;
-    max-width: 90%;
-    position: relative;
-}
+body.dark .content li::marker { color: var(--grey); }
 
-body.dark .content li::marker {
-    color: var(--grey);
-}
-
+body.dark .content li:has(input:checked) { color: var(--grey) }
 
 body.dark table { background-color: var(--grey); }
 
 body.dark th {
     background-color: var(--lilac);
     color: var(--dark-purple);
+}
+
+body.dark .content li:has(input) > input[type="checkbox"] {
+    color: var(--grey);
+    border-color: var(--grey);
 }
 
 body.dark tbody tr:hover td { background-color:  var(--dark-grey); }

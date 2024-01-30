@@ -189,6 +189,40 @@ blockquote {
     color: #cecac4;
 }
 
+
+.content li:has(input) { display: block; }
+
+.content > ul:has(li>input)::before {
+    width: 0;
+    padding-left: 0;
+}
+
+.content li:has(input) > input[type="checkbox"] {
+    appearance: none;
+    margin: 0 .6em 0 0;
+    color: #cecac4;
+    width: 2.4em;
+    height: 2.4em;
+    border: 0.2em solid #cecac4;
+    border-radius: 14%;
+    transform: translateY(0.6em);
+    overflow: hidden;
+}
+
+.content li:has(input) > input[type="checkbox"]::before {
+    content: "";
+    font-family: "Material Icons";
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--pink);
+}
+
+.content li:has(input) > input[type="checkbox"]:checked::before { content: "check"; }
+
+.content li:has(input:checked) { color: #cecac4 }
+
+
+
 .content img[alt="center-eg"] {
     display: block;
     margin: auto;
