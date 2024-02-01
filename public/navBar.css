@@ -40,6 +40,9 @@
 
     background-color: var(--beige);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+    overflow: scroll;
+    padding-bottom: 9vh;
 }
 
 #navBar > * {

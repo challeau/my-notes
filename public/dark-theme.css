@@ -21,7 +21,6 @@ body.dark .content {
 
 body.dark h1 { -webkit-text-fill-color: var(--lilac); color: var(--dark-purple) }
 
-
 /* NAVBAR */
 body.dark #navBar {
     background-color: var(--black);
@@ -45,8 +44,6 @@ body.dark #navBar .folderTitle:hover:not(.activeFolder) {
 
 
 /* CONTENT */
-/* body.dark .content h5[id='#table-of-contents'] { color: var(--bright-yellow); } */
-
 body.dark .content a { color: var(--blue); }
 
 body.dark *:not(pre) > code { background-color: var(--dark-grey); }

@@ -50,8 +50,12 @@ By using a library, you control the flow of the program. When you use a framewor
 ## 3 - Prep
 
 - [ ] Web App Architecture
-- [ ] Design patterns
+- [ ] Django
+- [ ] React
+- [ ] Set up dev environment --> JS + Python
+- [ ] Node
 - [ ] Vue.js
+- [ ] Design patterns
 
 
 ## 4 - Presentation

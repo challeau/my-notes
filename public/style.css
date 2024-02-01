@@ -37,8 +37,7 @@ body {
     background-color: var(--beige);
     color: var(--brown);
     font-family: 'Quicksand', sans-serif;
-    font-size: 1.25em;
-    font-weight: 500;
+    font-size: 1.3em;
     display: flex;
     justify-content: flex-start;
     background: radial-gradient(circle at top, var(--light-pink) , var(--light-blue));
@@ -201,18 +200,18 @@ blockquote {
     appearance: none;
     margin: 0 .6em 0 0;
     color: #cecac4;
-    width: 2.4em;
-    height: 2.4em;
+    width: 2.1em;
+    height: 2.1em;
     border: 0.2em solid #cecac4;
     border-radius: 14%;
-    transform: translateY(0.6em);
+    transform: translateY(0.5em);
     overflow: hidden;
 }
 
 .content li:has(input) > input[type="checkbox"]::before {
     content: "";
     font-family: "Material Icons";
-    font-size: 2em;
+    font-size: 1.7em;
     font-weight: 700;
     color: var(--pink);
 }
