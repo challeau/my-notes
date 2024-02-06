@@ -1,5 +1,8 @@
+
 [//]: # (TITLE DOM Manipulation)
 [//]: # (ENDPOINT /jsdom)
+[//]: # (PRIORITY 1)
+
 
 # DOM manipulation
 

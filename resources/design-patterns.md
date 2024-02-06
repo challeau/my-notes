@@ -61,7 +61,7 @@ Good to know: an **interface** is a **point of interaction between different com
 
 It suggests that you **replace direct object construction calls** (using the `new` operator) **with calls to a special factory method**. Objects returned by a factory method are often referred to as **products**.
 
-The **code that uses the factory** method (often called the **client code**) doesn’t see a difference between the actual products returned by various subclasses. 
+The **code that uses the factory** method (often called the **client code**) doesn't see a difference between the actual products returned by various subclasses. 
 
 The only limitation is that the **returned products** need to have a **common base class or interface** and the **factory method in the base class** should have its **return type declared as this interface**.
 
@@ -69,7 +69,7 @@ The only limitation is that the **returned products** need to have a **common ba
 
 1. The **Product declares the interface**, which is common to all objects that can be produced by the creator and its subclasses.
 2. **Concrete Products** are **different implementations** of the product interface.
-3. The **Creator class declares the factory method** that returns new product objects. It’s important that the return type of this method matches the product interface.<br>
+3. The **Creator class declares the factory method** that returns new product objects. It's important that the return type of this method matches the product interface.<br>
 You can declare the factory method as `abstract` to **force all subclasses to implement their own** versions of the method. As an alternative, the base factory method can return some default product type.
 4. **Concrete Creators override the base factory method** so it **returns a different type** of product.
 
@@ -79,7 +79,7 @@ You can declare the factory method as `abstract` to **force all subclasses to im
 #### Applicability
 
 Use when: 
-- the exact **types and dependencies** of the objects your code should work with are **unknown**. The product construction code is separated from the code that uses the product. Therefore it’s **easier to extend** the product construction code independently from the rest of the code.
+- the exact **types and dependencies** of the objects your code should work with are **unknown**. The product construction code is separated from the code that uses the product. Therefore it's **easier to extend** the product construction code independently from the rest of the code.
 - you want to provide users with a way to extend its internal components.
 - you want to save system resources by reusing existing objects.
 

@@ -1,6 +1,7 @@
 
 [//]: # (TITLE MongoDB)
 [//]: # (ENDPOINT /py-mongo)
+[//]: # (PRIORITY 420)
 
 # MongoDB & Python
 
@@ -49,7 +50,7 @@ Python's native dictionary and list data types make it second only to JavaScript
 
 ## 1 - PyMongo
 
-PyMongo is MongoDB’s **official native driver for Python**. It’s a library that lets you connect to a MongoDB database and query the data stored using the MongoDB Query API. It is the recommended way to interface with the document data.
+PyMongo is MongoDB's **official native driver for Python**. It's a library that lets you connect to a MongoDB database and query the data stored using the MongoDB Query API. It is the recommended way to interface with the document data.
 
 PyMongo is easy to use, and offers an **intuitive API for accessing databases, collections, and documents**.
 
@@ -522,7 +523,7 @@ User.objects(name="me").delete()
 
 ### 2.4 - Aggregation
 
-If you need to run aggregation pipelines, MongoEngine provides an entry point to Pymongo’s aggregation framework through `aggregate()`:
+If you need to run aggregation pipelines, MongoEngine provides an entry point to Pymongo's aggregation framework through `aggregate()`:
 
 ```python
 class Person(Document):

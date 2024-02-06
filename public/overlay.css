@@ -16,17 +16,25 @@
 
     border-radius: 50%;
     background: var(--white);
-    transition: background .3s ease-in-out;
     cursor: pointer;
 }
 
-.navBtn:not(.open), #themeBtn { box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; }
+.navBtn:not(.open), #themeBtn, #toTopBtn { box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; }
 
 .navBtn:hover, .navBtn.open { background: var(--beige); }
 
 .navBtn.open { margin: 1em; }
 
-#themeBtn { bottom: 1em; }
+#themeBtn, #toTopBtn {
+    bottom: 0;
+    right: 0;
+}
+
+#toTopBtn {
+    bottom: 4vw;
+    right: -25vw;
+    transition: right .4s ease-in-out;
+}
 
 #navBar {
     position: fixed;
@@ -42,7 +50,8 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
     overflow: scroll;
-    padding-bottom: 9vh;
+    scrollbar-color: var(--dark-beige) var(--beige);
+    padding-bottom: 2vh;
 }
 
 #navBar > * {

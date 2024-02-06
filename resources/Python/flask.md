@@ -1,6 +1,7 @@
 
 [//]: # (TITLE Flask)
 [//]: # (ENDPOINT /flask)
+[//]: # (PRIORITY 420)
 
 # Flask
 
@@ -137,7 +138,7 @@ For more complex applications you might want to have multiple applications for d
 
 The first time the babel extension needs the locale of the current user, it will call a `localeselector()` function, and the first time the timezone is needed it will call a `timezoneselector()` function.
 <br/>
-If any of these methods return None the extension will automatically fall back to what’s in the config. Furthermore, for efficiency that function is called only once and the return value then cached.
+If any of these methods return None the extension will automatically fall back to what's in the config. Furthermore, for efficiency that function is called only once and the return value then cached.
 
 If you need to switch the language between a request, you can `refresh()` the cache.
 
@@ -168,7 +169,7 @@ To format dates you can use the `format_datetime()`, `format_date()`, `format_ti
 <br/>
 They all accept a `datetime.datetime` (or `datetime.date`, `datetime.time` and `datetime.timedelta`) object as first parameter and then optionally a format string. 
 
-> The application should use naive datetime objects internally that use UTC as timezone. On formatting it will automatically convert into the user’s timezone in case it differs from UTC.
+> The application should use naive datetime objects internally that use UTC as timezone. On formatting it will automatically convert into the user's timezone in case it differs from UTC.
 
 
 To play with the date formatting from the console, you can use the `test_request_context()` method:
@@ -260,7 +261,7 @@ class MyForm(formlibrary.FormBase):
 
 First you need to mark all the strings you want to translate in your application with `gettext()` or `ngettext()`.
 
-After that, it’s time to create a `.pot` file: a file that contains all the strings and is the template for a `.po` file which contains the translated strings. Babel can do all that for you.
+After that, it's time to create a `.pot` file: a file that contains all the strings and is the template for a `.po` file which contains the translated strings. Babel can do all that for you.
 
 More info [here](https://python-babel.github.io/flask-babel/#translating-applications)
 

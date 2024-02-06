@@ -1,5 +1,6 @@
 [//]: # (TITLE The Internet)
 [//]: # (ENDPOINT /tcpip)
+[//]: # (PRIORITY 1)
 
 # TCP/IP and the Internet
 

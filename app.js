@@ -18,9 +18,20 @@ marked.use({
 	{
 	    name: 'image',
 	    renderer(token) {
+		// Adds the image dir path to the image 
 		const imagePath = path.join('assets/imgs', token.href);
 		let ret = `<img src="${imagePath}" alt="${token.text}"/>`;
 		return ret;
+	    }
+	},
+	{
+	    name: 'link',
+	    renderer(token) {
+		// make link open in new tab if it redirect to another site
+		let linkAttribs = `href="${token.href}" title="${token.title}"`;
+		if (!token.href.match(/^[/#]/))
+		    linkAttribs += ' target="_blank"';
+		return `<a ${linkAttribs}>${token.text}</a>`;
 	    }
 	}]
 });
@@ -53,8 +64,6 @@ fs.readdir(resourcePath, (err, files) => {
 	});
     }
 });
-
-
 
 app.listen(PORT);
 console.log("iss all good :)");

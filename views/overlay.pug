@@ -12,8 +12,8 @@ mixin navFolder(name, links)
       each page in links
         +navLink(page.title, page.endpoint, "folded")
 
-// NAVBAR
-mixin navbar(dirs, links)
+// Navigation
+mixin navBar(dirs, links)
   div.navContainer
     div(id="navFoldBtn" class="navBtn")
       span(class="material-symbols-outlined ")= "menu"
@@ -24,8 +24,14 @@ mixin navbar(dirs, links)
       ul.lonelyLink
         each page in links
           +navLink(page.title, page.endpoint, "")
-    div(id="themeBtn" class="navBtn")
-      span(class="material-symbols-outlined ")= "dark_mode"
+
+// OVERLAY == navBar + utility buttons
+mixin overlay(dirs, links)
+  +navBar(dirs, links)
+  div(id="themeBtn" class="navBtn")
+    span(class="material-symbols-outlined ")= "dark_mode"
+  div(id="toTopBtn" class="navBtn")
+    span(class="material-symbols-outlined ")= "arrow_upward"
 
   script.
     // Folding the NavBar with the menu button
@@ -40,7 +46,7 @@ mixin navbar(dirs, links)
     });
 
     // Folding the Folders
-    // Returns all the argument's siblings.
+    // Returns all the argument's siblings
     function getSiblings(element){
       let siblings = [];
       let nextSibling = element.nextElementSibling;
@@ -52,7 +58,7 @@ mixin navbar(dirs, links)
       return siblings;
     }
 
-    // Unfolds a folder.
+    // Unfolding a folder
     function unfold(element){
       element.classList.toggle("activeFolder");
       element.firstChild.classList.toggle("titleClicked");
@@ -61,7 +67,7 @@ mixin navbar(dirs, links)
 
     let folders = document.getElementsByClassName("folderTitle");
 
-    // Collapsing folders.
+    // Collapsing folders
     for (let folder of folders){
       let siblings = getSiblings(folder);
 
@@ -76,4 +82,20 @@ mixin navbar(dirs, links)
       localStorage.setItem("theme", document.body.classList.contains("dark") ? "light" : "dark");
       document.body.classList.toggle("dark")
     })
+
+    // Scroll to top button
+    let scrollBtn = document.getElementById("toTopBtn");
+    
+    // Appear after user has scrolled
+    window.addEventListener("scroll", () => {
+      let y = window.scrollY;
+      
+      if (y > 20)
+        scrollBtn.style.right = "0";
+      else
+        scrollBtn.style.right = "-25vw";
+    })
+    
+    // Scroll to top when pressed
+    scrollBtn.addEventListener("click", () => window.scrollTo(0,0));
 

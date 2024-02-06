@@ -5,6 +5,22 @@ const path = require("path");
 
 
 /**
+ * Comparison function to sort by object's priority
+ * @param {Object} a
+ * @param {Object} b
+ * @returns {Number} 1 if a is bigger than b, -1 if a is smaller than b, 0 if they're equal
+ */
+function comparePriority(a, b){
+    if (a.priority > b.priority)
+	return 1;
+    else if (a.priority < b.priority)
+	return -1;
+    return 0;
+}
+
+
+
+/**
  * Convert md files to HTML and collect its metadata.
  * @param {Dirent} files - The files to convert.
  * @param {String} dir - The sub-directory if there is one.
@@ -75,17 +91,21 @@ function getResources(files, resourcePath, dir="") {
  */
 function getNavData(resources) {
     let allDirs = new Set(resources.map(r => r.metadata.folder));
-    let dirs = {};
+    let dirData = {};
     let rest = resources.filter(r => r.metadata.folder == undefined).map(r => r.metadata);
 
     for (let dir of Array.from(allDirs)){
 	if (dir == undefined)
 	    continue;
 	let res = resources.filter(r => r.metadata.folder == dir);
-	dirs[dir] = res.map(r => r.metadata);
+	dirData[dir] = res.map(r => r.metadata);
     }
 
-    return ([dirs, rest]);
+    // order resources by priority
+    for (let dir in dirData)
+	dirData[dir].sort(comparePriority);
+
+    return ([dirData, rest]);
 }
 
 

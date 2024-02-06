@@ -16,7 +16,7 @@
 
 ## 2 - Interface
 
-Blender’s interface is separated into three main parts:
+Blender's interface is separated into three main parts:
  - The **Topbar** (blue) at the very top consists of the main menu, which is used for saving, importing and exporting files, configuring settings, and rendering among other functions.
  - **Areas** (pink) in the middle, which is the main workspace
  - The **Status Bar** (yellow) at the bottom, which displays shortcut suggestions and relevant statistics.

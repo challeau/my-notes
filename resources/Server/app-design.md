@@ -1,5 +1,6 @@
 [//]: # (TITLE Web Architecture)
 [//]: # (ENDPOINT /architecture)
+[//]: # (PRIORITY 2)
 
 # Web App Architecture
 

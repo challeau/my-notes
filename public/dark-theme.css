@@ -14,17 +14,16 @@ body.dark {
     color: var(--white);
 }
 
-body.dark .content {
-    background-color: var(--black);
-    box-shadow: rgba(0, 0, 0, 0.55) 0px 5px 15px;
-}
-
 body.dark h1 { -webkit-text-fill-color: var(--lilac); color: var(--dark-purple) }
+
+body.dark .index .subject { border-color: var(--dark-grey);}
+
 
 /* NAVBAR */
 body.dark #navBar {
     background-color: var(--black);
     color: var(--white);
+    scrollbar-color: var(--grey) var(--black);
 }
 
 body.dark #navBar a { color: var(--white) }
@@ -44,6 +43,12 @@ body.dark #navBar .folderTitle:hover:not(.activeFolder) {
 
 
 /* CONTENT */
+
+body.dark .content {
+    background-color: var(--black);
+    box-shadow: rgba(0, 0, 0, 0.55) 0px 5px 15px;
+}
+
 body.dark .content a { color: var(--blue); }
 
 body.dark *:not(pre) > code { background-color: var(--dark-grey); }
@@ -56,6 +61,7 @@ body.dark .content > ul::before { background-color: var(--grey); }
 body.dark .content li::marker { color: var(--grey); }
 
 body.dark .content li:has(input:checked) { color: var(--grey) }
+
 
 body.dark table { background-color: var(--grey); }
 

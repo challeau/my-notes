@@ -1,6 +1,7 @@
 
 [//]: # (TITLE Docker)
 [//]: # (ENDPOINT /docker)
+[//]: # (PRIORITY 3)
 
 # Docker
 

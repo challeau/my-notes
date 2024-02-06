@@ -1,6 +1,7 @@
 
 [//]: # (TITLE JS basics)
 [//]: # (ENDPOINT /js)
+[//]: # (PRIORITY 0)
 
 # Essential JavaScript
 
@@ -370,7 +371,7 @@ Modern JS engines use **JIT compilation to speed up the interpretation**.
 
 The engine uses a **monitor** or **profiler**, which watches the code as it runs, and makes a note of how many times it is run and what types are used.
 
-1. The **monitor runs everything through the interpreter**. <br> If the same lines of code are run a few times, that segment of code is called **warm**. If it’s run a lot, then it’s called **hot**.
+1. The **monitor runs everything through the interpreter**. <br> If the same lines of code are run a few times, that segment of code is called **warm**. If it's run a lot, then it's called **hot**.
 2. When a function starts getting warm, the **JIT will send it off to the baseline compiler** and store the result of that compilation. Each line of the function is compiled to a "stub". The **stubs are indexed** by line number and variable type.
 3. If the monitor sees that execution is hitting the same code again with the same variable types, it will just **pull out its compiled version**.
 4. According to how warm the code is, the **baseline compiler will also make optimizations**.

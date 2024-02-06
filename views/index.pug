@@ -1,4 +1,4 @@
-include ./navBar.pug
+include ./overlay.pug
 
 doctype html
 html
@@ -18,8 +18,10 @@ html
     // no indexing
     meta(name="robots", content="noindex")
 
-  body.dark
-    +navbar(navDirs, navLinks)
+  body
+    script.
+      document.body.classList = localStorage.getItem("theme") || "light";
+    +overlay(navDirs, navLinks)
 
     div.content
       h1 Charlotte's Notes

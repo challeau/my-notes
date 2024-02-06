@@ -48,7 +48,7 @@ When the Base metrics are assigned values by an analyst, the Base equation compu
 
 Specifically, the Base equation is derived from two sub equations: the Exploitability sub-score equation, and the Impact sub-score equation.
 
-The Base Score can then be refined by scoring the Temporal and Environmental metrics in order to more accurately reflect the relative severity posed by a vulnerability to a user’s environment at a specific point in time. Scoring the Temporal and Environmental metrics is not required, but is recommended for more precise scores.
+The Base Score can then be refined by scoring the Temporal and Environmental metrics in order to more accurately reflect the relative severity posed by a vulnerability to a user's environment at a specific point in time. Scoring the Temporal and Environmental metrics is not required, but is recommended for more precise scores.
 
 Generally, the **Base and Temporal metrics** are specified by vulnerability bulletin analysts, security product vendors, or application vendors because they typically possess the **most accurate information** about the characteristics of a vulnerability. The **Environmental metrics** are specified by **end-user organizations** because they are best able to assess the potential impact of a vulnerability **within their own computing environment**.
 

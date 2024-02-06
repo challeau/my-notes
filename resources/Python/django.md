@@ -1,5 +1,6 @@
 [//]: # (TITLE Django)
 [//]: # (ENDPOINT /django)
+[//]: # (PRIORITY 420)
 
 # Django
 
@@ -79,12 +80,12 @@ $ python manage.py startapp app-name
 
 Django provides an abstraction layer (the "models") for structuring and manipulating the data of your web application. 
 
-A model is the single, definitive source of information about your data. It contains the **essential fields and behaviors of the data** you’re storing. Generally, each model maps to a single database table.
+A model is the single, definitive source of information about your data. It contains the **essential fields and behaviors of the data** you're storing. Generally, each model maps to a single database table.
 
 
 ## 3 - The view layer
 
-Django has the concept of “views” to encapsulate the logic responsible for processing a user’s request and for returning the response.
+Django has the concept of "views" to encapsulate the logic responsible for processing a user's request and for returning the response.
 
 URL linked to view
 

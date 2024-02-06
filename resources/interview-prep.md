@@ -53,7 +53,8 @@ By using a library, you control the flow of the program. When you use a framewor
 - [ ] Django
 - [ ] React
 - [ ] Set up dev environment --> JS + Python
-- [ ] Node
+- [ ] Node + express
+- [ ] git cheatsheet + git flow
 - [ ] Vue.js
 - [ ] Design patterns
 

@@ -1,6 +1,7 @@
 
 [//]: # (TITLE PY basics)
 [//]: # (ENDPOINT /py)
+[//]: # (PRIORITY 0)
 
 # Essential Python
 

@@ -1,5 +1,6 @@
 [//]: # (TITLE Networking 101)
 [//]: # (ENDPOINT /network)
+[//]: # (PRIORITY 0)
 
 # Networking 101
 

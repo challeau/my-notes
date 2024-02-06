@@ -1,6 +1,7 @@
 
 [//]: # (TITLE Angular)
 [//]: # (ENDPOINT /angular)
+[//]: # (PRIORITY 420)
 
 # Angular
 

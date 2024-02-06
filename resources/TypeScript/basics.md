@@ -1,6 +1,7 @@
 
 [//]: # (TITLE TS basics)
 [//]: # (ENDPOINT /ts)
+[//]: # (PRIORITY 0)
 
 # Essential TypeScript
 
@@ -58,7 +59,7 @@ Implicit assignment forces TypeScript to infer the value. TypeScript may not alw
 
 `booleans`, `number`, `string`.
 
-❌ Don’t ever use the types `Number`, `String`, `Boolean`, `Symbol`, or `Object`. These types refer to non-primitive boxed objects that are almost never used appropriately in JavaScript code.
+❌ Don't ever use the types `Number`, `String`, `Boolean`, `Symbol`, or `Object`. These types refer to non-primitive boxed objects that are almost never used appropriately in JavaScript code.
 
 
 ### 1.2 Special types

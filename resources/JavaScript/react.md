@@ -1,10 +1,14 @@
 
 [//]: # (TITLE React)
 [//]: # (ENDPOINT /react)
-
-“’”
+[//]: # (PRIORITY 420)
 
 # React
+
+"'"
+
+"'"
+
 
 React is an **unopinionated library** for **building user interfaces** based on **components**.
 
@@ -375,10 +379,10 @@ In rare cases, you might need to **catch all events on child elements**, even if
 
 Each event propagates in three phases:
 - It **travels down**, calling all `onClickCapture` handlers.
-- It runs the **clicked** element’s `onClick` handler.
+- It runs the **clicked** element's `onClick` handler.
 - It **travels upwards**, calling all `onClick` handlers.
 
-Capture events are **useful for code like routers or analytics**, but you probably won’t use them in app code.
+Capture events are **useful for code like routers or analytics**, but you probably won't use them in app code.
 
 Some browser events have **default behavior** associated with them. For example, a `<form>` submit event, which happens when a button inside of it is clicked, will reload the whole page by default. 
 You can call `e.preventDefault()` on the event object to **stop** this from happening.
