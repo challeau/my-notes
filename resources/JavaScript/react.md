@@ -5,11 +5,6 @@
 
 # React
 
-"'"
-
-"'"
-
-
 React is an **unopinionated library** for **building user interfaces** based on **components**.
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->

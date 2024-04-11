@@ -49,6 +49,20 @@ body {
     background-size: cover;
 }
 
+.container-row {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.container-column {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
 /* HEADERS */
 h1 {
     color: var(--bright-lilac);

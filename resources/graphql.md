@@ -7,8 +7,7 @@ GraphQL is a **query language for APIs**, and a **server-side runtime for execut
 
 A GraphQL service is created by **defining types** whose **fields** hold data, then **providing functions** to produce the result.
 
-
-<div class="container-row">
+<div class="container-row code-siblings">
 
 <div class="code-title">GrpahQL schema language</div>
 
@@ -59,7 +58,7 @@ The **scalar types represent the leaves of the query**, the fields that **resolv
 
 In the following query, the `name` and `appearsIn` fields will resolve to scalar types:
 
-<div class="container-row">
+<div class="container-row code-siblings">
 
 <div class="code-title">Query</div>
 
@@ -294,7 +293,7 @@ The **operation name** is a **meaningful and explicit name for your operation**.
 
 You can use the shorthand syntax and omit the **operation type** and **operation name**. These two forms are equivalent:
 
-<div class="container-row">
+<div class="container-row code-siblings">
 
 <div class="code-title">Query</div>
 
@@ -325,7 +324,7 @@ Note: its best practice to avoid the shorthand for readability. If you use the s
 
 At its simplest, GraphQL is about asking for specific fields on objects. 
 
-<div class="container-row">
+<div class="container-row code-siblings">
 
 <div class="code-title">Query</div>
 
@@ -355,7 +354,7 @@ The **query** has exactly the **same shape** as the **result**. This is essentia
 
 Fields can also refer to `Objects`. In that case, you can make a **sub-selection of fields** for that object. GraphQL queries can **traverse related objects and their fields**, letting clients fetch lots of related data in one request, instead of making several roundtrips as one would need in a classic REST architecture.
 
-<div class="container-row">
+<div class="container-row code-siblings">
 
 <div class="code-title">Query</div>
 
@@ -400,7 +399,7 @@ query HeroNameAndFriends{
 
 In GraphQL, **every field and nested object can get its own set of arguments**, making GraphQL a complete replacement for making multiple API fetches. You can even pass arguments into scalar fields, to implement data transformations once on the server, instead of on every client separately.
 
-<div class="container-row">
+<div class="container-row code-siblings">
 
 <div class="code-title">Query</div>
 
@@ -440,7 +439,7 @@ Setting them up is easy:
 2. **Replace the static value** in the query by `$varName`.
 3. Pass `varName: <value>` in a separate, transport-specific **variables dictionary** (usually JSON).
 
-<div class="container-row">
+<div class="container-row code-siblings">
 
 <div class="container-column">
 
@@ -528,7 +527,7 @@ query HeroNameAndFriends($episode: Episode!) {
 
 You can't directly query for the same field with different arguments. That's why you need aliases - they let you **rename the result of a field to anything** you want.
 
-<div class="container-row">
+<div class="container-row code-siblings">
 
 <div class="code-title">Query</div>
 
@@ -578,7 +577,7 @@ fragment fragName on <type> {
 
 Requesting two heroes's friends thanks to fragments: 
 
-<div class="container-row">
+<div class="container-row code-siblings">
 
 <div class="container-column">
 
@@ -670,7 +669,7 @@ The concept of fragments is frequently **used to split complicated application d
 
 It is possible for fragments to **access variables declared in the query or mutation**.
 
-<div class="container-row">
+<div class="container-row code-siblings">
 
 <div class="container-column">
 
@@ -767,7 +766,7 @@ query HeroComparison($first: Int = 3) {
 
 If you are querying a field that returns an interface or a union type, you will need to use inline fragments to **access data on the underlying concrete type**. It's easiest to see with an example:
 
-<div class="container-row">
+<div class="container-row code-siblings">
 
 <div class="container-column">
 
@@ -825,7 +824,7 @@ To ask for a field on the concrete type, you need to use an **inline fragment wi
 
 GraphQL allows you to request `__typename`, a meta field, **at any point in a query** to get the name of the object type at that point.
 
-<div class="container-row">
+<div class="container-row code-siblings">
 
 <div class="code-title">Query</div>
 
@@ -895,7 +894,7 @@ query Hero($episode: Episode, $withFriends: Boolean!) {
 
 With `withFriends` set as `false`:
 
-<div class="container-row">
+<div class="container-row code-siblings">
 
 <div class="code-title">Variables</div>
 
@@ -922,7 +921,7 @@ With `withFriends` set as `false`:
 
 With `withFriends` set as `true`:
 
-<div class="container-row">
+<div class="container-row code-siblings">
 
 <div class="code-title">Variables</div>
 
@@ -969,7 +968,7 @@ Mutations are declared like querries, and can also contain multiple fields. The 
 
 Just like in queries, if the mutation field returns an object type, you can ask for nested fields. This can be useful for **fetching the new state of an object after an update**.
 
-<div class="container-row">
+<div class="container-row code-siblings">
 
 <div class="container-column">
 
@@ -1110,7 +1109,7 @@ As each field is resolved, the **resulting value is placed into a key-value map*
 
 Collectively, these produce a **structure that mirrors the original query** which can then be sent (typically as JSON) to the client which requested it.
 
-<div class="container-row">
+<div class="container-row code-siblings">
 
 <div class="code-title">Query</div>
 
@@ -1209,7 +1208,7 @@ The basic introspection query for fetching the type system of the schema might l
 A lot of fields in the selection sets for `queryType`, `mutationType`, `subscriptionType` and `types` are the same, so we can define some fragments:
 
 
-<div class="container-row">
+<div class="container-row code-siblings">
 
 <div class="code-title">Fragment definition</div>
 
@@ -1490,7 +1489,7 @@ The server must provide an interface called `Node`:
 - This `id` should be a **globally unique** identifier for this object.
 - Given just this id, the server should be able to **refetch** the object.
 
-<div class="container-row">
+<div class="container-row code-siblings">
 
 <div class="code-title">Introspection query</div>
 
@@ -1546,7 +1545,7 @@ The server must provide a root field called `node`:
 - When passing the value of the `id` field on an object that implements `Node`, the root field should **refetch the identical object**.
 - The server may return `null` if the data can't be fetched.
 
-<div class="container-row">
+<div class="container-row code-siblings">
 
 <div class="code-title">Introspection query</div>
 

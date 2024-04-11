@@ -8,4 +8,8 @@
 node_modules/
 package-lock.json
 
+# ignore MacOS files
+.DS_Store
+
+# ignore project files
 private/
