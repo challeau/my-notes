@@ -19,7 +19,7 @@ Relay brings the **composability** of React components to data fetching. **Each 
 - **Type safety**.
 - **Hyper-optimized runtime**: its JIT-friendly runtime processes incoming data faster by statically determining what payloads to expect.
 
-Relay has a **UI-agnostic layer** that **fetches and manages data**, and a **React-specific layer** that **handles loading states, pagination, and other UI paradigms**. 
+Relay has a **UI-agnostic layer** that **fetches and manages data**, and a **React-specific layer** that **handles loading states, pagination, and other UI paradigms**.
 
 It is mainly supported when used with React, although you can access your Relay data outside of React if you need to. The React-specific parts of Relay are **based on `Suspense`**.
 
@@ -27,7 +27,7 @@ It is mainly supported when used with React, although you can access your Relay 
 
 Relay is a data management library for the client that’s oriented around GraphQL, but uses it in a very specific way that gets the most benefit from it.
 
-For the best performance, you want your app to issue a single request at the beginning of each screen or page instead of having individual components issue their own requests. 
+For the best performance, you want your app to issue a single request at the beginning of each screen or page instead of having individual components issue their own requests.
 
 But the problem with that is that it **couples components and screens together**, creating a big maintenance problem: if the data changes shape then you have to modify the query. It becomes very difficult to maintain these big screen-wide queries.
 

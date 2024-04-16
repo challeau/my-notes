@@ -11,34 +11,32 @@ While it is most well-known as the **scripting language** for Web pages, many no
 
 JavaScript supports object-oriented, imperative, and declarative styles.
 
-
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 ##### Table of contents
 
 - [1 - Functions](#1---functions)
-    - [1.1 - Function declaration](#11---function-declaration)
-    - [1.2 - Function expression](#12---function-expression)
+  - [1.1 - Function declaration](#11---function-declaration)
+  - [1.2 - Function expression](#12---function-expression)
 - [2 - Arguments and parameters](#2---arguments-and-parameters)
-    - [2.1 - Parameters](#21---parameters)
-    - [2.2 - The `arguments` object](#22---the-arguments-object)
-    - [2.3 - Destructuring](#23---destructuring)
-    - [2.4 - Call-by-sharing](#24---call-by-sharing)
+  - [2.1 - Parameters](#21---parameters)
+  - [2.2 - The `arguments` object](#22---the-arguments-object)
+  - [2.3 - Destructuring](#23---destructuring)
+  - [2.4 - Call-by-sharing](#24---call-by-sharing)
 - [3 - Arrow functions](#3---arrow-functions)
 - [4 - Closures](#4---closures)
 - [5 - Modules](#5---modules)
-    - [5.1 - Exporting](#51---exporting)
-    - [5.2 - Importing](#52---importing)
-    - [5.3 - Top level await](#53---top-level-await)
+  - [5.1 - Exporting](#51---exporting)
+  - [5.2 - Importing](#52---importing)
+  - [5.3 - Top level await](#53---top-level-await)
 - [4 - Quirks](#4---quirks)
-    - [4.1 - Hoisting](#41---hoisting)
-    - [4.2 - Interpreted or compiled?](#42---interpreted-or-compiled)
-        - [Compilation](#compilation)
-        - [Interpretation](#interpretation)
-        - [JIT compilation](#jit-compilation)
-    - [4.3 - TS vs JS](#43---ts-vs-js)
+  - [4.1 - Hoisting](#41---hoisting)
+  - [4.2 - Interpreted or compiled?](#42---interpreted-or-compiled)
+    - [Compilation](#compilation)
+    - [Interpretation](#interpretation)
+    - [JIT compilation](#jit-compilation)
+  - [4.3 - TS vs JS](#43---ts-vs-js)
 
 <!-- markdown-toc end -->
-
 
 ## 1 - Functions
 
@@ -50,35 +48,36 @@ Functions that are properties of an object are called **methods**.
 
 ```javascript
 function square(num) {
-	let result = num * num;
-	
-	return result;
+ let result = num * num;
+ 
+ return result;
 }
 ```
-Functions that are **declared** are **hoisted** by the interpreter.
 
+Functions that are **declared** are **hoisted** by the interpreter.
 
 ### 1.2 - Function expression
 
 ```javascript
 // anonymous
 const square = function (num) {
-	return num * num;
+ return num * num;
 };
 
 // nonymous --> useful for recursion
 const factorial = function fac(num) {
-	if (num < 2)
-		return 1;
-	return n * fac(n - 1);
+ if (num < 2)
+  return 1;
+ return n * fac(n - 1);
 };
 ```
+
 They are convinient to pass functions to other functions.
 
 ## 2 - Arguments and parameters
 
- - Parameter: a **variable in the function definition** - placeholder that holds no value.
- - Argument: **value of the variable that gets passed** to a function when it's called.
+- Parameter: a **variable in the function definition** - placeholder that holds no value.
+- Argument: **value of the variable that gets passed** to a function when it's called.
 
 ### 2.1 - Parameters
 
@@ -90,7 +89,7 @@ function multiply(a, b = 1) {
   return a * b;
 }
 
-console.log(multiply(5));	// 5
+console.log(multiply(5)); // 5
 
 
 // REST PARAMETER ...theArgs
@@ -99,16 +98,14 @@ function multiply(multiplier, ...theArgs) {
 }
 
 const arr = multiply(2, 1, 2, 3);
-console.log(arr);		// [2, 4, 6]
+console.log(arr);  // [2, 4, 6]
 ```
-
 
 ### 2.2 - The `arguments` object
 
 The arguments of a function are maintained in an array-*like* object. Within a function, you can address the arguments passed to it as follows: `arguments[i];`.
 
 Using the arguments object, you can **call a function with more arguments than it is formally declared** to accept. You can use `arguments.length` to determine the number of arguments actually passed to the function, and then access each argument using the `arguments` object.
-
 
 ### 2.3 - Destructuring
 
@@ -118,23 +115,23 @@ Using the arguments object, you can **call a function with more arguments than i
 const x = [1, 2, 3, 4, 5];
 const [y, z, ..rest] = x;
 
-console.log(y);		// 1
-console.log(z);		// 2
-console.log(rest);	// [3, 4, 5]
+console.log(y);  // 1
+console.log(z);  // 2
+console.log(rest); // [3, 4, 5]
 
 const obj = { a: 1, b: 2 };
 const { a, b } = obj;
 
-console.log(a);		// 1, == obj.a
-console.log(b);		// 2, == obj.b
+console.log(a);  // 1, == obj.a
+console.log(b);  // 2, == obj.b
 ```
 
 **Each destructured property can have a default value**. The default value is used when the property is not present, or has value `undefined`. It is not used if the property has value `null`.
 
 ```javascript
-const [a = 1] = [];				// a is 1
-const { b = 2 } = { b: undefined };		// b is 2
-const { c = 2 } = { c: null };			// c is null
+const [a = 1] = [];    // a is 1
+const { b = 2 } = { b: undefined };  // b is 2
+const { c = 2 } = { c: null };   // c is null
 ```
 
 The default value can be any expression. It will only be evaluated when necessary.
@@ -158,9 +155,9 @@ Other types: pass-by-reference, pass-by-value.
 ```javascript
 function changeStuff(a, b, c, d)
 {
-	a = a * 10;			// re-assignment 
-	b.item = "changed";		// internal change
-	c = {item: "changed"};	// re-assignment
+ a = a * 10;   // re-assignment 
+ b.item = "changed";  // internal change
+ c = {item: "changed"}; // re-assignment
 }
 
 var num = 10;
@@ -169,20 +166,19 @@ var obj2 = {item: "unchanged"};
 
 changeStuff(num, obj1, obj2);
 
-console.log(num);		// 10
-console.log(obj1.item);		// {item: "changed"}
-console.log(obj2.item);		// {item: "unchanged"}
+console.log(num);  // 10
+console.log(obj1.item);  // {item: "changed"}
+console.log(obj2.item);  // {item: "unchanged"}
 ```
-
 
 ## 3 - Arrow functions
 
 > An arrow function expression is a **compact alternative to a traditional function expression**.
 
 Arrow functions have some semantic differences and deliberate limitations in usage:
- - They **don't have their own bindings** to `this`, `arguments`, or `super`, and should not be used as methods.
- - They **cannot be used as constructors**. Calling them with `new` throws a `TypeError`. They also don't have access to the `new.target` keyword.
- - They **cannot use `yield`** within their body and **cannot be created as generator** functions.
+- They **don't have their own bindings** to `this`, `arguments`, or `super`, and should not be used as methods.
+- They **cannot be used as constructors**. Calling them with `new` throws a `TypeError`. They also don't have access to the `new.target` keyword.
+- They **cannot use `yield`** within their body and **cannot be created as generator** functions.
 
 Syntax:
 
@@ -202,12 +198,11 @@ param => {
 }
 
 (param1, paramN) => {
-	statements
+ statements
 }
 ```
 
 They are **always anonymous** and **support rest parameters, default parameters, and destructuring within params**. They can be **asynchrnous**.
-
 
 ## 4 - Closures
 
@@ -225,9 +220,10 @@ function makeAdder(x) {
 const add5 = makeAdder(5);
 const add10 = makeAdder(10);
 
-console.log(add5(2));	// 7
-console.log(add10(2));	// 12
+console.log(add5(2)); // 7
+console.log(add10(2)); // 12
 ```
+
 `add5` and `add10` both share the same function body definition, but store different lexical environments. In `add5`'s lexical environment, `x` is 5, while in the lexical environment for `add10`, `x` is 10.
 
 In this example we created a function factory. A **factory is a function that returns a new object**. Here, the factory returns a new function object.
@@ -258,7 +254,6 @@ document.getElementById("size-14").onclick = size14;
 document.getElementById("size-16").onclick = size16;
 ```
 
-
 ## 5 - Modules
 
 >  JavaScript files that have been structured into smaller, more manageable file sizes. <br/>They are **used to create more cleanly separated and reusable modular pieces of code**, which can be **exported and imported** into other modules.
@@ -275,23 +270,23 @@ The first thing you do to get access to module features is export them. This is 
 
 ```javascript
 // NAMED EXPORTS
-export const name = "name";	// you can export any object, variable, or class
+export const name = "name"; // you can export any object, variable, or class
 
 export function func(args) {
-	// statements
+ // statements
 }
 
-export { name, func };		// or you can group the exports
+export { name, func };  // or you can group the exports
 
 // DEFAULT EXPORTS
 function anotherFunc(args) {
-	// statements
+ // statements
 }
 
-export default anotherFunc;	// no curly brackets for the default
+export default anotherFunc; // no curly brackets for the default
 
-export default function (arg) {	// you can export an anonymous function
-	// statements
+export default function (arg) { // you can export an anonymous function
+ // statements
 }
 ```
 
@@ -306,11 +301,10 @@ Once you've exported some features out of your module, you need to import them i
 import { name, func as nickname } from "./modules/file.js";
 
 // DEFAULT IMPORT
-import func from "./modules/file.js";	// no curly brackets for the default, equivalent to ↓
+import func from "./modules/file.js"; // no curly brackets for the default, equivalent to ↓
 
 import { default as func } from "./modules/file.js";
 ```
-
 
 ### 5.3 - Top level await
 
@@ -326,11 +320,9 @@ export default await colors;
 
 We're using the keyword await before specifying the constant to export. This means **any other modules which include this one will wait until it has been downloaded and parsed before using it**.
 
-
 ## 4 - Quirks
 
 ### 4.1 - Hoisting
-
 
 > Hoisting refers to the process whereby the **interpreter** appears to **move the declaration** of functions, variables, classes, or imports to the **top of their scope**, **prior to execution** of the code.
 
@@ -341,29 +333,29 @@ The following behaviors can be regarded as hoisting:
 | Value hoisting       | Being able to use a variable's value in its scope before the line it's declared.                                                                                                                                                                                                                                                                                                    |
 | Declaration hoisting | Being able to reference a variable in its scope before the line it is declared, without throwing a ReferenceError, but the value is always undefined.<br/>The declaration of the variable causes behavior changes in its scope before the line in which it is declared.<br/>The side effects of a declaration are produced before evaluating the rest of the code that contains it. |
 
-
-
 ### 4.2 - Interpreted or compiled?
 
-#### Compilation
+#### > Compilation
 
-Passing code to a compiler which translates it into bytecode (binaries), which is then **executed by the machine**.
+When a program is compiled, the code is passed to a compiler that translates it into bytecode (binaries), which is then **executed by the machine**.
+
+Compilation takes **longer to start up** but it's more **efficient**:
+- The code can be optimized.
+- Loops are only translated once.
 
 `Source code --> COMPILER --> machine code --> output`
 
-Compilation takes **longer to start up** but it's more **efficient** (optimized and loops are only translated once).
+#### > Interpretation
 
+When a program is interpreted, the code is **read, translated, and executed by the interpreter**, not the machine.
 
-#### Interpretation
-
-The code is **read, translated, and executed by another program** than the machine (interpreter).
+The interpreter uses a concept called **REPL** (read-eval-print-loop). Interpretation is **faster to start up** (immediate output) but it's **inefficient**:
+— Eval is slow, it doesn’t leverage the speed of machine code.
+— The interpreter is not able to optimize code across the program.
 
 `Source code --> INTERPRETER --> output`
 
-Interpretation is **faster to start up** but it's **inefficient**.
-
-
-#### JIT compilation
+#### > JIT compilation
 
 Modern JS engines use **JIT compilation to speed up the interpretation**. 
 
@@ -377,6 +369,33 @@ The engine uses a **monitor** or **profiler**, which watches the code as it runs
 4. According to how warm the code is, the **baseline compiler will also make optimizations**.
 5. When a part of the code is **very hot**, the **monitor will send it off to the optimizing compiler**. This will create another, even faster, version of the function that will also be stored.
 
+#### > Compiler optimizations
+
+- **On stack replacement**: pieces of unoptimized code are replaced with optimized code during execution.
+- **Constant folding**: constant expressions are replaced by their final value at compile-time, rather than doing the calculation at run-time.
+- **Strength reduction**: costly operations are replaced by equivalent, less costly one. For example: multiplications are replaced by a series of additions.
+- **Induction variable analysis**: a form of strength reduction where induction variables (variable that gets increased or decreased by a fixed amount on every iteration of a loop) are replaced with simpler computations.
+  ```js
+  // Before optimization:
+  for (i = 0; i < 10; ++i) {
+      j = 17 * i;   // induction var
+  }
+
+  // After optimization:
+  j = -17;
+
+  for (i = 0; i < 10; ++i) {
+      j = j + 17;
+  }
+  ```
+- **Rematerialization**: recomputing a value instead of loading it from memory.
+- **Removing recursion**: tail recursive algorithms (perform the calculation, then perform the recursive calls) are converted to iterative algorithms.
+- **Peephole optimizations**: usually performed after the machine code has been generated, it examines a few adjacent instructions to see if they can be replaced by a shorter sequence of instructions (think bitwise operations to replace mathematical operations).
+- **Inline expansion**: the call to a function is replaced by its body. This saves the overhead of adding another stack frame and also adds a great opportunity for parameter specific optimisations, but this comes at the cost of space.
+- **Inline caching**: repeated calls to the same method tend to occur on the same type of object. After two successful calls of the same method to the same hidden class, V8 omits the hidden class lookup and adds the offset to that property to the object pointer itself. This greatly increases execution speed..
+- **Dead code elimination**: all code blocks which do not belong to any code path are eliminated.
+- **Code block reordering**: the basic blocks of the program are reordered to reduce conditional branches and improve locality of reference (when programs access the same set of memory locations repetitively over a short period of time).
+- **Jump threading**: if there are two conditions and the second one is a subset or inverse of the first, it can be eliminated, or threaded through the first jump.
 
 ### 4.3 - TS vs JS
 
