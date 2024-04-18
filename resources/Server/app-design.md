@@ -34,6 +34,7 @@ Within the 3 tier web application architecture, **each layer runs on its own inf
 
 ### 2.1 - Server side rendering (SSR)
 
+https://kubernetes.io/docs/concepts/overview/
 
 
 ## Sources

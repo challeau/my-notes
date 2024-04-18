@@ -50,7 +50,6 @@ Docker is an open platform for **developing**, **shipping**, and **running appli
 
 <!-- markdown-toc end -->
 
-
 ## 1 - Containers
 
 > Containers are **isolated environments**: they can have their own processes, services, network interfaces, and mounts.
@@ -61,7 +60,6 @@ This allows users to run each component of an application in separate environmen
 Containers differ from Virtual Machines in the sense that **VMs are completely isolated** and **run a complete operating system** -including its own kernel. This leads to a **higher utilization of underlying ressources**, and **more disk space** (GB, in contrast containers use MB).
 
 Generally, **containers boot up faster** and **can communicate between each other** thanks to networks, or **with the host** thanks to volumes and bind mounts.
-
 
 ## 2 - Images
 
@@ -78,7 +76,6 @@ docker build [-t <CUSTOM_TAG_NAME>] [-f <SOURCE_FILE>] <path>
 - `-t` sets the optional tag name of the image.
 - `-f` specifies the path for the Dockerfile (if it isn't `.`).
 - `path` specifies where the copy should be built.
-
 
 ## 3 - Dockerfile format
 
@@ -98,9 +95,7 @@ Minimizing the number of steps in your image may **improve build and pull perfor
 
 You can sort multi-line instructions with `\` before a newline.
 
-
 ### 3.1 - FROM
-
 
 A Dockerfile must begin with a `FROM` instruction, which specifies the **Parent Image** from which you are building.
 
@@ -133,9 +128,7 @@ The `tag` or `digest` values are optional. If you omit either of them, the build
 The optional `--platform` flag can be used to specify the platform of the image in case `FROM` references a multi-platform image. For example, `linux/amd64`, `linux/arm64`, or `windows/amd64`. **By default, the target platform of the build request is used.** 
 Global build arguments can be used in the value of this flag, for example automatic platform `ARG`s allow you to force a stage to native build platform (`--platform=$BUILDPLATFORM`), and use it to cross-compile to the target platform inside the stage.
 
-
 ### 3.2 - RUN
-
 
 The `RUN` instruction will **execute any commands in a new layer on top of the current image** and **commit the results**. The resulting committed image will be **used for the next step** in the Dockerfile.
 
@@ -162,7 +155,6 @@ Note that the exec form is parsed as a JSON array, which means that you **must u
 
 The **cache** for `RUN` instructions can be **invalidated** by using `docker build --no-cache`.
 
-
 #### 3.2.1 - RUN --mount
 
 ```docker
@@ -182,7 +174,6 @@ Mount types:
 | `secret`         | Allow the build container to access secure files such as private keys without baking them into the image. |
 | `ssh`            | Allow the build container to access SSH keys via SSH agents, with support for passphrases.                |
 
-
 #### 3.2.2 - RUN --network
 
 ```docker
@@ -198,7 +189,6 @@ Network types:
 | `default` (default) | Run in the default network.                                                                                                                                 |
 | `none`              | Run with no network access.<br/>`pip` will only be able to install the packages provided in the tarfile, which can be controlled by an earlier build stage. |
 | `host`              | Run in the host's network environment.                                                                                                                      |
-
 
 ### 3.3 - CMD
 
@@ -221,9 +211,7 @@ If `CMD` is used to provide default arguments for the `ENTRYPOINT` instruction, 
 
 > Do not confuse `RUN` with `CMD`. `RUN` actually runs a command and commits the result; `CMD` does not execute anything at build time, but specifies the intended command for the image.
 
-
 ### 3.4 - LABEL
-
 
 The `LABEL` instruction **adds metadata** to an image. A `LABEL` is a key-value pair. To include spaces within a `LABEL` value, use quotes and backslashes as you would in command-line parsing.
 
@@ -239,7 +227,6 @@ To view an image's labels, use the `docker image inspect` command. You can use t
 ```bash
 docker image inspect --format='' myimage
 ```
-
 
 ### 3.5 - EXPOSE
 
@@ -258,7 +245,6 @@ Regardless of the `EXPOSE` settings, you can override them at runtime by using t
 ```bash
 docker run -p 80:80/tcp -p 80:80/udp ...
 ```
-
 
 ### 3.6 - ENV
 
@@ -286,7 +272,6 @@ ENV MY_VAR my-value
 The environment variables set using `ENV` will **persist when a container is run** from the resulting image. You can view the values using `docker inspect`, and change them using `docker run --env <key>=<value>`.
 
 > Environment variable persistence **can cause unexpected side effects**.<br>For example, setting `ENV DEBIAN_FRONTEND=noninteractive` changes the behavior of `apt-get`, and may confuse users of your image.
-
 
 ### 3.7 - ADD
 
@@ -344,9 +329,7 @@ ADD git@git.example.com:foo/bar.git /bar
 
 This Dockerfile can be built with `docker build --ssh` or `buildctl build --ssh`.
 
-
 ### 3.8 - COPY
-
 
 The `COPY` instruction **copies new files or directories** from `<src>` and **adds them to the filesystem of the container** at the path `<dest>`.
 
@@ -363,7 +346,6 @@ COPY [--chown=<user>:<group>] ["<src>", ... "<dest>"]
 Optionally, `COPY` accepts a flag `--from=<name>` that can be used to **set the source location to a previous build stage** (created with `FROM .. AS <name>`) that will be used instead of a build context sent by the user. In case a build stage with a specified name can't be found an image with the same name is attempted to be used instead.
 
 `COPY` follows the same rules as `ADD`, except that it **only duplicates files**/directories in a **specified location** and **in their existing format**. This means that it doesn't deal with extracting a compressed file, but rather **copies it as-is**.
-
 
 #### COPY --link and ADD --link
 
@@ -398,7 +380,6 @@ When using `--link`, the `COPY`/`ADD` commands are **not allowed to read any fil
 
 > If you don't rely on the behavior of following symlinks in the destination path, using `--link` is always recommended. Its **performance is equivalent or better** than the default behavior and, it creates much **better conditions for cache reuse**.
 
-
 ### 3.9 - ENTRYPOINT
 
 An `ENTRYPOINT` allows you to **configure a container that will run as an executable**. Only the **last** `ENTRYPOINT` instruction in the Dockerfile will have an effect.
@@ -424,7 +405,6 @@ This means that the **executable will not be the container's** `PID 1` -and will
 Command line arguments to `docker run <image>` will be **appended after all elements** in an exec form `ENTRYPOINT`, and will **override all elements specified using** `CMD`. This **allows arguments to be passed to the entry point**, i.e., `docker run <image> -d` will pass the `-d` argument to the entry point.
 
 You can use the **exec form** of `ENTRYPOINT` to set fairly stable default commands and arguments and then use either form of `CMD` to set additional defaults that are more likely to be changed.
-
 
 #### 3.9.3 - CMD and ENTRYPOINT
 
@@ -467,12 +447,9 @@ The table below shows what command is executed for different `ENTRYPOINT`/`CMD` 
 	</tbody>
 </table>
 
-
 If `CMD` is defined from the base image, setting `ENTRYPOINT` will reset `CMD` to an empty value. In this scenario, `CMD` must be defined in the current image to have a value.
 
-
 ### 3.10 - VOLUME
-
 
 The `VOLUME` instruction **creates a mount point** with the specified **name** and marks it as holding externally mounted volumes from native host or other containers. 
 The `docker run` command **initializes the newly created volume with any data that exists at the specified location** within the base image.
@@ -493,7 +470,6 @@ Keep the following things in mind about volumes in the Dockerfile:
 - If any build steps **change the data** within the volume **after it has been declared**, those changes will be **discarded**.
 - The list is parsed as a **JSON array**. You must enclose words with double quotes (`"`) rather than single quotes (`'`).
 - The **host directory** (mountpoint) is, by its nature, **host-dependent**. This is to **preserve image portability**, since a given host directory can't be guaranteed to be available on all hosts. For this reason, you **can't mount a host directory from within the Dockerfile**. You must specify the mountpoint when you create or run the container.
-
 
 ### 3.11 - USER
 
@@ -534,7 +510,6 @@ RUN pwd  # output: /path/$DIRNAME
 
 If not specified, **the default working directory is** `/`. In practice, if you aren't building a Dockerfile from scratch (`FROM` scratch), the `WORKDIR` **may likely be set by the base image** you're using. Therefore, to avoid unintended operations in unknown directories, it is **best practice to set your `WORKDIR` explicitly**.
 
-
 ### 3.13 - ARG
 
 The `ARG` instruction defines a **variable that users can pass** at build-time to the builder with the `docker build` command using the `--build-arg <varname>=<value>` flag. A Dockerfile may include **one or more** `ARG` instructions.
@@ -565,7 +540,6 @@ The `USER` at line 2 evaluates to `some_user` since the `user` variable is defin
 
 An `ARG` instruction goes **out of scope at the end of the build stage** where it was defined. To use an arg in multiple stages, each stage must include the `ARG` instruction.
 
-
 #### 3.13.1 - Using ARG variables
 
 You can use an `ARG` or an `ENV` instruction to **specify variables** that are available to the `RUN` instruction. **Environment variables** defined using the `ENV` instruction **always override** an `ARG` instruction of the same name.
@@ -589,7 +563,6 @@ Using the second Dockerfile example, `CONT_IMG_VER` is still persisted in the im
 
 The **variable expansion** technique in this example allows you to pass arguments from the command line and persist them in the final image by leveraging the `ENV` instruction. 
 
-
 #### 3.13.2 - Predefined ARGs
 
 Docker has a set of predefined `ARG` variables that you can use without a corresponding `ARG` instruction in the Dockerfile:
@@ -600,7 +573,6 @@ Docker has a set of predefined `ARG` variables that you can use without a corres
 - ALL_PROXY / all_proxy
 
 To use these, pass them on the command line using the `--build-arg` flag.
-
 
 #### 3.13.3 - Impact on build caching
 
@@ -636,7 +608,6 @@ RUN echo $CONT_IMG_VER
 
 Line 3 does not cause a cache miss because the value of `CONT_IMG_VER` is a constant (hello). As a result, the environment variables and values used on the `RUN` (line 4) doesn't change between builds.
 
-
 ### 3.14 - ONBUILD
 
 The `ONBUILD` instruction **adds to the image a trigger instruction** to be executed at a later time, **when the image is used as the base for another build**. The trigger will be executed in the context of the downstream build, **as if it had been inserted immediately after the** `FROM` instruction in the downstream Dockerfile.
@@ -649,7 +620,6 @@ Any build instruction can be registered as a trigger.
 
 This is **useful if you are building an image which will be used as a base to build other images**, for example an application build environment or a daemon which may be customized with user-specific configuration.
 
-
 ### 3.15 - STOPSIGNA
 
 The `STOPSIGNAL` instruction **sets the system call signal that will be sent to the container to exit**. This signal can be a signal name in the format `SIG<NAME>`, for instance `SIGKILL`, or an unsigned number that matches a position in the kernel's syscall table, for instance 9. 
@@ -660,8 +630,6 @@ STOPSIGNAL signal
 ```
 
 The image's default `STOPSIGNAL` can be **overridden per container**, using the `--stop-signal` flag on `docker run` and `docker create`.
-
-
 
 ### 3.16 - HEALTHCHECK
 
@@ -690,7 +658,6 @@ The options that can appear before CMD are:
 - `--start-period=DURATION` (default: 0s)
 - `--retries=N` (default: 3)
 
-
 For example, to check every five minutes or so that a web-server is able to serve the site's main page within three seconds:
 
 ```docker
@@ -701,7 +668,6 @@ HEALTHCHECK --interval=5m --timeout=3s \
 To help debug failing probes, any output text (UTF-8 encoded) that the command writes on `stdout` or `stderr` will be stored in the health status and can be queried with `docker inspect`. Such output should be kept short (only the first 4096 bytes are stored currently).
 
 When the health status of a container changes, a `health_status` event is generated with the new status.
-
 
 ### 3.17 - SHELL
 
@@ -719,7 +685,6 @@ It affects `RUN`, `CMD`, and `ENTRYPOINT` if they're in a shell form.
 
 The `SHELL` instruction could **also be used to modify the way in which a shell operates**. For example, using `SHELL cmd /S /C /V:ON|OFF` on Windows, delayed environment variable expansion semantics could be modified. It can also be used on Linux should an alternate shell be required such as `zsh`, `csh`, `tcsh` and others.
 
-
 ## 4 - `.dockerignore`
 
 The directory where you issue the `docker build` command is called the **build context**. Docker will send all the files and directories in your build directory to the Docker daemon as part of the build context.
@@ -727,7 +692,6 @@ The directory where you issue the `docker build` command is called the **build c
 If you have stuff in your directory that is not needed by your build, you'll have an unnecessarily larger build context that results in a larger image size. For this reason, do not use your root directory (`/`) as the PATH for your build context, as it causes the build to transfer the entire contents of your hard drive to the Docker daemon.
 
 You can remedy this situation by adding a `.dockerignore` file where you can specify the list of folders and files that should be ignored in the build context.
-
 
 ## 5 - Best practices
 
@@ -740,7 +704,6 @@ You can remedy this situation by adding a `.dockerignore` file where you can spe
 - Minimize the number of layers: limit the number of `RUN`, `ADD`, and `COPY`.
 - Sort multi-line arguments alpha-numerically.
 - Leverage build cache.
-
 
 ## 6 - Docker and Python
 
@@ -844,9 +807,8 @@ docker-compose -f docker-compose.dev.yml up --build
 ```
 The `--build` flag tells Docker to compile the image and then start the containers.
 
-
 ## Sources
+
 - [Docker reference](https://docs.docker.com/engine/reference/builder/)
 - [Docker best practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
 - [Docker and python](https://docs.docker.com/language/python/build-images/)
-
