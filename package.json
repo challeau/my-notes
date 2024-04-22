@@ -12,8 +12,8 @@
     "nodemonConfig": {
         "restartable": "rs",
         "ignore": [ ".git", "node_modules/**/node_modules" ],
-        "watch": [ "./resources" ],
-        "ext": "js,json,md",
+        "watch": [ "./resources", "./public", "./views" ],
+        "ext": "js,json,md,pug,css",
         "delay": 2500
     },
     "keywords": [],

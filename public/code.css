@@ -2,7 +2,7 @@
 pre {
     font-family: 'Space Mono', sans-serif;
     padding: 1em;
-    margin: 1em;
+    margin: 1.5em;
     width: fit-content;
     max-width: 100%;
     background-color: var(--black);
@@ -10,6 +10,34 @@ pre {
     border-radius: 1em !important;
     position: relative;
 }
+
+.code-siblings {
+    align-items: flex-start;
+    padding: 0.5em 0;
+    gap: 2em;
+}
+
+.code-siblings .container-column {
+    align-items: flex-start;
+}
+
+.code-siblings .container-column:has(.container-column) {
+    gap: 2em;
+}
+
+.code-title {
+    width: 100%;
+    color: var(--bright-lilac);
+    background-color: var(--transparent-lilac);
+    padding: 0.6em 1.2em;
+    border-radius: 1em 1em 0 0;
+}
+
+.code-title + pre {
+    margin: 0;
+    border-radius: 0 0 1em 1em !important;
+}
+
 
 .hljs {
     display: block;
@@ -29,6 +57,7 @@ pre {
 .hljs-meta,
 .hljs-number,
 .hljs-attr,
+.hljs-symbol,
 .hljs-title.class_ { color: var(--bright-blue) !important; }
 
 .hljs-title.function_ { color: var(--bright-green) !important; }
@@ -44,4 +73,4 @@ pre {
 .hljs-params { color: var(--lilac) !important; }
 
 .hljs-selector-class,
-.hljs-variable.language_ { color: var(--bright-lilac) !important; }
+.hljs-variable, .hljs-variable.language_ { color: var(--bright-lilac) !important; }

@@ -37,7 +37,7 @@ Kubernetes is a **portable, extensible, open source platform for managing contai
         - [3.2.3 - `Container runtime`](#323---container-runtime)
     - [3.3 - Addons](#33---addons)
         - [3.3.1 - DNS](#331---dns)
-        - [3.3.2 - Web UI (Dashboard)](#332---web-ui-dashboard)
+          - [3.3.2 - Web UI (Dashboard)](#332---web-ui-dashboard)
         - [3.3.3 - Container Resource Monitoring](#333---container-resource-monitoring)
         - [3.3.4 - Cluster-level Logging](#334---cluster-level-logging)
         - [3.3.5 - Network Plugins](#335---network-plugins)
@@ -83,12 +83,19 @@ Kubernetes provides you with:
 
 In production environments, the control plane usually runs across multiple computers and a cluster usually runs multiple nodes, providing fault-tolerance and high availability.
 
-> **Node** --> a virtual or physical machine that is managed by the control plane and contains the services necessary to run Pods.<br>
-> **Pods** --> a group of one or more containers, with shared storage and network resources, and a specification for how to run the containers.
+<div class="vocab-list">
+
+|              |                                                                                                                                  |
+|--------------|----------------------------------------------------------------------------------------------------------------------------------|
+| **Node**     | A virtual or physical machine that is managed by the control plane and contains the services necessary to run Pods.              |
+| **Pods**     | A group of one or more containers, with shared storage and network resources, and a specification for how to run the containers. |
+| **Workload** | An application running on Kubernetes. Workloads are run inside a set of pods.                                                    |
+
+</div>
 
 Kubernetes provides several built-in **workload resources**:
 
-- **Deployment** and **ReplicaSet**<br>Deployment is a good fit for **managing a stateless application workload** on your cluster, where any Pod in the Deployment is interchangeable and can be replaced if needed.
+- **Deployment** and **ReplicaSet**<br>Deployment is a good fit for **managing a stateless application workload** on your cluster (**no** stored knowledge of or reference to past transactions), where any Pod in the Deployment is interchangeable and can be replaced if needed.
 - **StatefulSet**<br>It lets you **run one or more related Pods that do track state somehow**. For example, if your workload records data persistently, you can run a StatefulSet that matches each Pod with a PersistentVolume. Your code, running in the Pods for that StatefulSet, can replicate data to other Pods in the same StatefulSet to improve overall resilience.
 - **DaemonSet**<br>It defines Pods that **provide facilities that are local to nodes**. Every time you add a node to your cluster that matches the specification in a DaemonSet, the control plane schedules a Pod for that DaemonSet onto the new node. Each pod in a DaemonSet performs a job similar to a system daemon on a classic Unix / POSIX server. A DaemonSet might be fundamental to the operation of your cluster, such as a plugin to run cluster networking, it might help you to manage the node, or it could provide optional behavior that enhances the container platform you are running.
 - **Job** and **CronJob**<br>They provide different ways to **define tasks that run to completion and then stop**. You can use a Job to define a task that runs to completion, just once. You can use a CronJob to run the same Job multiple times according a schedule.

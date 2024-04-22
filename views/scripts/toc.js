@@ -44,6 +44,6 @@ for (let li of toc.children) {
 // fold TOC
 tocTitle.addEventListener("click", event => {
     const target = getTarget(event, "H5");
-    target.firstChild.classList.toggle("titleClicked");
+    target.firstChild.classList.toggle("folder-title-clicked");
     toc.style.display = toc.style.display == "none" ? "block" : "none";
 });

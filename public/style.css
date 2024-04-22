@@ -28,7 +28,7 @@
 /* GENERAL */
 * {
     box-sizing: border-box;
-    transition-property: color, background-color, border-color;
+    transition-property: color, background-color, border-color, box-shadow, transform;
     transition-duration: .4s;
     transition-timing-function: ease-in-out;
 }
@@ -93,7 +93,7 @@ h2, h3 {
     font-weight: 700;
 }
 
-h4, h5 { margin: 1.5em 0 0 0.5em; }
+h4, h5 { margin: 2em 0 0 1em; }
 
 
 /* TABLES */
@@ -144,6 +144,10 @@ blockquote {
     width: 95%;
     border-radius: 0.5em;
     margin: auto;
+}
+
+blockquote li::marker {
+    color: var(--pink) !important;
 }
 
 *:not(pre) > code {
@@ -240,8 +244,6 @@ blockquote {
 
 .content li:has(input:checked) { color: #cecac4 }
 
-
-
 .content img[alt="center-eg"] {
     display: block;
     margin: auto;
@@ -276,10 +278,4 @@ blockquote {
 .content #TOC, .content #TOC ul { list-style-type: none; }
 
 .content #TOC::before { display: none; }
-
-/* Nav folder and TOC folding */
-.titleClicked {
-    transform: rotate(90deg);
-    transition: transform .2s ease;
-}
 

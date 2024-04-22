@@ -9,7 +9,8 @@ A GraphQL service is created by **defining types** whose **fields** hold data, t
 
 <div class="container-row code-siblings">
 
-<div class="code-title">GrpahQL schema language</div>
+<div class="container-column">
+<div class="code-title">GraphQL schema language</div>
 
 ```graphql
 # define an object type
@@ -18,17 +19,22 @@ type User {
   name: String
 }
 
-# define its associated Query type which contains
-# all of the fields that _can_ be queried
+# define its associated Query type
+# which contains all of the fields
+# that _can_ be queried
 type Query {
   me: User
 }
 ```
 
+</div>
+
+<div class="container-column">
+
 <div class="code-title">JavaScript, for example</div>
 
 ```javascript
-// define functions to return the results
+// defin functions to return the results
 function Query_me(request) {
   return request.auth.user
 }
@@ -38,6 +44,7 @@ function User_name(user) {
 }
 ```
 
+</div>
 </div>
 
 After a GraphQL service is running (typically at a URL on a web service), it can **receive GraphQL queries to validate and execute**. The service first checks a query to ensure it only refers to the types and fields defined, and then runs the provided functions to produce a result.
@@ -60,6 +67,8 @@ In the following query, the `name` and `appearsIn` fields will resolve to scalar
 
 <div class="container-row code-siblings">
 
+<div class="container-column">
+
 <div class="code-title">Query</div>
 
 ```graphql
@@ -71,6 +80,9 @@ In the following query, the `name` and `appearsIn` fields will resolve to scalar
 }
 ```
 
+</div>
+
+<div class="container-column">
 <div class="code-title">Result</div>
 
 ```json
@@ -88,6 +100,7 @@ In the following query, the `name` and `appearsIn` fields will resolve to scalar
 }
 ```
 
+</div>
 </div>
 
 
@@ -295,6 +308,7 @@ You can use the shorthand syntax and omit the **operation type** and **operation
 
 <div class="container-row code-siblings">
 
+<div class="container-column">
 <div class="code-title">Query</div>
 
 ```graphql
@@ -305,7 +319,10 @@ query HeroName {
 }
 ```
 
-<div class="code-title">Shorthand query</div>
+</div>
+
+<div class="container-column">
+<div class="code-title">Shorthand</div>
 
 ```graphql
 {
@@ -315,6 +332,7 @@ query HeroName {
 }
 ```
 
+</div>
 </div>
 
 Note: its best practice to avoid the shorthand for readability. If you use the shorthand you can't supply a name or variable definitions for your operation.
@@ -326,6 +344,7 @@ At its simplest, GraphQL is about asking for specific fields on objects.
 
 <div class="container-row code-siblings">
 
+<div class="container-column">
 <div class="code-title">Query</div>
 
 ```graphql
@@ -336,6 +355,9 @@ query HeroName {
 }
 ```
 
+</div>
+
+<div class="container-column">
 <div class="code-title">Result</div>
 
 ```json
@@ -349,6 +371,7 @@ query HeroName {
 ```
 
 </div>
+</div>
 
 The **query** has exactly the **same shape** as the **result**. This is essential to GraphQL, because you always get back what you expect, and the server knows exactly what fields the client is asking for.
 
@@ -356,6 +379,7 @@ Fields can also refer to `Objects`. In that case, you can make a **sub-selection
 
 <div class="container-row code-siblings">
 
+<div class="container-column">
 <div class="code-title">Query</div>
 
 ```graphql
@@ -369,6 +393,9 @@ query HeroNameAndFriends{
 }
 ```
 
+</div>
+
+<div class="container-column">
 <div class="code-title">Result</div>
 
 ```json
@@ -393,6 +420,7 @@ query HeroNameAndFriends{
 ```
 
 </div>
+</div>
 
 
 ### 2.2 - Arguments
@@ -401,6 +429,7 @@ In GraphQL, **every field and nested object can get its own set of arguments**, 
 
 <div class="container-row code-siblings">
 
+<div class="container-column">
 <div class="code-title">Query</div>
 
 ```graphql
@@ -412,6 +441,9 @@ In GraphQL, **every field and nested object can get its own set of arguments**, 
 }
 ```
 
+</div>
+
+<div class="container-column">
 <div class="code-title">Result</div>
 
 ```json
@@ -425,6 +457,7 @@ In GraphQL, **every field and nested object can get its own set of arguments**, 
 }
 ```
 
+</div>
 </div>
 
 
@@ -443,6 +476,8 @@ Setting them up is easy:
 
 <div class="container-column">
 
+<div class="container-column">
+
 <div class="code-title">Query</div>
 
 ```graphql
@@ -456,6 +491,9 @@ query HeroNameAndFriends($episode: Episode) {
 }
 ```
 
+</div>
+
+<div class="container-column">
 <div class="code-title">Variables</div>
 
 ```json
@@ -465,7 +503,9 @@ query HeroNameAndFriends($episode: Episode) {
 ```
 
 </div>
+</div>
 
+<div class="container-column">
 <div class="code-title">Result</div>
 
 ```json
@@ -490,9 +530,13 @@ query HeroNameAndFriends($episode: Episode) {
 ```
 
 </div>
+</div>
 
 
 **Default values** can also be assigned to the variables in the query by adding the default value after the type declaration:
+
+<div class="container-row code-siblings">
+<div class="container-column">
 
 <div class="code-title">Query</div>
 
@@ -507,7 +551,13 @@ query HeroNameAndFriends($episode: Episode = JEDI) {
 }
 ```
 
+</div>
+</div>
+
 To make a variable required, add `!` after its type:
+
+<div class="container-row code-siblings">
+<div class="container-column">
 
 <div class="code-title">Query</div>
 
@@ -522,6 +572,8 @@ query HeroNameAndFriends($episode: Episode!) {
 }
 ```
 
+</div>
+</div>
 
 ### 2.4 - Aliases
 
@@ -529,6 +581,7 @@ You can't directly query for the same field with different arguments. That's why
 
 <div class="container-row code-siblings">
 
+<div class="container-column">
 <div class="code-title">Query</div>
 
 ```graphql
@@ -543,6 +596,9 @@ You can't directly query for the same field with different arguments. That's why
 }
 ```
 
+</div>
+
+<div class="container-column">
 <div class="code-title">Result</div>
 
 ```json
@@ -559,6 +615,7 @@ You can't directly query for the same field with different arguments. That's why
 ```
 
 </div>
+</div>
 
 In the above example, the two hero fields would have conflicted, but since we can alias them to different names, we can get **both results in one request**.
 
@@ -566,6 +623,9 @@ In the above example, the two hero fields would have conflicted, but since we ca
 ### 2.5 - Fragments
 
 GraphQL includes **reusable units called fragments**. Fragments let you **construct sets of fields**, and then **include them in queries** where you need to. 
+
+<div class="container-row code-siblings">
+<div class="container-column">
 
 <div class="code-title">Syntax</div>
 
@@ -575,12 +635,16 @@ fragment fragName on <type> {
 }
 ```
 
+</div>
+</div>
+
 Requesting two heroes's friends thanks to fragments: 
 
 <div class="container-row code-siblings">
 
 <div class="container-column">
 
+<div class="container-column">
 <div class="code-title">Fragment definition</div>
 
 ```graphql
@@ -593,6 +657,10 @@ fragment comparisonFields on Character {
 }
 ```
 
+</div>
+
+
+<div class="container-column">
 <div class="code-title">Query</div>
 
 ```graphql
@@ -607,7 +675,9 @@ fragment comparisonFields on Character {
 ```
 
 </div>
+</div>
 
+<div class="container-column">
 <div class="code-title">Result</div>
 
 ```json
@@ -661,6 +731,7 @@ fragment comparisonFields on Character {
 ```
 
 </div>
+</div>
 
 The concept of fragments is frequently **used to split complicated application data requirements** into smaller chunks, especially when you need to combine lots of UI components with different fragments into one initial data fetch.
 
@@ -673,6 +744,7 @@ It is possible for fragments to **access variables declared in the query or muta
 
 <div class="container-column">
 
+<div class="container-column">
 <div class="code-title">Fragment definition</div>
 
 ```graphql
@@ -689,6 +761,9 @@ fragment comparisonFields on Character {
 }
 ```
 
+</div>
+
+<div class="container-column">
 <div class="code-title">Query</div>
 
 ```graphql
@@ -703,7 +778,9 @@ query HeroComparison($first: Int = 3) {
 ```
 
 </div>
+</div>
 
+<div class="container-column">
 <div class="code-title">Result</div>
 
 ```json
@@ -760,6 +837,7 @@ query HeroComparison($first: Int = 3) {
 ```
 
 </div>
+</div>
 
 
 #### 2.5.2 - Inline fragments
@@ -770,6 +848,7 @@ If you are querying a field that returns an interface or a union type, you will 
 
 <div class="container-column">
 
+<div class="container-column">
 <div class="code-title">Query</div>
 
 ```graphql
@@ -788,6 +867,9 @@ query HeroForEpisode($ep: Episode!) {
 }
 ```
 
+</div>
+
+<div class="container-column">
 <div class="code-title">Variables</div>
 
 ``` json
@@ -797,7 +879,9 @@ query HeroForEpisode($ep: Episode!) {
 ```
 
 </div>
+</div>
 
+<div class="container-column">
 <div class="code-title">Result</div>
 
 ``` json
@@ -811,6 +895,7 @@ query HeroForEpisode($ep: Episode!) {
 }
 ```
 
+</div>
 </div>
 
 In this query, the `hero` field returns the type `Character`, which might be either a `Human` or a `Droid` depending on the `episode` argument. In the **direct selection**, you can only ask for fields that **exist on the `Character` interface**, such as `name`.
@@ -826,6 +911,7 @@ GraphQL allows you to request `__typename`, a meta field, **at any point in a qu
 
 <div class="container-row code-siblings">
 
+<div class="container-column">
 <div class="code-title">Query</div>
 
 ```graphql
@@ -845,6 +931,9 @@ GraphQL allows you to request `__typename`, a meta field, **at any point in a qu
 }
 ```
 
+</div>
+
+<div class="container-column">
 <div class="code-title">Result</div>
 
 ```json
@@ -869,6 +958,7 @@ GraphQL allows you to request `__typename`, a meta field, **at any point in a qu
 ```
 
 </div>
+</div>
 
 In the above query, `search` returns a union type that can be one of three options. It would be impossible to tell apart the different types from the client without the `__typename` field.
 
@@ -879,6 +969,10 @@ A directive can be **attached to a field** or fragment inclusion, and can **affe
 - `@include(if: Boolean)`: only include this field in the result if the argument is `true`.
 - `@skip(if: Boolean)`: skip this field if the argument is `true`.
 
+
+<div class="container-row code-siblings">
+
+<div class="container-column">
 <div class="code-title">Query</div>
 
 ```graphql
@@ -892,10 +986,14 @@ query Hero($episode: Episode, $withFriends: Boolean!) {
 }
 ```
 
+</div>
+</div>
+
 With `withFriends` set as `false`:
 
 <div class="container-row code-siblings">
 
+<div class="container-column">
 <div class="code-title">Variables</div>
 
 ```json
@@ -905,6 +1003,9 @@ With `withFriends` set as `false`:
 }
 ```
 
+</div>
+
+<div class="container-column">
 <div class="code-title">Result</div>
 
 ```json
@@ -918,10 +1019,13 @@ With `withFriends` set as `false`:
 ```
 
 </div>
+</div>
 
 With `withFriends` set as `true`:
 
 <div class="container-row code-siblings">
+
+<div class="container-column">
 
 <div class="code-title">Variables</div>
 
@@ -932,6 +1036,10 @@ With `withFriends` set as `true`:
 }
 ```
 
+</div>
+
+
+<div class="container-column">
 <div class="code-title">Result</div>
 
 ```json
@@ -956,6 +1064,7 @@ With `withFriends` set as `true`:
 ```
 
 </div>
+</div>
 
 
 ## 3 - Mutations
@@ -972,6 +1081,7 @@ Just like in queries, if the mutation field returns an object type, you can ask 
 
 <div class="container-column">
 
+<div class="container-column">
 <div class="code-title">Mutation</div>
 
 ```graphql
@@ -983,6 +1093,9 @@ mutation CreateReviewForEpisode($ep: Episode!, $review: ReviewInput!) {
 }
 ```
 
+</div>
+
+<div class="container-column">
 <div class="code-title">Variables</div>
 
 ```json
@@ -994,9 +1107,9 @@ mutation CreateReviewForEpisode($ep: Episode!, $review: ReviewInput!) {
   }
 }
 ```
-
 </div>
 
+<div class="container-column">
 <div class="code-title">Result</div>
 
 ```json
@@ -1010,6 +1123,8 @@ mutation CreateReviewForEpisode($ep: Episode!, $review: ReviewInput!) {
 }
 ```
 
+</div>
+</div>
 </div>
 
 Although they're similar, there's one important distinction between queries and mutations, other than the name: while query fields are executed in parallel, **mutation fields run in series**, one after the other.
@@ -1067,6 +1182,10 @@ A resolver function receives four arguments:
 
 ### 5.2 - Trivial resolvers
 
+
+<div class="container-row code-siblings">
+
+<div class="container-column">
 <div class="code-title">JavaScript</div>
 
 ```javascript
@@ -1077,11 +1196,17 @@ Human: {
 }
 ```
 
-Note: GraphQL libraries will let you **omit resolvers** that simple and will just assume that if a resolver isn't provided for a field, that a **property of the same name should be read and returned**.
+</div>
+</div>
 
+Note: GraphQL libraries will let you **omit resolvers** that simple and will just assume that if a resolver isn't provided for a field, that a **property of the same name should be read and returned**.
 
 ### 5.3 - Asynchronous resolvers
 
+
+<div class="container-row code-siblings">
+
+<div class="container-column">
 <div class="code-title">JavaScript</div>
 
 ```javascript
@@ -1093,6 +1218,9 @@ Query: {
   }
 }
 ```
+
+</div>
+</div>
 
 In this example, the `context` is used to **provide access to a database** which is used to load the data for a user by the `id` provided as an argument in the GraphQL query. Since loading from a database is an asynchronous operation, this **returns a `Promise`**. 
 
@@ -1111,6 +1239,7 @@ Collectively, these produce a **structure that mirrors the original query** whic
 
 <div class="container-row code-siblings">
 
+<div class="container-column">
 <div class="code-title">Query</div>
 
 ```graphql
@@ -1125,6 +1254,9 @@ Collectively, these produce a **structure that mirrors the original query** whic
 }
 ```
 
+</div>
+
+<div class="container-column">
 <div class="code-title">Result</div>
 
 ```json
@@ -1151,6 +1283,7 @@ Collectively, these produce a **structure that mirrors the original query** whic
 ```
 
 </div>
+</div>
 
 ## 6 - Introspection
 
@@ -1164,6 +1297,9 @@ This means that potential attackers can get a good understanding of your API and
 
 The query that enables us to fetch the whole schema. It's used to gain information about the directives, available types, and available operation types.
 
+<div class="container-row code-siblings">
+
+<div class="container-column">
 <div class="code-title">SDL definition</div>
 
 ```graphql
@@ -1175,6 +1311,9 @@ type __Schema {
   directives: [__Directive!]!
 }
 ```
+
+</div>
+</div>
 
 The basic introspection query for fetching the type system of the schema might look like this:
 
@@ -1210,6 +1349,7 @@ A lot of fields in the selection sets for `queryType`, `mutationType`, `subscrip
 
 <div class="container-row code-siblings">
 
+<div class="container-column">
 <div class="code-title">Fragment definition</div>
 
 ```graphql
@@ -1291,7 +1431,9 @@ fragment TypeRef on __Type {
   }
 }
 ```
+</div>
 
+<div class="container-column">
 <div class="code-title">Query</div>
 
 ```graphql
@@ -1314,6 +1456,7 @@ fragment TypeRef on __Type {
   }
 ```
 
+</div>
 </div>
 
 ### 6.2 - `__type`
@@ -1405,6 +1548,9 @@ A **connection** is a way to **get all of the nodes that are connected to anothe
 
 For example, if we wanted to fetch all the users that are connected to a specific user:
 
+<div class="container-row code-siblings">
+
+<div class="container-column">
 <div class="code-title">Query</div>
 
 ```graphql
@@ -1431,6 +1577,9 @@ For example, if we wanted to fetch all the users that are connected to a specifi
   }
 }
 ```
+
+</div>
+</div>
 
 The `friendsConnection` field returns a Collection object. The connection object will then have a field for the edges, as well as other information (like total count and information about whether a next page exists). 
 
@@ -1491,6 +1640,7 @@ The server must provide an interface called `Node`:
 
 <div class="container-row code-siblings">
 
+<div class="container-column">
 <div class="code-title">Introspection query</div>
 
 ```graphql
@@ -1512,6 +1662,9 @@ The server must provide an interface called `Node`:
 }
 ```
 
+</div>
+
+<div class="container-column">
 <div class="code-title">Response</div>
 
 ```json
@@ -1536,6 +1689,7 @@ The server must provide an interface called `Node`:
 ```
 
 </div>
+</div>
 
 #### 7.4.2 - The `node` root field
 
@@ -1547,6 +1701,7 @@ The server must provide a root field called `node`:
 
 <div class="container-row code-siblings">
 
+<div class="container-column">
 <div class="code-title">Introspection query</div>
 
 ```graphql
@@ -1574,7 +1729,9 @@ The server must provide a root field called `node`:
   }
 }
 ```
+</div>
 
+<div class="container-column">
 <div class="code-title">Response</div>
 
 ```json
@@ -1608,6 +1765,7 @@ The server must provide a root field called `node`:
 }
 ```
 
+</div>
 </div>
 
 #### 7.4.3 - Field stability

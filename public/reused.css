@@ -1,0 +1,12 @@
+/* REUSED COMPONENTS */
+
+/* Nav folder and TOC folding */
+.folder-title-clicked { transform: rotate(90deg); }
+
+/* Vocabulary lists */
+.vocab-list tr { padding: 1em 0.5em; }
+
+.vocab-list thead { display: none; }
+
+.vocab-list tr td:first-child {text-align: end; }
+

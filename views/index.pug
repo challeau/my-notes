@@ -31,13 +31,13 @@ html
       div.index
         each links, subject in navDirs
           p.subject= subject
-          ul.indexList
+          ul.index-list
             each page in links
               li
                 a(href=page.endpoint)= page.title
   
         p.subject Other
-        ul.indexList
+        ul.index-list
           each page in navLinks
             li
               a(href=page.endpoint)= page.title

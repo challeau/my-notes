@@ -1,9 +1,9 @@
-.navContainer {
+.nav-container {
     width: 0;
     transition: width .4s ease-in-out;
 }
 
-.navBtn {
+.nav-btn {
     position: fixed;
     display: flex;
     justify-content: center;
@@ -19,24 +19,24 @@
     cursor: pointer;
 }
 
-.navBtn:not(.open), #themeBtn, #toTopBtn { box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; }
+.nav-btn:not(.open) { box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; }
 
-.navBtn:hover, .navBtn.open { background: var(--beige); }
+.nav-btn:hover, .nav-btn.open { background: var(--beige); }
 
-.navBtn.open { margin: 1em; }
+.nav-btn.open { margin: 1em; }
 
-#themeBtn, #toTopBtn {
+#theme-btn, #to-top-btn {
     bottom: 0;
     right: 0;
 }
 
-#toTopBtn {
+#to-top-btn {
     bottom: 4vw;
     right: -25vw;
     transition: right .4s ease-in-out;
 }
 
-#navBar {
+#nav-bar {
     position: fixed;
     left: -20vw;
     top: 0;
@@ -54,14 +54,14 @@
     padding-bottom: 2vh;
 }
 
-#navBar > * {
+#nav-bar > * {
     width: inherit;
     min-width: 100px;
     list-style-type: none;
     list-style-position: inside;
 }
 
-#navBar .title {
+#nav-bar .title {
     display: block;
     padding: 1em 0 1em 5vw;
     font-size: 1.4em;
@@ -69,39 +69,39 @@
     
 }
 
-#navBar ul {
+#nav-bar ul {
     padding: 0;
     margin: 0 0 1em;
 }
 
-#navBar li {
+#nav-bar li {
     width: 100%;
     padding: 0.5em 1em;
 }
 
-#navBar a {
+#nav-bar a {
     text-decoration: none;
     padding: 0.5em 0;
     cursor: pointer;
     color: var(--brown);
 }
 
-.folder li:not(.folded, .folderTitle) { background-color: #73596312; }
+.folder li:not(.folded, .folder-title) { background-color: #73596312; }
 
-#navBar li.active { background-color: #73596312; }
+#nav-bar li.active { background-color: #73596312; }
 
-#navBar li.active a {
+#nav-bar li.active a {
     color: var(--bright-pink);
     font-weight: 700;
 }
 
-#navBar a:hover { color: var(--bright-pink); }
+#nav-bar a:hover { color: var(--bright-pink); }
 
-#navBar .activeFolder { background-color: var(--dark-beige); }
+#nav-bar .active-folder { background-color: var(--dark-beige); }
 
-#navBar .folderTitle:hover:not(.activeFolder) { background-color: #73596312; }
+#nav-bar .folder-title:hover:not(.active-folder) { background-color: #73596312; }
 
-#navBar .folderTitle {
+#nav-bar .folder-title {
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -109,7 +109,7 @@
     gap: 0.5em;
 }
 
-.navContainer .folded {
+.nav-container .folded {
     display: none;
     overflow: hidden;
 }
