@@ -81,17 +81,25 @@ Kubernetes provides you with:
 1. When you deploy Kubernetes, you get a **cluster**.
 2. A cluster is a **set of worker machines**, called **nodes**, that run containerized applications. Every cluster has at least one worker node.
 3. The worker nodes host the **Pods** that are the **components of the application workload**.
-4. The **control plane manages the worker nodes and the Pods in the cluster**.
+4. The **control plane manages the worker nodes and the Pods in the cluster**. The Kubernetes API exposes an HTTP API that lets end users, different parts of your cluster, and external components communicate with one another.
+5. **Resource objects** are used to represent the **state** of your cluster. Specifically, they can describe what containerized applications are running (and on which nodes), the resources available to those applications, the policies around how those applications behave.
+6. Resources are **endpoints** in the Kubernetes API that store collections of API objects of a certain kind (eg: the built-in pods resource contains a collection of Pod objects).
+7. You can specify **Custom Resources**: they're extensions of the Kubernetes API that is not necessarily available in a default Kubernetes installation. It represents a customization of a particular Kubernetes installation.
 
 In production environments, the control plane usually runs across multiple computers and a cluster usually runs multiple nodes, providing fault-tolerance and high availability.
 
 <div class="vocab-list">
 
-|              |                                                                                                                                  |
-|--------------|----------------------------------------------------------------------------------------------------------------------------------|
-| **Node**     | A virtual or physical machine that is managed by the control plane and contains the services necessary to run Pods.              |
-| **Pods**     | A group of one or more containers, with shared storage and network resources, and a specification for how to run the containers. |
-| **Workload** | An application running on Kubernetes. Workloads are run inside a set of pods.                                                    |
+|                 |                                                                                                                                                                                                                                                                                                                                                                       |
+|-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Node**        | A virtual or physical machine that is managed by the control plane and contains the services necessary to run Pods.                                                                                                                                                                                                                                                   |
+| **Pods**        | A group of one or more containers, with shared storage and network resources, and a specification for how to run the containers.                                                                                                                                                                                                                                      |
+| **Workload**    | An application running on Kubernetes. Workloads are run inside a set of pods.                                                                                                                                                                                                                                                                                         |
+| **Deployment**  | A resource object that manages a set of Pods to run an application workload, usually one that doesn't maintain state.                                                                                                                                                                                                                                                 |
+| **ReplicaSet**  | A resource object that maintains a stable set of replica Pods running at any given time. As such, it is often used to guarantee the availability of a specified number of identical Pods                                                                                                                                                                              |
+| **StatefulSet** | A resource object that lets you run one or more related Pods that track state somehow. For example, if your workload records data persistently, you can run a StatefulSet that matches each Pod with a PersistentVolume. Your code, running in the Pods for that StatefulSet, can replicate data to other Pods in the same StatefulSet to improve overall resilience. |
+| **Service**     | An abstraction to help you expose groups of Pods over a network. Each Service object defines a logical set of endpoints (usually these endpoints are Pods) along with a policy about how to make those pods accessible.                                                                                                                                               |
+| **Ingress**     | An API object that manages external access to the services in a cluster, typically HTTP. Ingress may provide load balancing, SSL termination and name-based virtual hosting.                                                                                                                                                                                          |
 
 </div>
 
@@ -714,6 +722,13 @@ kubectl cluster-info
 
 ### Node and Cluster Management
 
+
+See:
+https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions
+https://devopscube.com/kubernetes-objects-resources/
+https://kubernetes.io/docs/reference/kubectl/quick-reference/
+https://www.rabbitmq.com/kubernetes/operator/operator-overview
+https://www.rabbitmq.com/kubernetes/operator/using-operator
 
 ## Sources
 

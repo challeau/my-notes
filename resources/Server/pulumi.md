@@ -11,6 +11,10 @@ Pulumi is an **infrastructure as code platform** that allows you to **use famili
 
 <!-- markdown-toc end -->
 
+https://www.pulumi.com/docs/concepts/config/
+https://www.pulumi.com/docs/clouds/kubernetes/
+
+
 ## jsp
 
 The Pulumi platform comprises several components:
