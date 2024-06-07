@@ -41,13 +41,13 @@ They're JavaScript functions that return markup.
 
 ```jsx
 // Step 1 - define the component
-function Profile() {				// function name needs to be capitalized		
+function Profile() {	// function name needs to be capitalized
 	return (
-	<>								// must return a single root element
-		<img src="xyz" alt="abc"/>
-		<h1>Title<h1/>
-	</>								// all tags must be closed
-  );
+		<>		<!-- must return a single root element -->
+			<img src="xyz" alt="abc"/>
+			<h1>Title<h1/>
+		</>		<!-- all tags must be closed -->
+	);
 }
 
 // Step 2 - export
@@ -67,7 +67,7 @@ import Profile from "./Profile"
 function ParentComponent() {
 	return (
 		<>
-			<Profile />		// component name is capitalized
+			<Profile />		<!-- component name is capitalized -->
 		</>
 	);
 }

@@ -9,49 +9,47 @@ Kubernetes is a **portable, extensible, open source platform for managing contai
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 ##### Table of contents
 
-- [Kubernetes](#kubernetes)
-        - [Table of contents](#table-of-contents)
-  - [1 - Overview](#1---overview)
+- [1 - Overview](#1---overview)
     - [1.1 - Philosophy](#11---philosophy)
-    - [1.2 - Basic principles](#12---basic-principles)
-  - [2 - Objects](#2---objects)
-    - [2.1 - Describing a Kubernetes object](#21---describing-a-kubernetes-object)
-    - [2.2 - Naming](#22---naming)
-      - [2.2.1 - Name and UID](#221---name-and-uid)
-      - [2.2.2 - Labels and annotations](#222---labels-and-annotations)
-    - [2.3 - Namespaces](#23---namespaces)
-    - [2.4 - Finalizers](#24---finalizers)
-    - [2.5 - Ownership and dependents](#25---ownership-and-dependents)
-    - [2.6 - Object management](#26---object-management)
-      - [2.6.1 - Imperative commands](#261---imperative-commands)
-      - [2.6.2 - Imperative object configuration](#262---imperative-object-configuration)
-      - [2.6.3 - Declarative object configuration](#263---declarative-object-configuration)
-  - [3 - Components](#3---components)
-    - [3.1 - Control plane components](#31---control-plane-components)
-      - [3.1.1 - `kube-apiserver`](#311---kube-apiserver)
-      - [3.1.2 - `etcd`](#312---etcd)
-      - [3.1.3 - `kube-scheduler`](#313---kube-scheduler)
-      - [3.1.4 - `kube-controller-manager`](#314---kube-controller-manager)
-      - [3.1.5 - `cloud-controller-manager`](#315---cloud-controller-manager)
-    - [3.2 - Node components](#32---node-components)
-      - [3.2.1 - `kubelet`](#321---kubelet)
-      - [3.2.2 - `kube-proxy`](#322---kube-proxy)
-      - [3.2.3 - `Container runtime`](#323---container-runtime)
-    - [3.3 - Addons](#33---addons)
-      - [3.3.1 - DNS](#331---dns)
-      - [3.3.2 - Web UI (Dashboard)](#332---web-ui-dashboard)
-      - [3.3.3 - Container Resource Monitoring](#333---container-resource-monitoring)
-      - [3.3.4 - Cluster-level Logging](#334---cluster-level-logging)
-      - [3.3.5 - Network Plugins](#335---network-plugins)
-  - [4 - The Kubernetes API](#4---the-kubernetes-api)
-  - [5 - Operators](#5---operators)
-    - [How operators manage Kubernetes applications](#how-operators-manage-kubernetes-applications)
-  - [Getting started](#getting-started)
-    - [Configuring Kubectl for cloud-based Kubernetes cluster](#configuring-kubectl-for-cloud-based-kubernetes-cluster)
-      - [`kubectl config`](#kubectl-config)
-      - [Config files](#config-files)
-    - [Node and Cluster Management](#node-and-cluster-management)
-  - [Sources](#sources)
+- [1.2 - Basic principles](#12---basic-principles)
+	- [2 - Objects](#2---objects)
+		- [2.1 - Describing a Kubernetes object](#21---describing-a-kubernetes-object)
+		- [2.2 - Naming](#22---naming)
+- [2.2.1 - Name and UID](#221---name-and-uid)
+- [2.2.2 - Labels and annotations](#222---labels-and-annotations)
+		- [2.3 - Namespaces](#23---namespaces)
+		- [2.4 - Finalizers](#24---finalizers)
+		- [2.5 - Ownership and dependents](#25---ownership-and-dependents)
+		- [2.6 - Object management](#26---object-management)
+- [2.6.1 - Imperative commands](#261---imperative-commands)
+- [2.6.2 - Imperative object configuration](#262---imperative-object-configuration)
+- [2.6.3 - Declarative object configuration](#263---declarative-object-configuration)
+	- [3 - Components](#3---components)
+		- [3.1 - Control plane components](#31---control-plane-components)
+- [3.1.1 - `kube-apiserver`](#311---kube-apiserver)
+- [3.1.2 - `etcd`](#312---etcd)
+- [3.1.3 - `kube-scheduler`](#313---kube-scheduler)
+- [3.1.4 - `kube-controller-manager`](#314---kube-controller-manager)
+- [3.1.5 - `cloud-controller-manager`](#315---cloud-controller-manager)
+		- [3.2 - Node components](#32---node-components)
+- [3.2.1 - `kubelet`](#321---kubelet)
+- [3.2.2 - `kube-proxy`](#322---kube-proxy)
+- [3.2.3 - `Container runtime`](#323---container-runtime)
+		- [3.3 - Addons](#33---addons)
+- [3.3.1 - DNS](#331---dns)
+- [3.3.2 - Web UI (Dashboard)](#332---web-ui-dashboard)
+- [3.3.3 - Container Resource Monitoring](#333---container-resource-monitoring)
+- [3.3.4 - Cluster-level Logging](#334---cluster-level-logging)
+- [3.3.5 - Network Plugins](#335---network-plugins)
+	- [4 - The Kubernetes API](#4---the-kubernetes-api)
+   - [5 - Operators](#5---operators)
+- [How operators manage Kubernetes applications](#how-operators-manage-kubernetes-applications)
+	- [Getting started](#getting-started)
+		- [Configuring Kubectl for cloud-based Kubernetes cluster](#configuring-kubectl-for-cloud-based-kubernetes-cluster)
+- [`kubectl config`](#kubectl-config)
+- [Config files](#config-files)
+		- [Node and Cluster Management](#node-and-cluster-management)
+	- [Sources](#sources)
 
 <!-- markdown-toc end -->
 
@@ -65,18 +63,63 @@ In a production environment, you need to manage the containers that run the appl
 
 Kubernetes provides you with:
 
-- **Service discovery and load balancing**<br>Kubernetes can expose a container using the DNS name or using their own IP address. If traffic to a container is high, Kubernetes is able to load balance and distribute the network traffic so that the deployment is stable.
-- **Storage orchestration**<br>Kubernetes allows you to automatically mount a storage system of your choice, such as local storages, public cloud providers, and more.
-- **Automated rollouts and rollbacks**<br>You can describe the desired state for your deployed containers using Kubernetes, and it can change the actual state to the desired state at a controlled rate. For example, you can automate Kubernetes to create new containers for your deployment, remove existing containers and adopt all their resources to the new container.
-- **Automatic bin packing**<br>You provide Kubernetes with a cluster of nodes that it can use to run containerized tasks. You tell Kubernetes how much CPU and memory (RAM) each container needs. Kubernetes can fit containers onto your nodes to make the best use of your resources.
-- **Self-healing**<br>Kubernetes restarts containers that fail, replaces containers, kills containers that don't respond to your user-defined health check, and doesn't advertise them to clients until they are ready to serve.
-- **Secret and configuration management**<br>Kubernetes lets you store and manage sensitive information, such as passwords, OAuth tokens, and SSH keys. You can deploy and update secrets and application configuration without rebuilding your container images, and without exposing secrets in your stack configuration.
-- **Batch execution**<br>In addition to services, Kubernetes can manage your batch and CI workloads, replacing containers that fail, if desired.
-- **Horizontal scaling**<br>(adding additional nodes/machines to your infra to cope with new demands)<br>Scale your application up and down with a simple command, with a UI, or automatically based on CPU usage.
-- **IPv4/IPv6 dual-stack**<br>Allocation of IPv4 and IPv6 addresses to Pods and Services
-- **Designed for extensibility**<br>Add features to your Kubernetes cluster without changing upstream source code.
+<div class="grid list-with-hints">
+
+<div class="hint-block">
+	<span class="hint-title">Service discovery and load balancing</span>
+	<span class="hint">Kubernetes can expose a container using the DNS name or using their own IP address. If traffic to a container is high, Kubernetes is able to load balance and distribute the network traffic so that the deployment is stable.</span>
+</div>
+
+<div class="hint-block">
+	<span class="hint-title">Storage orchestration</span>
+	<span class="hint">Kubernetes allows you to automatically mount a storage system of your choice, such as local storages, public cloud providers, and more.</span>
+</div>
+
+<div class="hint-block">
+	<span class="hint-title">Automated rollouts and rollbacks</span>
+	<span class="hint">You can describe the desired state for your deployed containers using Kubernetes, and it can change the actual state to the desired state at a controlled rate. For example, you can automate Kubernetes to create new containers for your deployment, remove existing containers and adopt all their resources to the new container.</span>
+</div>
+
+<div class="hint-block">
+	<span class="hint-title">Automatic bin packing</span>
+	<span class="hint">You provide Kubernetes with a cluster of nodes that it can use to run containerized tasks. You tell Kubernetes how much CPU and memory (RAM) each container needs. Kubernetes can fit containers onto your nodes to make the best use of your resources.</span>
+</div>
+
+<div class="hint-block">
+	<span class="hint-title">Self-healing</span>
+	<span class="hint">Kubernetes restarts containers that fail, replaces containers, kills containers that don't respond to your user-defined health check, and doesn't advertise them to clients until they are ready to serve.</span>
+</div>
+
+<div class="hint-block">
+	<span class="hint-title">Secret and configuration management</span>
+	<span class="hint">Kubernetes lets you store and manage sensitive information, such as passwords, OAuth tokens, and SSH keys. You can deploy and update secrets and application configuration without rebuilding your container images, and without exposing secrets in your stack configuration.</span>
+</div>
+
+<div class="hint-block">
+	<span class="hint-title">Batch execution</span>
+	<span class="hint">In addition to services, Kubernetes can manage your batch and CI workloads, replacing containers that fail, if desired.</span>
+</div>
+
+<div class="hint-block">
+	<span class="hint-title">Horizontal scaling</span>
+	<span class="hint">> adding additional nodes/machines to your infra to cope with new demands.<br>Scale your application up and down with a simple command, with a UI, or automatically based on CPU usage.</span>
+</div>
+
+<div class="hint-block">
+	<span class="hint-title">IPv4/IPv6 dual-stack</span>
+	<span class="hint">Allocation of IPv4 and IPv6 addresses to Pods and Services.</span>
+</div>
+
+<div class="hint-block">
+	<span class="hint-title">Designed for extensibility</span>
+	<span class="hint">Add features to your Kubernetes cluster without changing upstream source code.</span>
+</div>
+
+</div>
 
 ### 1.2 - Basic principles
+
+![center-eg](k8s-diagram.png)
 
 1. When you deploy Kubernetes, you get a **cluster**.
 2. A cluster is a **set of worker machines**, called **nodes**, that run containerized applications. Every cluster has at least one worker node.
@@ -111,107 +154,6 @@ Kubernetes provides several built-in **workload resources**:
 - **Job** and **CronJob**<br>They provide different ways to **define tasks that run to completion and then stop**. You can use a Job to define a task that runs to completion, just once. You can use a CronJob to run the same Job multiple times according a schedule.
 
 ### 1.3 - Kubectl quick reference
-
-Common options:
-
-- `-n <namespace>` - run the command on a specific namespace. If no namespae is specified, commands are applied on the default namespace.
-- `--all-namespaces | -A` - run the comand accross all namespaces.
-- `-o=<format>` - format the output. Format options: `json`, `yaml`, `wide` (plain-text + more details).
-- `-f <filename/dirname/url>` - specify the file.s to use to create a resource.
-- `-l <label>` – filter using a specified label.
-
-Configuration:
-
-```sh
-# view current config
-kubectl config view
-
-# applies a configuration to a resource (create or update)
-# declarative management: only the required outcome is specified
-kubectl apply -f <config file/dir/url>
-
-# create, replace or delete a resource
-# imperative management: all steps are specified
-kubectl create/replace/delete -f <config file/dir/url>
-
-# see changes that apply would make
-kubectl diff
-```
-
-Configuration without config files:
-
-```sh
-# set a cluster entry
-kubectl config set-cluster <cluster-name> --server=<cluster-api-server-address> --certificate-authority=<path/to/certificate-authority>
-
-# set a user entry
-kubectl config set-credentials <cluster-cred-name> --token=<auth-token>
-
-# set a context --> contains all the information required to connect to a cluster,
-#                   like the cluster hostname, port, authentication method...
-kubectl config set-context <cluster-context-name> --cluster=<cluster-name> --user=<>
-```
-
-Cluster management:
-
-```sh
-# endpoint information about the master and services
-kubectl cluster-info
-
-# view the cluster configuration
-kubectl config view
-
-# display a list od contexts
-kubectl config get-contexts
-
-# display the current context
-kubectl config current-context
-
-# list all api resources available
-kubectl api-resources
-```
-
-Object management:
-
-```sh
-# list ALL OBJECTS
-kubectl get all
-
-# DAEMONSET
-# list all
-kubectl get daemonset
-
-# manage object
-kubectl create daemonset <name>
-kubectl edit daemonset <name>
-kubectl delete daemonset <name>
-
-# manage rollout
-kubectl rollout daemonset
-
-# display detailed state
-kubectl describe ds <name>
-
-# DEPLOYMENTS
-# list all
-kubectl get deployments
-
-# 
-kubectl
-
-
-#
-kubectl
-
-#
-kubectl
-
-#
-kubectl
-
-#
-kubectl
-```
 
 
 ## 2 - Objects

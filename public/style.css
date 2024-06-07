@@ -49,20 +49,6 @@ body {
     background-size: cover;
 }
 
-.container-row {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.container-column {
-    display: flex;
-    flex-flow: column wrap;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
 /* HEADERS */
 h1 {
     color: var(--bright-lilac);
@@ -127,9 +113,10 @@ thead tr th:first-child { border-radius: 0.5em 0 0; }
 
 thead tr th:last-child { border-radius: 0 0.5em 0 0; }
 
-tbody tr:last-child td:last-child, { border-radius: 0 0 0.5em 0; }
+tbody tr:last-child td:last-child,
+tbody tr:last-child:hover td:last-child { border-radius: 0 0 0.5em 0; }
 
-tbody tr:hover td { background-color:  var(--dark-beige); }
+tbody tr:hover td { background-color: var(--dark-beige); }
 
 td > ul { padding-left: 0.8em; }
 
@@ -168,6 +155,10 @@ blockquote li::marker {
     line-height: 1.3em;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     transition: background-color 0.2s ease-in-out; 
+}
+
+.content tbody pre {
+    margin: 0;
 }
 
 .content > h2 + h3, .content > h3 + h4, .content > h4 + h5 {
@@ -244,15 +235,26 @@ blockquote li::marker {
 
 .content li:has(input:checked) { color: #cecac4 }
 
-.content img[alt="center-eg"] {
+.content img {    
     display: block;
-    margin: auto;
     max-width: 100%;
     border-radius: .5em;
 }
 
-.content div:has(pre + p > img[alt="center-eg"]),
-.content div:has(p + p > img[alt="center-eg"]) {
+.content img[alt*="center"] { margin: 0 auto; }
+
+.content img[alt*="inline"] { display: inline; }
+
+.content img[alt*="50"] { width: 50%; }
+
+.content img[alt*="medium"] { width: 8em; }
+
+.content img[alt*="small"] { width: 3em; }
+
+.content img[alt*="tiny"] { width: 1.5em; }
+
+.content div:has(pre + p > img),
+.content div:has(p + p > img) {
     display: flex;
     align-items: center;
     justify-content: space-evenly; 
@@ -263,6 +265,14 @@ blockquote li::marker {
     display: flex;
     align-items: start;
     justify-content: space-evenly; 
+}
+
+.content div:has(pre + pre) pre {
+    max-width: 50%;
+}
+
+.content div:has(pre + pre) pre:first-child {
+    margin-right: 0;
 }
 
 .content h5[id='#table-of-contents'] {

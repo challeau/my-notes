@@ -277,8 +277,6 @@ The `minmax()` function allows us to cap the size of a track. Using a minimum va
 
 To fit as many columns as possible in a container, you can combine `repeat()` and `minmax()` with the keyword `auto-fit`:
 
-<div>
-
 ```css
 .container {
 	width: 420px;
@@ -291,7 +289,6 @@ To fit as many columns as possible in a container, you can combine `repeat()` an
 
 ![center-eg](gridrep.png)
 
-</div>
 
 ### 4.4 Positioning elements
 
@@ -397,9 +394,15 @@ To make it easier to work with layouts in nested grids, you can use `subgrid` on
 	gap: 10px;
 }
 
-.image { grid-column: 1 / 2; grid-row: 2 / 4; }
+.image {
+	grid-column: 1 / 2;
+	grid-row: 2 / 4;
+}
 
-.title { grid-column: 1 / 2; grid-row: 1 / 2; }
+.title {
+	grid-column: 1 / 2;
+	grid-row: 1 / 2;
+}
 
 .review {
 	display: grid;
@@ -413,13 +416,25 @@ To make it easier to work with layouts in nested grids, you can use `subgrid` on
 .jake { grid-row: 3 / 4; }
 
 /* Children grid */
-.picture { grid-column: 1/2; grid-row: 1/4; }
+.picture {
+	grid-column: 1/2;
+	grid-row: 1/4;
+}
 
-.name { grid-column: 3/4; grid-row: 1/2; }
+.name { 
+	grid-column: 3/4;
+	grid-row: 1/2;
+}
 
-.rating { grid-row: 2/3; grid-column: 3/4; }
+.rating {
+	grid-row: 2/3;
+	grid-column: 3/4;
+}
 
-.comment { grid-column: 2/3; grid-row: 3/4; }
+.comment {
+	grid-column: 2/3;
+	grid-row: 3/4;
+}
 ```
 
 ```html

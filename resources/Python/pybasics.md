@@ -165,7 +165,7 @@ tup2 = (12345, 'hello!')
 ```python
 empty = set()
 basket = {'apple', 'orange'}
-a = {x for x in 'abracadabra' if x not in 'abc'}
+a = {x for x in 'str' if x not in 'abc'}
 ```
 
 </td>
@@ -401,7 +401,7 @@ def meta_decorator(meta_arg):
         def inner(args):
             ft(meta_arg, args)
         return inner
-    if callable(meta_arg):   # callable() --> True if function, method, class, instance.
+    if callable(meta_arg):   # callable() --> True if function, method, class, instance
         meta_arg = 'A default value'
         return wrapper(meta_arg)
     else:
@@ -510,7 +510,7 @@ class CountCalls:
         self.func = func
         self.num_calls = 0
 
-    def __call__(self, *args, **kwargs):    # called instead of the decorated function.
+    def __call__(self, *args, **kwargs):    # called instead of the decorated function
         self.num_calls += 1
         return self.func(*args, **kwargs)
 

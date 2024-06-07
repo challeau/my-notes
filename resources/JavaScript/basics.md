@@ -15,26 +15,27 @@ JavaScript supports object-oriented, imperative, and declarative styles.
 ##### Table of contents
 
 - [1 - Functions](#1---functions)
-  - [1.1 - Function declaration](#11---function-declaration)
-  - [1.2 - Function expression](#12---function-expression)
+    - [1.1 - Function declaration](#11---function-declaration)
+    - [1.2 - Function expression](#12---function-expression)
 - [2 - Arguments and parameters](#2---arguments-and-parameters)
-  - [2.1 - Parameters](#21---parameters)
-  - [2.2 - The `arguments` object](#22---the-arguments-object)
-  - [2.3 - Destructuring](#23---destructuring)
-  - [2.4 - Call-by-sharing](#24---call-by-sharing)
+    - [2.1 - Parameters](#21---parameters)
+    - [2.2 - The `arguments` object](#22---the-arguments-object)
+    - [2.3 - Destructuring](#23---destructuring)
+    - [2.4 - Call-by-sharing](#24---call-by-sharing)
 - [3 - Arrow functions](#3---arrow-functions)
 - [4 - Closures](#4---closures)
 - [5 - Modules](#5---modules)
-  - [5.1 - Exporting](#51---exporting)
-  - [5.2 - Importing](#52---importing)
-  - [5.3 - Top level await](#53---top-level-await)
+    - [5.1 - Exporting](#51---exporting)
+    - [5.2 - Importing](#52---importing)
+    - [5.3 - Top level await](#53---top-level-await)
 - [4 - Quirks](#4---quirks)
-  - [4.1 - Hoisting](#41---hoisting)
-  - [4.2 - Interpreted or compiled?](#42---interpreted-or-compiled)
-    - [Compilation](#compilation)
-    - [Interpretation](#interpretation)
-    - [JIT compilation](#jit-compilation)
-  - [4.3 - TS vs JS](#43---ts-vs-js)
+    - [4.1 - Hoisting](#41---hoisting)
+    - [4.2 - Interpreted or compiled?](#42---interpreted-or-compiled)
+        - [> Compilation](#-compilation)
+        - [> Interpretation](#-interpretation)
+        - [> JIT compilation](#-jit-compilation)
+        - [> Compiler optimizations](#-compiler-optimizations)
+    - [4.3 - TS vs JS](#43---ts-vs-js)
 
 <!-- markdown-toc end -->
 
@@ -301,7 +302,8 @@ Once you've exported some features out of your module, you need to import them i
 import { name, func as nickname } from "./modules/file.js";
 
 // DEFAULT IMPORT
-import func from "./modules/file.js"; // no curly brackets for the default, equivalent to ↓
+import func from "./modules/file.js";
+// no curly brackets for the default, equivalent to ↓
 
 import { default as func } from "./modules/file.js";
 ```

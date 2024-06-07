@@ -270,11 +270,12 @@ For example:
 
 ```python
 db.collection.aggregate(
-    // Stage 1: Filter according to a 'size' field
+    # Stage 1: Filter according to a 'size' field
    {
       $match: { size: "medium" }
    },
-   // Stage 2: Group remaining documents according to a 'name' field and perform calculations
+   # Stage 2: Group remaining documents according to
+   #          a 'name' field and perform calculations
    {
       $group: { _id: "$name", totalQuantity: { $sum: "$quantity" } }
    }

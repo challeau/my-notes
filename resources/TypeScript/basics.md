@@ -344,14 +344,14 @@ class Person {
 }
 
 const person = new Person("Jane");
-console.log(person.getName());          // throws an error
+console.log(person.getName());     // throws an error
 
 // readonly
 class Person{
     private readonly name: string;
     
     public constructor(name: string) {
-    this.name = name;                       // name cannot be changed after this definition
+    this.name = name;              // name cannot be changed after this definition
     } 
 }
 ```

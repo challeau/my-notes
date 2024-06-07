@@ -1,12 +1,82 @@
 /* REUSED COMPONENTS */
 
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.container-row {
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+.container-column {
+    align-items: center;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+}
+
+
 /* Nav folder and TOC folding */
 .folder-title-clicked { transform: rotate(90deg); }
+
 
 /* Vocabulary lists */
 .vocab-list tr { padding: 1em 0.5em; }
 
 .vocab-list thead { display: none; }
 
-.vocab-list tr td:first-child {text-align: end; }
+.vocab-list tr td:first-child { text-align: start; }
 
+
+/* List of blocks with hints */
+.list-with-hints {
+    margin: 2em 1em;
+    position: relative;
+    gap: 1em;
+    width: 100%;
+    grid-template-columns: auto-fit;
+}
+
+.list-with-hints::before {
+    color: var(--dark-beige);
+    content: "Hover for more details";
+    position: absolute;
+    top: 5em;
+    left: -7em;
+    transform: rotate(-90deg);
+}
+
+.hint-block {
+    background-color: var(--transparent-blue);
+    border-radius: 0.5em;
+    padding: 1em 0.5em;
+    text-align: center;
+    transition: all 0.5s ease-in-out;
+    position: relative;
+}
+
+.hint-title {
+    font-weight: 500;
+}
+
+.hint-block .hint {
+    display: none;
+    font-size: 0.8em;
+    padding: 1em 0.5em;
+    position: absolute;
+    width: 80%;
+    left: 103%;
+    top: 0;
+    background-color: var(--white);
+    border: 1px dashed var(--brown);
+    border-radius: 0.5em;
+    z-index: 3;
+}
+
+.hint-block:hover .hint {
+    display: block;
+}

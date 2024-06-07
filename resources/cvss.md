@@ -37,14 +37,14 @@ CVSS is composed of three metric groups:
 - The **Temporal Metrics** adjust the Base severity of a vulnerability based on factors that **change over time**, such as the availability of exploit code.
 - The **Environmental Metrics** adjust the Base and Temporal severities to a **specific computing environment**. They consider factors such as the presence of mitigations in that environment.
 
-![metrics](MetricGroups.svg)
+![center-eg](MetricGroups.svg)
 
 
 ## 2 - Scoring
 
 When the Base metrics are assigned values by an analyst, the Base equation computes a score ranging from 0.0 to 10.0.
 
-![scoring](EquationsDiagram.svg)
+![center-eg](EquationsDiagram.svg)
 
 Specifically, the Base equation is derived from two sub equations: the Exploitability sub-score equation, and the Impact sub-score equation.
 
