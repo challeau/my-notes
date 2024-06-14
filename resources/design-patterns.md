@@ -1,7 +1,6 @@
 [//]: # (TITLE Design Patterns)
 [//]: # (ENDPOINT /design)
 
-
 # Design Patterns
 
 Design patterns are **typical solutions to commonly occurring problems** in software design. The pattern is not a specific piece of code, but a **general concept** for solving a particular problem. 
@@ -21,13 +20,19 @@ In addition, all patterns can be categorized by their intent:
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 ##### Table of contents
 
-- [1 - Creational patterns](#1---creational-patterns)
+- [Design Patterns](#design-patterns)
+        - [Table of contents](#table-of-contents)
+  - [1 - Creational patterns](#1---creational-patterns)
     - [1.1 - Factory method](#11---factory-method)
-    - [1.2 - Abstract factory ](#12---abstract-factory)
+      - [Structure](#structure)
+      - [Applicability](#applicability)
+    - [1.2 - Abstract factory](#12---abstract-factory)
+      - [Structure](#structure-1)
+      - [Applicability](#applicability-1)
     - [1.3 - Builder](#13---builder)
     - [1.4 - Prototype](#14---prototype)
     - [1.5 - Singleton](#15---singleton)
-- [2 - Structural patterns](#2---structural-patterns)
+  - [2 - Structural patterns](#2---structural-patterns)
     - [2.1 - Adapter](#21---adapter)
     - [2.2 - Bridge](#22---bridge)
     - [2.3 - Composite](#23---composite)
@@ -35,18 +40,18 @@ In addition, all patterns can be categorized by their intent:
     - [2.5 - Facade](#25---facade)
     - [2.6 - Flyweight](#26---flyweight)
     - [2.7 - Proxy](#27---proxy)
-- [3 - Behavioral patterns](#3---behavioral-patterns)
-    - [3.1 - ](#31--)
-    - [3.2 - ](#32--)
-    - [3.3 - ](#33--)
-    - [3.4 - ](#34--)
-    - [3.5 - ](#35--)
-    - [3.6 - ](#36--)
-    - [3.7 - ](#37--)
-    - [3.8 - ](#38--)
-    - [3.9 - ](#39--)
-    - [3.10 - ](#310--)
-- [Sources](#sources)
+  - [3 - Behavioral patterns](#3---behavioral-patterns)
+    - [3.1 - Chain of responsibilities](#31---chain-of-responsibilities)
+    - [3.2 - Command](#32---command)
+    - [3.3 - Iterator](#33---iterator)
+    - [3.4 - Mediator](#34---mediator)
+    - [3.5 - Memento](#35---memento)
+    - [3.6 - Observer](#36---observer)
+    - [3.7 - State](#37---state)
+    - [3.8 - Strategy](#38---strategy)
+    - [3.9 - Template Method](#39---template-method)
+    - [3.10 - Visitor](#310---visitor)
+  - [Sources](#sources)
 
 <!-- markdown-toc end -->
 
