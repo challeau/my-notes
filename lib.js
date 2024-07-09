@@ -19,7 +19,6 @@ function comparePriority(a, b) {
 }
 
 
-
 /**
  * Convert md files to HTML and collect its metadata.
  * @param {Dirent} files - The files to convert.
@@ -69,10 +68,16 @@ function getResources(files, resourcePath, dir = "") {
 		allowedAttributes: {
 		    a: ['href', 'name', 'target'],
 		    code: ['class'],
+<<<<<<< HEAD
 		    div: ['class'],
 		    img: ['src', 'srcset', 'alt', 'title', 'width', 'height', 'loading'],
 		    input: ['checked', 'type'],
 		    span: ['class', 'style']
+=======
+		    div: ['class', 'style'],
+		    img: ['src', 'srcset', 'alt', 'title', 'width', 'height', 'loading'],
+		    input: ['checked', 'type']
+>>>>>>> d02a4c4 (git ressource)
 		},
 		allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img', 'code', 'input'])
 	    });
