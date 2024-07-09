@@ -11,9 +11,9 @@ const path = require("path");
  * @returns {Number} 1 if a > b, -1 if a < b, 0 if they're equal
  */
 function comparePriority(a, b) {
-    if (a.priority > b.priority)
+    if ((a.priority ?? 999) > (b.priority ?? 999))
 	return 1;
-    else if (a.priority < b.priority)
+    else if ((a.priority ?? 999) < (b.priority ?? 999))
 	return -1;
     return 0;
 }
@@ -68,16 +68,10 @@ function getResources(files, resourcePath, dir = "") {
 		allowedAttributes: {
 		    a: ['href', 'name', 'target'],
 		    code: ['class'],
-<<<<<<< HEAD
-		    div: ['class'],
+		    div: ['class', 'style'],
 		    img: ['src', 'srcset', 'alt', 'title', 'width', 'height', 'loading'],
 		    input: ['checked', 'type'],
 		    span: ['class', 'style']
-=======
-		    div: ['class', 'style'],
-		    img: ['src', 'srcset', 'alt', 'title', 'width', 'height', 'loading'],
-		    input: ['checked', 'type']
->>>>>>> d02a4c4 (git ressource)
 		},
 		allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img', 'code', 'input'])
 	    });
@@ -93,26 +87,24 @@ function getResources(files, resourcePath, dir = "") {
 /**
  * Sort the resources according to the direactory they're in.
  * @param {[Object]} resources - A list of all the resources to sort.
- * @returns {[Object, Array]} An object with the files sorted by directory, and
- *			      the rest of the resources.
+ * @returns {[Object]} A list of objects with the files sorted by directory.
  */
 function getNavData(resources) {
     let allDirs = new Set(resources.map(r => r.metadata.folder));
     let dirData = {};
-    let rest = resources.filter(r => r.metadata.folder == undefined).map(r => r.metadata);
+    let rest = [];
 
     for (let dir of Array.from(allDirs)) {
-	if (dir == undefined)
-	    continue;
-	let res = resources.filter(r => r.metadata.folder == dir);
-	dirData[dir] = res.map(r => r.metadata);
+	// select resources per subject/directory
+	let dirResources = resources.filter(r => r.metadata.folder == dir);
+
+	// only keep metadata and sort resources by priority
+	let orderedResources = dirResources.map(r => r.metadata).sort(comparePriority);
+
+	dirData[dir ?? 'root'] = orderedResources;
     }
 
-    // order resources by priority
-    for (let dir in dirData)
-	dirData[dir].sort(comparePriority);
-
-    return ([dirData, rest]);
+    return (dirData);
 }
 
 
