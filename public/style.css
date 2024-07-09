@@ -63,24 +63,27 @@ h1 {
 h2 {
     color: var(--bright-blue);
     font-size: 1.5em;
+    margin: 2em 0 0.5em;
 }
 
 h3 {
     color: var(--bright-green);
+    margin: 2em 0 0.5em 0.25em;
     font-size: 1.2em;
 }
+
+h2, h3 { font-weight: 700; }
 
 h4 { color: var(--bright-pink);}
 
 h5 { color: var(--lilac); }
 
-h2, h3 {
-    margin: 2em 0 0.5em;
-    font-weight: 700;
-}
 
 h4, h5 { margin: 2em 0 0 1em; }
 
+h4 + p, h5 + p {
+    margin-top: 0.5em;
+}
 
 /* TABLES */
 table {

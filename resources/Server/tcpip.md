@@ -74,24 +74,48 @@ There are two types of adresses:
 - **Public addresses** are **registered and routable** on the **Internet**. **Globally unique**.
 - **Private addresses** are only used in a **local network**. **Unique in this network only**.
 
+Private address spaces:
 
+| CIDR                    | Subnet Mask   | Address range                 |
+|-------------------------|---------------|-------------------------------|
+| 10.0.0.0/8              | 255.0.0.0     | 10.0.0.1 - 10.255.255.254     |
+| 172.16.0.0/12           | 255.255.240.0 | 172.16.1.1 - 172.31.255.254   |
+| 192.168.0.0/16          | 255.255.0.0   | 192.168.0.1 - 192.168.255.254 |
 
 **Firewalls** use a technique called **network address translation** (NAT) to **translate private addresses to public ones** to allow devices access to the Internet from a private network, thus **hiding the private IP address** to the world.
 
 There are two main formats for IP addresses:
 - IPv4 --> 32 bits (4 octets)
-- IPv6 → 128 bits (16 octets)
+- IPv6 --> 128 bits (16 octets)
+
+IPv4 uses a 32-bit address, resulting in a limited pool of approximately 4.3 billion unique addresses. That includes the public IP address allocations.
+
+In contrast, IPv6 employs a 128-bit address, providing a staggering 3.4 x 10^38 unique IP addresses to accommodate the ever-increasing number of connected devices.
 
 ## 3.1 - Binary operators
+
+Logical operations for binary values:
+
+| First value | Second value | AND | OR | XOR |
+|-------------|--------------|-----|----|-----|
+| 0           | 0            | 0   | 0  | 0   |
+| 0           | 1            | 0   | 1  | 1   |
+| 1           | 0            | 0   | 1  | 1   |
+| 1           | 1            | 1   | 1  | 0   |
 
 ## 3.2 - Networks and hosts
 
 An IPv4 address actually consists of two parts:
-The network ID (or network address): identifies the network on which a host computer can be found.
-The host ID (or host address): identifies a specific device on the network indicated by the network ID.
-When the original designers of the IP protocol created the IP addressing scheme, they could have assigned an arbitrary number of IP address bits for the network ID. The remaining bits would then be used for the host ID. However, few networks would actually have that many hosts, so the idea of IP address classes was introduced.
+- The **network ID** (or network address): identifies the **network** on which a host computer can be found.
+- The **host ID** (or host address): identifies a **specific device** on the network indicated by the network ID.
 
-The IP protocol defines five different address classes: A, B, C, D, and E. 
-Each of classes A-C uses a different size for the network ID and host ID portion of the address.
-The first four bits of the IP address are used to determine into which class an address fits.
+When the original designers of the IP protocol created the IP addressing scheme, they could have assigned an arbitrary number of IP address bits for the network ID. The remaining bits would then be used for the host ID. However, few networks would actually have that many hosts, so the idea of **IP address classes** were introduced.
+
+The IP protocol defines **five different address classes**: A, B, C, D, and E. Each of classes A-C uses a different size for the network ID and host ID portion of the address.
+
+The **first four bits** of the IP address are used to determine into **which class** an address fits:
+
+![center-eg](ipclasses.png)
+
+
 

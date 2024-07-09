@@ -36,13 +36,13 @@ A **network** is nothing more than **two or more computers connected to each oth
 
 ## 1 - Basics
 
-The connection between a server's computers is made via **electrical signals** (electrical cables), **impulses of light** (fiber-optic cables), or **radio signals** (wireless).
-
 The **network computer that contains the resources that are shared** with other network computers is called a **server**. Any computer that's not a server is called a **client**.
 
 The distinction between client and server computers can be more or less segregated : 
 - A **dedicated server** can perform no other tasks besides network services. 
 - A **peer-to-peer network**, in contrast, enables any computer on the network to function as both a client and a server.
+
+The connection between a server's computers is made via **electrical signals** (electrical cables), **impulses of light** (fiber-optic cables), or **radio signals** (wireless).
 
 It's common to **categorize** networks based on the **geographical size they cover**, *not* the number of computers involved:
 - **Local area networks** (LAN): its computers are relatively close together (within an office/building/campus). They can contain **hundreds or even thousands of computers, typically within 100m**.
@@ -59,7 +59,7 @@ The term network topology refers to the **shape of the connection between comput
 
 ### 2.1 - Bus topology
 
-In a bus topology, **every node on the network can see every packet that's sent**. 
+In a bus topology, **all nodes on the network are directly connected** and can see **every packet that's sent**. 
 
 ![center-eg](bus.png)
 
@@ -70,41 +70,42 @@ If the electrical **connection** in a bus network **breaks**, the **entire netwo
 
 ### 2.2 - Star topology
 
-In a star topology, **each network node is connected to a central device called a hub or a switch**. Star topologies are commonly used with LANs.
-
-Difference between a hub and a switch:
-- A **hub doesn't know anything about the computers that are connected to each of its ports** (sends a duplicate copy of the packet to all its ports).
-- A **switch knows which computer is connected to each of its ports** (sends the packet only to the port that the recipient is connected to).
+In a star topology, **each node is connected to a central device called a hub or a switch**. Star topologies are commonly used with LANs.
 
 ![center-eg](star.png)
 
-Strictly speaking, **only networks that use switches have a true star topology**. If the network uses a hub, the network topology has the physical appearance of a star, but is actually a bus: when a hub is used, each computer on the network sees all the packets sent over the network, just like in a bus topology.
+Difference between a hub and a switch:
+- A **hub doesn't know anything about the nodes that are connected to each of its ports**. It sends a duplicate copy of the packet to all its ports.
+- A **switch knows which node is connected to each of its ports**. It sends the packet only to the port that the recipient is connected to.
 
-> In a **true star topology**, **each computer sees only those packets that were sent specifically to it**, as well as **packets that were specifically sent to all computers** on the network (those types of packets are called broadcast packets).
+Strictly speaking, **only networks that use switches have a true star topology**. If the network uses a hub, the network topology has the physical appearance of a star, but is actually a bus since all the nodes see all the packets.
 
-If a cable in a star network breaks, only the node connected to that cable is isolated from the network. The other nodes can continue to operate without interruption - unless, of course, the node that's isolated because of the break happens to be the file server.
+> In a **true star topology**, **each node sees only those packets that were sent specifically to it**, or **to all nodes** on the network (broadcast packets).
+
+If a cable in a star network breaks, **only the node connected to that cable is isolated** from the network. The other nodes can continue to operate without interruption - unless, of course, the node that's isolated because of the break happens to be the file server.
 
 
 ### 2.3 - Ring topology
 
-**Packets are sent around the circle from computer to computer**. Each computer looks at each packet to decide whether the packet was intended for it. If not, the packet is passed on to the next computer in the ring.
+In a ring topology, **packets are sent around the circle from node to node**. Each node looks at each packet to decide whether the packet was intended for it. If not, the packet is passed on to the next computer in the ring.
 
 ![center-eg](ring.png)
 
 > Ring networks were **popular thanks to ARCNET** (factory automation), **Token Ring** (IBM Midrange computers) and **FDDI** (early type of fiber-optic network connection). However they have all vanished from business networks.
 
+While bus topology and ring topology both use a single cable to connect devices, they **differ in the way that data is transmitted**. In a bus topology, the data is broadcast to all nodes on the network **simultaneously**, while in ring topology, data is transmitted in a **unidirectional loop**.
 
 ### 2.4 - Mesh topology
 
-It has **multiple connections between each of the nodes on the network**. They are common for **MANs and WANs**.
-
-These networks use devices called **routers** to **route packets from network to network**. For **reliability and performance** reasons, routers are usually arranged in a way that provides **multiple paths between any two nodes** on the network.
+In a mesh topology, nodes are **interconnected in a decentralized manner**. There are **multiple connections between each of the nodes on the network**. They are common for **MANs and WANs**.
 
 ![center-eg](mesh.png)
 
-> Mesh networks aren't very practical in a LAN setting. For example, to network eight computers in a mesh topology, each computer would have to have seven network interface cards, and 28 cables would be required to connect each computer to the seven other computers in the network.
+These networks use devices called **routers** to **route packets from network to network**. For **reliability and performance** reasons, routers are usually arranged in a way that provides **multiple paths between any two nodes** on the network.
 
-The **advantage** of a mesh topology is that if one cable breaks, the network can use an **alternative route** to deliver its packets.
+Mesh networks **aren't very practical in a LAN setting**. For example, to network eight computers in a mesh topology, each computer would have to have seven network interface cards, and 28 cables would be required to connect each computer to the seven other computers in the network.
+
+> The **advantage** of a mesh topology is that if one cable breaks, the network can use an **alternative route** to deliver its packets.
 
 
 ### 2.5 - Network expansion
@@ -127,11 +128,14 @@ Larger networks may have additional components, such as routers or repeaters.
 
 
 All networks are built from the following basic building blocks:
-- **Client computers**: computers that **end users use to access the resources** of the network.
-- **Server computers**: computers that **provide shared resources** as well as network services, provided thanks to special software.
-- **Network interface**: an interface that's installed in a computer to **enable it to communicate over a network**. Almost all network interfaces implement the **Ethernet** standard.
-- **Connections**: computers in a network are usually physically connected to each other with cables, or radio transmitters/receivers (wireless).
-- **Switches**: each computer in a network is connected by cable to a device known as a switch, which in turn, **connects to the rest of the network**. Each switch contains a certain number of **ports**, typically **8 or 16** (== an eight-port switch connects up to eight computers). Switches can be connected to each other to build larger networks.
+
+|                       |                                                                                                                                                                                                                                                                                                           |
+|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| **Client computers**  | Computers that **end users use to access the resources** of the network                                                                                                                                                                                                                                   |
+| **Server computers**  | Computers that **provide shared resources** as well as network services, provided thanks to special software                                                                                                                                                                                              |
+| **Network interface** | An interface that's installed in a computer to **enable it to communicate over a network**. Almost all network interfaces implement the **Ethernet** standard                                                                                                                                             |
+| **Connections**       | Computers in a network are usually **physically connected** to each other with cables, or radio transmitters/receivers (wireless)                                                                                                                                                                         |
+| **Switches**          | Each computer in a network is connected by cable to a device known as a switch, which in turn, **connects to the rest of the network**<br>Each switch contains a certain number of **ports**, typically **8 or 16** (one per computer). Switches can be connected to each other to build larger networks. |
 
 
 The main advantage of wireless networking is its **flexibility** (client computers can be located anywhere within range of the network broadcast), but it's **inherently less secure** than a cabled network.
@@ -143,7 +147,7 @@ Network software **streamlines the operations, design, monitoring, and implement
 
 Some of the hardware like routers and switches have embedded softwares, but the **decoupling of software from hardware**, called **software-defined networking** (SDN), works exceptionally well to **simplify the management of infrastructure**, making it more adaptable to the constantly evolving course of the tech world. 
 
-The use of network software makes it possible to **administer from one centralized user interface** while completely eliminating the need to acquire additional hardware. 
+> The use of network software makes it possible to **administer from one centralized user interface** while completely eliminating the need to acquire additional hardware. 
 
 They help to handle:
 - **User management**: allows administrators to **add or remove users** from the network.
@@ -154,7 +158,12 @@ They help to handle:
 
 ## 4 - Protocols and standards
 
+> **Protocols** allow **network components** to **communicate** with each other.  **Standards** allow **network components manufactured by different companies** to **work together**.
+
+
 ### 4.1 - Definition
+
+#### > Protocols
 
 **Protocols** are **sets of rules that enables effective communications to occur**.
 
@@ -164,11 +173,11 @@ Various protocols tend to be used together in matched sets called **protocol sui
 - **TCP/IP**: originally developed for Unix networks, it's the protocol of the Internet and most LANs.
 - **Ethernet**: low-level protocol that spells out the **electrical characteristics of the network hardware** used by most LANs.
 
+#### > Standards
+
 **Standards** are **agreed-upon definitions of a protocol**. In the early days of computer networking, each computer manufacturer developed its own networking protocols. As a result, you weren't able to easily mix equipment from different manufacturers on a single network. Standards are **industry-wide protocol definitions** that are **not tied to a particular manufacturer**. 
 
 Many organizations are involved in setting standards for networking: ANSI, IEEE, ISO, IETF, W3C.
-
-> **Protocols** allow **network components** to **communicate** with each other.  **Standards** allow **network components manufactured by different companies** to **work together**.
 
 
 ### 4.2 - The OSI Reference Model
@@ -177,7 +186,7 @@ The OSI model **breaks the various aspects of a computer network into seven dist
 
 OSI stands for Open Systems Interconnection.
 
-#### 4.2.1 - The layers
+#### > The layers
 
 | # | Layer        | Description                                                                                                                                          | Protocols       |
 |---|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|
@@ -196,7 +205,7 @@ Layers **4-7** (upper levels) deal with **how application software can relate to
 > In application, actual networking protocols don't follow the OSI model to the letter. Still, the OSI model **provides a convenient** -if not completely accurate- **conceptual picture** of how networking works.
 
 
-#### 4.2.2 - Following a packet through the layers
+#### > Following a packet through the layers
 
 When an end-user application sends data to another network computer, the **data enters the network through an Application layer interface**, then **works its way down** through the protocol stack. Along the way, the protocol at each layer **manipulates the data**. 
 
@@ -216,14 +225,14 @@ Ethernet divides the **Data Link layer into two separate layers** known as the *
 
 ### 4.4 - The TCP/IP protocol suite
 
-TCP/IP is a **suite of protocols on which the internet is built**. It is **based on a four-layer model** of networking that is similar to the seven-layer OSI model.
+> TCP/IP is a **suite of protocols on which the internet is built**. It is **based on a four-layer model** of networking that is similar to the seven-layer OSI model.
 
 ![center-eg](tcpip.png)
 
 
-#### 4.4.1 - IP
+#### > IP
 
-For more information see dedicated article.
+For more information see `/tcpip`, the next page.
 
 The **Internet Protocol** is a **Network layer protocol that is responsible for delivering packets to network devices**. The IP protocol uses **logical IP addresses** to refer to **individual devices** rather than physical (MAC) addresses.
 
@@ -233,7 +242,7 @@ Because IP addresses consist of a **network part** and a **host part**, IP is a 
 This ability is where IP gets its name. An internet is a series of two or more connected TCP/IP networks that can be reached by routing.
 
 
-#### 4.4.2 - TCP
+#### > TCP
 
 The **Transmission Control Protocol** is a **connection-oriented Transport layer protocol**. 
 
@@ -242,14 +251,14 @@ TCP lets a device **reliably send a packet to another device** on the same netwo
 One key aspect of TCP is that it's **always used for one-to-one communications**. In other words, TCP allows a single network device to exchange data with another single network device. TCP isn't used to broadcast messages to multiple network recipients.
 
 
-#### 4.4.3 - UDP
+#### > UDP
 
 The **User Datagram Protocol** is a **connectionless Transport layer protocol** that is used when the **overhead of a connection isn't required**. Hence, UDP is **datagram-oriented**.
 
 UDP **places a packet on the network** via the IP protocol, then it **forgets** about it. UDP **doesn't guarantee that the packet actually arrives** at its destination. 
 Most applications that use UDP simply **wait for any replies** expected as a result of packets sent via UDP. If a reply doesn't arrive within a certain period of time, the application either sends the packet again or gives up.
 
-#### 4.4.4 - TCP vs UDP
+#### > TCP vs UDP
 
 | Metric                  | TCP         | UDP      |
 |-------------------------|-------------|----------|
