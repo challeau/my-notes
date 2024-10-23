@@ -23,6 +23,7 @@
     --bright-yellow: #F9EE8A;
 
     --dark-beige: #73596324;
+    --accent-beige:  #cecac4;
 }
 
 /* GENERAL */
@@ -79,7 +80,7 @@ h4 { color: var(--bright-pink);}
 h5 { color: var(--lilac); }
 
 
-h4, h5 { margin: 2em 0 0 1em; }
+h4, h5 { margin: 2em 0 0 0.5em; }
 
 h4 + p, h5 + p {
     margin-top: 0.5em;
@@ -160,18 +161,14 @@ blockquote li::marker {
     transition: background-color 0.2s ease-in-out; 
 }
 
-<<<<<<< HEAD
 .content tbody pre {
     margin: 0;
 }
-=======
-/* Titles */
->>>>>>> d02a4c4 (git ressource)
 
+/* Titles */
 .content > h2 + h3, .content > h3 + h4, .content > h4 + h5 {
     margin-top: 0;
 }
-
 
 /* Links */
 .content a {
@@ -210,8 +207,37 @@ blockquote li::marker {
 }
 
 .content li::marker {
-    color: #cecac4;
+    color: var(--accent-beige);
 }
+
+/* Definition lists */
+/* .content .definition {
+    transition: all 0.2s ease;
+    height: 100%;
+    display: block;
+    padding: 0.25em;
+    border-radius: 0.5em;
+    display: flex;
+}
+
+.content .definition:hover {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    background-color: var(--beige);
+}
+
+.content .definition .key {
+    padding: 0.25em 0.5em;
+    margin: 0.25em 1em 0.25em 0.5em;
+    border-radius: 0.5em;
+    background-color: var(--beige);
+    height: 100%;
+}
+
+.content .definition:hover .key {
+    background-color: var(--bright-lilac);
+    color: var(--white);
+} */
 
 /* Checkbox */
 .content li:has(input) { display: block; }
@@ -224,10 +250,10 @@ blockquote li::marker {
 .content li:has(input) > input[type="checkbox"] {
     appearance: none;
     margin: 0 .6em 0 0;
-    color: #cecac4;
+    color: var(--accent-beige);
     width: 2.1em;
     height: 2.1em;
-    border: 0.2em solid #cecac4;
+    border: 0.2em solid var(--accent-beige);
     border-radius: 14%;
     transform: translateY(0.5em);
     overflow: hidden;
@@ -243,7 +269,7 @@ blockquote li::marker {
 
 .content li:has(input) > input[type="checkbox"]:checked::before { content: "check"; }
 
-.content li:has(input:checked) { color: #cecac4 }
+.content li:has(input:checked) { color: var(--accent-beige) }
 
 /* Images */
 .content img {
@@ -311,4 +337,3 @@ blockquote li::marker {
 .content #TOC, .content #TOC ul { list-style-type: none; }
 
 .content #TOC::before { display: none; }
-
