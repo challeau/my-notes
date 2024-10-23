@@ -1,30 +1,40 @@
 {
-    "name": "my-notes",
-    "version": "1.0.0",
-    "description": "All my documentation in one place.",
-    "main": "app.js",
-    "scripts": {
-        "clean": "find ./resources -type f -name '*.md' | xargs sed -i \"s/’/'/g\" ; find ./resources -type f -name '*.md' | xargs sed -i 's/”/\"/g' ; find ./resources -type f -name '*.md' | xargs sed -i 's/“/\"/g'",
-        "dev": "nodemon app.js",
-        "start": "node app.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "nodemonConfig": {
-        "restartable": "rs",
-        "ignore": [ ".git", "node_modules/**/node_modules" ],
-        "watch": [ "./resources", "./public", "./views" ],
-        "ext": "js,json,md,pug,css",
-        "delay": 2500
-    },
-    "keywords": [],
-    "author": "Chlotte",
-    "license": "ISC",
-    "dependencies": {
-        "express": "^4.18.2",
-        "jsdom": "^22.1.0",
-        "marked": "^11.2.0",
-        "nodemon": "^3.0.1",
-        "pug": "^3.0.2",
-        "sanitize-html": "^2.11.0"
-    }
+  "name": "my-notes",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "All my documentation in one place.",
+  "main": "app.js",
+  "scripts": {
+    "clean": "find ./resources -type f -name '*.md' | xargs sed -i \"s/’/'/g\" && find ./resources -type f -name '*.md' | xargs sed -i 's/”/\"/g' && find ./resources -type f -name '*.md' | xargs sed -i 's/“/\"/g'",
+    "dev": "nodemon app.js",
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pretty": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json}\""
+  },
+  "nodemonConfig": {
+    "restartable": "rs",
+    "ignore": [
+      ".git",
+      "node_modules/**/node_modules"
+    ],
+    "watch": [
+      "./resources",
+      "./public",
+      "./views"
+    ],
+    "ext": "js,json,md,pug,css",
+    "delay": 2500
+  },
+  "keywords": [],
+  "author": "Chlotte",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "jsdom": "^22.1.0",
+    "marked": "^11.2.0",
+    "nodemon": "^3.0.1",
+    "prettier": "^3.3.3",
+    "pug": "^3.0.2",
+    "sanitize-html": "^2.11.0"
+  }
 }
