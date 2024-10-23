@@ -33,7 +33,6 @@
     "jsdom": "^22.1.0",
     "marked": "^11.2.0",
     "nodemon": "^3.0.1",
-    "prettier": "^3.3.3",
     "pug": "^3.0.2",
     "sanitize-html": "^2.11.0"
   }

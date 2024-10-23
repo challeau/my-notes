@@ -10,7 +10,7 @@ import path from "path";
  * @returns {[{text: Document, metadata: Object}]} A list of the resources
  *						   and their meta data.
  */
-export function getResources(files, resourcePath, dir = "") {
+export function getAllPagesData(files, resourcePath, dir = "") {
   let resources = [];
 
   files.forEach((file) => {
@@ -22,7 +22,7 @@ export function getResources(files, resourcePath, dir = "") {
     if (isDirectory) {
       let files = fs.readdirSync(currPath);
       resources.push(
-        ...getResources(files, resourcePath, path.join(dir, file)),
+        ...getAllPagesData(files, resourcePath, path.join(dir, file)),
       );
     } else {
       if (!file.match(".md$")) return;
@@ -62,7 +62,7 @@ export function getResources(files, resourcePath, dir = "") {
         ]),
       });
 
-      resources.push({ text: parsedHTML, metadata: metadata });
+      resources.push({ content: parsedHTML, metadata: metadata });
     }
   });
 

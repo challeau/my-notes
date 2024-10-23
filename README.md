@@ -25,4 +25,6 @@ Each file in the `resources` directory has the same structure:
 
 Every file is parsed for metadata and translated to HTML, using `fs` and `marked`. Then a route is created for each file, and the view is rendered by `Pug.js`.
 
+### TODO
 
+- [ ] preload TOC of pages to inject it in the navbar
