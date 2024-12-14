@@ -13,21 +13,23 @@ mixin navFolder(name, links)
         +navLink(page.title, page.endpoint, "folded")
 
 // Navigation
-mixin navBar(dirs, links)
+mixin navBar(dirs)
   div.nav-container
     div(id="nav-fold-btn" class="nav-btn")
       span(class="material-symbols-outlined ")= "menu"
     div(id="nav-bar")
       a(class="title" href="/")= "Index"
       each files, folder in dirs
-        +navFolder(folder, files)
-      ul.lonely-link
-        each page in links
-          +navLink(page.title, page.endpoint, "")
+        if (folder !== 'root')
+          +navFolder(folder, files)
+        else
+          ul.lonely-link
+          each page in files
+            +navLink(page.title, page.endpoint, "")
 
 // OVERLAY == navBar + utility buttons
 mixin overlay(dirs, links)
-  +navBar(dirs, links)
+  +navBar(dirs)
   div(id="theme-btn" class="nav-btn")
     span(class="material-symbols-outlined ")= "dark_mode"
   div(id="to-top-btn" class="nav-btn")

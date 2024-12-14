@@ -245,23 +245,22 @@ blockquote li::marker {
 
 .content li:has(input:checked) { color: #cecac4 }
 
-<<<<<<< HEAD
-.content img {    
-=======
 /* Images */
-.content img[alt="center-eg"] {
->>>>>>> d02a4c4 (git ressource)
+.content img {
     display: block;
     max-width: 100%;
     border-radius: .5em;
 }
 
-<<<<<<< HEAD
 .content img[alt*="center"] { margin: 0 auto; }
 
 .content img[alt*="inline"] { display: inline; }
 
+.content img[alt*="float"] { float: left; }
+
 .content img[alt*="50"] { width: 50%; }
+
+.content img[alt*="40"] { width: 40%; }
 
 .content img[alt*="medium"] { width: 8em; }
 
@@ -271,28 +270,18 @@ blockquote li::marker {
 
 .content div:has(pre + p > img),
 .content div:has(p + p > img) {
-=======
-.content img[alt="float-eg"],
-.content img[alt="float-eg 40"] {
-    float: right;
-    max-width: 100%;
-    border-radius: .5em;
-    position: relative;
-    top: -5vh;
-}
-
-.content img[alt="float-eg 40"] { width: 40%; }
-
-.content p:has(img[alt="float-eg 40"]) { width: 100%; }
-
-.content div:has(pre + p > img[alt="center-eg"]),
-.content div:has(p + p > img[alt="center-eg"]) {
->>>>>>> d02a4c4 (git ressource)
     display: flex;
     align-items: center;
-    justify-content: space-evenly; 
-    
+    justify-content: space-evenly;  
 }
+
+.content div.floating-eg {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.content div.floating-eg img { width: 100%; }
 
 .content div:has(pre + pre) {
     display: flex;
@@ -300,7 +289,6 @@ blockquote li::marker {
     justify-content: space-evenly; 
 }
 
-<<<<<<< HEAD
 .content div:has(pre + pre) pre {
     max-width: 50%;
 }
@@ -309,9 +297,7 @@ blockquote li::marker {
     margin-right: 0;
 }
 
-=======
 /* TOC */
->>>>>>> d02a4c4 (git ressource)
 .content h5[id='#table-of-contents'] {
     font-size: 1em;
     color: var(--bright-pink);

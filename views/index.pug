@@ -21,7 +21,7 @@ html
   body
     script.
       document.body.classList = localStorage.getItem("theme") || "light";
-    +overlay(navDirs, navLinks)
+    +overlay(navDirs)
 
     div.content
       h1 Charlotte's Notes
@@ -29,17 +29,17 @@ html
       p These notes contain my work, and some text copied from software documentation.
 
       div.index
-        each links, subject in navDirs
-          p.subject= subject
-          ul.index-list
-            each page in links
-              li
-                a(href=page.endpoint)= page.title
-  
-        p.subject Other
-        ul.index-list
-          each page in navLinks
-            li
-              a(href=page.endpoint)= page.title
-
+        each files, folder in navDirs
+          if (folder !== 'root')
+            p.subject= folder
+            ul.index-list
+              each page in files
+                li
+                  a(href=page.endpoint)= page.title
+          else
+            p.subject Other
+            ul.index-list
+              each page in files
+                li
+                  a(href=page.endpoint)= page.title
 

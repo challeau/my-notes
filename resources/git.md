@@ -4,6 +4,23 @@
 
 # Git
 
+Git is a **free and open source** distributed version control system designed to handle everything from small to very large projects with speed and efficiency. 
+
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+##### Table of contents
+
+- [1 - Introduction](#1---introduction)
+    - [1.1 - Version Control](#11---version-control)
+        - [> Local](#-local)
+        - [> Distant](#-distant)
+        - [> Distributed](#-distributed)
+    - [1.2 - Git](#12---git)
+        - [> Singularities](#-singularities)
+        - [> Three stages](#-three-stages)
+
+<!-- markdown-toc end -->
+
+
 ## 1 - Introduction
 
 ### 1.1 - Version Control
@@ -12,17 +29,32 @@
 
 #### > Local
 
-![float-eg 40](rcs.png)
+<div class="floating-eg">
+
+![](rcs.png)
+
+<div>
 
 One of the most popular VCS tools was a system called **RCS** (Revision Control System), which is still distributed with many computers today. RCS automates the storing, retrieval, logging, identification, and merging of revisions.
 
 RCS works by **keeping patch sets** (that is, the **differences** between files) in a special format on disk; it can then re-create what any file looked like at any point in time by **adding up all the patches**.
 
+</div>
+
+</div>
+
 #### > Distant
 
-**Centralized Version Control Systems** (CVCSs) were developed. These systems (such as CVS, Subversion, and Perforce) have **a single server that contains all the versioned files**, and a number of clients that check out files from that central place. For many years, this has been the standard for version control.
+<div class="floating-eg">
 
-![float-eg 40](cvcs.png)
+![](cvcs.png)
+
+<div>
+
+**Centralized Version Control Systems** (CVCSs) were developed. These systems (such as CVS, Subversion, and Perforce) have **a single server that contains all the versioned files**, and a number of clients that check out files from that central place. For many years, this has been the standard for version control.
+</div>
+
+</div>
 
 This setup offers many advantages, especially over local VCSs. For example, everyone knows to a certain degree what everyone else on the project is doing. Administrators have **fine-grained control** over who can do what, and it’s far **easier to administer** a CVCS than it is to deal with local databases on every client.
 
@@ -34,9 +66,11 @@ This is where **Distributed Version Control Systems** (DVCSs) step in. In a DVCS
 
 Furthermore, many of these systems deal pretty well with having several remote repositories they can work with, so you can collaborate with different groups of people in different ways simultaneously within the same project. This allows you to **set up several types of workflows** that aren’t possible in centralized systems, such as hierarchical models.
 
-![center-eg](dvcs.png)
+![center-eg 50](dvcs.png)
 
 ### 1.2 - Git
+
+</div>
 
 #### > Singularities
 
@@ -67,4 +101,8 @@ The basic Git workflow goes something like this:
 1. You **modify files** in your working tree.
 2. You **selectively stage just those changes** you want to be part of your next commit, which adds only those changes to the staging area.
 3. You do a **commit**, which takes the files as they are in the staging area and **stores that snapshot permanently to your Git directory**. 
+
+## 2 - Git basics
+
+
 

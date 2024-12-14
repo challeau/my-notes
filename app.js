@@ -39,6 +39,7 @@ marked.use({
 // ROUTING
 fs.readdir(resourcePath, (err, files) => {
     let resources = lib.getResources(files, resourcePath);
+
     let [navDirs, navLinks] = lib.getNavData(resources);
 
     // home page
