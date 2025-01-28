@@ -15,7 +15,7 @@ export function comparePriority(a, b) {
  * @param {[Object]} resources - A list of all the resources to sort.
  * @returns {[Object]} A list of objects with the files sorted by directory.
  */
-export function getNavData(resources) {
+export function getNavbarData(resources) {
   let allDirs = new Set(resources.map((r) => r.metadata.folder));
   let dirData = {};
   let rest = [];

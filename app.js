@@ -1,43 +1,47 @@
-import fs from "fs";
+import { readdir } from "node:fs";
 import express from "express";
-import { fileURLToPath } from 'url';
-import path from 'path';
-import { getResources, getNavData } from "./utils/index.js";
+import path from "path";
+import { fileURLToPath } from "url";
 
+import { getAllPagesData, getNavbarData } from "./src/utils/index.js";
+
+// File paths
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const noteFilesPath = path.join(__dirname, "notes");
+const publicAssetsPath = path.join(__dirname, "public");
+const viewsPath = path.join(__dirname, "src/views")
 
 // Setup the app
 const app = express();
 const PORT = 3000;
-const filesPath = path.join(__dirname, "./note-files/");
-console.log(filesPath);
 
+app.use(express.static(publicAssetsPath));
 app.set("view engine", "pug");
-app.use(express.static(__dirname + "/public"));
+app.set("views", viewsPath);
 
-// ROUTING
-fs.readdir(filesPath, (err, files) => {
-  let resources = getResources(files, filesPath);
-  let navDirs = getNavData(resources);
+readdir(noteFilesPath, (_err, files) => {
+  let pages = getAllPagesData(files, noteFilesPath);
+  let navbarDirs = getNavbarData(pages);
 
   // home page
-  app.get("/", (req, res) => {
+  app.get("/", (_req, res) => {
     res.render("index", { title: "Charlotte's notes", navDirs: navDirs });
   });
 
   // for each file in our ressources, create a route and render the resource
-  for (let rsrc of resources) {
-    app.get(rsrc.metadata.endpoint, (req, res) => {
+  for (let page of pages) {
+    app.get(page.metadata.endpoint, (_req, res) => {
       res.render("page-template", {
-        title: rsrc.metadata.title,
-        content: rsrc.text,
-        navDirs: navDirs,
+        title: page.metadata.title,
+        content: page.content,
+        navDirs: navbarDirs,
       });
     });
   }
 });
 
 app.listen(PORT);
-console.log(`iss all good :)\nListening on port ${PORT}`);
+
+console.log(`iss all good, have fun learnin' :)\nhttp://localhost:${PORT}`);

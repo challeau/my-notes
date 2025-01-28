@@ -9,6 +9,7 @@ Blender is a free and open-source 3D creation suite.
 Render ideas:
 
 - [ ] Bri's magic game assets
+- [ ] Spinning seal spinning in different envs
 - [ ] More donuts for a donut shop website
 - [ ] Pollypocket-like DS
 - [ ] Me and Bri ACNL style
@@ -23,14 +24,13 @@ Blender’s interface is separated into three main parts:
 
 ![center-eg-50](blenderinterface.png)
 
-
 The top bar is separated into (left to right):
+
 - **Menus** (Blender, File, Edit, Render, Window, Help).
 - **Workspaces**: predefined window layouts. Each Workspace consists of a set of Areas containing Editors, and is geared towards a specific task such as modeling, animating, or scripting.
 - **Scenes & Layers**: used to select the current Scene and View Layer.
 
 To the right of the area, you can find tne outliners, which contains a list of all the objects in your scene. You can select objects by clicking their name.
-
 
 ## 2 - Basics
 
@@ -57,19 +57,21 @@ Modifiers:
 - `Shift`: more precision. Also works with value sliders.
 - `Ctrl + Shift`: snap with precision.
 
-
 ### 2.2 - Moving in the scene
 
 To orbit around the cursor ![tiny inline](cursor.png):
+
 - Mouse: middle click.
 - Trackpad: two fingers.
 - Orbitting gizmo ![tiny inline](gizmo.png): at the top right of the area.
 
 Modifiers:
+
 - `Shift`: move in the scene.
 - `Ctrl`: zoom in-out.
 
 To move to the selcted object:
+
 - `~` > View selected.
 - numpad `.`.
 
@@ -80,6 +82,7 @@ To free move the camera: `Shift` + `~` .
 ### 3.1 - Adding new objects
 
 In object mode:
+
 - To add an object: `Shift + A`.
 - To adjust the mesh, use the options in the small panel that opened on the bottom left. If you clicked away, press `F9` to pop up the panel.
 - To see the object's details, press `N`.
@@ -87,6 +90,7 @@ In object mode:
 ### 3.2 - Shading
 
 In object mode:
+
 - To **scale your object**: `Ctrl` + `A` > Scale.
 - To smooth the shading: right click + Shade smooth.
 - To add more polygons: right-side panel > Modifiers menu > Generate > Subdivision surface.
@@ -100,12 +104,14 @@ In object mode:
 **To switch to Mesh Mode: `Tab`.**
 
 Moving points:
+
 - To move points: select them and press `G`.
 - To apply modifications to nearby points also, activate Proportional Editing by pressing `O`. After pressing `G`, adjust the strength with `WheelUp`/`WheelDown`, or `PageUp`/`PageDown`, or via the menu (top of the area).
   ![medium center](proportional.png)
 - To move a point along the axis which the points are facing: `Alt/Opt` + `S`.
 
 Modifying the mesh:
+
 - To select points through the object, activate x-ray view: `Alt/Opt` + `Z`.
 - To duplicate a mesh: select all the points, top of the area Mesh > Duplicate, and `Esc` to place the duplicate on top. 
 - To make the duplicate mesh into its own object: `P` > By selection.
@@ -114,10 +120,10 @@ Modifying the mesh:
 ### 3.4 - Adding Modifiers
 
 In Object Mode:
+
 - To fill in the space between the duplicate and the objects: Mofifiers > Solidify. Offset > 1. Make sure the solidify modifier is first.
 - De-select Edit Mode on a modifier to modify the mesh under it more easily.
 - To modify a mesh and have it snap to the face that's under it, modify the behavior of `Ctrl`: Snap ![small inline](snap.png) > Face Nearest > Snap to same target. Hold `Ctrl` while grabbing to cancel it.
-
 
 ## 4 - Sculpt Mode
 
@@ -137,11 +143,9 @@ Subsurface: transparency.
 
 To add a pre-made texture: circle next to Base Color ![tiny inline](base-color.png) > Image Texture.
 
-
 ## 5 - Rendering
 
 `f12`
-
 
 ## ? - Selection cheatsheet
 
@@ -150,8 +154,6 @@ To add a pre-made texture: circle next to Base Color ![tiny inline](base-color.p
 | `Alt/Opt` + `Shift` + L click | Edge loop  |
 |                               |            |
 
-
 ## ? - Tips
 
 - Use `Shift` and `Ctrl` on sliders to incrementally change their value.
-

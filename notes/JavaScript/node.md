@@ -14,22 +14,22 @@ When Node.js performs an I/O operation, like reading from the network, accessing
 
 This allows Node.js to **handle thousands of concurrent connections with a single server** without introducing the burden of managing thread concurrency, which could be a significant source of bugs.
 
-
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 ##### Table of contents
 
-- [1 - Prerequisites](#1---prerequisites)
-    - [1.1 - Differences between Node.js and the browser.](#11---differences-between-nodejs-and-the-browser)
-    - [1.2 - The V8 JavaScript Engine](#12---the-v8-javascript-engine)
-    - [1.3 - Installation](#13---installation)
-    - [1.4 `npm`](#14-npm)
-- [2 - Asynchronous work](#2---asynchronous-work)
-- [3 - Manipulating files](#3---manipulating-files)
-- [4 - Command Line](#4---command-line)
-- [Sources](#sources)
+- [Node.js](#nodejs)
+        - [Table of contents](#table-of-contents)
+    - [1 - Prerequisites](#1---prerequisites)
+        - [1.1 - Differences between Node.js and the browser.](#11---differences-between-nodejs-and-the-browser)
+        - [1.2 - The V8 JavaScript Engine](#12---the-v8-javascript-engine)
+        - [1.3 - Installation](#13---installation)
+        - [1.4 `npm`](#14-npm)
+    - [2 - Asynchronous work](#2---asynchronous-work)
+    - [3 - Manipulating files](#3---manipulating-files)
+    - [4 - Command Line](#4---command-line)
+    - [Sources](#sources)
 
 <!-- markdown-toc end -->
-
 
 ## 1 - Prerequisites
 
@@ -42,7 +42,6 @@ Node.js does not have access to the objects provided by the browser like `docume
 Node.js **controls the environment** where the code is executed: unlike with browsers, you are in charge of deciding **which ECMAScript version to use** by changing the Node.js version, and you can also enable specific experimental features by running Node.js with flags.
 
 Node.js also **supports both the CommonJS and ES module systems**, while in the browser we are starting to see the ES Modules standard being implemented. In practice, this means that you can use both `require()` and `import` in Node.js, while you are limited to import in the browser.
-
 
 ### 1.2 - The V8 JavaScript Engine
 
@@ -68,7 +67,6 @@ sudo ln -s /usr/bin/npm /usr/local/bin/npm
 ```
 
 For other distros: see [here](https://nodejs.org/en/download/package-manager).
-
 
 ### 1.4 `npm`
 
@@ -130,7 +128,6 @@ npm run <task_name>
 ## 3 - Manipulating files
 
 ## 4 - Command Line
-
 
 ## Sources
 

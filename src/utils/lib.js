@@ -1,4 +1,4 @@
-import { marked } from 'marked';
+import { marked } from "marked";
 import sanitizeHtml from "sanitize-html";
 import fs from "fs";
 import path from "path";
@@ -10,8 +10,12 @@ import path from "path";
  * @returns {[{text: Document, metadata: Object}]} A list of the resources
  *						   and their meta data.
  */
-export function getResources(files, resourcePath, dir = "") {
+export function getAllPagesData(files, resourcePath, dir = "") {
   let resources = [];
+
+  if (files == null) {
+    return ;
+  }
 
   files.forEach((file) => {
     const currPath = path.join(resourcePath, dir, file);
@@ -22,7 +26,7 @@ export function getResources(files, resourcePath, dir = "") {
     if (isDirectory) {
       let files = fs.readdirSync(currPath);
       resources.push(
-        ...getResources(files, resourcePath, path.join(dir, file)),
+        ...getAllPagesData(files, resourcePath, path.join(dir, file)),
       );
     } else {
       if (!file.match(".md$")) return;
@@ -62,7 +66,7 @@ export function getResources(files, resourcePath, dir = "") {
         ]),
       });
 
-      resources.push({ text: parsedHTML, metadata: metadata });
+      resources.push({ content: parsedHTML, metadata: metadata });
     }
   });
 

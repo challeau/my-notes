@@ -6,39 +6,39 @@
 
 > The **Common Vulnerability Scoring System** (CVSS) is a free and open industry standard for assessing the severity of computer system security vulnerabilities.
 
-
 CVSS attempts to assign severity scores to vulnerabilities, allowing responders to prioritize responses and resources according to threat. Scores are calculated based on a formula that depends on several metrics that approximate ease and impact of an exploit.
 
-Scores range from 0 to 10, with **10 being the most severe**. 
+Scores range from 0 to 10, with **10 being the most severe**.
 
 The benefits of CVSS include the provision of a standardized vendor and platform agnostic vulnerability scoring methodology. It is an open framework, providing transparency to the individual characteristics and methodology used to derive a score.
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 ##### Table of contents
 
-- [1 - Metrics](#1---metrics)
-- [2 - Scoring](#2---scoring)
-- [3 - Data representation](#3---data-representation)
-- [4 - Python CVSS](#4---python-cvss)
-- [5 - Other standards](#5---other-standards)
-    - [5.1 CPE](#51-cpe)
-    - [5.2 CVEs](#52-cves)
-- [7. Thinking material](#7-thinking-material)
-    - [7.1 Vulnerability vs weakness](#71-vulnerability-vs-weakness)
-- [Sources](#sources)
+- [CVSS](#cvss)
+        - [Table of contents](#table-of-contents)
+    - [1 - Metrics](#1---metrics)
+    - [2 - Scoring](#2---scoring)
+    - [3 - Data representation](#3---data-representation)
+    - [4 - Python CVSS](#4---python-cvss)
+    - [5 - Other standards](#5---other-standards)
+        - [5.1 CPE](#51-cpe)
+        - [5.2 CVEs](#52-cves)
+    - [7. Thinking material](#7-thinking-material)
+        - [7.1 Vulnerability vs weakness](#71-vulnerability-vs-weakness)
+    - [Sources](#sources)
 
 <!-- markdown-toc end -->
-
 
 ## 1 - Metrics
 
 CVSS is composed of three metric groups:
+
 - The **Base Score** reflects the **severity** of a vulnerability according to its intrinsic characteristics which are **constant over time** and assumes the reasonable worst case impact across different deployed environments.
 - The **Temporal Metrics** adjust the Base severity of a vulnerability based on factors that **change over time**, such as the availability of exploit code.
 - The **Environmental Metrics** adjust the Base and Temporal severities to a **specific computing environment**. They consider factors such as the presence of mitigations in that environment.
 
 ![center-eg](MetricGroups.svg)
-
 
 ## 2 - Scoring
 
@@ -54,12 +54,12 @@ Generally, the **Base and Temporal metrics** are specified by vulnerability bull
 
 Scoring CVSS metrics also produces a **vector string**, a textual representation of the metric values used to score the vulnerability. This vector string is a specifically **formatted text string that contains each value assigned to each metric**, and should always be displayed with the vulnerability score.
 
-
 ## 3 - Data representation
 
 This section is for referencing during development. Not crucial to understanding the concepts.
 
 2.0:
+
 ```json
 {
     "license": [...],
@@ -116,6 +116,7 @@ This section is for referencing during development. Not crucial to understanding
 ```
 
 3.1:
+
 ```json
 {
     "license": [...],
@@ -191,8 +192,8 @@ This section is for referencing during development. Not crucial to understanding
 
 !! --> changed or new.
 
-
 Both:
+
 ```json
 {...
 "impact" : {
@@ -240,7 +241,6 @@ Both:
 }
 ```
 
-
 ## 4 - Python CVSS
 
 This Python package contains CVSS v2 and v3 computation utilities and interactive calculator compatible with both Python 2 and Python 3.
@@ -264,7 +264,6 @@ print(c.scores())           # (6.5, 6.0, 5.3)
 print(c.severities())       # ('Medium', 'Medium', 'Medium') 
 ```
 
-
 ## 5 - Other standards
 
 A CVSS score is usually associated with a Common Platform Enumeration (CPE), and a Common Vulnerabilities and Exposures (CVE) ID.
@@ -285,16 +284,14 @@ CVE IDs give users a **reliable way to recognize unique vulnerabilities** and co
 
 CVE IDs are assigned by a CVE Numbering Authority (CNA). There are about 100 CNAs, representing major IT vendors.
 
-Other names of CVE IDs: 
+Other names of CVE IDs:
 CVE Records, CVE Identifiers, CVE names, CVE numbers, or CVEs.
-
 
 ## 7. Thinking material
 
 ### 7.1 Vulnerability vs weakness
 
 While weakness refers to an application error or bug, it may escalate to a vulnerability in cases where it can be exploited to perform a malicious action. The difference between a weakness and a vulnerability is the availability of a specific payload allowing it to be exploited.
-
 
 ## Sources
 
@@ -303,5 +300,3 @@ While weakness refers to an application error or bug, it may escalate to a vulne
 - [Mastering CVSS course transcript](https://www.first.org/cvss/v3.1/mastering-cvss-3.1-transcript)
 - [CVSS 3.1 schema](https://www.first.org/cvss/cvss-v3.1.json)
 - [CVE doc - RedHat](https://www.redhat.com/en/topics/security/what-is-cve)
-
-

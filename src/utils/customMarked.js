@@ -18,9 +18,8 @@ const extensions = [
       // Make parsed links open in new tab if the URL is external
       let linkAttribs = `href="${token.href}" title="${token.title}"`;
 
-      if (!token.href.match(/^[/#]/))
-        linkAttribs += ' target="_blank"';
-      
+      if (!token.href.match(/^[/#]/)) linkAttribs += ' target="_blank"';
+
       return `<a ${linkAttribs}>${token.text}</a>`;
     },
   },

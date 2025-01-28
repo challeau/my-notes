@@ -38,7 +38,7 @@
 
 #nav-bar {
     position: fixed;
-    left: -20vw;
+    left: -100vw;
     top: 0;
     transition: left .4s ease-in-out;
 
@@ -55,7 +55,6 @@
 }
 
 #nav-bar > * {
-    width: inherit;
     min-width: 100px;
     list-style-type: none;
     list-style-position: inside;
