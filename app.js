@@ -1,28 +1,38 @@
 import { readdir } from "node:fs";
 import express from "express";
-import { getAllPagesData, getNavbarData } from "./utils/index.js";
+import path from "path";
+import { fileURLToPath } from "url";
+
+import { getAllPagesData, getNavbarData } from "./src/utils/index.js";
+
+// File paths
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const noteFilesPath = path.join(__dirname, "notes");
+const publicAssetsPath = path.join(__dirname, "public");
+const viewsPath = path.join(__dirname, "src/views")
 
 // Setup the app
 const app = express();
-const PORT = 6006;
-const filesPath = './files'
+const PORT = 3000;
 
+app.use(express.static(publicAssetsPath));
 app.set("view engine", "pug");
-app.use(express.static("./public"));
+app.set("views", viewsPath);
 
-// Routing
-readdir(filesPath, (err, files) => {
-	let pages = getAllPagesData(files, filesPath);
-	let navbarDirs = getNavbarData(pages);
+readdir(noteFilesPath, (_err, files) => {
+  let pages = getAllPagesData(files, noteFilesPath);
+  let navbarDirs = getNavbarData(pages);
 
   // home page
-  app.get("/", (req, res) => {
-    res.render("index", { title: "Charlotte's notes", navDirs: navbarDirs });
+  app.get("/", (_req, res) => {
+    res.render("index", { title: "Charlotte's notes", navDirs: navDirs });
   });
 
-  // for each note file, create a route and render a page
+  // for each file in our ressources, create a route and render the resource
   for (let page of pages) {
-    app.get(page.metadata.endpoint, (req, res) => {
+    app.get(page.metadata.endpoint, (_req, res) => {
       res.render("page-template", {
         title: page.metadata.title,
         content: page.content,
@@ -32,7 +42,6 @@ readdir(filesPath, (err, files) => {
   }
 });
 
-// Start the server
-app.listen(PORT, () => {
-	console.log(`iss all good :)\nListening on port ${PORT}`);
-});
+app.listen(PORT);
+
+console.log(`iss all good, have fun learnin' :)\nhttp://localhost:${PORT}`);

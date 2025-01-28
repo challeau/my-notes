@@ -5,11 +5,11 @@
   "description": "All my documentation in one place.",
   "main": "app.js",
   "scripts": {
-    "clean": "find ./resources -type f -name '*.md' | xargs sed -i \"s/’/'/g\" && find ./resources -type f -name '*.md' | xargs sed -i 's/”/\"/g' && find ./resources -type f -name '*.md' | xargs sed -i 's/“/\"/g'",
+    "clean": "bash ./scripts/clean.sh",
     "dev": "nodemon app.js",
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "pretty": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json}\""
+    "pretty": "npm run clean ; prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json}\""
   },
   "nodemonConfig": {
     "restartable": "rs",
@@ -18,9 +18,9 @@
       "node_modules/**/node_modules"
     ],
     "watch": [
-      "./resources",
+      "./notes",
       "./public",
-      "./views"
+      "./src"
     ],
     "ext": "js,json,md,pug,css",
     "delay": 2500

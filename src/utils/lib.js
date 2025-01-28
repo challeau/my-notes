@@ -1,4 +1,4 @@
-import { marked } from 'marked';
+import { marked } from "marked";
 import sanitizeHtml from "sanitize-html";
 import fs from "fs";
 import path from "path";
@@ -12,6 +12,10 @@ import path from "path";
  */
 export function getAllPagesData(files, resourcePath, dir = "") {
   let resources = [];
+
+  if (files == null) {
+    return ;
+  }
 
   files.forEach((file) => {
     const currPath = path.join(resourcePath, dir, file);

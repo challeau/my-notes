@@ -4,28 +4,30 @@
 
 # Git
 
-Git is a **free and open source** distributed version control system designed to handle everything from small to very large projects with speed and efficiency. 
+Git is a **free and open source** distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 ##### Table of contents
 
-- [1 - Introduction](#1---introduction)
-    - [1.1 - Version Control](#11---version-control)
-        - [> Local](#-local)
-        - [> Distant](#-distant)
-        - [> Distributed](#-distributed)
-    - [1.2 - Git](#12---git)
-        - [> Singularities](#-singularities)
-        - [> Three stages](#-three-stages)
+- [Git](#git)
+        - [Table of contents](#table-of-contents)
+    - [1 - Introduction](#1---introduction)
+        - [1.1 - Version Control](#11---version-control)
+            - [\> Local](#-local)
+            - [\> Distant](#-distant)
+            - [\> Distributed](#-distributed)
+        - [1.2 - Git](#12---git)
+            - [\> Singularities](#-singularities)
+            - [\> Three stages](#-three-stages)
+    - [2 - Git basics](#2---git-basics)
 
 <!-- markdown-toc end -->
-
 
 ## 1 - Introduction
 
 ### 1.1 - Version Control
 
-> **Version control** is a system that **records changes to a file or set of files** over time so that you can **recall** specific versions later. 
+> **Version control** is a system that **records changes to a file or set of files** over time so that you can **recall** specific versions later.
 
 #### > Local
 
@@ -75,9 +77,9 @@ Furthermore, many of these systems deal pretty well with having several remote r
 #### > Singularities
 
 1. Conceptually, git thinks of its **data** like a **series of snapshots of a miniature filesystem**, instead of a set of files and the changes made to each file over time (delta-based version control).
-This makes Git more like a **mini filesystem** with some incredibly **powerful tools** built on top of it, rather than simply a VCS. 
+This makes Git more like a **mini filesystem** with some incredibly **powerful tools** built on top of it, rather than simply a VCS.
 
-2. With Git, **nearly every operation is local**, which allows offline work. In many other systems, doing so is either impossible or painful. 
+2. With Git, **nearly every operation is local**, which allows offline work. In many other systems, doing so is either impossible or painful.
 
 3. Git has **integrity**: everything is **checksummed before it is stored** and is then referred to by that checksum. This means it’s impossible to change the contents of any file or directory without Git knowing about it. This functionality is **built into Git at the lowest levels** and is integral to its philosophy.<br/>
   **You can’t lose information in transit or get file corruption without Git being able to detect it**.<br/>
@@ -100,7 +102,7 @@ This leads us to the **three main sections of a Git project**:
 The basic Git workflow goes something like this:
 1. You **modify files** in your working tree.
 2. You **selectively stage just those changes** you want to be part of your next commit, which adds only those changes to the staging area.
-3. You do a **commit**, which takes the files as they are in the staging area and **stores that snapshot permanently to your Git directory**. 
+3. You do a **commit**, which takes the files as they are in the staging area and **stores that snapshot permanently to your Git directory**.
 
 ## 2 - Git basics
 
