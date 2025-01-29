@@ -352,7 +352,7 @@ Compilation takes **longer to start up** but it's more **efficient**:
 When a program is interpreted, the code is **read, translated, and executed by the interpreter**, not the machine.
 
 The interpreter uses a concept called **REPL** (read-eval-print-loop). Interpretation is **faster to start up** (immediate output) but it's **inefficient**:
-— Eval is slow, it doesn’t leverage the speed of machine code.
+— Eval is slow, it doesn't leverage the speed of machine code.
 — The interpreter is not able to optimize code across the program.
 
 `Source code --> INTERPRETER --> output`

@@ -16,7 +16,7 @@ Render ideas:
 
 ## 1 - The interface
 
-Blender’s interface is separated into three main parts:
+Blender's interface is separated into three main parts:
 
 - The <span style="color: var(--pink); font-weight: 700">Topbar</span> at the very top, consists of the main menu, which is used for saving, importing and exporting files, configuring settings, and rendering among other functions.
 - **Areas** in the middle, which is the main workspace.

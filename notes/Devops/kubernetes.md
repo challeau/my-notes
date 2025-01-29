@@ -318,7 +318,7 @@ You can also use finalizers to **prevent deletion of unmanaged resources**.
 
 In Kubernetes, some objects are **owners of other objects**. These owned objects are **dependents** of their owner.
 
-Owner references help different parts of Kubernetes **avoid interfering with objects they don’t control**.
+Owner references help different parts of Kubernetes **avoid interfering with objects they don't control**.
 
 Dependent objects have a `metadata.ownerReferences` field that **references their owner object**. A valid owner reference consists of the **object name and a UID within the same namespace** as the dependent object. Kubernetes sets the value of this field automatically for objects that are dependents of other objects like ReplicaSets, DaemonSets, Deployments, Jobs and CronJobs, and ReplicationControllers. You can also configure these relationships manually by changing the value of this field. However, you usually don't need to and can allow Kubernetes to automatically manage the relationships.
 
@@ -577,11 +577,11 @@ It's an **application-specific controller** that extends the functionality of th
 
 It builds upon the basic Kubernetes resource and controller concepts, but **includes domain or application-specific knowledge to automate** the entire life cycle of the software it manages.
 
-In Kubernetes, controllers of the control plane implement control loops that repeatedly compare the desired state of the cluster to its actual state. If the cluster's actual state doesn’t match the desired state, then the controller takes action to fix the problem.
+In Kubernetes, controllers of the control plane implement control loops that repeatedly compare the desired state of the cluster to its actual state. If the cluster's actual state doesn't match the desired state, then the controller takes action to fix the problem.
 
 > An operator is a **custom Kubernetes controller** that uses custom resources (CR) to manage applications and their components.
 
-High-level **configuration** and settings are provided by the user within a **CR**. The Kubernetes operator **translates the high-level directives into low level actions**, based on best practices embedded within the operator’s logic.
+High-level **configuration** and settings are provided by the user within a **CR**. The Kubernetes operator **translates the high-level directives into low level actions**, based on best practices embedded within the operator's logic.
 
 A **custom resource** is the **API extension mechanism** in Kubernetes. A **custom resource definition (CRD)** defines a CR and lists out all of the configuration available to users of the operator.
 
@@ -597,9 +597,9 @@ The actions a Kubernetes operator performs can include almost anything: scaling 
 
 Kubernetes can manage and scale stateless applications, such as web apps, mobile backends, and API services, without requiring any additional knowledge about how these applications operate. The built-in features of Kubernetes are designed to easily handle these tasks.
 
-However, **stateful applications**, like databases and monitoring systems, **require additional domain-specific knowledge** that Kubernetes doesn’t have. It needs this knowledge in order to scale, upgrade, and reconfigure these applications.
+However, **stateful applications**, like databases and monitoring systems, **require additional domain-specific knowledge** that Kubernetes doesn't have. It needs this knowledge in order to scale, upgrade, and reconfigure these applications.
 
-Kubernetes operators **encode this specific domain knowledge** into Kubernetes **extensions** so that it can manage and automate an application’s life cycle. By removing difficult manual application management tasks, Kubernetes operators make these processes **scalable, repeatable, and standardized**.
+Kubernetes operators **encode this specific domain knowledge** into Kubernetes **extensions** so that it can manage and automate an application's life cycle. By removing difficult manual application management tasks, Kubernetes operators make these processes **scalable, repeatable, and standardized**.
 
 For application developers, **operators make it easier to deploy and run the foundation services** on which their apps depend.<br>
 For infrastructure engineers and vendors, **operators provide a consistent way to distribute software** on Kubernetes clusters and **reduce support burdens** by identifying and correcting application problems.
@@ -608,7 +608,7 @@ Operators allow you to write code to **automate a task, beyond the basic automat
 
 The function of the operator pattern is to **capture the intentions of how a human operator would manage a service**. A human operator needs to have a complete understanding of how an app or service should work, how to deploy it, and how to fix any problems that may occur.
 
-The creation of an operator often **starts with automating the application’s installation** and self-service provisioning, and follows with more complex automation capabilities.
+The creation of an operator often **starts with automating the application's installation** and self-service provisioning, and follows with more complex automation capabilities.
 
 There is also a Kubernetes operator software development kit (SDK) that can help you develop your own operator. The SDK provides the tools to build, test, and package operators with a choice of creating operators using Helm charts, Ansible Playbooks or Golang.
 

@@ -22,6 +22,8 @@ Each file in the `resources` directory has the same structure:
 
 Every file is parsed for metadata and translated to HTML, using `fs` and `marked`. Then a route is created for each file, and the view is rendered by `Pug.js`.
 
+### v2 todo
+
 - [ ] Use dirname to build another layer in path
 - [ ] Only parse/load pages that are rendered
 - [ ] Add support for todo list checking from front

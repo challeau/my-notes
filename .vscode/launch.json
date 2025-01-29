@@ -15,6 +15,6 @@
       "command": "npm run dev",
       "request": "launch",
       "type": "node-terminal"
-    },
+    }
   ]
 }

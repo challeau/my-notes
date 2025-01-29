@@ -25,13 +25,13 @@
 
 .nav-btn.open { margin: 1em; }
 
-#theme-btn, #to-top-btn {
+#theme-btn {
     bottom: 0;
     right: 0;
 }
 
 #to-top-btn {
-    bottom: 4vw;
+    bottom: 8vh;
     right: -25vw;
     transition: right .4s ease-in-out;
 }
@@ -97,6 +97,10 @@
 #nav-bar a:hover { color: var(--bright-pink); }
 
 #nav-bar .active-folder { background-color: var(--dark-beige); }
+
+#nav-bar .folder:hover .material-symbols-outlined {
+    transform: rotate(35deg);
+}
 
 #nav-bar .folder-title:hover:not(.active-folder) { background-color: #73596312; }
 

@@ -25,13 +25,13 @@ It is mainly supported when used with React, although you can access your Relay 
 
 ### 1.2 - How it works
 
-Relay is a data management library for the client that’s oriented around GraphQL, but uses it in a very specific way that gets the most benefit from it.
+Relay is a data management library for the client that's oriented around GraphQL, but uses it in a very specific way that gets the most benefit from it.
 
 For the best performance, you want your app to issue a single request at the beginning of each screen or page instead of having individual components issue their own requests.
 
 But the problem with that is that it **couples components and screens together**, creating a big maintenance problem: if the data changes shape then you have to modify the query. It becomes very difficult to maintain these big screen-wide queries.
 
-> Relay’s unique strength is to avoid this tradeoff by letting **each component declare its own data requirements locally**, but then **stitching those requirements together into larger queries**. That way you get both performance and maintainability.
+> Relay's unique strength is to avoid this tradeoff by letting **each component declare its own data requirements locally**, but then **stitching those requirements together into larger queries**. That way you get both performance and maintainability.
 
 It does this with a **compiler** that scans your JavaScript code for **fragments of GraphQL**, and then stitches those fragments together into complete queries.
 
@@ -39,7 +39,7 @@ Besides the compiler, Relay has **runtime code** that **manages the fetching and
 
 ![center-eg](relay.png)
 
-The advantage of having a **centralized Store** is that it **lets you keep your data consistent when it’s updated**. This is because Relay **normalizes the data as it comes in**, meaning that it merges all the data it sees for a single graph node into **one place**, so it doesn’t have multiple copies of the same node.
+The advantage of having a **centralized Store** is that it **lets you keep your data consistent when it's updated**. This is because Relay **normalizes the data as it comes in**, meaning that it merges all the data it sees for a single graph node into **one place**, so it doesn't have multiple copies of the same node.
 
 The development process is simple:
 
@@ -119,17 +119,17 @@ The `useLazyLoadQuery` hook fetches the data when the component is first rendere
 
 ### 2.1 - Queries are static
 
-> All of the GraphQL strings in a Relay app are **pre-processed by the Relay compiler** and removed from the resulting bundled code. This means **you can’t construct GraphQL queries at runtime** — they have to be static string literals so that they’re **known at compile time**.
+> All of the GraphQL strings in a Relay app are **pre-processed by the Relay compiler** and removed from the resulting bundled code. This means **you can't construct GraphQL queries at runtime** — they have to be static string literals so that they're **known at compile time**.
 
 But it comes with major advantages:
 
 - It allows Relay to **generate type definitions** for the results of the query, making your code more **type-safe**.
 - Relay replaces the GraphQL string literal with an object that tells Relay what to do. This is **much faster** than using the GraphQL strings directly at runtime.
-- Relay’s compiler can be **configured to save queries** to the server when you build your app, so that at runtime the **client need only send a query ID instead of the query itself**. This saves bundle size and network bandwidth, and can prevent attackers from writing malicious queries since only those your app was built with need be available.
+- Relay's compiler can be **configured to save queries** to the server when you build your app, so that at runtime the **client need only send a query ID instead of the query itself**. This saves bundle size and network bandwidth, and can prevent attackers from writing malicious queries since only those your app was built with need be available.
 
 ### 2.2 - Type system
 
-The Relay compiler **generates TypeScript types corresponding to every piece of GraphQL** that you have in your app within a `graphql`` ` literal. Using Relay’s generated types makes your app safer and more maintainable.
+The Relay compiler **generates TypeScript types corresponding to every piece of GraphQL** that you have in your app within a `graphql`` ` literal. Using Relay's generated types makes your app safer and more maintainable.
 
 ```js
 import type {NewsfeedQuery as NewsfeedQueryType} from './__generated__/NewsfeedQuery.graphql';

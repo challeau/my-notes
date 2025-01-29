@@ -8,8 +8,8 @@
     "clean": "bash ./scripts/clean.sh",
     "dev": "nodemon app.js",
     "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "pretty": "npm run clean ; prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json}\""
+    "test": "echo 'Error: no test specified' && exit 1",
+    "pretty": "npm run clean ; prettier --write './**/*.{js,jsx,mjs,cjs,ts,tsx,json}' ; eslint --ext .ts "
   },
   "nodemonConfig": {
     "restartable": "rs",
@@ -32,8 +32,22 @@
     "express": "^4.18.2",
     "jsdom": "^22.1.0",
     "marked": "^11.2.0",
-    "nodemon": "^3.0.1",
     "pug": "^3.0.2",
     "sanitize-html": "^2.11.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.19.0",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.12.0",
+    "@typescript-eslint/eslint-plugin": "^8.22.0",
+    "@typescript-eslint/parser": "^8.22.0",
+    "eslint": "^9.19.0",
+    "globals": "^15.14.0",
+    "nodemon": "^3.0.1",
+    "prettier": "^3.4.2",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.22.0"
   }
 }
