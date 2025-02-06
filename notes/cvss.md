@@ -1,4 +1,3 @@
-
 [//]: # (TITLE CVSS)
 [//]: # (ENDPOINT /cvss)
 

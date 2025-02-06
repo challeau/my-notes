@@ -5,6 +5,7 @@ find notes -type f -name '*.md' \
 | xargs sed -i '' "s/’/'/g" && find notes -type f -name '*.md' \
 | xargs sed -i '' 's/”/\"/g' && find notes -type f -name '*.md' \
 | xargs sed -i '' 's/“/\"/g' \
+| xargs sed -i '' '/[^[:space:]]/,$!d' docker.md \
 && echo "Replaced non-ASCII quotations"
 
 confirm() {

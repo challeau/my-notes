@@ -24,7 +24,8 @@ Every file is parsed for metadata and translated to HTML, using `fs` and `marked
 
 ### v2 todo
 
-- [ ] Use dirname to build another layer in path
+- [x] Use dirname to build another layer in path
+- [ ] Add short descriptions in metadata + available in tooltip on navbar hover
 - [ ] Only parse/load pages that are rendered
 - [ ] Add support for todo list checking from front
 - [ ] preload TOC of pages to inject it in the navbar

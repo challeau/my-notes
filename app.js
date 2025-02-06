@@ -1,9 +1,20 @@
-import { readdir } from "node:fs";
+/**
+ *   /$$$$$$  /$$      Made with <3 by      /$$             /$$     /$$              
+ *  /$$__  $$| $$                          | $$            | $$    | $$              
+ * | $$  \__/| $$$$$$$   /$$$$$$   /$$$$$$ | $$  /$$$$$$  /$$$$$$ /$$$$$$    /$$$$$$ 
+ * | $$      | $$__  $$ |____  $$ /$$__  $$| $$ /$$__  $$|_  $$_/|_  $$_/   /$$__  $$
+ * | $$      | $$  \ $$  /$$$$$$$| $$  \__/| $$| $$  \ $$  | $$    | $$    | $$$$$$$$
+ * | $$    $$| $$  | $$ /$$__  $$| $$      | $$| $$  | $$  | $$ /$$| $$ /$$| $$_____/
+ * |  $$$$$$/| $$  | $$|  $$$$$$$| $$      | $$|  $$$$$$/  |  $$$$/|  $$$$/|  $$$$$$$
+ *  \______/ |__/  |__/ \_______/|__/      |__/ \______/    \___/   \___/   \_______/
+ *
+ */
+
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 
-import { getPageListFromPath, getNavbarData } from "./src/utils/index.js";
+import { getTopicsFromFilepath } from "./src/index.js";
 
 // File paths
 const __filename = fileURLToPath(import.meta.url);
@@ -11,7 +22,7 @@ const __dirname = path.dirname(__filename);
 
 const noteFilesPath = path.join(__dirname, "notes");
 const publicAssetsPath = path.join(__dirname, "public");
-const viewsPath = path.join(__dirname, "src/views");
+const viewsPath = path.join(__dirname, "views");
 
 // Setup the app
 const app = express();
@@ -21,47 +32,33 @@ app.use(express.static(publicAssetsPath));
 app.set("view engine", "pug");
 app.set("views", viewsPath);
 
-const topics = []; // recursive dirread -> dir as [[]]
-const navbarData = getNavbarData(notesDirent);
+const topics = await getTopicsFromFilepath(noteFilesPath);
 
 // Home page route
 app.get("/", (_req, res) => {
-  res.render("index", { title: "Charlotte's notes", navbarData: navbarData });
+  res.render("index", { title: "Charlotte's notes", navbarData: topics });
 });
 
-for (const topic of topics) {
+for (const topic in topics) {
   // One index route per topic
-  app.get(topic.name, (_req, res) => {
+  app.get(`/${topic.toLowerCase()}`, (_req, res) => {
     res.render("topic-template", {
-      title: topic.name,
-      navbarData: navbarData,
+      title: topic,
+      navbarData: topics,
     });
   });
 
   // One route per note file
-}
-
-// #########################################################################
-readdir(noteFilesPath, (_err, files) => {
-  let pageList = getPageListFromPath(noteFilesPath);
-  let navbarDirs = getNavbarData(pages);
-
-  // Home page route
-  app.get("/", (_req, res) => {
-    res.render("index", { title: "Charlotte's notes", navDirs: navbarDirs });
-  });
-
-  // Create route for each page
-  for (let page of pages) {
-    app.get(page.metadata.endpoint, (_req, res) => {
+  for (const page of topics[topic]) {
+    app.get(page.endpoint, (_req, res) => {
       res.render("page-template", {
-        title: page.metadata.title,
-        navDirs: navbarDirs,
+        title: page.title,
+        navbarData: topics,
       });
     });
   }
-});
+}
 
 app.listen(PORT);
 
-console.log(`iss all good, have fun learnin' :)\nhttp://localhost:${PORT}`);
+console.log(`Iss all good, have fun learnin' :)\nView at: http://localhost:${PORT}`);

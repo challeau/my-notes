@@ -23,11 +23,11 @@ html
   body
     script.
       document.body.classList = localStorage.getItem("theme") || "light";
-    +overlay(navDirs, navLinks)
+    +overlay(navbarData)
 
     div.content
       | !{content}
 
   script
-    include ../utils/toc.js
+    include ../src/toc.js
 

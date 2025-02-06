@@ -1,0 +1,39 @@
+// Navigation link == a page
+mixin navLink(name, endpoint, specialClass)
+  li(class=(name === title ? specialClass + " active" : specialClass))
+    a(href=endpoint)= name
+
+// Navigation folder == a subject
+mixin navFolder(name, links)
+    ul.folder
+      li.folder-title
+        span(class="material-symbols-outlined ")= "chevron_right"
+        span= name
+      each page in links
+        +navLink(page.title, page.endpoint, "folded")
+
+// Navigation
+mixin navBar(dirs)
+  div.nav-container
+    div(id="nav-fold-btn" class="nav-btn")
+      span(class="material-symbols-outlined ")= "menu"
+    div(id="nav-bar")
+      a(class="title" href="/")= "Index"
+      each files, folder in dirs
+        if (folder !== 'root')
+          +navFolder(folder, files)
+        else
+          ul.lonely-link
+          each page in files
+            +navLink(page.title, page.endpoint, "")
+
+// OVERLAY == navBar + utility buttons
+mixin overlay(topics)
+  +navBar(topics)
+  div(id="theme-btn" class="nav-btn")
+    span(class="material-symbols-outlined ")= "dark_mode"
+  div(id="to-top-btn" class="nav-btn")
+    span(class="material-symbols-outlined ")= "arrow_upward"
+
+  script
+    include ../src/overlay.js

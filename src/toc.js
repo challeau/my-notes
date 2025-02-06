@@ -1,8 +1,8 @@
 /**
  * Find and return the Target from the event. Used to always return the parent
  * <li> when a list items that contain a link is clicked.
- * @param {Object} event - the event
- * @param {String} expectedTag - the tag we're looking to return
+ * @param {Object} event
+ * @param {String} expectedTag
  */
 function getTarget(event, expectedTag) {
   return event.target.tagName === expectedTag
