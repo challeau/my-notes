@@ -15,6 +15,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 import { getTopicsFromFilepath } from "./src/index.js";
+import { parseMdToHtml } from "./src/parseMdToHtml.js";
 
 // File paths
 const __filename = fileURLToPath(import.meta.url);
@@ -50,10 +51,11 @@ for (const topic in topics) {
 
   // One route per note file
   for (const page of topics[topic]) {
-    app.get(page.endpoint, (_req, res) => {
+    app.get(`${page.endpoint}`, (_req, res) => {
       res.render("page-template", {
         title: page.title,
         navbarData: topics,
+        content: parseMdToHtml(page.filepath),
       });
     });
   }

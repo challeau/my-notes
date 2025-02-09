@@ -63,8 +63,6 @@ export async function getTopicsFromFilepath(filepath) {
       const parentDirname = dirent.parentPath.match('([^/]*)/*$')[1];
       const fileMetadata = await getNoteFileMetadata(dirent.parentPath, dirent.name);
 
-      fileMetadata.endpoint = `/${parentDirname.toLowerCase()}${fileMetadata.endpoint}`;
-
       if (parentDirname in topics) {
         topics[parentDirname].push(fileMetadata);
         continue;
