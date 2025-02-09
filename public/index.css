@@ -4,7 +4,7 @@
 
 .index .topic {
     display: block;
-    color: inherit;
+    color: var(--brown);
     width: 100%;
     text-decoration: inherit;
     font-size: 1.2em;
@@ -17,6 +17,7 @@
 .index .topic:hover {
     padding-bottom: 10px;
     border-bottom: 2px solid var(--beige);
+    color: var(--blue);
 }
 
 .index-list { margin: 1vh 0 3vh 1vw; }

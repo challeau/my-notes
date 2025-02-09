@@ -12,7 +12,7 @@
     --transparent-pink: #FFC8DD38;
     --transparent-lilac: #CDB4DB4F;
     --transparent-blue: #BDE0FE66;
-    
+
     --light-pink: #FFC8DD;
     --light-blue: #BDE0FE;
 
@@ -30,7 +30,7 @@
 * {
     box-sizing: border-box;
     transition-property: color, background-color, border-color, box-shadow, transform;
-    transition-duration: .4s;
+    transition-duration: .3s;
     transition-timing-function: ease-in-out;
 }
 

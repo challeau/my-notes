@@ -25,21 +25,10 @@ html
 
     div.content
       h1= title
-      p This is a collection of my Web Development notes so I can access it from anywhere with an internet connection.
-      p These notes contain my work, and some text copied from software documentation.
 
       div.index
-        each files, folder in navbarData
-          if (folder !== 'root')
-            p.subject= folder
-            ul.index-list
-              each page in files
-                li
-                  a(href=page.endpoint)= page.title
-          else
-            p.subject Other
-            ul.index-list
-              each page in files
-                li
-                  a(href=page.endpoint)= page.title
+        ul.index-list 
+          each page in navbarData[title]
+            li
+              a(href=page.endpoint)= page.title
 

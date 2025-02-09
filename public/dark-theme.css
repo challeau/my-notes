@@ -43,13 +43,16 @@ body.dark #nav-bar .folder-title:hover:not(.active-folder) {
 
 
 /* CONTENT */
-
 body.dark .content {
     background-color: var(--black);
     box-shadow: rgba(0, 0, 0, 0.55) 0px 5px 15px;
 }
 
 body.dark .content a { color: var(--blue); }
+
+body.dark .index .topic { color: var(--white); }
+
+body.dark .index .topic:hover { color: var(--blue); }
 
 body.dark *:not(pre) > code { background-color: var(--dark-grey); }
 
