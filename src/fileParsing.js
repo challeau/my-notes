@@ -1,5 +1,5 @@
 import { readdirSync } from "node:fs";
-import { open } from 'node:fs/promises';
+import { open } from "node:fs/promises";
 import path from "path";
 
 import { sortTopicListByPriority } from "./utils.js";
@@ -7,7 +7,7 @@ import { sortTopicListByPriority } from "./utils.js";
 /**
  * Parse the metadata found in the first few lines of a file
  * The parsing stops at the first occurence of a non-comment line (ie, one that doesn't
- * start with '[//]: #'). This includes empty lines.
+ * start with "[//]: #"). This includes empty lines.
  * @param {string} parentPath 
  * @param {string} filename 
  */
@@ -24,7 +24,7 @@ export async function getNoteFileMetadata(parentPath, filename) {
   };
 
   for await (const line of file.readLines()) {
-    if (!line.startsWith('[//]: #')) {
+    if (!line.startsWith("[//]: #")) {
       file.close();
       return metadata;
     }
@@ -55,12 +55,12 @@ export async function getTopicsFromFilepath(filepath) {
 
   for (const dirent of dirents) {
     if (dirent.isDirectory()) {
-      topics[dirent.name] = []
+      topics[dirent.name] = [];
       continue;
     }
 
-    if (dirent.isFile() && dirent.name.match('.md$')) {
-      const parentDirname = dirent.parentPath.match('([^/]*)/*$')[1];
+    if (dirent.isFile() && dirent.name.match(".md$")) {
+      const parentDirname = dirent.parentPath.match("([^/]*)/*$")[1];
       const fileMetadata = await getNoteFileMetadata(dirent.parentPath, dirent.name);
 
       if (parentDirname in topics) {
@@ -73,7 +73,7 @@ export async function getTopicsFromFilepath(filepath) {
   }
 
   topics.Other = orphanFiles;
-  sortTopicListByPriority();
+  sortTopicListByPriority(topics);
 
   return topics;
 }

@@ -1,6 +1,6 @@
 
 [//]: # (TITLE TS basics)
-[//]: # (ENDPOINT /ts)
+[//]: # (ENDPOINT /ts-basics)
 [//]: # (PRIORITY 0)
 
 # Essential TypeScript

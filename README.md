@@ -28,6 +28,9 @@ Every file is parsed for metadata and compiled to HTML, using `fs` and `marked`.
 
 - [x] Use dirname to build a topic index page
 - [ ] Add short descriptions in metadata + available in tooltip on navbar hover
+- [ ] Make valid link fragments
 - [x] Only parse pages on render
 - [ ] Add support for todo list checking from front
-- [ ] preload TOC of pages to inject it in the navbar
+- [ ] preload TOC of pages to inject it in the navbar ?
+- [ ] OR turn it into a horizontal bar with only the topics
+- [ ] Migrate to TS

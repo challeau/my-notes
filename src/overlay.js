@@ -44,8 +44,8 @@ for (let folder of folders){
 // Handles dark/light mode
 document.getElementById("theme-btn").addEventListener("click", () => {
   localStorage.setItem("theme", document.body.classList.contains("dark") ? "light" : "dark");
-  document.body.classList.toggle("dark")
-})
+  document.body.classList.toggle("dark");
+});
 
 // Scroll to top button
 let scrollBtn = document.getElementById("to-top-btn");
@@ -58,7 +58,7 @@ window.addEventListener("scroll", () => {
     scrollBtn.style.right = "0";
   else
     scrollBtn.style.right = "-25vw";
-})
+});
 
 // Scroll to top when pressed
 scrollBtn.addEventListener("click", () => window.scrollTo(0,0));
