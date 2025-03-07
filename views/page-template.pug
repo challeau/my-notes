@@ -1,4 +1,4 @@
-include ./overlay.pug
+// include ./overlay.pug
 
 doctype html
 html
@@ -23,9 +23,9 @@ html
   body
     script.
       document.body.classList = localStorage.getItem("theme") || "light";
-    +overlay(navbarData)
+    // +overlay(navbarData)
 
-    div.content
+    div.page
       | !{content}
 
   script

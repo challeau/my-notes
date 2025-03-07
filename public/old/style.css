@@ -12,6 +12,7 @@
     --transparent-pink: #FFC8DD38;
     --transparent-lilac: #CDB4DB4F;
     --transparent-blue: #BDE0FE66;
+    --transparent-beige: #efe7dd87;
 
     --light-pink: #FFC8DD;
     --light-blue: #BDE0FE;
@@ -91,7 +92,7 @@ table {
     table-layout: fixed;
     border-collapse: collapse;
     max-width: 100%;
-    background-color: #efe7dd87;
+    background-color: var(--transparent-beige);
     border-radius: 0.5em;
     margin: 0.5em auto;
 }
@@ -337,3 +338,13 @@ blockquote li::marker {
 .content #TOC, .content #TOC ul { list-style-type: none; }
 
 .content #TOC::before { display: none; }
+
+/* Note */
+.note {
+    font-size: 0.8em;
+    background: var(--transparent-beige);
+    color: var(--accent-beige);
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+}
+

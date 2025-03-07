@@ -95,3 +95,9 @@ body.dark table pre, body.dark table .hljs { background-color: var(--dark-grey);
 
 body.dark .hljs-comment { color: #b7b3c8 !important; }
 
+/* Note */
+body.dark .note {
+    background: var(--dark-grey);
+    color: var(--accent-beige);
+}
+

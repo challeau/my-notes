@@ -23,10 +23,29 @@ html
       document.body.classList = localStorage.getItem("theme") || "light";
     +overlay(navbarData)
 
-    div.content
+    div.page
       h1 Charlotte's Notes
       p This is a collection of my Web Development notes so I can access it from anywhere with an internet connection.
       p These notes contain my work, and some text copied from software documentation.
+
+      h2 1 - Main title 
+      h3 1.1 - Faut se calmer
+      h4 1.1.1 - C'est quoi le bail ?
+      h5 Allez un petit dernier
+
+      p Quisque vitae pharetra  tellus. Fusce ut facilisis nibh, eget sodales lorem. Fusce sed volutpat  orci, quis euismod arcu. Fusce lorem diam, faucibus at metus quis,  volutpat volutpat diam. Integer interdum ligula semper commodo iaculis.  Nunc pretium eget mauris sed malesuada. Vivamus id porta metus,  ullamcorper accumsan turpis.
+
+      h4 1.1.1 - Sub-section title
+      p Morbi sit amet nisl tortor. Cras rhoncus lorem a varius congue. Aliquam sed varius dolor, vel ullamcorper nibh. Ut semper pellentesque metus, eu pulvinar diam aliquam eget. Aenean ultricies tortor nec tellus faucibus consequat. Duis enim diam, ullamcorper eget ligula vel, porttitor porta augue. Praesent et tortor viverra, finibus nunc ut, rhoncus tellus.  Duis tempus feugiat urna, id semper felis efficitur et.
+      h5 Another tiny section
+      p Suspendisse ullamcorper pharetra ligula vel cursus. Mauris ac  scelerisque mauris, ac porta leo. Suspendisse ac euismod massa. Aliquam  nisl nunc, sagittis quis vestibulum ac, scelerisque sed justo. Phasellus massa magna, ullamcorper a pharetra ac, accumsan viverra ligula. Sed  tristique ligula eget augue condimentum, rutrum lacinia risus rutrum.  Mauris eget erat eget mauris iaculis posuere.
+
+      h2 2 - Second section title
+      h3 2.1 - Second sub-section title
+
+      p Nunc condimentum nulla massa, a sodales sapien condimentum non. Nunc  blandit eros eget suscipit convallis. Pellentesque tristique  sollicitudin nisi, vel lacinia justo placerat in. Maecenas iaculis  posuere lacus quis commodo. Sed rhoncus tempor consectetur. Donec  consequat non sapien in accumsan. Fusce nec imperdiet sapien, vehicula  sollicitudin urna. Duis venenatis tempor urna. Etiam tincidunt lacus sed augue pulvinar aliquet. Vestibulum vulputate neque dictum arcu  convallis accumsan. Sed vel enim tortor. Ut a erat ligula. Vivamus sed  ante neque. Phasellus sagittis quis tellus ornare dignissim. Quisque ut  est fringilla, vulputate risus at, mollis neque. Nullam vestibulum nisi  vitae nisi commodo varius.
+
+      p Quisque dignissim, neque id rhoncus vehicula, ante dolor suscipit ex,  eleifend pharetra mi est quis ligula. Mauris eget nulla vehicula,  tristique nulla vitae, tristique sem. Maecenas a tincidunt leo. Aliquam  varius mollis massa, at cursus nulla fermentum at. Sed vitae tristique  nunc. Aliquam venenatis orci neque, in consequat ipsum ultricies at.  Praesent tempor euismod nulla, a dapibus libero efficitur eu. 
 
       div.index
         each files, folder in navbarData

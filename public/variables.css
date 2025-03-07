@@ -1,0 +1,61 @@
+/* COLORS */
+:root {
+  /* light base */
+  --white: #FEF8EC;
+  --beige1: #EFE7DD;
+  --beige2: #E0D6CE;
+  --beige3: #D0C4BF;
+  --beige4: #B1A0A0;
+  --brown: #735863;
+
+  /* dark base */
+  --black: #28262C;
+  --grey1: #383640;
+  --grey2: #514F56;
+  --grey3: #6A676B;
+  --grey4: #9B9796;
+
+  /* accents */
+  --pink: #FFAFCC;
+  --lilac: #CDB4DB;
+  --blue: #A2D2FF;
+  --green: #C0DB80;
+  --yellow: #FFE28C;
+
+  /* light accents */
+  --light-pink: #FFC2D8;
+  --light-lilac: #DAC8E4;
+  --light-blue: #C2E1FF;
+  --light-green: #C8E090;
+  --light-yellow: #FFEBAD;
+
+  /* bright accents */
+  --bright-pink: #FF99BE;
+  --bright-lilac: #C8ADD7;
+  --bright-blue: #99CCFF;
+  --bright-green: #B8D770;
+  --bright-yellow: #FFE085;
+
+  /* shadows */
+  --soft-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+/* NUMERICALS */
+:root {
+  --border-radius-S: 1em;
+  --border-radius-M: 2em;
+  --border-radius-L: 3em;
+  --border-radius-XL: 4em;
+
+  --opacity-S: 25%;
+  --opacity-M: 35%;
+  --opacity-L: 50%;
+  --opacity-XL: 60%;
+
+  --font-XS: 0.75em;
+  --font-S: 1em;
+  --font-M: 1.3em;
+  --font-L: 1.5em;
+  --font-XL: 1.75em;
+  --font-XXL: 3.5em;
+}

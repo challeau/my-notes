@@ -1,6 +1,7 @@
 [//]: # (TITLE Rust basics)
 [//]: # (ENDPOINT /rs-basics)
-[//]: # (PRIORITY 0)
+[//]: # (PRIORITY 1)
+[//]: # (DESCRIPTION The fundamentals of Rust's syntax and concepts)
 
 # Rust basics
 
@@ -15,199 +16,52 @@ Although Rust is a relatively low-level language, it has some functional concept
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 ##### Table of contents
 
-- [Rust basics](#rust-basics)
-        - [Table of contents](#table-of-contents)
-  - [1 - Quickstart](#1---quickstart)
-    - [1.1 - Installation](#11---installation)
-    - [1.2 - Hello World](#12---hello-world)
-    - [1.3 - Hello Cargo](#13---hello-cargo)
-      - [1.3.1 - Initializing](#131---initializing)
-      - [1.3.2 - Building and running](#132---building-and-running)
-      - [1.3.3 - Checking](#133---checking)
-      - [1.3.4 - Documentation](#134---documentation)
-  - [2 - Variables](#2---variables)
-    - [2.1 - Mutability](#21---mutability)
-    - [2.2 - Constants](#22---constants)
-    - [2.3 - Shadowing](#23---shadowing)
-  - [3 - Basic data types](#3---basic-data-types)
-    - [3.1 - Scalar types](#31---scalar-types)
-      - [3.1.1 - Integers](#311---integers)
-        - [\> Integer overflow](#-integer-overflow)
-      - [3.1.2 - Floating-points](#312---floating-points)
-      - [3.1.3 - Boolean](#313---boolean)
-      - [3.1.4 - Character](#314---character)
-    - [3.2 - Compound types](#32---compound-types)
-      - [3.1.2 - Tuple](#312---tuple)
-      - [3.1.3 - Array](#313---array)
-    - [3.3 - Functions](#33---functions)
+  - [1 - Variables](#1---variables)
+    - [1.1 - Mutability](#11---mutability)
+    - [1.2 - Constants](#12---constants)
+    - [1.3 - Shadowing](#13---shadowing)
+    - [1.4 - Variable scope](#14---variable-scope)
+  - [2 - Basic data types](#2---basic-data-types)
+    - [2.1 - Scalar types](#21---scalar-types)
+      - [2.1.1 - Integers](#211---integers)
+      - [2.1.2 - Floating-points](#212---floating-points)
+      - [2.1.3 - Boolean](#213---boolean)
+      - [2.1.4 - Character](#214---character)
+      - [2.1.5 - Unit](#215---unit)
+    - [2.2 - Compound types](#22---compound-types)
+      - [2.2.1 - Tuple](#221---tuple)
+      - [2.2.2 - Array](#222---array)
+  - [3 - Functions](#3---functions)
+    - [3.1 - Statements vs expressions](#31---statements-vs-expressions)
+    - [3.2 - Return values](#32---return-values)
+    - [3.3 - Control flow](#33---control-flow)
+      - [3.3.1 - `if` expressions](#331---if-expressions)
+      - [3.3.2 - Loops](#332---loops)
   - [4 - Ownership](#4---ownership)
-  - [5 - Structs](#5---structs)
-  - [6 - Enums](#6---enums)
-  - [7 - Collections](#7---collections)
+    - [4.1 - The stack and the heap](#41---the-stack-and-the-heap)
+    - [4.2 - Memory and allocation](#42---memory-and-allocation)
+      - [4.2.1 - Variables and data interacting with move](#421---variables-and-data-interacting-with-move)
+      - [4.2.2 - Scope and assignment ](#422---scope-and-assignment)
+      - [4.2.3 - Copying heap data with `clone`](#423---copying-heap-data-with-clone)
+      - [4.2.4 - Copying stack data with `copy`](#424---copying-stack-data-with-copy)
+    - [4.3 - Ownership and functions](#43---ownership-and-functions)
+  - [5 - Complex data types](#5---complex-data-types)
+    - [5.1 - Collections](#51---collections)
+      - [5.1.1 - Strings](#511---strings)
+      - [5.1.2 - Vectors](#512---vectors)
+      - [5.1.3 - Hash Maps](#513---hash-maps)
+      - [5.1.4 - Slice type](#514---slice-type)
+    - [5.2 - Structs](#52---structs)
+    - [5.3 - Enums](#53---enums)
   - [Sources](#sources)
 
 <!-- markdown-toc end -->
 
-
-## 1 - Quickstart
-
-### 1.1 - Installation
-
-To **install the latest stable version** of the Rust compiler:
-
-```sh
-curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
-```
-
-A **linker** is also needed for Rust to **join its compiled outputs into one file**. You should already have one installed, but if you get linker errors, install a C compiler (gcc or good ol' clang).
-
-To **check the installation**:
-
-```sh
-rustc --version
-```
-
-You can now use `rustup` to handle Rust:
-
-```sh
-# update Rust
-rustup update
-
-# uninstall Rust and rustup
-rustup self uninstall
-
-# view manual
-rustup doc
-```
-
-### 1.2 - Hello World
-
-Create a main file with the `.rs` extension :
-
-```sh
-touch main.rs
-```
-
-The `main()` function is the **entrypoint** of evert Rust program, meaning that it will **always be executed first**.
-
-Copy this main in your `main.rs` file (it will print "Hello, world!" in the terminal):
-
-```rust
-// the body is scoped between { }
-fn main() {
-    // 4 spaces of indentation per level
-    println!("Hello, world!");
-    // every instruction ends with a ;  
-}
-```
-
-Now to run the program, use the **`rustc` compiler** to compile your `.rs` file **into a binary executable** and run it:
-
-```sh
-rustc main.rs
-./main
-```
-
-### 1.3 - Hello Cargo
-
-#### 1.3.1 - Initializing
-
-Cargo is Rust's **build system** and **package manager**.
-
-As you write more complex Rust programs, you'll add **dependencies**, and if you start a project using Cargo, adding dependencies will be much easier to do.
-
-Cargo comes installed with Rust through the official installers. To **start a new project**, run:
-
-```sh
-cargo new hello_cargo
-```
-
-This will create **a new directory and project** called `hello_cargo`, with the following files:
-
-```sh
-# the project's configuration file
-Cargo.toml
-
-# a src directory where all source files must be 
-src/
-    # a generic main file
-    main.rs
-
-# Git files
-.git/
-.gitignore
-```
-
-*Note: TOML (Tom's Obvious, Minimal Language) is Cargo's configuration format.*
-
-Alternatively, you can **turn a directory into a Cargo project** by running:
-
-```sh
-cargo init
-```
-
-#### 1.3.2 - Building and running
-
-To **build** your project, run:
-
-```sh
-$ cargo build
-   Compiling hello_cargo v0.1.0 (file:///projects/hello_cargo)
-    Finished dev [unoptimized + debuginfo] target(s) in 2.85 secs
-```
-
-This command creates an **executable** file in `target/debug/hello_cargo` (the default build is a debug build, so Cargo puts the binary in a directory named `debug/`). You can run the executable with this command:
-
-```sh
-$ ./target/debug/hello_cargo
-Hello, world!
-```
-
-Running cargo build for the first time also causes Cargo to create a new file at the top level: `Cargo.lock`. This file **keeps track of the exact versions of dependencies** in your project.
-
-You can combine the build and run steps with:
-
-```sh
-cargo run
-```
-
-> This command will **only** re-build if a source file has **changed**.
-
-When your project is finally ready for release, you can use this command to compile it with optimizations:
-
-```sh
-cargo build --release
-```
-
-This command will create an executable in `target/release` instead of `target/debug`.
-
-The **optimizations** make your Rust **code run faster**, but turning them on **lengthens the compilation time**.
-
-#### 1.3.3 - Checking
-
-To check if the program compiles without producing an executable (often faster than compiling), run:
-
-```sh
-$ cargo check
-   Checking hello_cargo v0.1.0 (file:///projects/hello_cargo)
-    Finished dev [unoptimized + debuginfo] target(s) in 0.32 secs
-```
-
-> An additional advantage of using Cargo is that the **commands are the same no matter which operating system** you're working on.
-
-#### 1.3.4 - Documentation
-
-Cargo can build documentation provided by all your dependencies locally and open it in your browser with the following command:
-
-```sh
-cargo doc --open
-```
-
-## 2 - Variables
+## 1 - Variables
 
 By convention, variables are named in `snake_case`.
 
-### 2.1 - Mutability
+### 1.1 - Mutability
 
 By default, **Rust variables are immutable**. This is one of many nudges Rust gives you to write your code in a way that takes advantage of the safety and easy concurrency that Rust offers.
 
@@ -222,7 +76,7 @@ fn main() {
 }
 ```
 
-### 2.2 - Constants
+### 1.2 - Constants
 
 > Constants are **always immutable values that are bound to a name**.
 
@@ -236,7 +90,15 @@ They differ from variables on a few points:
 - Rust's naming convention for constants is to use `SCREAMING_SNAKE_CASE`.
 - Constants are **valid for the entire time a program runs**, within the scope in which they were declared.
 
-### 2.3 - Shadowing
+```rs
+const NUMBER:i32 = 3;
+
+fn main() {
+    println!("Number: {NUMBER}");
+}
+```
+
+### 1.3 - Shadowing
 
 Rust allows us to **shadow the previous value of a variable** with a **new one**.
 
@@ -262,23 +124,38 @@ Shadowing is different from marking a variable as mutable. By using `let`, we ca
 - **Perform a few transformations** on a value but **have the variable be immutable after those transformations** have been completed.
 - **Change the type** of the value but reuse the same name.
 
-## 3 - Basic data types
+
+### 1.4 - Variable scope
+
+> A scope is the **range within a program for which an item is valid**.
+
+In other words, a variable is valid from the **point at which it’s declared** until the end **of the current scope**. 
+
+``` rs
+{                      // s is not valid here, it’s not yet declared
+	let s = "hello";   // s is valid from this point forward
+	
+	// do stuff with s
+}                      // this scope is now over, and s is no longer valid
+```
+
+## 2 - Basic data types
 
 Rust is a **statically typed language**, which means that it must know the types of all variables at compile time. The compiler can usually infer what type we want to use based on the value and how we use it. In cases when many types are possible, we **must add a type annotation**, like this:
 
-``` rs
+```rs
 let guess: u32 = "42".parse().expect("Not a number!");
 ```
 
-**> The following types are allocated on the stack.**
+**> The following types are allocated on the stack** because they are of a **known size**. This means they can be pushed on and popped off the stack when their scope is over, and can be **quickly and trivially copied** to make a new, independent instance if a different scope needs to use the same value.
 
-### 3.1 - Scalar types
+### 2.1 - Scalar types
 
 Rust has four primary scalar types: **integers**, **floating-point numbers**, **booleans**, and **characters**.
 
 There's also a special scalar type, **`unit`**, which is used when there is **no other meaningful value** that could be returned.
 
-#### 3.1.1 - Integers
+#### 2.1.1 - Integers
 
 **Integer types default to `i32`.**
 
@@ -322,7 +199,7 @@ To **explicitly handle** the possibility of overflow, you can use these families
 - Return the value and a boolean indicating whether there was overflow with the `overflowing_*` methods.
 - Saturate at the value's minimum or maximum values with the `saturating_*` methods.
 
-#### 3.1.2 - Floating-points
+#### 2.1.2 - Floating-points
 
 Rust's floating-point types are `f32` and `f64`, which are 32 bits and 64 bits in size respectively.
 
@@ -330,11 +207,11 @@ Rust's floating-point types are `f32` and `f64`, which are 32 bits and 64 bits i
 
 **All floating-point types are signed**.
 
-#### 3.1.3 - Boolean
+#### 2.1.3 - Boolean
 
 Booleans are **one byte** in size. The boolean type in Rust is specified using `bool`.
 
-#### 3.1.4 - Character
+#### 2.1.4 - Character
 
 Rust's `char` literals are declared with single quotes (as opposed to string literals which use double quotes):
 
@@ -348,7 +225,7 @@ fn main() {
 
 The `char` type is **four bytes** in size and represents a **Unicode Scalar Value**.
 
-#### 3.1.5 - Unit
+#### 2.1.5 - Unit
 
 The `()` type, also called `unit`, has exactly one value: `()`. It is used when there is **no other meaningful value** that could be returned.
 
@@ -410,15 +287,15 @@ is_unit: ()
 
 Note that to print `unit`, you need to use this syntax: `{:?}`.
 
-### 3.2 - Compound types
+### 2.2 - Compound types
 
 Compound types can group multiple values into one type.
 
-#### 3.1.2 - Tuple
+#### 2.2.1 - Tuple
 
 A tuple is a general way of grouping together a number of values with a **variety of types** into one compound type. Tuples have a **fixed length**: once declared, they cannot grow or shrink in size.
 
-``` rs
+```rs
 fn main() {
     let tup: (i32, f64, u8) = (500, 6.4, 1);
 }
@@ -426,7 +303,7 @@ fn main() {
 
 To get the individual values out of a tuple, we can use **pattern matching to destructure** a tuple value, or use indexes:
 
-``` rs
+```rs
 fn main() {
     let tup = (500, 6.4, 1);
 
@@ -442,13 +319,13 @@ fn main() {
 
 A tuple **without any values** has a special name, **`unit`**. This value and its corresponding type are both written `()` and represent an **empty value** or an **empty return type**. Expressions implicitly return the unit value if they don't return any other value.
 
-#### 3.1.3 - Array
+#### 2.2.2 - Array
 
 Unlike a tuple, **every element of an array must have the same type**. Unlike arrays in some other languages, **arrays in Rust have a fixed length**.
 
 You write an array's type using square brackets with the type of each element, a semicolon, and then the number of elements in the array:
 
-``` rs
+```rs
 fn main() {
 	let a: [i32; 5] = [1, 2, 3, 4, 5];
 
@@ -480,7 +357,7 @@ When tryin to access an array element with indexing, Rust **checks at runtime** 
 
 Arrays are useful when you want your **data allocated on the stack** or when you want to **ensure you always have a fixed number of elements**. The alternative is a **Vector**.
 
-## 4 - Functions
+## 3 - Functions
 
 The **naming convention** for functions in Rust is `snake_case`.
 
@@ -505,7 +382,7 @@ fn another_function(x: i32) {
 // prints : "Hello, world!\nThe value of x is: 5"
 ```
 
-### 4.1 - Statements vs expressions
+### 3.1 - Statements vs expressions
 
 Function bodies are made up of a **series of statements** optionally ending in an **expression**. Rust is an **expression-based language**, so there is an important distinction between statements and expressions:
 
@@ -532,7 +409,7 @@ let y = {
 
 Note: technically, everything in Rust is an expression. This means statements are expressions that return "nothing", they actually return `unit` (`()`).
 
-### 4.2 - Return values
+### 3.2 - Return values
 
 In Rust, return values don't need names but **their type must be declared** in the function prototype.
 
@@ -550,9 +427,9 @@ fn main() {
 }
 ```
 
-### 4.3 - Control flow
+### 3.3 - Control flow
 
-#### 4.3.1 - `if` expressions
+#### 3.3.1 - `if` expressions
 
 The conditions in a `if` expression does not require parentheses but **must be a bool**.
 
@@ -587,7 +464,7 @@ fn main() {
 
 Note that **both arms** of this condition must **return the same type**.
 
-#### 4.3.2 - Loops
+#### 3.3.2 - Loops
 
 Rust has three kinds of loops: `loop`, `while`, and `for`.
 
@@ -625,24 +502,374 @@ fn main() {
 }
 ```
 
+##### > `while`
+
+While a condition evaluates to `true`, the code runs; otherwise the program calls `break`, stopping the loop.
+
+```rs
+fn main() {
+    let mut number = 3;
+
+    while number != 0 {
+        println!("{number}!");
+
+        number -= 1;
+    }
+
+    println!("LIFTOFF!!!");
+}
+
+```
+
+##### > `for`
+
+You can use a `for` loop to execute some code **for each item in a collection**.
+
+```rs
+fn main() {
+    let a = [10, 20, 30, 40, 50];
+
+    for element in a {
+        println!("the value is: {element}");
+    }
+}
+```
+
+Using a `for` to go through a collection is **safer and faster** than a `while` loop: you can't access invalid memory by accident so the compiler can perform less checks.
+
+You can also use a **Range** in a `for` loop:
+
+```rs
+fn main() {
+    for number in (1..4).rev() {
+        println!("{number}!");
+    }
+    println!("LIFTOFF!!!");
+}
+```
+
+
+##### > Loop labels
+
 If you have **loops within loops**, `break` and `continue` apply to the **innermost loop** at that point. You can optionally specify a **loop label** on a loop that you can then use with `break` or `continue` to specify that those keywords apply to the **labeled loop instead of the innermost loop**.
 
 Loop labels must **begin with a single quote**:
 
 ```rs
+fn main() {
+    let mut count = 0;
+    'counting_up: loop {
+        println!("count = {count}");
+        let mut remaining = 10;
+
+        loop {
+            println!("remaining = {remaining}");
+            if remaining == 9 {
+                break;
+            }
+            if count == 2 {
+                break 'counting_up;
+            }
+            remaining -= 1;
+        }
+
+        count += 1;
+    }
+    println!("End count = {count}");
+}
 ```
 
-## 5 - Ownership
+This program will print:
 
-> `.` is used when you have a value on the left-hand-side.<br/>
-> `::` is used when you have a type or module. <br/>
-> Or: `.` is for value member access, `::` is for namespace member access.
+```sh
+count = 0
+remaining = 10
+remaining = 9
+count = 1
+remaining = 10
+remaining = 9
+count = 2
+remaining = 10
+End count = 2
+```
 
-## 6 - Structs
+## 4 - Ownership
 
-## 7 - Enums
+Ownership is Rust’s most unique feature and has deep implications for the rest of the language. It **enables Rust to make memory safety guarantees without needing a garbage collector**, so it’s important to understand how ownership works.
 
-## 8 - Collections
+> Ownership is a **set of rules that govern how a Rust program manages memory**.
+
+All programs have to manage the way they use a computer’s memory while running. Instead of using a garbage collector or making the programmer explicitly allocate and free the memory, Rust uses a third approach: **memory is managed through a system of ownership with a set of rules that the compiler checks**.
+
+##### Ownership rules
+
+- Each value in Rust has an **owner**.
+- There can only be **one owner at a time**.
+- When the owner goes **out of scope**, the **value will be dropped**.
+
+
+If any of the rules are **violated**, the program **won’t compile**.
+
+None of the features of ownership will slow down your program while it’s running.
+
+### 4.1 - The stack and the heap
+
+Both the **stack** and the **heap** are **parts of memory available to your code to use at runtime**, but they are structured in different ways.
+
+**The stack stores values in the order it gets them and removes the values in the opposite order** (FILO). Adding data is called **pushing onto the stack**, and removing data is called popping off the **stack**.
+
+**All data stored on the stack must have a known, fixed size**. Data with an **unknown size at compile time** or a size that **might change** must be stored on the **heap**.
+
+**The heap is less organized**: when you put data on the heap, you request a certain amount of space. The **memory allocator** finds an **empty spot** in the heap that is big enough, **marks it as being in use**, and **returns a pointer** (the address of that location). This process is called **allocating** on the heap and is sometimes abbreviated as just allocating (pushing values onto the stack is **not** considered allocating).
+
+Because the pointer to the heap is a known, fixed size, you can **store the pointer on the stack**, but when you want the actual data, you must **follow the pointer**.
+
+**Pushing to the stack is faster than allocating on the heap** because the allocator never has to search for a place to store new data; that location is always at the top of the stack.
+
+**Accessing data in the heap is slower** than accessing data on the stack because you have to follow a pointer to get there. Contemporary processors are **faster if they jump around less in memory**.
+
+When your code **calls a function**, the **values passed into the function** (including, potentially, pointers to data on the heap) and the **function’s local variables** get **pushed onto the stack**. When the function is over, those values get **popped off the stack**.
+
+**Keeping track** of what parts of code are using what data on the **heap**, **minimizing the amount of duplicate** data on the heap, and **cleaning up unused data** on the heap so you don’t run out of space are all problems that **ownership** addresses.
+
+### 4.2 - Memory and allocation
+
+In the case of a **string literal**, we know the contents at **compile time**, so the text is **hardcoded** directly into the final executable. This is why string literals are **fast** and **efficient**. But these properties only come from the string literal’s **immutability**. 
+
+With the `String` type, in order to support a **mutable**, growable piece of text, we need to:
+- **Request memory** from the **memory allocator** at **runtime**.
+- **Return** this memory **to the allocator** when we’re done with our `String`.
+
+That first part is done by us when we call `String::from` its implementation requests the memory it needs. This is pretty much universal in programming languages.
+
+However, the second part is different. In languages with a **garbage collector** (GC), the GC **keeps track** of and **cleans up memory that isn’t being used** anymore, and we don’t need to think about it. In most languages without a GC, it’s **our responsibility** to **identify when memory is no longer being used** and to call code to **explicitly free it**, just as we did to request it. 
+
+Rust takes a different path: the **memory is automatically returned once the variable that owns it goes out of scope**.
+
+There is a natural point at which we can return the memory our `String` needs to the allocator: when `s` goes out of scope. When a variable goes out of scope, Rust calls `drop`, a function that belongs to `String` and **returns the memory**. Rust calls `drop` **automatically at the closing curly bracket**.
+
+In general, types whose values reside on the **heap** need to **implement the `Drop` trait** so the compiler knows how to free the memory assigned to them when they reach the end of their scope.
+
+#### 4.2.1 - Variables and data interacting with move
+
+A `String` is made up of three parts:
+- A **pointer to the memory** that holds the contents of the string.
+- A **length**: how much memory, in **bytes**, the contents of the `String` are **currently using**.
+- A **capacity**: **total amount of memory**, in **bytes**, that the `String` has **received** from the allocator.
+
+This group of data is **stored on the stack**. The **heap** stores the actual contents of the string.
+
+The data representation in memory can be represented like this, with the stack on the left and the heap on the right:
+
+
+![center-eg](str-ptr.svg)
+
+
+Say we have two `String`s declared as follows:
+
+```rs
+let s1 = String::from("hello");
+let s2 = s1;
+```
+
+When we assign `s1` to `s2`, the `String` data is copied, meaning we **copy the pointer**, the **length**, and the **capacity** that are on the stack. We **do not copy the data on the heap** that the pointer refers to.
+
+![center-eg](2str-ptr.svg)
+
+Earlier, we said that when a variable goes **out of scope**, Rust automatically calls the `drop` function and **cleans up the heap memory** for that variable. What happens when both `s1` and `s2` get out of scope at the same time ?
+
+To **ensure memory safety** and prevent double frees, after the line `let s1 = s2;`, Rust considers `s1` as **no longer valid**. Therefore, Rust doesn’t need to free anything when `s1` goes out of scope.
+
+Copying the pointer, length, and capacity **without copying the data** is **NOT** like making a shallow copy. Because Rust **invalidates the first variable**, instead of being called a shallow copy, it’s **known as a move**.
+
+> In this example, we would say that `s1` was moved into `s2`.
+
+Rust will **never automatically create “deep” copies** of your data. Therefore, any automatic copying can be **assumed to be inexpensive** in terms of runtime performance.
+
+#### 4.2.2 - Scope and assignment 
+
+The inverse of this is true for the relationship between scoping, ownership, and memory being freed via the `drop` function as well. When you **assign a completely new value** to an **existing variable**, Rust will call `drop` and **free the original value’s memory immediately**. 
+
+``` rs
+let mut s = String::from("hello");
+s = String::from("ahoy");
+
+println!("{s}, world!");  // prints 'ahoy, world!'
+
+```
+
+In this example, the original string `hello` immediately goes **out of scope** when we assign it a new `String`, so **its memory is freed right away**.
+
+#### 4.2.3 - Copying heap data with `clone`
+
+If we actually want to **deeply copy** the **heap data** of a `String`, not just the stack data, we can use a common method called `clone`.
+
+``` rs
+let s1 = String::from("hello");
+let s2 = s1.clone();
+
+println!("s1 = {s1}, s2 = {s2}");
+```
+
+When you see a call to `clone`, you know that some **arbitrary code is being executed** and that code **may be expensive**. It’s a visual indicator that something different is going on.
+
+#### 4.2.4 - Copying stack data with `copy`
+
+Copying the data of types stored on the stack (due to their known size at compile time) is **quick** and **does not invalidate** the variable that's being copied.
+
+Rust has a special annotation called the `Copy` trait that we can place on **types that are stored on the stack**. If a type implements the `Copy` trait, **variables that use it do not move**, but rather **are trivially copied**.
+
+> On the stack, there’s no difference between deep and shallow copying.
+
+Rust won’t let us annotate a type with `Copy` if the type, or any of its parts, has implemented the `Drop` trait. 
+
+**All scalar types** implement the `Copy` trait (except Unit), and **tuples** that contain only types that also implement `Copy` (eg: `(i32, bool)`).
+
+### 4.3 - Ownership and functions
+
+The mechanics of **passing a value to a function** are similar to those when **assigning a value to a variable**. Passing a variable to a function will `move` or `copy`, just as assignment does.
+
+We say **ownership is transfered** to another scope when a type that implements `move` is passed to it as an argument.
+
+``` rs
+fn main() {
+    let s = String::from("hello");  // s comes into scope
+
+    takes_ownership(s);             // value of s moves into the function
+                                    // ... so it's no longer valid here
+
+    let x = 5;                      // x comes into scope
+
+    makes_copy(x);                  // because i32 implements the Copy trait, x does NOT move, it's copied into the function
+
+    println!("{}", x);              // so it's okay to use x afterward
+
+} // s and x go out of scope
+
+fn takes_ownership(some_string: String) { // some_string comes into scope
+    println!("{some_string}");
+} // some_string goes out of scope and `drop` is called
+
+fn makes_copy(some_integer: i32) { // some_integer comes into scope
+    println!("{some_integer}");
+} // some_integer goes out of scope, nothing special happens
+```
+
+**Returning values can also transfer ownership**:
+
+``` rs
+fn main() {
+    let s1 = gives_ownership();         // gives_ownership moves its return value into s1
+
+    let s2 = String::from("hello");     // s2 comes into scope
+
+    let s3 = takes_and_gives_back(s2);  // s2 is moved into takes_and_gives_back, which also moves its return value into s3
+} // Here, s3 goes out of scope and is dropped. s2 was moved, so nothing happens. s1 goes out of scope and is dropped.
+
+fn gives_ownership() -> String {             // gives_ownership will move its return value into the function that calls it
+
+    let some_string = String::from("yours"); // some_string comes into scope
+
+    some_string                              // some_string is returned and moves out to the calling function
+}
+
+// This function takes a String and returns one
+fn takes_and_gives_back(a_string: String) -> String { // a_string comes into scope
+    a_string  // a_string is returned and moves out to the calling function
+}
+```
+
+### 4.4 - References and borrowing
+
+> Rust has a feature called **references** for **using a value without transferring ownership**.
+
+A reference is like a pointer in that it’s an **address we can follow to access the data** stored at that address; that data is **owned by some other variable**. Unlike a pointer, a reference is **guaranteed to point to a valid value** of a particular type **for the life of that reference**.
+
+References are annoted with **ampersands** (`&`). The action of **creating a reference** is called **borrowing**.
+
+```rs
+fn main() {
+    let s1 = String::from("hello");
+
+    let len = calculate_length(&s1);  // we pass a reference to s1 to the function calculate_length
+
+    println!("The length of '{s1}' is {len}.");  // calculate_length does not take ownership of s1 so we can still use it 
+}
+
+fn calculate_length(s: &String) -> usize {
+    s.len()
+}
+```
+
+<div class="note">The opposite of referencing by using <code>&</code> is <bold>dereferencing</bold>, which is accomplished with the <bold>dereference operator</bold> <code>*</code>.</div>
+
+Since a borrowing function doesn't own a reference, **references are immutble** by default. We can make a reference mutable by using the `mut` keyword, but the original variable must also be mutable:
+
+``` rs
+fn main() {
+    let mut s = String::from("hello");
+
+    change(&mut s);
+}
+
+fn change(some_string: &mut String) {
+    some_string.push_str(", world");
+}
+```
+
+> Mutable references have one big restriction: if you have a mutable reference to a value, you can have **no other references to that value**.
+
+
+## 5 - Complex data types
+
+Complex data types are types of **unknown** at compile time, or of **variable size**. They reside on the **heap**.
+
+### 5.1 - Collections
+
+Each kind of collection has **different capabilities** and **costs**.
+
+The three more common collection types in Rust are:
+- **Vectors** - allow you to store a **variable number of values next to each other**.
+- **Strings** - collections of **characters**.
+- **Hash maps** - allow you to **associate a value with a specific key**.
+
+
+#### 5.1.1 - Strings
+
+Strings are **collections of characters**. 
+
+There are two kinds of strings in Rust:
+- String literals: **immutable** and of **fixed size**.
+- `String`: this **mutable** type **manages data allocated on the heap** and as such is able to **store an amount of text that is unknown** to us at compile time.
+
+You can create a `String` from a string literal using the `::from` function, like so:
+
+```rs
+let mut s = String::from("hello");
+
+s.push_str(", world!");
+
+println!("{s}");  // prints: 'hello, world!'
+```
+
+
+#### 5.1.2 - Vectors
+
+#### 5.1.3 - Hash Maps
+
+#### 5.1.4 - Slice type
+
+Slices let you **reference a contiguous sequence of elements in a collection** rather than the whole collection. A slice is a kind of reference, so it **does not have ownership**.
+
+### 5.2 - Structs
+
+`.` is used when you have a value on the left-hand-side.<br/>
+`::` is used when you have a type or module. <br/>
+Or: `.` is for value member access, `::` is for namespace member access.
+
+
+### 5.3 - Enums
+
 
 ## Sources
 

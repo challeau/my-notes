@@ -14,7 +14,7 @@ function getTarget(event, expectedTag) {
  * Handle TOC: anchor jumping and folding
  */
 let headings = document
-  .querySelector(".content")
+  .querySelector(".page")
   .querySelectorAll("h1, h2, h3, h4, h5, h6");
 
 // add anchors to all the headers in the page
