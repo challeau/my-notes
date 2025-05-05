@@ -1,4 +1,6 @@
-// Folding the NavBar with the menu button
+import { getSiblings } from "./utils";
+
+/* Folding the NavBar with the menu button */
 let navContainer = document.getElementsByClassName("nav-container")[0];
 let navFoldBtn = document.getElementById("nav-fold-btn");
 let navBar = document.getElementById("nav-bar");
@@ -9,48 +11,37 @@ navFoldBtn.addEventListener("click", () => {
   navFoldBtn.classList.toggle("open");
 });
 
-// Folding the Folders
-// Returns all the argument's siblings
-function getSiblings(element){
-  let siblings = [];
-  let nextSibling = element.nextElementSibling;
 
-  while (nextSibling){
-    siblings.push(nextSibling);
-    nextSibling = nextSibling.nextElementSibling;
-  }
-  return siblings;
-}
-
-// Unfolding a folder
+/* Unfolding a folder */
 function unfold(element){
   element.classList.toggle("active-folder");
-  element.firstChild.classList.toggle("folder-title-clicked");
-  getSiblings(element).forEach(e => e.classList.toggle("folded"));
+  let sib = getSiblings(element);
+  console.log(sib);
+  sib.forEach(e => e.classList.toggle("folded"));
 }
 
-let folders = document.getElementsByClassName("folder-title");
+/* Collapsing folders */
+let folders = document.getElementsByClassName("folder");
 
-// Collapsing folders
 for (let folder of folders){
-  let siblings = getSiblings(folder);
+  // let siblings = getSiblings(folder);
 
-  if (siblings.find(s => s.classList.contains("active")))
-    unfold(folder, folders);
+  // if (siblings.find(s => s.classList.contains("active")))
+  // unfold(folder);
 
   folder.addEventListener("click", () => unfold(folder));
 }
 
-// Handles dark/light mode
+/* Handles dark/light mode */
 document.getElementById("theme-btn").addEventListener("click", () => {
   localStorage.setItem("theme", document.body.classList.contains("dark") ? "light" : "dark");
   document.body.classList.toggle("dark");
 });
 
-// Scroll to top button
+/* Scroll to top button */
 let scrollBtn = document.getElementById("to-top-btn");
 
-// Appear after user has scrolled
+/* Appear after user has scrolled */
 window.addEventListener("scroll", () => {
   let y = window.scrollY;
   
@@ -60,6 +51,5 @@ window.addEventListener("scroll", () => {
     scrollBtn.style.right = "-25vw";
 });
 
-// Scroll to top when pressed
+/* Scroll to top when pressed */
 scrollBtn.addEventListener("click", () => window.scrollTo(0,0));
-

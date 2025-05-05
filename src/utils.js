@@ -1,5 +1,5 @@
 /**
- * Comparison function to sort by object priority
+ * Compares two object's priority fields
  * @param {Object} a
  * @param {Object} b
  * @returns {Number} 1 if a > b, -1 if a < b, 0 if they're equal
@@ -23,4 +23,19 @@ export function sortTopicListByPriority(topics) {
   for (const key in topics) {
     topics[key].sort(comparePriority);
   }
+}
+
+
+/**
+ * Returns the DOM sibling elements of the input element
+ */
+export function getSiblings(element){
+  let siblings = [];
+  let nextSibling = element.nextElementSibling;
+
+  while (nextSibling){
+    siblings.push(nextSibling);
+    nextSibling = nextSibling.nextElementSibling;
+  }
+  return siblings;
 }

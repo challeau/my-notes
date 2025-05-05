@@ -7,18 +7,16 @@ mixin navLink(name, endpoint, specialClass)
 mixin navFolder(name, links)
     ul.folder
       li.folder-title
-        span(class="material-symbols-outlined ")= "chevron_right"
-        a.topic(href=`/${name.toLowerCase()}`)= name
+        span=name
       each page in links
         +navLink(page.title, page.endpoint, "folded")
 
 // Navigation
 mixin navBar(topics)
-  div.nav-container
-    div(id="nav-fold-btn" class="nav-btn")
-      span(class="material-symbols-outlined ")= "menu"
+  div(id="nav-container")
+    //- div(id="nav-fold-btn" class="nav-btn")
+    //-   span(class="material-symbols-outlined ")= "menu"
     div(id="nav-bar")
-      a(class="title" href="/")= "Index"
       each files, folder in topics
         if (folder !== 'root')
           +navFolder(folder, files)
@@ -29,11 +27,12 @@ mixin navBar(topics)
 
 // OVERLAY == navBar + utility buttons
 mixin overlay(topics)
-  +navBar(topics)
-  div(id="theme-btn" class="nav-btn")
-    span(class="material-symbols-outlined ")= "dark_mode"
-  div(id="to-top-btn" class="nav-btn")
-    span(class="material-symbols-outlined ")= "arrow_upward"
+  div(id="overlay")
+    +navBar(topics)
+    div(id="theme-btn" class="nav-btn")
+      span(class="material-symbols-outlined ")= "dark_mode"
+    div(id="to-top-btn" class="nav-btn")
+      span(class="material-symbols-outlined ")= "arrow_upward"
 
   script
     include ../src/overlay.js

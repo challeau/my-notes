@@ -26,13 +26,13 @@ body {
 /* PAGE */
 .page {
   height: fit-content;
-  width: 65vw;
+  width: 60vw;
 
   padding: 4em 6em;
   margin: 2.5em auto;
 
   background-color: var(--white);
-  border-radius: var(--border-radius-L);
+  border-radius: var(--border-radius-M);
   box-shadow: var(--soft-shadow);
 }
 

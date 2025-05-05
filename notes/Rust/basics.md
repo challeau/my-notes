@@ -16,6 +16,8 @@ Although Rust is a relatively low-level language, it has some functional concept
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 ##### Table of contents
 
+- [Rust basics](#rust-basics)
+        - [Table of contents](#table-of-contents)
   - [1 - Variables](#1---variables)
     - [1.1 - Mutability](#11---mutability)
     - [1.2 - Constants](#12---constants)
@@ -24,6 +26,7 @@ Although Rust is a relatively low-level language, it has some functional concept
   - [2 - Basic data types](#2---basic-data-types)
     - [2.1 - Scalar types](#21---scalar-types)
       - [2.1.1 - Integers](#211---integers)
+        - [\> Integer overflow](#-integer-overflow)
       - [2.1.2 - Floating-points](#212---floating-points)
       - [2.1.3 - Boolean](#213---boolean)
       - [2.1.4 - Character](#214---character)
@@ -37,14 +40,20 @@ Although Rust is a relatively low-level language, it has some functional concept
     - [3.3 - Control flow](#33---control-flow)
       - [3.3.1 - `if` expressions](#331---if-expressions)
       - [3.3.2 - Loops](#332---loops)
+        - [\> `loop`](#-loop)
+        - [\> `while`](#-while)
+        - [\> `for`](#-for)
+        - [\> Loop labels](#-loop-labels)
   - [4 - Ownership](#4---ownership)
+        - [Ownership rules](#ownership-rules)
     - [4.1 - The stack and the heap](#41---the-stack-and-the-heap)
     - [4.2 - Memory and allocation](#42---memory-and-allocation)
       - [4.2.1 - Variables and data interacting with move](#421---variables-and-data-interacting-with-move)
-      - [4.2.2 - Scope and assignment ](#422---scope-and-assignment)
+      - [4.2.2 - Scope and assignment](#422---scope-and-assignment)
       - [4.2.3 - Copying heap data with `clone`](#423---copying-heap-data-with-clone)
       - [4.2.4 - Copying stack data with `copy`](#424---copying-stack-data-with-copy)
     - [4.3 - Ownership and functions](#43---ownership-and-functions)
+    - [4.4 - References and borrowing](#44---references-and-borrowing)
   - [5 - Complex data types](#5---complex-data-types)
     - [5.1 - Collections](#51---collections)
       - [5.1.1 - Strings](#511---strings)
@@ -803,7 +812,7 @@ fn calculate_length(s: &String) -> usize {
 
 <div class="note">The opposite of referencing by using <code>&</code> is <bold>dereferencing</bold>, which is accomplished with the <bold>dereference operator</bold> <code>*</code>.</div>
 
-Since a borrowing function doesn't own a reference, **references are immutble** by default. We can make a reference mutable by using the `mut` keyword, but the original variable must also be mutable:
+Since a borrowing function doesn't own a reference, **references are immutble** by default. We can **make a reference mutable** by using the `mut` keyword, but the **original** variable must **also be mutable**:
 
 ``` rs
 fn main() {
@@ -817,7 +826,42 @@ fn change(some_string: &mut String) {
 }
 ```
 
-> Mutable references have one big restriction: if you have a mutable reference to a value, you can have **no other references to that value**.
+> Mutable references have one big restriction: if you have a mutable reference to a value, you can have **no other references to that value**. The benefit of having this restriction is that Rust can **prevent data races** at **compile time**.
+
+A **data race** is similar to a race condition and happens when these three behaviors occur:
+
+- Two or more pointers **access the same data** at the **same time**.
+- At least one of the pointers is being used to **write to the data**.
+- There’s **no mechanism** being used to **synchronize** access to the data.
+
+Data races cause **undefined behavior** and can be difficult to diagnose and fix when you’re trying to track them down at runtime. Rust prevents this problem by refusing to compile code with data races.
+
+We can use curly brackets to **create a new scope**, allowing for **multiple mutable references**, just **not simultaneous** ones:
+
+```rs
+let mut s = String::from("hello");
+{
+    let r1 = &mut s;
+} // r1 goes out of scope here
+
+let r2 = &mut s; // so we can make a new reference here
+```
+
+We also **cannot have a mutable reference while we have an immutable one to the same value**. Users of an immutable reference don’t expect the value to suddenly change out from under them! However, **multiple immutable references** are allowed because no one who is **just reading** the data has the ability to affect anyone else’s reading of the data.
+
+Note that a **reference’s scope starts from where it is introduced** and **continues through the last time that reference is used**. For instance, this code will compile because the last usage of the immutable references is in the `println!`, before the mutable reference is introduced:
+
+```rs
+let mut s = String::from("hello");
+
+let r1 = &s; // no problem
+let r2 = &s; // no problem
+println!("{r1} and {r2}");
+// variables r1 and r2 will not be used after this point
+
+let r3 = &mut s; // no problem
+println!("{r3}");
+```
 
 
 ## 5 - Complex data types
