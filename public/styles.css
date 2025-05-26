@@ -33,7 +33,7 @@ body {
 
   background-color: var(--white);
   border-radius: var(--border-radius-M);
-  box-shadow: var(--soft-shadow);
+  box-shadow: var(--soft-shadow-L);
 }
 
 /* HEADERS */
@@ -90,3 +90,18 @@ p {
 h2 + p, h3 + p, h4 + p, h5 + p {
     margin-top: 0;
 }
+
+/* TOC */
+.content h5[id='#table-of-contents'] {
+  font-size: 1em;
+  color: var(--bright-pink);
+  margin-top: 2em;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: end;
+}
+
+.content #TOC, .content #TOC ul { list-style-type: none; }
+
+.content #TOC::before { display: none; }

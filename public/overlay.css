@@ -1,34 +1,87 @@
 #overlay {
-  width: 20vw;
-  height: 100%;
+  height: 95vh;
+  width: 100vw;
 
-  position: absolute;
-  top: 0;
-  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  position: fixed;
+  padding: 0em 2em 2.5em 0;
 }
 
-#nav-bar {
-  width: 15vw;
-  height: 30vh;
-  
+
+/* Pekoe logo */
+#pek-logo {
   position: absolute;
-  top: 3em;
-  right: 2em;
-  
-  padding: 1em 1.5em;
+  top: -2vh;
+  left: 5vw;
+
+  width: 7vw;
+}
+
+
+/* Buttons */
+#btns-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1em;
+}
+
+.nav-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+
+  width: 2.5em;
+  height: 2.5em;
+
+  border-radius: var(--border-radius-L);
+  box-shadow: var(--soft-shadow-S);
+  background: var(--white);
+  cursor: pointer;
+
+  position: relative;
+}
+
+#to-top-btn {
+  right: -25vw;
+}
+
+/* Navbar */
+#nav-bar {
+  width: 16vw;
+  height: fit-content;
+  min-height: 20vh;
+  max-height: 40vh;
 
   border-radius: var(--border-radius-S);
-  box-shadow: var(--soft-shadow);
-  
+  box-shadow: var(--soft-shadow-S);
+
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  
+
+  opacity: 0.6;
+  color: var(--beige4);
   background-color: var(--white);
+}
+
+#nav-bar:hover {
+  opacity: 1;
 }
 
 #nav-bar::-webkit-scrollbar {
   display: none;
+}
+
+/* Topic list */
+#nav-bar #topics {
+  padding: 0 0 1em 1em;
+  height: 100%;
 }
 
 #nav-bar ul {
@@ -39,25 +92,64 @@
   padding: 0;
 }
 
-#nav-bar li a, #nav-bar .folder-title {
-  color: var(--beige3);
-  text-decoration: none;
+#nav-bar .folder-title {
+  color: var(--beige4);
+  font-weight: 500;
+  margin: 0.3em 0;
+}
+#nav-bar .active {
+  margin-bottom: 0;
 }
 
-#nav-bar li a {
-  color: var(--beige3);
-}
-
-#nav-bar li.active a, #nav-bar li:hover > * {
-  color: var(--brown);
+#nav-bar .active, #nav-bar .folder-title:hover {
   font-weight: 700;
-}
-
-#nav-bar .active-folder {
   color: var(--bright-lilac);
 }
 
-#nav-bar li.folded {
-  display: none;
-  overflow: hidden;
+#nav-bar li {
+  padding: 0 0.2em 0.3em;
+  border-left: 1px solid var(--bright-red);
+}
+
+#nav-bar .folder {
+  display: grid;
+  grid-template-columns:  5px 2fr;
+  column-gap: 0.5em;
+  padding: 0.2em 0 0.2em 0.5em;
+}
+
+#nav-bar .list-divider {
+  display: block;
+  height: 100%;
+  width: 5px;
+  background-color: var(--bright-lilac);
+  border-radius: var(--border-radius-S);
+  transition: all cubic-bezier(1, 0, 0, 1);
+}
+
+#nav-bar a:hover {
+  color: var(--brown);
+  font-weight: 600;
+}
+
+#nav-bar a {
+  text-decoration: none;
+  color: var(--beige4);
+}
+
+/* Navbar menu */
+#nav-bar #menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+
+  height: 2em;
+  width: 100%;
+  font-weight: 600;
+  padding: 1.3em 1.3em 2em 1.3em;
+
+  background: var(--white);
+  color: var(--brown);
 }

@@ -222,7 +222,7 @@ Grid tracks are defined in the explicit grid by using the `grid-template-columns
 <style>
   .container {
       display: grid;
-	  grid-template-columns:  1fr 1fr 1fr;
+	  	grid-template-columns:  1fr 1fr 1fr;
       border: 2px solid #d9cec1;
   }
 </style>

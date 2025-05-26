@@ -37,7 +37,8 @@
   --bright-yellow: #FFE085;
 
   /* shadows */
-  --soft-shadow: rgba(0, 0, 0, 0.2) 0px 5px 15px;
+  --soft-shadow-S: 3px 4px 10px -5px rgba(0,0,0,0.53);
+  --soft-shadow-L: 6px 8px 29px -9px rgba(0,0,0,0.53);
 }
 
 /* NUMERICALS */

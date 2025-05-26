@@ -1,0 +1,56 @@
+{
+  "name": "my-notes",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "All my documentation in one place.",
+  "main": "app.ts",
+  "scripts": {
+    "clean": "bash ./scripts/clean.sh",
+    "dev": "nodemon app.ts",
+    "start": "ts-node app.ts",
+    "test": "echo 'Error: no test specified' && exit 1",
+    "pretty": "npm run clean ; prettier --write './**/*.{js,jsx,mjs,cjs,ts,tsx,json}' ; eslint --ext .ts "
+  },
+  "nodemonConfig": {
+    "restartable": "rs",
+    "ignore": [
+      ".git",
+      "node_modules/**/node_modules"
+    ],
+    "watch": [
+      "./notes",
+      "./public",
+      "./src"
+    ],
+    "ext": "ts,js,json,md,pug,css",
+    "delay": 2500
+  },
+  "keywords": [],
+  "author": "Chlotte",
+  "license": "ISC",
+  "dependencies": {
+    "@types/marked": "5.0.2",
+    "express": "^5.1.0",
+    "jsdom": "^26.1.0",
+    "marked": "15.0.11",
+    "path-ts": "1.0.5",
+    "pug": "^3.0.2",
+    "sanitize-html": "2.16.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.19.0",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.12.0",
+    "@types/sanitize-html": "2.16.0",
+    "@typescript-eslint/eslint-plugin": "^8.22.0",
+    "@typescript-eslint/parser": "^8.22.0",
+    "eslint": "^9.19.0",
+    "globals": "^16.1.0",
+    "nodemon": "^3.0.1",
+    "prettier": "^3.4.2",
+    "ts-node": "10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.22.0"
+  }
+}

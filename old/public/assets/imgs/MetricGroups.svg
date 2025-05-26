@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 470">
+
+<defs>
+  <linearGradient id="gradient_metric" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="white"/>
+    <stop offset="100%" stop-color="#b7b7b7"/>
+  </linearGradient>
+
+  <linearGradient id="gradient_base_group" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="white"/>
+    <stop offset="100%" stop-color="#d7c2e1"/>
+  </linearGradient>
+
+  <linearGradient id="gradient_temp_group" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="white"/>
+    <stop offset="100%" stop-color="#e0e0b0"/>
+  </linearGradient>
+
+  <linearGradient id="gradient_env_group" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="white"/>
+    <stop offset="100%" stop-color="#cceeee"/>
+  </linearGradient>
+ </defs>
+
+  <style>
+    rect {
+      stroke-width: 2px;
+      stroke: black;
+    }
+
+    text {
+      font-family: Arial, sans-serif;
+      font-size: 17px;
+      stroke-width: 0;
+      fill: black;
+      stroke: black;
+      stroke-width: 0;
+      stroke-opacity: null;
+    }
+
+    .group_heading {
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .subgroup_heading {
+      font-size: 20px;
+    }
+
+    .metric_rect_base {
+      fill: url(#gradient_metric);
+      stroke: #5f2a87;
+    }
+
+    .metric_rect_temp {
+      fill: url(#gradient_metric);
+      stroke: #87822a;
+    }
+
+    .metric_rect_env {
+      fill: url(#gradient_metric);
+      stroke: #454591;
+    }
+
+  </style>
+
+  <rect fill="url(#gradient_base_group)" width="400" height="450" rx="31" y="10" x="10"/>
+  <rect fill="url(#gradient_temp_group)" width="220" height="310" rx="31" y="10" x="479"/>
+  <rect fill="url(#gradient_env_group)" width="400" height="315" rx="31" y="10" x="770"/>
+
+  <text x="98" y="50" class="group_heading">Base Metric Group</text>
+
+  <text x="54" y="85" class="subgroup_heading">Exploitability</text>
+  <text x="75" y="110" class="subgroup_heading">metrics</text>
+
+  <text x="232" y="85" class="subgroup_heading">Impact metrics</text>
+
+  <rect class="metric_rect_base" x="30" y="130" width="161" height="54" rx="21"/>
+  <text x="57" y="163">Attack Vector</text>
+
+  <rect class="metric_rect_base" x="30" y="195" width="161" height="54" rx="21"/>
+  <text x="42" y="228">Attack Complexity</text>
+
+  <rect class="metric_rect_base" x="30" y="260" width="161" height="54" rx="21"/>
+  <text x="75" y="284" id="gradient_metric1">Privileges</text>
+  <text x="78" y="304" id="gradient_metric0">Required</text>
+
+  <rect class="metric_rect_base" x="30" y="325" width="161" height="54" rx="21"/>
+  <text x="50" y="358">User Interaction</text>
+
+  <rect class="metric_rect_base" x="124" y="392" width="161" height="54" rx="21"/>
+  <text x="181" y="425">Scope</text>
+
+  <rect class="metric_rect_base" x="215" y="130" width="161" height="54" rx="21"/>
+  <text x="240" y="154">Confidentiality</text>
+  <text x="266" y="174">Impact</text>
+
+  <rect class="metric_rect_base" x="215" y="195" width="161" height="54" rx="21"/>
+  <text x="263" y="219">Integrity</text>
+  <text x="266" y="239">Impact</text>
+
+  <rect class="metric_rect_base" x="215" y="260" width="161" height="54" rx="21"/>
+  <text x="255" y="284">Availability</text>
+  <text x="266" y="304">Impact</text>
+
+
+  <text x="536" y="50" class="group_heading">Temporal</text>
+  <text x="511" y="85" class="group_heading">Metric Group</text>
+
+  <rect class="metric_rect_temp" x="510" y="114" width="161" height="54" rx="21"/>
+  <text x="544" y="138">Exploit Code</text>
+  <text x="561" y="158">Maturity</text>
+
+  <rect class="metric_rect_temp" x="510" y="179" width="161" height="54" rx="21"/>
+  <text x="520" y="212">Remediation Level</text>
+
+  <rect class="metric_rect_temp" x="510" y="244" width="161" height="54" rx="21"/>
+  <text x="520" y="277">Report Confidence</text>
+
+
+  <text x="879" y="50" class="group_heading">Environmental</text>
+  <text x="889" y="85" class="group_heading">Metric Group</text>
+
+  <rect class="metric_rect_env" x="985" y="114" width="161" height="54" rx="21"/>
+  <text x="1010" y="138">Confidentiality</text>
+  <text x="1017" y="158">Requirement</text>
+
+  <rect class="metric_rect_env" x="985" y="179" width="161" height="54" rx="21"/>
+  <text x="1034" y="203">Integrity</text>
+  <text x="1017" y="223">Requirement</text>
+
+  <rect class="metric_rect_env" x="985" y="244" width="161" height="54" rx="21"/>
+  <text x="1025" y="268">Availability</text>
+  <text x="1017" y="288">Requirement</text>
+
+  <rect class="metric_rect_env" x="794" y="134" width="161" height="108" rx="21"/>
+  <text x="818" y="170">Modified Base</text>
+  <text x="845" y="190">Metrics</text>
+</svg>

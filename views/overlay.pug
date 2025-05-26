@@ -1,38 +1,42 @@
-// Navigation link == a page
-mixin navLink(name, endpoint, specialClass)
-  li(class=(name === title ? specialClass + " active" : specialClass))
-    a(href=endpoint)= name
+// Navbar menu
+mixin menu()
+  div(id="menu")
+    span(id="menu-toc")= isHome ? "HOME" : "TOC"
+    span(id="separator") |
+    span.active TOPICS
+    span(class="material-symbols-outlined" id="nav-fold-btn")= "navigate_next"
+
+// Navbar topics list
+mixin topicsList(topics)
+  ul(id="topics")
+    each files, folderName in topics
+      +navFolder(folderName, files)
 
 // Navigation folder == a subject
 mixin navFolder(name, links)
-    ul.folder
-      li.folder-title
-        span=name
-      each page in links
-        +navLink(page.title, page.endpoint, "folded")
-
-// Navigation
-mixin navBar(topics)
-  div(id="nav-container")
-    //- div(id="nav-fold-btn" class="nav-btn")
-    //-   span(class="material-symbols-outlined ")= "menu"
-    div(id="nav-bar")
-      each files, folder in topics
-        if (folder !== 'root')
-          +navFolder(folder, files)
-        else
-          ul.lonely-link
-          each page in files
-            +navLink(page.title, page.endpoint, "")
+  ul.collapsible
+    li.folder-title= name
+    div.folder
+      div.list-divider
+      ul
+        each page in links
+          li
+            a(href=page.endpoint)= page.title
 
 // OVERLAY == navBar + utility buttons
-mixin overlay(topics)
+mixin overlay(topics, isHome)
   div(id="overlay")
-    +navBar(topics)
-    div(id="theme-btn" class="nav-btn")
-      span(class="material-symbols-outlined ")= "dark_mode"
-    div(id="to-top-btn" class="nav-btn")
-      span(class="material-symbols-outlined ")= "arrow_upward"
+    img(src="assets/pekoe/regular.svg#pek-logo" shape-rendering="crispEdges" alt="Pek logo" id="pek-logo")
+    div(id="nav-bar")
+      +menu
+      +topicsList(topics)
 
+    div(id="btns-container")
+      div(id="to-top-btn" class="nav-btn")
+        span.material-symbols-outlined= "arrow_upward"
+      div(id="theme-btn" class="nav-btn")
+        span.material-symbols-outlined= "dark_mode"
+
+  script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript")
   script
-    include ../src/overlay.js
+    include ./scripts/overlay.js
