@@ -1,33 +1,19 @@
-include ./overlay.pug
+include ./components/overlay.pug
+include ./components/head.pug
+include ./components/peek-oe.pug
 
 doctype html
 html
   head
-    title= title
-    meta(name="viewport", content="width=device-width,initial-scale=1")
-
-    // code highlighting
-    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css")
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js")
-    script(src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/languages/dockerfile.min.js")
-
+    +head(title)
     script.
-      hljs.highlightAll();
-
-    // style
-    include ./styles.pug
-
-    // no indexing
-    meta(name="robots", content="noindex")
+      const pageTitle = !{JSON.stringify(title)};
+      localStorage.setItem("current-page", pageTitle);
 
   body
-    script.
-      document.body.classList = localStorage.getItem("theme") || "light";
-     +overlay(navbarData)
+    +overlay(navbarData, false)
 
+    img(src="assets/pekoe/pekoe.svg#pek-logo" shape-rendering="crispEdges" alt="Pekoe logo" id="pekoe-logo")
     div.page
       | !{content}
-
-  script
-    include ../src/toc.ts
-
+    +peek-oe

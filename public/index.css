@@ -1,0 +1,15 @@
+.index { margin-top: 5vh; }
+
+.index-list-title {
+    display: block;
+    color: var(--beige4);
+    width: 100%;
+    text-decoration: inherit;
+    font-size: 1.2em;
+    font-weight: 700;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--beige2);
+    margin-bottom: 0;
+}
+
+.index-list { margin: 1vh 0 3vh 1vw; }

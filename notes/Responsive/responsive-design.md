@@ -1,5 +1,5 @@
 [//]: # (TITLE Responsive design)
-[//]: # (ENDPOINT /responsive)
+[//]: # (ENDPOINT /responsive-design)
 
 # Responsive design
 
@@ -17,15 +17,17 @@ Several layout methods, including Multiple-column layout, Flexbox, and Grid are 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 ##### Table of contents
 
-- [1 - Media Queries](#1---media-queries)
-- [2 - Responsive layout techniques](#2---responsive-layout-techniques)
-    - [2.1 - Multiple columns](#21---multiple-columns)
-    - [2.2 - Flexbox](#22---flexbox)
-    - [2.3 - Grid](#23---grid)
-- [3 - Responsive images](#3---responsive-images)
-- [4 - Responsive typography](#4---responsive-typography)
-    - [4.1 - With media queries](#41---with-media-queries)
-- [Sources](#sources)
+- [Responsive design](#responsive-design)
+				- [Table of contents](#table-of-contents)
+	- [1 - Media Queries](#1---media-queries)
+	- [2 - Responsive layout techniques](#2---responsive-layout-techniques)
+		- [2.1 - Multiple columns](#21---multiple-columns)
+		- [2.2 - Flexbox](#22---flexbox)
+		- [2.3 - Grid](#23---grid)
+	- [3 - Responsive images](#3---responsive-images)
+	- [4 - Responsive typography](#4---responsive-typography)
+		- [4.1 - With media queries](#41---with-media-queries)
+	- [Sources](#sources)
 
 <!-- markdown-toc end -->
 

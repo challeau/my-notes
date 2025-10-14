@@ -12,6 +12,7 @@ import express, { Express, Request, Response } from "express";
 import * as path from "path";
 
 import { getTopicsFromFilepath } from "./fileParsing.ts";
+import { parseMdToHtml } from "./customMarked.ts";
 
 async function serve(): Promise<void> {
   // File paths
@@ -33,6 +34,31 @@ async function serve(): Promise<void> {
   app.get("/", (_req: Request, res: Response) => {
     res.render("index", { title: "Charlotte's notes", navbarData: topics });
   });
+
+
+  // Serve one route per topic and note file
+  for (const topic in topics) {
+    const topicEndpoint = `/${topic.toLowerCase()}`;
+
+    // Index route
+    app.get(topicEndpoint, (_req, res) => {
+      res.render("topic-template", {
+        title: topic,
+        navbarData: topics,
+      });
+    });
+
+    // Note routes
+    for (const page of topics[topic]) {
+      app.get(`${page.endpoint}`, (_req, res) => {
+        res.render("page-template", {
+          title: page.title,
+          navbarData: topics,
+          content: parseMdToHtml(page.filepath),
+        });
+      });
+    }
+  }
 
   app.listen(PORT);
   console.log(`Iss all good, have fun learnin' :)\nView at: http://localhost:${PORT}`);

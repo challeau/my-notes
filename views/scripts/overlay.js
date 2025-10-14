@@ -11,24 +11,15 @@ function getSiblings(element) {
   }
   return siblings;
 }
+
 /**
  * Handle swiching between light and dark theme
  */
 function handleTheme() {
   $("#theme-btn").on("click", () => {
-    localStorage.setItem("theme", document.body.classList.contains("dark") ? "light" : "dark");
+    localStorage.setItem("theme", document.body.classList.contains("dark") ? "" : "dark");
     $("body").toggleClass("dark");
   });
-}
-
-/**
- * Randomly selects a Pekoe SVG for the page logo
- */
-function handlePekoeLogo() {
-  const moods = ["regular", "angry", "sad", "evil"];
-  const randomMood = moods.at(Math.floor(Math.random() * moods.length));
-
-  $('#pek-logo').attr("src", `assets/pekoe/${randomMood}.svg#pek-logo`);
 }
 
 /**
@@ -50,16 +41,40 @@ function handleScrollToTop() {
 }
 
 /**
- * Handle the folding/unfolding of topic folders whe clicked
+ * Handle the folding/unfolding of topic folders when clicked, and highlight of current page
  */
 function handleFolders() {
-  $(".collapsible").on("click", (event) => {
-    const target = $(event.target);
-    if (target.is("li")) {
-      target.toggleClass("active");
-      target.next().toggle();
+  const folders = $(".collapsible");
+
+  // Hide all folder contents
+  folders.find(".folder").hide();
+
+  // Toggle folding on click
+  folders.on("click", ".folder-title", (event) => {
+    const title = $(event.target);
+
+    title.toggleClass("active");
+    title.next(".folder").toggle();
+  });
+
+  // Highlight current page
+  folders.find(".folder").find(".subject").each((_i, elem) => {
+    const subjectTitle = elem.firstChild.textContent;
+
+    if (subjectTitle == localStorage.getItem('current-page')) {
+      const node = $(elem);
+      const folder = node.closest(".folder");
+      folder.show();
+
+      const title = folder.prev(".folder-title");
+      title.toggleClass("active");
+
+      node.addClass("current");
+
+      // Scroll the current page title into view
+      elem.scrollIntoView({ behavior: "smooth", block: "center" });
     }
-  }).find(".folder").hide();
+  });
 }
 
 /**
@@ -72,21 +87,12 @@ function overlay() {
   // Folding the NavBar with the menu button
   // const navContainer: Element = document.getElementsByClassName("nav-container")[0];
   // const navFoldBtn = document.getElementById("nav-fold-btn");
-  const navBar = document.getElementById("nav-bar");
-
-  if (!navBar) {
-    console.log("womp womp can't find navBar elements");
-    return;
-  }
 
   // navFoldBtn.addEventListener("click", () => {
   //   navBar.style.left = navBar.style.left == "0px" ? "-20vw" : "0px";
   //   // navContainer.style.width = navContainer.style.width == "13vw" ? "0" : "13vw";
   //   navFoldBtn.classList.toggle("open");
   // });
-
-  // Set a random Pekoe svg
-  handlePekoeLogo();
 
   // Fold/unfold topic folders
   handleFolders();

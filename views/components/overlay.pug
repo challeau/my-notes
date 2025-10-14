@@ -1,34 +1,35 @@
 // Navbar menu
-mixin menu()
+mixin menu(isHome)
   div(id="menu")
-    span(id="menu-toc")= isHome ? "HOME" : "TOC"
-    span(id="separator") |
-    span.active TOPICS
+    if !isHome
+      span.active(id="menu-toc") TOC
+      span(id="separator") |
+    span TOPICS
     span(class="material-symbols-outlined" id="nav-fold-btn")= "navigate_next"
 
 // Navbar topics list
 mixin topicsList(topics)
   ul(id="topics")
     each files, folderName in topics
-      +navFolder(folderName, files)
+      li.folder-container
+        +navFolder(folderName, files)
 
 // Navigation folder == a subject
 mixin navFolder(name, links)
   ul.collapsible
     li.folder-title= name
-    div.folder
+    li.folder
       div.list-divider
       ul
         each page in links
-          li
+          li.subject
             a(href=page.endpoint)= page.title
 
-// OVERLAY == navBar + utility buttons
+// OVERLAY == navBar + logo + utility buttons
 mixin overlay(topics, isHome)
   div(id="overlay")
-    img(src="assets/pekoe/regular.svg#pek-logo" shape-rendering="crispEdges" alt="Pek logo" id="pek-logo")
     div(id="nav-bar")
-      +menu
+      +menu(isHome)
       +topicsList(topics)
 
     div(id="btns-container")
@@ -37,6 +38,11 @@ mixin overlay(topics, isHome)
       div(id="theme-btn" class="nav-btn")
         span.material-symbols-outlined= "dark_mode"
 
+  // import functionality scripts
   script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript")
   script
-    include ./scripts/overlay.js
+    include ../scripts/overlay.js
+
+  // get theme setting from local storage
+  script.
+    document.body.classList = localStorage.getItem("theme") || "light";

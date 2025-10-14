@@ -2,7 +2,7 @@
 * {
   box-sizing: border-box;
   transition-property: all;
-  transition-duration: .25s;
+  transition-duration: .2s;
   transition-timing-function: ease-in-out;
 }
 
@@ -21,6 +21,7 @@ body {
   font-family: 'Quicksand', sans-serif;
   font-size: var(--font-M);
   word-wrap: break-word;
+  position: relative;
 }
 
 /* PAGE */
@@ -34,6 +35,9 @@ body {
   background-color: var(--white);
   border-radius: var(--border-radius-M);
   box-shadow: var(--soft-shadow-L);
+
+  position: relative;
+  z-index: 2;
 }
 
 /* HEADERS */
@@ -91,8 +95,89 @@ h2 + p, h3 + p, h4 + p, h5 + p {
     margin-top: 0;
 }
 
+/* LINKS */
+.page a {
+  color: var(--bright-blue);
+  text-decoration: none;
+  cursor: pointer;
+
+  width: fit-content;
+
+  display: inline-block;
+  position: relative;
+}
+
+.page a:hover::after {
+  content: "";
+  height: 2.5px;
+  min-height: 2.5px;
+  max-height: 2.5px;
+  width: 100%;
+
+  background-color: var(--blue);
+  border-radius: var(--border-radius-S);
+
+  display: block;
+  position: absolute;
+  bottom: -2.5px;
+}
+
+/* Lists */
+.page ul, ol {
+  position: relative;
+  margin: 0 0 1.5em 2em;
+  line-height: 1.2em;
+}
+
+.page li {
+  padding: 0.3em 0;
+  max-width: 90%;
+  position: relative;
+}
+
+.page li::marker {
+  color: var(--beige2);
+}
+
+/* Images */
+img {
+  display: block;
+  max-width: 100%;
+  border-radius: .5em;
+}
+
+img[alt*="center"] { margin: 0 auto; }
+img[alt*="inline"] { display: inline; }
+img[alt*="float"] { float: left; }
+img[alt*="50"] { width: 50%; }
+img[alt*="40"] { width: 40%; }
+img[alt*="medium"] { width: 8em; }
+img[alt*="small"] { width: 3em; }
+img[alt*="tiny"] { width: 1.5em; }
+
+/* Pekoe logo */
+#pekoe-logo {
+  position: absolute;
+  left: 4vw;
+
+  width: 10vw;
+}
+
+/* End-of-page beacon */
+#peek-oe {
+  position: absolute;
+  bottom: 0;
+  right: 14.8vw;
+  transform: scale(-1, 1);
+  z-index: 0;
+}
+
+#peek-oe img {
+  transform: scale(-1, 1);
+}
+
 /* TOC */
-.content h5[id='#table-of-contents'] {
+/* h5[id='#table-of-contents'] {
   font-size: 1em;
   color: var(--bright-pink);
   margin-top: 2em;
@@ -102,6 +187,6 @@ h2 + p, h3 + p, h4 + p, h5 + p {
   align-items: end;
 }
 
-.content #TOC, .content #TOC ul { list-style-type: none; }
+#TOC, #TOC ul { list-style-type: none; }
 
-.content #TOC::before { display: none; }
+#TOC::before { display: none; } */

@@ -8,19 +8,9 @@
   align-items: flex-end;
 
   position: fixed;
+  z-index: 1;
   padding: 0em 2em 2.5em 0;
 }
-
-
-/* Pekoe logo */
-#pek-logo {
-  position: absolute;
-  top: -2vh;
-  left: 5vw;
-
-  width: 7vw;
-}
-
 
 /* Buttons */
 #btns-container {
@@ -45,6 +35,11 @@
   cursor: pointer;
 
   position: relative;
+  opacity: 0.6;
+}
+
+.nav-btn:hover {
+  opacity: 1;
 }
 
 #to-top-btn {
@@ -55,7 +50,7 @@
 #nav-bar {
   width: 16vw;
   height: fit-content;
-  min-height: 20vh;
+  min-height: 11em;
   max-height: 40vh;
 
   border-radius: var(--border-radius-S);
@@ -64,6 +59,7 @@
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  scroll-margin-top: 200px;
 
   opacity: 0.6;
   color: var(--beige4);
@@ -81,7 +77,6 @@
 /* Topic list */
 #nav-bar #topics {
   padding: 0 0 1em 1em;
-  height: 100%;
 }
 
 #nav-bar ul {
@@ -97,24 +92,27 @@
   font-weight: 500;
   margin: 0.3em 0;
 }
+
 #nav-bar .active {
   margin-bottom: 0;
 }
 
-#nav-bar .active, #nav-bar .folder-title:hover {
+#nav-bar .active,
+#nav-bar .folder-title:hover {
   font-weight: 700;
   color: var(--bright-lilac);
 }
 
-#nav-bar li {
+#nav-bar li:not(.folder-container) {
   padding: 0 0.2em 0.3em;
   border-left: 1px solid var(--bright-red);
+  position: relative;
 }
 
 #nav-bar .folder {
   display: grid;
-  grid-template-columns:  5px 2fr;
-  column-gap: 0.5em;
+  grid-template-columns: 5px 2fr;
+  column-gap: 1em;
   padding: 0.2em 0 0.2em 0.5em;
 }
 
@@ -122,19 +120,60 @@
   display: block;
   height: 100%;
   width: 5px;
+
+  position: relative;
+  top: -1%;
+  margin-left: 0.6em;
+  margin-top: -1px;
+
   background-color: var(--bright-lilac);
   border-radius: var(--border-radius-S);
   transition: all cubic-bezier(1, 0, 0, 1);
 }
 
-#nav-bar a:hover {
+#nav-bar a {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  color: var(--beige4);
+  text-decoration: none;
+}
+
+#nav-bar .current a {
+  color: var(--bright-lilac);
+  font-weight: 600;
+
+  position: relative;
+  z-index: 0;
+}
+
+#nav-bar .subject:hover a {
   color: var(--brown);
   font-weight: 600;
 }
 
-#nav-bar a {
-  text-decoration: none;
-  color: var(--beige4);
+/* Add a cursor next to the current page */
+#nav-bar .current::before,
+#nav-bar .subject:hover::before {
+  content: "";
+  width: 15px;
+  height: 45px;
+
+  position: absolute;
+  left: -18px;
+  top: 66%;
+
+  background-image: url("data:image/svg+xml;utf8,<svg width='26' height='48' viewBox='0 0 26 48' xmlns='http://www.w3.org/2000/svg'><path d='M26 24C26 42 23.4 48 13 48C2.6 48 0 42 0 24C0 6 2.6 0 13 0C23.4 0 26 6 26 24Z' fill='%23DAC8E4'/></svg>");
+  background-repeat: no-repeat;
+  background-size: contain;
+  transform: translateY(-50%);
+  transition: all cubic-bezier(1, 0, 0, 1);
+}
+
+/* When hovering any .subject, hide the cursor on .current */
+#nav-bar .folder:hover .current:not(:hover)::before {
+  opacity: 0;
 }
 
 /* Navbar menu */
@@ -144,6 +183,7 @@
   justify-content: space-between;
   position: sticky;
   top: 0;
+  z-index: 420;
 
   height: 2em;
   width: 100%;
@@ -151,5 +191,9 @@
   padding: 1.3em 1.3em 2em 1.3em;
 
   background: var(--white);
+  color: var(--beige4);
+}
+
+#nav-bar #menu:hover {
   color: var(--brown);
 }

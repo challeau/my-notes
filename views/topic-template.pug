@@ -1,27 +1,15 @@
-include ./overlay.pug
+include ./components/overlay.pug
+include ./components/head.pug
 
 doctype html
 html
   head
-    title= title
-
-    // code highlighting
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js")
-
+    +head(title)
     script.
-      hljs.highlightAll();
-
-    // style
-    include ./styles.pug
-    link(rel="stylesheet", type="text/css", href="index.css")
-
-    // no indexing
-    meta(name="robots", content="noindex")
+      localStorage.setItem("current-page", "");
 
   body
-    script.
-      document.body.classList = localStorage.getItem("theme") || "light";
-    +overlay(navbarData)
+    +overlay(navbarData, false)
 
     div.page
       h1= title
@@ -31,4 +19,3 @@ html
           each page in navbarData[title]
             li
               a(href=page.endpoint)= page.title
-
