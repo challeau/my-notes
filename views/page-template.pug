@@ -10,7 +10,8 @@ html
   body
     +overlay(navbarData, false)
 
-    img(src="assets/pekoe/pekoe.svg#pek-logo" shape-rendering="crispEdges" alt="Pekoe logo" id="pekoe-logo")
+    a(href="/")
+      img(src="assets/pekoe/pekoe.svg#pek-logo" shape-rendering="crispEdges" alt="Pekoe logo" id="pekoe-logo")
     div.page
       | !{content}
     +peek-oe

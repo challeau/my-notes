@@ -6,13 +6,12 @@ doctype html
 html
   head
     +head(title)
-    script.
-      localStorage.setItem("current-page", "")
 
   body
     +overlay(navbarData, true)
 
-    img(src="assets/pekoe/pekoe.svg#pek-logo" shape-rendering="crispEdges" alt="Pekoe logo" id="pekoe-logo")
+    a(href="/")
+      img(src="assets/pekoe/pekoe.svg#pek-logo" shape-rendering="crispEdges" alt="Pekoe logo" id="pekoe-logo")
     div.page
       h1 Charlotte's Notes
       p This is a collection of my Web Development notes so I can access them anywhere with an internet connection.

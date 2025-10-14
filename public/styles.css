@@ -159,7 +159,7 @@ img[alt*="tiny"] { width: 1.5em; }
 #pekoe-logo {
   position: absolute;
   left: 4vw;
-
+  z-index: 2;
   width: 10vw;
 }
 
@@ -168,8 +168,10 @@ img[alt*="tiny"] { width: 1.5em; }
   position: absolute;
   bottom: 0;
   right: 14.8vw;
-  transform: scale(-1, 1);
   z-index: 0;
+
+  transform: scale(-1, 1);
+  cursor: pointer;
 }
 
 #peek-oe img {

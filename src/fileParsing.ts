@@ -57,6 +57,7 @@ export async function getNoteFileMetadata(parentPath: string, filename: string):
  */
 export async function getTopicsFromFilepath(filepath: string): Promise<TopicCollection> {
   const topics: TopicCollection = {};
+  const orphanTopics: TopicMetadata[] = [];
   const dirents = readdirSync(filepath, { withFileTypes: true, recursive: true });
 
   for (const dirent of dirents) {
@@ -64,19 +65,21 @@ export async function getTopicsFromFilepath(filepath: string): Promise<TopicColl
       topics[dirent.name] = [];
       continue;
     }
-
+    
     if (dirent.isFile() && dirent.name.match(".md$")) {
-      const parentDirnameMatch = dirent.parentPath.match("([^/]*)/*$");
-      const parentDirname = parentDirnameMatch ? parentDirnameMatch[1] : 'Other';
-
+      const parentDirname = dirent.parentPath.match("([^/]*)/*$")?.[1] ?? '';
       const fileMetadata = await getNoteFileMetadata(dirent.parentPath, dirent.name);
+
       if (parentDirname in topics) {
         topics[parentDirname].push(fileMetadata);
-        continue;
+      }
+      else {
+        orphanTopics.push(fileMetadata);
       }
     }
   }
 
+  topics['Others'] = orphanTopics;
   sortTopicCollectiontByPriority(topics);
 
   return topics;

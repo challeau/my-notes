@@ -61,7 +61,7 @@ function handleFolders() {
   folders.find(".folder").find(".subject").each((_i, elem) => {
     const subjectHref = elem.firstChild.href;
 
-    if (subjectHref  == window.location.href) {
+    if (subjectHref == window.location.href) {
       const node = $(elem);
       const folder = node.closest(".folder");
       folder.show();
@@ -78,30 +78,48 @@ function handleFolders() {
 }
 
 /**
+ *  Handle the display of the navbar
+ */
+function handleNavbarDisplay() {
+  const navBar = $("#nav-bar");
+  const navFoldBtn = $("#nav-fold-btn");
+
+  navFoldBtn.on("click", () => {
+    navBar.toggleClass("folded");
+    navFoldBtn.toggleClass("folded");
+  });
+}
+
+function meowOnClick(setting) {
+  const meowingSource = setting == 'all' ? '*' : "#peek-oe";
+  
+  $("body").on("click", meowingSource, () => { document.getElementById("meow-audio")?.play(); });
+}
+
+/**
  * Add interactions with overlay:
  * - fold navbar
  * - scroll to top
  * - toggle dark/light mode
  */
 function overlay() {
-  // Folding the NavBar with the menu button
-  // const navContainer: Element = document.getElementsByClassName("nav-container")[0];
-  // const navFoldBtn = document.getElementById("nav-fold-btn");
+  // Show/hide navbar
+  handleNavbarDisplay();
 
-  // navFoldBtn.addEventListener("click", () => {
-  //   navBar.style.left = navBar.style.left == "0px" ? "-20vw" : "0px";
-  //   // navContainer.style.width = navContainer.style.width == "13vw" ? "0" : "13vw";
-  //   navFoldBtn.classList.toggle("open");
-  // });
+  // Allow switching between TOC and topics in the navbar
+  // handleMenuBar();
 
   // Fold/unfold topic folders
   handleFolders();
 
-  // Add dark/light mode toggling
+  // Dark/light mode toggling
   handleTheme();
 
-  // Add scroll to top functionality
+  // Scroll to top functionality
   handleScrollToTop();
+
+  // Play sound when clicking on pekoe
+  meowOnClick('');
 }
 
 overlay();

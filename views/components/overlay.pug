@@ -2,17 +2,9 @@
 mixin menu(isHome)
   div(id="menu")
     if !isHome
-      span.active(id="menu-toc") TOC
-      span(id="separator") |
-    span TOPICS
-    span(class="material-symbols-outlined" id="nav-fold-btn")= "navigate_next"
-
-// Navbar topics list
-mixin topicsList(topics)
-  ul(id="topics")
-    each files, folderName in topics
-      li.folder-container
-        +navFolder(folderName, files)
+      span(id="menu-toc", class="menu-tab") TOC
+      span(id="menu-separator") |
+    span(id="menu-topics", class="active menu-tab") TOPICS
 
 // Navigation folder == a subject
 mixin navFolder(name, links)
@@ -25,12 +17,22 @@ mixin navFolder(name, links)
           li.subject
             a(href=page.endpoint)= page.title
 
+// Navbar topics list
+mixin topicsList(topics)
+  ul(id="topics")
+    each files, folderName in topics
+      li.folder-container
+        +navFolder(folderName, files)
+
 // OVERLAY == navBar + logo + utility buttons
 mixin overlay(topics, isHome)
   div(id="overlay")
-    div(id="nav-bar")
-      +menu(isHome)
-      +topicsList(topics)
+    div(id="nav-bar-container")
+      div(id="nav-fold-btn" class="nav-btn")
+        span.material-symbols-outlined= "navigate_next"
+      div(id="nav-bar")
+        +menu(isHome)
+        +topicsList(topics)
 
     div(id="btns-container")
       div(id="to-top-btn" class="nav-btn")
