@@ -1,5 +1,5 @@
 
-[//]: # (TITLE JS basics)
+[//]: # (TITLE Basics)
 [//]: # (ENDPOINT /js-basics)
 [//]: # (PRIORITY 0)
 

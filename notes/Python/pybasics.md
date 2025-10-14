@@ -1,5 +1,5 @@
 
-[//]: # (TITLE PY basics)
+[//]: # (TITLE Basics)
 [//]: # (ENDPOINT /py-basics)
 [//]: # (PRIORITY 0)
 

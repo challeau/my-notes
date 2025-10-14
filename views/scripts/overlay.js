@@ -59,9 +59,9 @@ function handleFolders() {
 
   // Highlight current page
   folders.find(".folder").find(".subject").each((_i, elem) => {
-    const subjectTitle = elem.firstChild.textContent;
+    const subjectHref = elem.firstChild.href;
 
-    if (subjectTitle == localStorage.getItem('current-page')) {
+    if (subjectHref  == window.location.href) {
       const node = $(elem);
       const folder = node.closest(".folder");
       folder.show();

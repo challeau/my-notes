@@ -1,5 +1,5 @@
-[//]: # (TITLE PY references)
-[//]: # (ENDPOINT /pyrefs)
+[//]: # (TITLE References)
+[//]: # (ENDPOINT /py-refs)
 [//]: # (PRIORITY 1)
 
 # Python references
@@ -7,16 +7,21 @@
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 ##### Table of contents
 
-- [1 - Builtins](#1---builtins)
-- [2 - List methods](#2---list-methods)
-- [3 - Dictionary methods](#3---dictionary-methods)
-- [4 - String methods](#4---string-methods)
-- [X - Tuple Methods](#x---tuple-methods)
-- [X - Set Methods](#x---set-methods)
-- [X - File Methods](#x---file-methods)
-- [X - Keywords](#x---keywords)
-- [X - Exceptions](#x---exceptions)
-- [Sources](#sources)
+- [Python references](#python-references)
+        - [Table of contents](#table-of-contents)
+  - [1 - Built-ins](#1---built-ins)
+    - [1.1 - Built-in functions](#11---built-in-functions)
+    - [1.2 - Built-in constants](#12---built-in-constants)
+    - [1.3 - Built-in Exceptions](#13---built-in-exceptions)
+  - [2 - List methods](#2---list-methods)
+  - [3 - Dictionary methods](#3---dictionary-methods)
+  - [4 - String methods](#4---string-methods)
+  - [X - Tuple Methods](#x---tuple-methods)
+  - [X - Set Methods](#x---set-methods)
+  - [X - File Methods](#x---file-methods)
+  - [X - Keywords](#x---keywords)
+  - [X - Exceptions](#x---exceptions)
+  - [Sources](#sources)
 
 <!-- markdown-toc end -->
 

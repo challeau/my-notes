@@ -1,5 +1,5 @@
 [//]: # (TITLE CSS Layout)
-[//]: # (ENDPOINT /layout)
+[//]: # (ENDPOINT /css-layout)
 
 # CSS layout
 

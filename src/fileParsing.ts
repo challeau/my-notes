@@ -8,7 +8,7 @@ import { capitalize, sortTopicCollectiontByPriority } from "./utils.ts";
 /**
  * Parse the metadata found in the first few lines of a file
  * The parsing stops at the first occurence of a non-comment line (ie, one that doesn't
- * start with "[//]: #"). This includes empty lines.
+ * start with "[//]: #").
  * 
  * -> This function will be replaced when super-parser is functional
  */
@@ -25,11 +25,18 @@ export async function getNoteFileMetadata(parentPath: string, filename: string):
   };
 
   for await (const line of file.readLines()) {
+    // Skip empty lines
+    if (line == "") {
+      continue;
+    }
+
+    // If we encounter a non-comment line, we're done parsing
     if (!line.startsWith("[//]: #")) {
       file.close();
       return metadata;
     }
 
+    // Get the metadata value in each comment
     const data = line.match(/(?<=((?<=\()[A-Z]* )).*(?=\))/);
 
     if (data && data[0] !== null && data[1] !== null) {
@@ -63,7 +70,6 @@ export async function getTopicsFromFilepath(filepath: string): Promise<TopicColl
       const parentDirname = parentDirnameMatch ? parentDirnameMatch[1] : 'Other';
 
       const fileMetadata = await getNoteFileMetadata(dirent.parentPath, dirent.name);
-
       if (parentDirname in topics) {
         topics[parentDirname].push(fileMetadata);
         continue;

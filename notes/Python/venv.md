@@ -1,5 +1,5 @@
 [//]: # (TITLE Virtual environments)
-[//]: # (ENDPOINT /venv)
+[//]: # (ENDPOINT /py-venv)
 [//]: # (PRIORITY 3)
 
 # Virtual environments
@@ -13,12 +13,14 @@ The solution for this problem is to create a **virtual environment**, a **self-c
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 ##### Table of contents
 
-- [1 - `virtualenv`](#1---virtualenv)
+- [Virtual environments](#virtual-environments)
+        - [Table of contents](#table-of-contents)
+  - [1 - `virtualenv`](#1---virtualenv)
     - [1.1 - Python discovery](#11---python-discovery)
     - [1.2 - Creators](#12---creators)
     - [1.3 - Seeders](#13---seeders)
     - [1.4 - Activators](#14---activators)
-- [2 - `pyenv`](#2---pyenv)
+  - [2 - `pyenv`](#2---pyenv)
 
 <!-- markdown-toc end -->
 

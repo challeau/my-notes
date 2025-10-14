@@ -1,5 +1,5 @@
 [//]: # (TITLE Node.js)
-[//]: # (ENDPOINT /node)
+[//]: # (ENDPOINT /nodejs)
 [//]: # (PRIORITY 420)
 
 # Node.js

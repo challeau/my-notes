@@ -1,6 +1,6 @@
 
 [//]: # (TITLE DOM Manipulation)
-[//]: # (ENDPOINT /jsdom)
+[//]: # (ENDPOINT /js-dom)
 [//]: # (PRIORITY 1)
 
 
@@ -11,11 +11,13 @@ The **Document Object Model** (DOM) is an API for HTML and XML documents. It pro
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 ##### Table of contents
 
-- [1 - `Element`](#1---element)
+- [DOM manipulation](#dom-manipulation)
+        - [Table of contents](#table-of-contents)
+  - [1 - `Element`](#1---element)
     - [1.1 - Properties](#11---properties)
     - [1.2 - Methods](#12---methods)
-- [2 - Selecting](#2---selecting)
-- [3 - Editing](#3---editing)
+  - [2 - Selecting](#2---selecting)
+  - [3 - Editing](#3---editing)
     - [3.1 - Properties](#31---properties)
     - [3.2 - Methods of the `document` object](#32---methods-of-the-document-object)
     - [3.3 - `.toggle()`](#33---toggle)

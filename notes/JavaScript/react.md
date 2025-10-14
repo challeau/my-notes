@@ -10,19 +10,25 @@ React is an **unopinionated library** for **building user interfaces** based on 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 ##### Table of contents
 
-- [1 - Components](#1---components)
-    - [1.1 - Defining components](#11---defining-components)
-    - [1.2 - Using components](#12---using-components)
-    - [1.3 - Writing JSX](#13---writing-jsx)
-    - [1.4 - Props](#14---props)
-    - [1.5 - Conditional rendering](#15---conditional-rendering)
-    - [1.6 - Rendering lists](#16---rendering-lists)
-- [2 - Purity](#2---purity)
-    - [2.1 - Local mutation](#21---local-mutation)
-    - [2.2 - Side effects](#22---side-effects)
-    - [2.3 - Strict mode](#23---strict-mode)
-- [3 - The Render Tree](#3---the-render-tree)
-- [4 - Interactivity](#4---interactivity)
+- [React](#react)
+				- [Table of contents](#table-of-contents)
+	- [1 - Components](#1---components)
+		- [1.1 - Defining components](#11---defining-components)
+		- [1.2 - Using components](#12---using-components)
+		- [1.3 - Writing JSX](#13---writing-jsx)
+		- [1.4 - Props](#14---props)
+		- [1.5 - Conditional rendering](#15---conditional-rendering)
+		- [1.6 - Rendering lists](#16---rendering-lists)
+	- [2 - The Render Tree](#2---the-render-tree)
+	- [3 - Interactivity](#3---interactivity)
+		- [3.1 - Responding to events](#31---responding-to-events)
+			- [3.1.1 - Creating an event handler](#311---creating-an-event-handler)
+			- [3.1.2 - About props](#312---about-props)
+		- [3.2 - Event propagation](#32---event-propagation)
+	- [X - Purity](#x---purity)
+		- [X.1 - Local mutation](#x1---local-mutation)
+		- [X.2 - Side effects](#x2---side-effects)
+		- [X.3 - Strict mode](#x3---strict-mode)
 
 <!-- markdown-toc end -->
 

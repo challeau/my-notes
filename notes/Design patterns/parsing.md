@@ -1,4 +1,7 @@
-# Parser
+[//]: # (TITLE Parsing)
+[//]: # (ENDPOINT /parsing)
+
+# Parsing
 
 Lexer -> Tokenization program -> transformation of a stream of characters into a meaningful array of tokens. Used to produce an AST.
 

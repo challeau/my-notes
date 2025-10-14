@@ -1,4 +1,4 @@
-[//]: # (TITLE Rust advanced features)
+[//]: # (TITLE Advanced features)
 [//]: # (ENDPOINT /rs-advanced-features)
 [//]: # (PRIORITY 2)
 

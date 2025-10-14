@@ -1,9 +1,9 @@
-[//]: # (TITLE Rust basics)
+[//]: # (TITLE Basics)
 [//]: # (ENDPOINT /rs-basics)
 [//]: # (PRIORITY 1)
 [//]: # (DESCRIPTION The fundamentals of Rust's syntax and concepts)
 
-# Rust basics
+# Essential Rust
 
 Rust is a **general-purpose programming language** emphasizing **performance**, **[type safety](https://en.wikipedia.org/wiki/Type_safety)**, and **[concurrency](https://en.wikipedia.org/wiki/Concurrency_(computer_science))**.
 

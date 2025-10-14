@@ -1,5 +1,5 @@
 
-[//]: # (TITLE TS basics)
+[//]: # (TITLE Basics)
 [//]: # (ENDPOINT /ts-basics)
 [//]: # (PRIORITY 0)
 

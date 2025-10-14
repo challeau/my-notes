@@ -6,9 +6,6 @@ doctype html
 html
   head
     +head(title)
-    script.
-      const pageTitle = !{JSON.stringify(title)};
-      localStorage.setItem("current-page", pageTitle);
 
   body
     +overlay(navbarData, false)

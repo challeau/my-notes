@@ -1,5 +1,5 @@
 [//]: # (TITLE Networking 101)
-[//]: # (ENDPOINT /network)
+[//]: # (ENDPOINT /networking101)
 [//]: # (PRIORITY 0)
 
 # Networking 101
@@ -9,28 +9,32 @@ A **network** is nothing more than **two or more computers connected to each oth
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 ##### Table of contents
 
-- [1 - Basics](#1---basics)
-- [2 - Network topology](#2---network-topology)
+- [Networking 101](#networking-101)
+        - [Table of contents](#table-of-contents)
+  - [1 - Basics](#1---basics)
+  - [2 - Network topology](#2---network-topology)
     - [2.1 - Bus topology](#21---bus-topology)
     - [2.2 - Star topology](#22---star-topology)
     - [2.3 - Ring topology](#23---ring-topology)
     - [2.4 - Mesh topology](#24---mesh-topology)
     - [2.5 - Network expansion](#25---network-expansion)
-- [3 - Setup](#3---setup)
+  - [3 - Setup](#3---setup)
     - [3.1 - Hardware](#31---hardware)
     - [3.2 - Software](#32---software)
-- [4 - Protocols and standards](#4---protocols-and-standards)
+  - [4 - Protocols and standards](#4---protocols-and-standards)
     - [4.1 - Definition](#41---definition)
+      - [\> Protocols](#-protocols)
+      - [\> Standards](#-standards)
     - [4.2 - The OSI Reference Model](#42---the-osi-reference-model)
-        - [4.2.1 - The layers](#421---the-layers)
-        - [4.2.2 - Following a packet through the layers](#422---following-a-packet-through-the-layers)
+      - [\> The layers](#-the-layers)
+      - [\> Following a packet through the layers](#-following-a-packet-through-the-layers)
     - [4.3 - The Ethernet Protocol](#43---the-ethernet-protocol)
     - [4.4 - The TCP/IP protocol suite](#44---the-tcpip-protocol-suite)
-        - [4.4.1 - IP](#441---ip)
-        - [4.4.2 - TCP](#442---tcp)
-        - [4.4.3 - UDP](#443---udp)
-        - [4.4.4 - TCP vs UDP](#444---tcp-vs-udp)
-- [Sources](#sources)
+      - [\> IP](#-ip)
+      - [\> TCP](#-tcp)
+      - [\> UDP](#-udp)
+      - [\> TCP vs UDP](#-tcp-vs-udp)
+  - [Sources](#sources)
 
 <!-- markdown-toc end -->
 
