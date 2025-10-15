@@ -15,7 +15,9 @@ mixin navFolder(name, links)
       ul
         each page in links
           li.subject
-            a(href=page.endpoint)= page.title
+            a(href=page.endpoint, class="tooltip")= page.title
+            if page.description
+              span.tooltip-text= page.description
 
 // Navbar topics list
 mixin topicsList(topics)

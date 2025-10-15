@@ -15,7 +15,7 @@ body {
 
   color: var(--brown);
   background-color: var(--beige1);
-  background: radial-gradient(circle at top, var(--light-pink) , var(--light-blue));
+  background: radial-gradient(circle at top, var(--light-pink), var(--light-blue));
   background-size: cover;
 
   font-family: 'Quicksand', sans-serif;
@@ -83,7 +83,7 @@ h5::before {
   margin-right: 1vw;
 }
 
-/* TEXT */
+/* Text */
 p {
   text-align: justify;
   text-justify: inter-word;
@@ -91,11 +91,37 @@ p {
   margin: 3vh 0;
 }
 
-h2 + p, h3 + p, h4 + p, h5 + p {
-    margin-top: 0;
+h2+p,
+h3+p,
+h4+p,
+h5+p {
+  margin-top: 0;
 }
 
-/* LINKS */
+.tooltip-text {
+  display: none;
+  width: max-content;
+  max-width: 100%;
+
+  position: absolute;
+  top: 75%;
+  right: 0%;
+  z-index: 10000;
+
+  color: var(--white);
+  background-color: var(--beige3);
+  font-size: var(--font-XS);
+  text-align: center;
+
+  border-radius: var(--border-radius-M);
+  padding: 0.5em 0.7em;
+}
+
+.tooltip:hover+.tooltip-text {
+  display: block;
+}
+
+/* Links */
 .page a {
   color: var(--bright-blue);
   text-decoration: none;
@@ -123,7 +149,8 @@ h2 + p, h3 + p, h4 + p, h5 + p {
 }
 
 /* Lists */
-.page ul, ol {
+.page ul,
+ol {
   position: relative;
   margin: 0 0 1.5em 2em;
   line-height: 1.2em;
@@ -146,14 +173,37 @@ img {
   border-radius: .5em;
 }
 
-img[alt*="center"] { margin: 0 auto; }
-img[alt*="inline"] { display: inline; }
-img[alt*="float"] { float: left; }
-img[alt*="50"] { width: 50%; }
-img[alt*="40"] { width: 40%; }
-img[alt*="medium"] { width: 8em; }
-img[alt*="small"] { width: 3em; }
-img[alt*="tiny"] { width: 1.5em; }
+img[alt*="center"] {
+  margin: 0 auto;
+}
+
+img[alt*="inline"] {
+  display: inline;
+}
+
+img[alt*="float"] {
+  float: left;
+}
+
+img[alt*="50"] {
+  width: 50%;
+}
+
+img[alt*="40"] {
+  width: 40%;
+}
+
+img[alt*="medium"] {
+  width: 8em;
+}
+
+img[alt*="small"] {
+  width: 3em;
+}
+
+img[alt*="tiny"] {
+  width: 1.5em;
+}
 
 /* Pekoe logo */
 #pekoe-logo {
