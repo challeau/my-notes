@@ -11,4 +11,4 @@
 - Smart pointers
 - concurrency/async
 - patterns
-- macros 
+- macros

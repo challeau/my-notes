@@ -13,59 +13,6 @@ Although Rust is a relatively low-level language, it has some functional concept
 
 > Rust gives you the option to **control low-level details** without all the hassle traditionally associated with such control.
 
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-##### Table of contents
-
-- [Rust basics](#rust-basics)
-        - [Table of contents](#table-of-contents)
-  - [1 - Variables](#1---variables)
-    - [1.1 - Mutability](#11---mutability)
-    - [1.2 - Constants](#12---constants)
-    - [1.3 - Shadowing](#13---shadowing)
-    - [1.4 - Variable scope](#14---variable-scope)
-  - [2 - Basic data types](#2---basic-data-types)
-    - [2.1 - Scalar types](#21---scalar-types)
-      - [2.1.1 - Integers](#211---integers)
-        - [\> Integer overflow](#-integer-overflow)
-      - [2.1.2 - Floating-points](#212---floating-points)
-      - [2.1.3 - Boolean](#213---boolean)
-      - [2.1.4 - Character](#214---character)
-      - [2.1.5 - Unit](#215---unit)
-    - [2.2 - Compound types](#22---compound-types)
-      - [2.2.1 - Tuple](#221---tuple)
-      - [2.2.2 - Array](#222---array)
-  - [3 - Functions](#3---functions)
-    - [3.1 - Statements vs expressions](#31---statements-vs-expressions)
-    - [3.2 - Return values](#32---return-values)
-    - [3.3 - Control flow](#33---control-flow)
-      - [3.3.1 - `if` expressions](#331---if-expressions)
-      - [3.3.2 - Loops](#332---loops)
-        - [\> `loop`](#-loop)
-        - [\> `while`](#-while)
-        - [\> `for`](#-for)
-        - [\> Loop labels](#-loop-labels)
-  - [4 - Ownership](#4---ownership)
-        - [Ownership rules](#ownership-rules)
-    - [4.1 - The stack and the heap](#41---the-stack-and-the-heap)
-    - [4.2 - Memory and allocation](#42---memory-and-allocation)
-      - [4.2.1 - Variables and data interacting with move](#421---variables-and-data-interacting-with-move)
-      - [4.2.2 - Scope and assignment](#422---scope-and-assignment)
-      - [4.2.3 - Copying heap data with `clone`](#423---copying-heap-data-with-clone)
-      - [4.2.4 - Copying stack data with `copy`](#424---copying-stack-data-with-copy)
-    - [4.3 - Ownership and functions](#43---ownership-and-functions)
-    - [4.4 - References and borrowing](#44---references-and-borrowing)
-  - [5 - Complex data types](#5---complex-data-types)
-    - [5.1 - Collections](#51---collections)
-      - [5.1.1 - Strings](#511---strings)
-      - [5.1.2 - Vectors](#512---vectors)
-      - [5.1.3 - Hash Maps](#513---hash-maps)
-      - [5.1.4 - Slice type](#514---slice-type)
-    - [5.2 - Structs](#52---structs)
-    - [5.3 - Enums](#53---enums)
-  - [Sources](#sources)
-
-<!-- markdown-toc end -->
-
 ## 1 - Variables
 
 By convention, variables are named in `snake_case`.

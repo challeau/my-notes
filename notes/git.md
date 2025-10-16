@@ -6,23 +6,6 @@
 
 Git is a **free and open source** distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
 
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-##### Table of contents
-
-- [Git](#git)
-        - [Table of contents](#table-of-contents)
-    - [1 - Introduction](#1---introduction)
-        - [1.1 - Version Control](#11---version-control)
-            - [\> Local](#-local)
-            - [\> Distant](#-distant)
-            - [\> Distributed](#-distributed)
-        - [1.2 - Git](#12---git)
-            - [\> Singularities](#-singularities)
-            - [\> Three stages](#-three-stages)
-    - [2 - Git basics](#2---git-basics)
-
-<!-- markdown-toc end -->
-
 ## 1 - Introduction
 
 ### 1.1 - Version Control
@@ -90,21 +73,21 @@ This makes Git more like a **mini filesystem** with some incredibly **powerful t
 #### > Three stages
 
 Git has **three main states** that your files can reside in:
+
 - **Modified** --> you have changed the file but have not committed it to your database yet.
 - **Staged** --> you have marked a modified file in its current version to go into your next commit snapshot.
 - **Committed** --> the data is safely stored in your local database.
 
 This leads us to the **three main sections of a Git project**:
+
 - **Working tree** --> a **single checkout of one version** of the project. The files are **pulled out of the compressed database** in the Git directory and placed on disk for you to use or modify.
 - **Staging area** --> a **file**, generally contained in your Git directory, that **stores information about what will go into your next commit**. Its technical name in Git parlance is the "index", but the phrase "staging area" works just as well.
 - **Git directory** --> where Git **stores the metadata and object database** for your project. This is the most important part of Git, and it is what is copied when you clone a repository from another computer.
 
 The basic Git workflow goes something like this:
+
 1. You **modify files** in your working tree.
 2. You **selectively stage just those changes** you want to be part of your next commit, which adds only those changes to the staging area.
 3. You do a **commit**, which takes the files as they are in the staging area and **stores that snapshot permanently to your Git directory**.
 
 ## 2 - Git basics
-
-
-

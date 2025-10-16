@@ -6,14 +6,8 @@
 
 Pulumi is an **infrastructure as code platform** that allows you to **use familiar programming languages and tools to build, deploy, and manage cloud infrastructure**.
 
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-##### Table of contents
-
-<!-- markdown-toc end -->
-
 https://www.pulumi.com/docs/concepts/config/
 https://www.pulumi.com/docs/clouds/kubernetes/
-
 
 ## jsp
 

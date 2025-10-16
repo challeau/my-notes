@@ -1,42 +1,11 @@
 [//]: # (TITLE Networking 101)
 [//]: # (ENDPOINT /networking101)
+[//]: # (DESCRIPTION The fundamentals of networking)
 [//]: # (PRIORITY 0)
 
 # Networking 101
 
 A **network** is nothing more than **two or more computers connected to each other** so that they can **exchange information** (e-mail, documents), **share resources** (disk storage, printers) or **share applications** (business, educative programs).
-
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-##### Table of contents
-
-- [Networking 101](#networking-101)
-        - [Table of contents](#table-of-contents)
-  - [1 - Basics](#1---basics)
-  - [2 - Network topology](#2---network-topology)
-    - [2.1 - Bus topology](#21---bus-topology)
-    - [2.2 - Star topology](#22---star-topology)
-    - [2.3 - Ring topology](#23---ring-topology)
-    - [2.4 - Mesh topology](#24---mesh-topology)
-    - [2.5 - Network expansion](#25---network-expansion)
-  - [3 - Setup](#3---setup)
-    - [3.1 - Hardware](#31---hardware)
-    - [3.2 - Software](#32---software)
-  - [4 - Protocols and standards](#4---protocols-and-standards)
-    - [4.1 - Definition](#41---definition)
-      - [\> Protocols](#-protocols)
-      - [\> Standards](#-standards)
-    - [4.2 - The OSI Reference Model](#42---the-osi-reference-model)
-      - [\> The layers](#-the-layers)
-      - [\> Following a packet through the layers](#-following-a-packet-through-the-layers)
-    - [4.3 - The Ethernet Protocol](#43---the-ethernet-protocol)
-    - [4.4 - The TCP/IP protocol suite](#44---the-tcpip-protocol-suite)
-      - [\> IP](#-ip)
-      - [\> TCP](#-tcp)
-      - [\> UDP](#-udp)
-      - [\> TCP vs UDP](#-tcp-vs-udp)
-  - [Sources](#sources)
-
-<!-- markdown-toc end -->
 
 ## 1 - Basics
 
@@ -141,9 +110,7 @@ All networks are built from the following basic building blocks:
 | **Connections**       | Computers in a network are usually **physically connected** to each other with cables, or radio transmitters/receivers (wireless)                                                                                                                                                                         |
 | **Switches**          | Each computer in a network is connected by cable to a device known as a switch, which in turn, **connects to the rest of the network**<br>Each switch contains a certain number of **ports**, typically **8 or 16** (one per computer). Switches can be connected to each other to build larger networks. |
 
-
 The main advantage of wireless networking is its **flexibility** (client computers can be located anywhere within range of the network broadcast), but it's **inherently less secure** than a cabled network.
-
 
 ### 3.2 - Software
 
@@ -154,35 +121,34 @@ Some of the hardware like routers and switches have embedded softwares, but the 
 > The use of network software makes it possible to **administer from one centralized user interface** while completely eliminating the need to acquire additional hardware. 
 
 They help to handle:
+
 - **User management**: allows administrators to **add or remove users** from the network.
 - **File management**: lets administrators decide the **location of data storage** and **control user access** to that data.
 - **Access**: enables users to enjoy uninterrupted access to network resources.
 - **Network security systems**: assist administrators in looking after **security** and **preventing data breaches**.
 
-
 ## 4 - Protocols and standards
 
 > **Protocols** allow **network components** to **communicate** with each other.  **Standards** allow **network components manufactured by different companies** to **work together**.
 
-
 ### 4.1 - Definition
 
-#### > Protocols
+#### 4.1.1 - Protocols
 
 **Protocols** are **sets of rules that enables effective communications to occur**.
 
 Computer networks depend upon many different types of protocols in order to work. These protocols are very **rigidly defined**, as the network's components need to know how to communicate. Protocols come in many different types, often called **layers**.
 
 Various protocols tend to be used together in matched sets called **protocol suites**. Such as:
+
 - **TCP/IP**: originally developed for Unix networks, it's the protocol of the Internet and most LANs.
 - **Ethernet**: low-level protocol that spells out the **electrical characteristics of the network hardware** used by most LANs.
 
-#### > Standards
+#### 4.1.2 - Standards
 
 **Standards** are **agreed-upon definitions of a protocol**. In the early days of computer networking, each computer manufacturer developed its own networking protocols. As a result, you weren't able to easily mix equipment from different manufacturers on a single network. Standards are **industry-wide protocol definitions** that are **not tied to a particular manufacturer**. 
 
 Many organizations are involved in setting standards for networking: ANSI, IEEE, ISO, IETF, W3C.
-
 
 ### 4.2 - The OSI Reference Model
 
@@ -190,7 +156,7 @@ The OSI model **breaks the various aspects of a computer network into seven dist
 
 OSI stands for Open Systems Interconnection.
 
-#### > The layers
+#### 4.2.1 - The layers
 
 | # | Layer        | Description                                                                                                                                          | Protocols       |
 |---|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|
@@ -208,15 +174,13 @@ Layers **4-7** (upper levels) deal with **how application software can relate to
 
 > In application, actual networking protocols don't follow the OSI model to the letter. Still, the OSI model **provides a convenient** -if not completely accurate- **conceptual picture** of how networking works.
 
-
-#### > Following a packet through the layers
+#### 4.2.1 - Following a packet through the layers
 
 When an end-user application sends data to another network computer, the **data enters the network through an Application layer interface**, then **works its way down** through the protocol stack. Along the way, the protocol at each layer **manipulates the data**. 
 
 When the **receiving** computer receives the data, the data **works its way up** through the protocol stack. The protocol at each layer **reverses the processing** that was done by the corresponding layer on the sending computer.
 
 ![center-eg](datanav.png)
-
 
 ### 4.3 - The Ethernet Protocol
 
@@ -226,15 +190,13 @@ It uses protocols to **control the passing of information** and to **avoid simul
 
 Ethernet divides the **Data Link layer into two separate layers** known as the **Logical Link Control** (LLC) layer and the **Medium Access Control** (MAC) layer.
 
-
 ### 4.4 - The TCP/IP protocol suite
 
 > TCP/IP is a **suite of protocols on which the internet is built**. It is **based on a four-layer model** of networking that is similar to the seven-layer OSI model.
 
 ![center-eg](tcpip.png)
 
-
-#### > IP
+#### 4.4.1 - IP
 
 For more information see `/tcpip`, the next page.
 
@@ -245,8 +207,7 @@ A protocol called **ARP** (for Address Resolution Protocol) handles the task of 
 Because IP addresses consist of a **network part** and a **host part**, IP is a **routable protocol**. As such, it can **forward a packet to another network** if the host is not on the current network.
 This ability is where IP gets its name. An internet is a series of two or more connected TCP/IP networks that can be reached by routing.
 
-
-#### > TCP
+#### 4.4.2 - TCP
 
 The **Transmission Control Protocol** is a **connection-oriented Transport layer protocol**. 
 
@@ -254,15 +215,14 @@ TCP lets a device **reliably send a packet to another device** on the same netwo
 
 One key aspect of TCP is that it's **always used for one-to-one communications**. In other words, TCP allows a single network device to exchange data with another single network device. TCP isn't used to broadcast messages to multiple network recipients.
 
-
-#### > UDP
+#### 4.4.3 - UDP
 
 The **User Datagram Protocol** is a **connectionless Transport layer protocol** that is used when the **overhead of a connection isn't required**. Hence, UDP is **datagram-oriented**.
 
 UDP **places a packet on the network** via the IP protocol, then it **forgets** about it. UDP **doesn't guarantee that the packet actually arrives** at its destination. 
 Most applications that use UDP simply **wait for any replies** expected as a result of packets sent via UDP. If a reply doesn't arrive within a certain period of time, the application either sends the packet again or gives up.
 
-#### > TCP vs UDP
+#### 4.4.3 - TCP vs UDP
 
 | Metric                  | TCP         | UDP      |
 |-------------------------|-------------|----------|
@@ -271,7 +231,6 @@ Most applications that use UDP simply **wait for any replies** expected as a res
 | Guarantees reception    | ✔️           | ❌       |
 | Broadcasting management | ❌          | ✔️        |
 | Strength                | Reliability | Speed    |
-
 
 ## Sources
 

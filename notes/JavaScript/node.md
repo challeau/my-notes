@@ -14,26 +14,9 @@ When Node.js performs an I/O operation, like reading from the network, accessing
 
 This allows Node.js to **handle thousands of concurrent connections with a single server** without introducing the burden of managing thread concurrency, which could be a significant source of bugs.
 
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-##### Table of contents
-
-- [Node.js](#nodejs)
-        - [Table of contents](#table-of-contents)
-    - [1 - Prerequisites](#1---prerequisites)
-        - [1.1 - Differences between Node.js and the browser.](#11---differences-between-nodejs-and-the-browser)
-        - [1.2 - The V8 JavaScript Engine](#12---the-v8-javascript-engine)
-        - [1.3 - Installation](#13---installation)
-        - [1.4 `npm`](#14-npm)
-    - [2 - Asynchronous work](#2---asynchronous-work)
-    - [3 - Manipulating files](#3---manipulating-files)
-    - [4 - Command Line](#4---command-line)
-    - [Sources](#sources)
-
-<!-- markdown-toc end -->
-
 ## 1 - Prerequisites
 
-### 1.1 - Differences between Node.js and the browser.
+### 1.1 - Differences between Node.js and the browser
 
 The main differnce is the **ecosystem**.
 
@@ -45,7 +28,7 @@ Node.js also **supports both the CommonJS and ES module systems**, while in the 
 
 ### 1.2 - The V8 JavaScript Engine
 
-V8 is Google's **open-source, high-performance JavaScript and WebAssembly engine**, written in C++. It **implements ECMAScript and WebAssembly**. V8 can run standalone, or can be embedded into any C++ application. It's **independent of the browser** in which it's hosted. 
+V8 is Google's **open-source, high-performance JavaScript and WebAssembly engine**, written in C++. It **implements ECMAScript and WebAssembly**. V8 can run standalone, or can be embedded into any C++ application. It's **independent of the browser** in which it's hosted.
 
 V8 **compiles and executes JavaScript** source code, **handles memory allocation** for objects, and **garbage collects** objects it no longer needs. V8's stop-the-world, generational, accurate garbage collector is one of the keys to V8's performance.
 
@@ -97,7 +80,7 @@ To **install a single package** and add it to the dependencies in the `package.j
 npm install <package_name>
 ```
 
-To update the dependencies, run: 
+To update the dependencies, run:
 
 ```bash
 npm update

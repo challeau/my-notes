@@ -117,11 +117,16 @@
 }
 
 @keyframes fade-out {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
 }
 
-#navbar.folded > * {
+#navbar.folded>* {
   opacity: 0;
   transition: opacity 0.2s ease;
 }
@@ -286,16 +291,28 @@
   transition: all 0.1s ease-in;
 }
 
-#navbar #toc > *:not(:hover):not(.current), #navbar #toc > *:not(:hover):not(.current) > * {
+#navbar #toc>*:not(:hover):not(.current),
+#navbar #toc>*:not(:hover):not(.current)>* {
   color: var(--beige4);
   font-weight: 500;
 }
 
 #navbar #toc h2:not(:first-child) {
   margin-top: 1em;
-  position: relative;
+}
+
+#navbar #toc h3 {
+  margin-left: 0.25em;
+}
+
+#navbar #toc h4 {
+  margin-left: 0.5em;
 }
 
 #navbar #toc h5 {
-  padding-left: 1em;
+  margin-left: 1em;
+}
+
+#navbar #toc h5::before {
+  display: none;
 }

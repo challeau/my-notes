@@ -1,34 +1,13 @@
-[//]: # (TITLE References)
-[//]: # (ENDPOINT /py-refs)
+[//]: # (TITLE Cheatsheet)
+[//]: # (ENDPOINT /py-cheatsheet)
+[//]: # (DESCRIPTION A cheatsheet of Python built-ins)
 [//]: # (PRIORITY 1)
 
 # Python references
 
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-##### Table of contents
-
-- [Python references](#python-references)
-        - [Table of contents](#table-of-contents)
-  - [1 - Built-ins](#1---built-ins)
-    - [1.1 - Built-in functions](#11---built-in-functions)
-    - [1.2 - Built-in constants](#12---built-in-constants)
-    - [1.3 - Built-in Exceptions](#13---built-in-exceptions)
-  - [2 - List methods](#2---list-methods)
-  - [3 - Dictionary methods](#3---dictionary-methods)
-  - [4 - String methods](#4---string-methods)
-  - [X - Tuple Methods](#x---tuple-methods)
-  - [X - Set Methods](#x---set-methods)
-  - [X - File Methods](#x---file-methods)
-  - [X - Keywords](#x---keywords)
-  - [X - Exceptions](#x---exceptions)
-  - [Sources](#sources)
-
-<!-- markdown-toc end -->
-
-
 ## 1 - Built-ins
 
-The Python interpreter has a number of functions and types built into it that are always available. 
+The Python interpreter has a number of functions and types built into it that are always available.
 
 ### 1.1 - Built-in functions
 
@@ -191,25 +170,23 @@ BaseException
            └── UserWarning
 ```
 
-
 ## 2 - List methods
-
-
 
 ## 3 - Dictionary methods
 
 ## 4 - String methods
 
 ## X - Tuple Methods
+
 ## X - Set Methods
+
 ## X - File Methods
+
 ## X - Keywords
+
 ## X - Exceptions
-
-
 
 ## Sources
 
 - [Official Python doc - builtins](https://docs.python.org/3/library/functions.html)
 - [eval() vs exec()](https://stackoverflow.com/questions/2220699/whats-the-difference-between-eval-exec-and-compile)
-

@@ -7,32 +7,6 @@
 
 React is an **unopinionated library** for **building user interfaces** based on **components**.
 
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-##### Table of contents
-
-- [React](#react)
-				- [Table of contents](#table-of-contents)
-	- [1 - Components](#1---components)
-		- [1.1 - Defining components](#11---defining-components)
-		- [1.2 - Using components](#12---using-components)
-		- [1.3 - Writing JSX](#13---writing-jsx)
-		- [1.4 - Props](#14---props)
-		- [1.5 - Conditional rendering](#15---conditional-rendering)
-		- [1.6 - Rendering lists](#16---rendering-lists)
-	- [2 - The Render Tree](#2---the-render-tree)
-	- [3 - Interactivity](#3---interactivity)
-		- [3.1 - Responding to events](#31---responding-to-events)
-			- [3.1.1 - Creating an event handler](#311---creating-an-event-handler)
-			- [3.1.2 - About props](#312---about-props)
-		- [3.2 - Event propagation](#32---event-propagation)
-	- [X - Purity](#x---purity)
-		- [X.1 - Local mutation](#x1---local-mutation)
-		- [X.2 - Side effects](#x2---side-effects)
-		- [X.3 - Strict mode](#x3---strict-mode)
-
-<!-- markdown-toc end -->
-
-
 ## 1 - Components
 
 **Components are independent and reusable UI elements.**
@@ -43,7 +17,7 @@ They're JavaScript functions that return markup.
 
 **Components must be defined in JSX** and **in the global scope** (==you can't nest their definition).
 
-**JSX** looks like HTML, but under the hood it is **compiled into plain JavaScript objects**. 
+**JSX** looks like HTML, but under the hood it is **compiled into plain JavaScript objects**.
 
 ```jsx
 // Step 1 - define the component
@@ -59,7 +33,6 @@ function Profile() {	// function name needs to be capitalized
 // Step 2 - export
 export default Profile;
 ```
-
 
 ### 1.2 - Using components
 
@@ -78,7 +51,6 @@ function ParentComponent() {
 	);
 }
 ```
-
 
 ### 1.3 - Writing JSX
 
@@ -99,7 +71,6 @@ function ParentComponent() {
 
 // ^ styles are passed as an object and written in camelCase
 ```
-
 
 ### 1.4 - Props
 
@@ -147,7 +118,6 @@ function Card({ children }) {
 	);
 }
 ```
-
 
 ### 1.5 - Conditional rendering
 
@@ -237,7 +207,6 @@ const listItems = people.map(person =>
 );
 ```
 
-
 ## 2 - The Render Tree
 
 React, and many other UI libraries, **model UI as a tree**. Thinking of your app as a tree is useful for understanding the relationship between components, and debug future concepts like performance and state management.
@@ -248,11 +217,9 @@ A render tree is composed of only React components (not HTML cause Reract is pla
 
 Although **render trees may differ across render passes**, these trees are generally helpful for identifying what the **top-level and leaf components** are in an app. **Top-level** components are the components **nearest to the root** component and **affect the rendering performance of all the components beneath them** and often contain the **most complexity**. **Leaf** components are **near the bottom** of the tree and have no child components and are often **frequently re-rendered**.
 
-
 ## 3 - Interactivity
 
 In React, **data that changes over time is called state**. You can add state to any component, and update it as needed.
-
 
 ### 3.1 - Responding to events
 
@@ -263,7 +230,6 @@ Event handlers are **functions that React runs in response to some event**.
 | Mouse      | `onClick`<br>`onDrag`<br>`onDoubleClick` |
 | Keyboard   | `onKeyDown`<br>`onKeyPress`<br>`onKeyUp` |
 | Focus      | `onFocus`<br>`onBlur`                    |
-
 
 #### 3.1.1 - Creating an event handler
 
@@ -310,7 +276,7 @@ All these styles are equivalent, but pay attention to **pass the functions** and
 
 #### 3.1.2 - About props
 
-Because event handlers are **declared inside of a component**, they have **access to the component's props**. 
+Because event handlers are **declared inside of a component**, they have **access to the component's props**.
 
 ```javascript
 function AlertButton({ message, children }) {
@@ -347,7 +313,6 @@ By convention, event handler props should start with `on`, followed by a capital
 
 > If you use a **design system**, it's common for components like buttons to **contain styling but not specify behavior**. Instead, components will pass event handlers down.
 
-
 ### 3.2 - Event propagation
 
 Event handlers will also **catch events from any children** your component might have. We say that an event "bubbles" or "propagates" up the tree: it starts with where the event happened, and then goes up the tree. All events propagate in React **except `onScroll`**, which only works on the JSX tag you attach it to.
@@ -379,29 +344,29 @@ In rare cases, you might need to **catch all events on child elements**, even if
 ```
 
 Each event propagates in three phases:
+
 - It **travels down**, calling all `onClickCapture` handlers.
 - It runs the **clicked** element's `onClick` handler.
 - It **travels upwards**, calling all `onClick` handlers.
 
 Capture events are **useful for code like routers or analytics**, but you probably won't use them in app code.
 
-Some browser events have **default behavior** associated with them. For example, a `<form>` submit event, which happens when a button inside of it is clicked, will reload the whole page by default. 
+Some browser events have **default behavior** associated with them. For example, a `<form>` submit event, which happens when a button inside of it is clicked, will reload the whole page by default.
 You can call `e.preventDefault()` on the event object to **stop** this from happening.
-
 
 ## X - Purity
 
-> **React's rendering process must always be pure**: components should only return their JSX. 
+> **React's rendering process must always be pure**: components should only return their JSX.
 
 Changing a variable that existed before rendering (mutation) makes a function impure.
 
 In React there are three kinds of inputs that you can read while rendering: `props`, `state`, and `context`. You should always treat these inputs as read-only.
 
 Writing pure functions unlocks marvelous opportunities:
+
 - Your **components could run in a different environment** - for example, on the server! Since they return the same result for the same inputs (deterministic), one component can serve many user requests.
 - You can **improve performance by skipping rendering components whose inputs have not changed**. This is safe because **pure functions are safe to cache**.
 - If some data changes in the middle of rendering a deep component tree, React can **restart rendering without wasting time to finish the outdated render**. **Purity** makes it **safe to stop calculating** at any time.
-
 
 ### X.1 - Local mutation
 
@@ -450,16 +415,14 @@ export default function TeaGathering() {
 
 ### X.2 - Side effects
 
-Any change to the DOM tree happen **on the side of rendering** - so they're called side effects. When you want to **change something in response to user input**, you should **set state** instead of writing to a variable. 
+Any change to the DOM tree happen **on the side of rendering** - so they're called side effects. When you want to **change something in response to user input**, you should **set state** instead of writing to a variable.
 
 In React, side effects usually belong inside **event handlers**. Even though event handlers are defined inside your component, they **don't run during rendering** so they don't need to be pure.
 
 If you've exhausted all other options and can't find the right event handler for your side effect, you can still attach it to your returned JSX with a `useEffect` call in your component. This tells React to **execute it after rendering**, when side effects are allowed. However, this approach should be your **last resort**.
-
 
 ### X.3 - Strict mode
 
 React offers a **"Strict Mode"** in which it calls each component's function twice during development. **By calling the component functions twice, Strict Mode helps find components that break these rules.**
 
 Strict Mode has **no effect in production**, so it won't slow down the app for your users. To opt into Strict Mode, you can wrap your root component into `<React.StrictMode>`. Some frameworks do this by default.
-

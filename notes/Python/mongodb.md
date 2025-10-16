@@ -1,6 +1,7 @@
 
 [//]: # (TITLE MongoDB)
 [//]: # (ENDPOINT /py-mongo)
+[//]: # (DESCRIPTION MongDB frameworks for Python)
 [//]: # (PRIORITY 420)
 
 # MongoDB & Python
@@ -11,43 +12,6 @@ MongoDB stores data in **schemaless and flexible JSON-like documents**, meaning 
 
 Python's native dictionary and list data types make it second only to JavaScript for manipulating JSON documents — and well-suited to working with BSON.
 
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-##### Table of contents
-
-- [1 - PyMongo](#1---pymongo)
-    - [1.1 - Connecting](#11---connecting)
-    - [1.2 - CRUD](#12---crud)
-        - [1.2.1 - Creating a collection and inserting documents](#121---creating-a-collection-and-inserting-documents)
-        - [1.2.2 - Querying](#122---querying)
-            - [Count documents](#count-documents)
-            - [Query selectors](#query-selectors)
-            - [Use case: request URL to ObjectId](#use-case-request-url-to-objectid)
-        - [1.2.3 - Update documents](#123---update-documents)
-        - [1.2.4 - Delete documents](#124---delete-documents)
-    - [1.3 - Aggregation operations](#13---aggregation-operations)
-        - [1.3.1 - Aggregation pipelines](#131---aggregation-pipelines)
-        - [1.3.2 - Stages](#132---stages)
-- [2 - MongoEngine](#2---mongoengine)
-    - [2.1 - Connecting](#21---connecting)
-    - [2.2 - Defining documents](#22---defining-documents)
-        - [2.2.1 - Schemas](#221---schemas)
-        - [2.2.2 - Fields](#222---fields)
-            - [List fields](#list-fields)
-            - [Embedded documents](#embedded-documents)
-            - [Dictionary Fields](#dictionary-fields)
-            - [Reference fields](#reference-fields)
-    - [2.3 - CRUD ](#23---crud)
-        - [2.3.1 - Creating and Updating](#231---creating-and-updating)
-        - [2.3.2 - Reading data](#232---reading-data)
-        - [2.3.3 - Deleting data](#233---deleting-data)
-    - [2.4 - Aggregation](#24---aggregation)
-- [3 - Key differences](#3---key-differences)
-- [4 - Why chose MongoDB](#4---why-chose-mongodb)
-- [Sources](#sources)
-
-<!-- markdown-toc end -->
-
-
 ## 1 - PyMongo
 
 PyMongo is MongoDB's **official native driver for Python**. It's a library that lets you connect to a MongoDB database and query the data stored using the MongoDB Query API. It is the recommended way to interface with the document data.
@@ -55,7 +19,6 @@ PyMongo is MongoDB's **official native driver for Python**. It's a library that 
 PyMongo is easy to use, and offers an **intuitive API for accessing databases, collections, and documents**.
 
 Objects retrieved from MongoDB through PyMongo are **compatible with dictionaries and lists**, so we can easily manipulate, iterate, and print them.
-
 
 ### 1.1 - Connecting
 
@@ -85,7 +48,6 @@ def get_database():
 ```
 
 An important note about databases (and collections) in MongoDB is that they are **created lazily** - they're created **when the first document is inserted** into them.
-
 
 ### 1.2 - CRUD
 
@@ -130,7 +92,6 @@ collection.insert_many(famous_creeps)
 
 `insert_one()` inserts one document and returns an instance of the `InsertOneResult` object. Get the `_id` of the inserted document with the `.inserted_id` attribute.
 
-
 After inserting the first document, the collection has actually been created on the server. We can verify this by listing all the collections in our database:
 
 ```python
@@ -168,7 +129,7 @@ posts.count_documents({})
 posts.count_documents({"field": "value"})
 ```
 
-#####  Query selectors
+##### Query selectors
 
 Comparison:
 
@@ -181,7 +142,6 @@ Comparison:
 | $lt      | <           |
 | $lte     | <=          |
 
-
 Logical:
 
 | Name | Description                                                      |
@@ -191,14 +151,12 @@ Logical:
 | $nor | returns all documents that fail to match all clauses             |
 | $or  | returns all documents that match the conditions of either clause |
 
-
 Element:
 
 | Name    | Description                                           |
 |---------|-------------------------------------------------------|
 | $exists | matches documents that have the specified field       |
 | $type   | selects documents if a field is of the specified type |
-
 
 Array:
 
@@ -208,7 +166,6 @@ Array:
 | $elemMatch | selects documents if element in the array field matches all the specified $elemMatch conditions |
 | $size      | selects documents if the array field is a specified size                                        |
 
-
 Projection:
 
 | Name       | Description                                                                            |
@@ -217,7 +174,6 @@ Projection:
 | $elemMatch | projects the first element in an array that matches the specified $elemMatch condition |
 | $meta      | projects the document's score assigned during $text operation                          |
 | $slice     | limits the number of elements projected from an array. Supports skip and limit slices  |
-
 
 ##### Use case: request URL to ObjectId
 
@@ -234,7 +190,7 @@ def get(post_id):
 
 #### 1.2.3 - Update documents
 
-**Document updates are permanent and cannot be rolled back**. Be careful when updating documents. This also applies to deleting documents. 
+**Document updates are permanent and cannot be rolled back**. Be careful when updating documents. This also applies to deleting documents.
 
 MongoDB CRUD allows users to update documents in three different ways:
 
@@ -244,25 +200,23 @@ MongoDB CRUD allows users to update documents in three different ways:
 | `db.collection.update_many(<query>, {$set: {<update>}})` | updates all documents that match the query         |
 | `db.collection.replace_one(<query>, {$set: {<update>}})` | replaces the first document that matches the query |
 
-
 #### 1.2.4 - Delete documents
 
 Use `delete_one()` or `delete_many()`.
-
 
 ### 1.3 - Aggregation operations
 
 > Aggregation operations process multiple documents and return computed results.
 
 You can use aggregation operations to:
+
 - **Group values** from multiple documents together.
 - **Perform operations** on the grouped data to **return a single result**.
 - **Analyze data changes** over time.
 
-
 #### 1.3.1 - Aggregation pipelines
 
-An aggregation pipeline consists of **one or more stages that process documents**. Each stage performs an operation on the input documents (filter, group, calculate...) and the output documents are passed to the next stage. 
+An aggregation pipeline consists of **one or more stages that process documents**. Each stage performs an operation on the input documents (filter, group, calculate...) and the output documents are passed to the next stage.
 
 An aggregation pipeline can return results for groups of documents (total, average, max...).
 
@@ -302,11 +256,9 @@ Find the complete list [here](https://www.mongodb.com/docs/manual/meta/aggregati
 | `$lookup`               | Performs a left outer join to a collection in the same database to filter in documents from the "joined" collection for processing                                                                        |
 | `$merge`<br/>`$out`     | Writes the resulting documents of the aggregation pipeline to a collection<br/>Must be the last stage in the pipeline<br/>`$out` replaces the collection if it already exists, `$merge` incorporates them |
 
-
-
 ## 2 - MongoEngine
 
-MongoEngine is an **Object-Document Mapper** built on top of PyMongo, that provides **a class-based abstraction**. This means that all the models you create are classes. 
+MongoEngine is an **Object-Document Mapper** built on top of PyMongo, that provides **a class-based abstraction**. This means that all the models you create are classes.
 
 ### 2.1 - Connecting
 
@@ -356,17 +308,16 @@ class ImagePost(Post):
     image_path = StringField()
 ```
 
-
 #### 2.2.2 - Fields
 
 By default, fields are not required. To make a field mandatory, set the `required` keyword argument of a field to `True`. Fields also may have validation constraints available (such as `max_length` in the example above).
 
 Fields may also take default values, which will be used if a value is not provided. Default values may optionally be a callable, which will be called to retrieve the value.
 
-
 ##### List fields
 
 MongoDB allows storing lists of items. To add a list of items to a `Document`, use the `ListField` field type. `ListField` takes another field object as its first argument, which specifies which type elements may be stored within the list:
+
 ```python
 class Page(Document):
     tags = ListField(StringField(max_length=50))
@@ -392,10 +343,9 @@ comment2 = Comment(content='Nice article!')
 page = Page(comments=[comment1, comment2])
 ```
 
-
 ##### Dictionary Fields
 
-Often, an embedded document may be used instead of a dictionary. Generally, embedded documents are recommended as dictionaries don't support validation or custom field types. However, sometimes you will not know the structure of what you want to store; in this situation a `DictField` is appropriate: 
+Often, an embedded document may be used instead of a dictionary. Generally, embedded documents are recommended as dictionaries don't support validation or custom field types. However, sometimes you will not know the structure of what you want to store; in this situation a `DictField` is appropriate:
 
 ```python
 class SurveyResponse(Document):
@@ -403,7 +353,6 @@ class SurveyResponse(Document):
     user = ReferenceField(User)
     answers = DictField()
 ```
-
 
 ##### Reference fields
 
@@ -445,7 +394,7 @@ class Post(Document):
     author = ReferenceField(User, reverse_delete_rule=CASCADE)
 ```
 
-### 2.3 - CRUD 
+### 2.3 - CRUD
 
 #### 2.3.1 - Creating and Updating
 
@@ -463,7 +412,6 @@ you.save()
 ```
 
 If you change a field on an object that has already been saved and then call `save()` again, the document will be updated.
-
 
 #### 2.3.2 - Reading data
 
@@ -507,7 +455,6 @@ Fields on embedded documents may also be referred to using **field lookup syntax
 uk_posts = Post.objects(author__country='uk')
 ```
 
-
 #### 2.3.3 - Deleting data
 
 You can delete a single `Document` instance by calling its `delete` method:
@@ -518,6 +465,7 @@ bad_user.delete()
 ```
 
 Or you can delete all documents in a matching query:
+
 ```python
 User.objects(name="me").delete()
 ```
@@ -550,26 +498,25 @@ But MongoEngine is more abstract, and it can be easier to learn when coming from
 ## 4 - Why chose MongoDB
 
 In general, there are three main development goals behind the MongoDB database:
- - Scale well (handles more queries just by adding more machines to the server cluster).
- - Store rich data structures.
- - Provide a sophisticated query mechanism.
+
+- Scale well (handles more queries just by adding more machines to the server cluster).
+- Store rich data structures.
+- Provide a sophisticated query mechanism.
 
 It is a **distributed database**, so **high availability**, **horizontal scaling**, and **geographic distribution** are built into the system.
 
-MongoDB provides a **powerful query language** that supports **ad hoc queries**, **indexing**, **aggregation**, **geospatial search**, **text search**, and a lot more. This presents you with a powerful tool kit to access and work with your data. 
+MongoDB provides a **powerful query language** that supports **ad hoc queries**, **indexing**, **aggregation**, **geospatial search**, **text search**, and a lot more. This presents you with a powerful tool kit to access and work with your data.
 
 Unique features to MongoDB (as of writing):
- - **Scalability**: from a stand-alone server to complete clusters of independent servers.
- - **Load-balancing support**: MongoDB will automatically move data across various shards.
- - **Automatic failover support**: if your primary server goes down, then a new primary will be up and running automatically.
- - **Management tools**: you can track your machines using the cloud-based MongoDB Management Service (MMS).
- - **Memory efficiency**: thanks to the memory-mapped files, MongoDB is often more efficient than relational databases.
 
+- **Scalability**: from a stand-alone server to complete clusters of independent servers.
+- **Load-balancing support**: MongoDB will automatically move data across various shards.
+- **Automatic failover support**: if your primary server goes down, then a new primary will be up and running automatically.
+- **Management tools**: you can track your machines using the cloud-based MongoDB Management Service (MMS).
+- **Memory efficiency**: thanks to the memory-mapped files, MongoDB is often more efficient than relational databases.
 
 ## Sources
 
 - [MongoDB documentation](https://www.mongodb.com/docs/manual/)
 - [MongoEngine documentation](http://docs.mongoengine.org/guide/defining-documents.html)
 - [Real Python](https://realpython.com/introduction-to-mongodb-and-python/)
-
-

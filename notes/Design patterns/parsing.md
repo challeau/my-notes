@@ -1,5 +1,6 @@
 [//]: # (TITLE Parsing)
 [//]: # (ENDPOINT /parsing)
+[//]: # (DESCRIPTION Parsers, lexers, and all the fun stuff in between)
 
 # Parsing
 
@@ -14,8 +15,9 @@ An AST is a data-structure which represents the program's structure. AST's are e
 -> Parses a file, outtputs metadata and html representation
 
 ## Token struct that holds value and kind (ienum)
-￼
+
 symbols
+
 + reserved keywords
 + comments
 + balises commentaires changement de langue + html markup
@@ -29,17 +31,17 @@ debug fct
 
 ## Lexer struct
 
-- tokens: token[]
-- source: str
-- pos: int
-- patterns: regaexpPattern[]
++ tokens: token[]
++ source: str
++ pos: int
++ patterns: regaexpPattern[]
 
 createLexer function (source:str) that returns a pointer to a lexer obj
 initialized at
-- token: [],
-- source: source,
-- pos: 0
-- patterns: [
++ token: [],
++ source: source,
++ pos: 0
++ patterns: [
   // all patterns supported to recognize the symbols and their handler functions
   { regex, defaultHandler(TOKEN, stringRep) }
 ]
@@ -51,39 +53,39 @@ initialized at
 for tokens that dont have a value associated
 
 returns a fct that:
-- advances the position of input lexer by length of input string
-- push new tokenKind and value to tokens
++ advances the position of input lexer by length of input string
++ push new tokenKind and value to tokens
 
 ### specialized handler
 
 for string/identifier/number - types that hold a value
 
-- grab the matching string
-- advances the position of input lexer by length of match string
++ grab the matching string
++ advances the position of input lexer by length of match string
 
 ### helper fcts
 
-- advances lex.pos
-- pushes to lex.tokens
-- returns char @ lex.source[lex.pos]
-- returns remainder lex.source[lex.pos:]
-- at_eod lex.pos >= lex.source.len
-
++ advances lex.pos
++ pushes to lex.tokens
++ returns char @ lex.source[lex.pos]
++ returns remainder lex.source[lex.pos:]
++ at_eod lex.pos >= lex.source.len
 
 ## regexpPattern struct
+
 - regex: *regexp
-- handler: regexHandler
++ handler: regexHandler
 
 ## regexHandler
 
-function (lex: *lexer, regex: *regexp)
+function (lex: *lexer, regex:*regexp)
 returns a lex for a regex
 
 ## tokenize fct
 
 function (source: str): []Token
-- create lexer with input source
-- while not eof
++ create lexer with input source
++ while not eof
   iterate through lex.patterns to match first char
   if match -> call pattern.handler, push EOF token to lex.tokens and return lex.tokens
   if !match panic(unrecognized token near lex.remainder())

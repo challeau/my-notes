@@ -8,23 +8,6 @@ The Internet links more than half a billion computers throughout the world. Stri
 
 The Internet Protocol (IP) is the **network layer communications protocol** in the Internet protocol suite for **relaying data across network boundaries**. Its routing function enables internetworking, and **essentially establishes the Internet**.
 
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-##### Table of contents
-
-- [TCP/IP and the Internet](#tcpip-and-the-internet)
-        - [Table of contents](#table-of-contents)
-  - [1 - Definition](#1---definition)
-  - [2 - The TCP/IP protocol framework](#2---the-tcpip-protocol-framework)
-    - [2.1 - Network interface layer](#21---network-interface-layer)
-    - [2.2 - Network layer](#22---network-layer)
-    - [2.3 - Transport layer](#23---transport-layer)
-    - [2.4 - Application layer](#24---application-layer)
-  - [3 - IP addresses](#3---ip-addresses)
-  - [3.1 - Binary operators](#31---binary-operators)
-  - [3.2 - Networks and hosts](#32---networks-and-hosts)
-
-<!-- markdown-toc end -->
-
 ## 1 - The internet
 
 One of the official documents (RFC 2026) of the Internet Engineering Task Force (IETF) defines the Internet as "**a loosely organized international collaboration of autonomous, interconnected networks**.
@@ -60,7 +43,7 @@ The **Internet Protocol** is a Network layer protocol that is **responsible for 
 A protocol called **ARP** (for Address Resolution Protocol) handles the task of converting IP addresses to MAC addresses.
 
 > Because IP addresses consist of a **network part** and a **host part**, IP is a **routable protocol**. As such, it can forward a packet to another network if the host is not on the current network.
-> 
+>
 > This ability is where IP gets its name: **an internet is a series of two or more connected TCP/IP networks that can be reached by routing**.
 
 The **Transmission Control Protocol** is a connection-oriented Transport layer protocol. TCP lets a device **reliably send a packet to another device** on the same network or on a different network.

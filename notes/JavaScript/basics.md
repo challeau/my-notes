@@ -2,10 +2,11 @@
 [//]: # (TITLE Basics)
 [//]: # (ENDPOINT /js-basics)
 [//]: # (PRIORITY 0)
+[//]: # (DESCRIPTION The fundamentals of JS's syntax and concepts)
 
 # Essential JavaScript
 
-JavaScript (JS) is a **lightweight**, **interpreted**, **dynamic** programming language. 
+JavaScript (JS) is a **lightweight**, **interpreted**, **dynamic** programming language.
 
 While it is most well-known as the **scripting language** for Web pages, many non-browser environments also use it, such as Node.js, Apache CouchDB and Adobe Acrobat.
 
@@ -119,7 +120,7 @@ const { c = console.log("will log") } = { c: undefined };
 
 ### 2.4 - Call-by-sharing
 
-Javascript is a call-by-sharing language. Call by sharing implies that **values are based on objects rather than primitive types**: all values are "boxed". Because they are boxed they can be said to **pass by copy of reference** (where primitives are boxed before passing and unboxed at called function). 
+Javascript is a call-by-sharing language. Call by sharing implies that **values are based on objects rather than primitive types**: all values are "boxed". Because they are boxed they can be said to **pass by copy of reference** (where primitives are boxed before passing and unboxed at called function).
 
 Other types: pass-by-reference, pass-by-value.
 
@@ -149,6 +150,7 @@ console.log(obj2.item);  // {item: "unchanged"}
 > An arrow function expression is a **compact alternative to a traditional function expression**.
 
 Arrow functions have some semantic differences and deliberate limitations in usage:
+
 - They **don't have their own bindings** to `this`, `arguments`, or `super`, and should not be used as methods.
 - They **cannot be used as constructors**. Calling them with `new` throws a `TypeError`. They also don't have access to the `new.target` keyword.
 - They **cannot use `yield`** within their body and **cannot be created as generator** functions.
@@ -229,7 +231,7 @@ document.getElementById("size-16").onclick = size16;
 
 ## 5 - Modules
 
->  JavaScript files that have been structured into smaller, more manageable file sizes. <br/>They are **used to create more cleanly separated and reusable modular pieces of code**, which can be **exported and imported** into other modules.
+> JavaScript files that have been structured into smaller, more manageable file sizes. <br/>They are **used to create more cleanly separated and reusable modular pieces of code**, which can be **exported and imported** into other modules.
 
 JavaScript projects have increased in size, from scripting to complete web apps. It has therefore made sense in recent years to start thinking about providing **mechanisms for splitting JavaScript programs up into separate modules that can be imported when needed**.
 
@@ -265,7 +267,7 @@ export default function (arg) { // you can export an anonymous function
 
 ### 5.2 - Importing
 
-Once you've exported some features out of your module, you need to import them into your script to be able to use them. 
+Once you've exported some features out of your module, you need to import them into your script to be able to use them.
 
 **Import declarations are hoisted**.
 
@@ -282,7 +284,7 @@ import { default as func } from "./modules/file.js";
 
 ### 5.3 - Top level await
 
-Top level await is a feature available within modules. This means the `await` keyword can be used. 
+Top level await is a feature available within modules. This means the `await` keyword can be used.
 
 > It allows modules to act as big asynchronous functions, meaning code can be evaluated before use in parent modules, but without blocking sibling modules from loading.
 
@@ -314,6 +316,7 @@ The following behaviors can be regarded as hoisting:
 When a program is compiled, the code is passed to a compiler that translates it into bytecode (binaries), which is then **executed by the machine**.
 
 Compilation takes **longer to start up** but it's more **efficient**:
+
 - The code can be optimized.
 - Loops are only translated once.
 
@@ -331,7 +334,7 @@ The interpreter uses a concept called **REPL** (read-eval-print-loop). Interpret
 
 #### 4.2.3 - JIT compilation
 
-Modern JS engines use **JIT compilation to speed up the interpretation**. 
+Modern JS engines use **JIT compilation to speed up the interpretation**.
 
 > JIT compilation is the **compilation of code at run-time**, instead of prior to execution (AOT).
 
@@ -349,6 +352,7 @@ The engine uses a **monitor** or **profiler**, which watches the code as it runs
 - **Constant folding**: constant expressions are replaced by their final value at compile-time, rather than doing the calculation at run-time.
 - **Strength reduction**: costly operations are replaced by equivalent, less costly one. For example: multiplications are replaced by a series of additions.
 - **Induction variable analysis**: a form of strength reduction where induction variables (variable that gets increased or decreased by a fixed amount on every iteration of a loop) are replaced with simpler computations.
+
   ```js
   // Before optimization:
   for (i = 0; i < 10; ++i) {
@@ -362,6 +366,7 @@ The engine uses a **monitor** or **profiler**, which watches the code as it runs
       j = j + 17;
   }
   ```
+
 - **Rematerialization**: recomputing a value instead of loading it from memory.
 - **Removing recursion**: tail recursive algorithms (perform the calculation, then perform the recursive calls) are converted to iterative algorithms.
 - **Peephole optimizations**: usually performed after the machine code has been generated, it examines a few adjacent instructions to see if they can be replaced by a shorter sequence of instructions (think bitwise operations to replace mathematical operations).
