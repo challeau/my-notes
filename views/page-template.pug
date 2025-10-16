@@ -1,5 +1,5 @@
-include ./components/overlay.pug
 include ./components/head.pug
+include ./components/overlay.pug
 include ./components/peek-oe.pug
 
 doctype html
@@ -15,3 +15,5 @@ html
     div.page
       | !{content}
     +peek-oe
+    script
+      include ./scripts/toc.js

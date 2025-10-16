@@ -227,18 +227,3 @@ img[alt*="tiny"] {
 #peek-oe img {
   transform: scale(-1, 1);
 }
-
-/* TOC */
-/* h5[id='#table-of-contents'] {
-  font-size: 1em;
-  color: var(--bright-pink);
-  margin-top: 2em;
-  position: relative;
-  cursor: pointer;
-  display: flex;
-  align-items: end;
-}
-
-#TOC, #TOC ul { list-style-type: none; }
-
-#TOC::before { display: none; } */

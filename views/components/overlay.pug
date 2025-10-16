@@ -6,7 +6,7 @@ mixin menu(isHome)
       span(id="menu-separator") |
     span(id="menu-topics", class="active menu-tab") TOPICS
 
-// Navigation folder == a subject
+// Navigation folder == a topic
 mixin navFolder(name, links)
   ul.collapsible
     li.folder-title= name
@@ -14,7 +14,7 @@ mixin navFolder(name, links)
       div.list-divider
       ul
         each page in links
-          li.subject
+          li.topic
             a(href=page.endpoint, class="tooltip")= page.title
             if page.description
               span.tooltip-text= page.description
@@ -26,14 +26,15 @@ mixin topicsList(topics)
       li.folder-container
         +navFolder(folderName, files)
 
-// OVERLAY == navBar + logo + utility buttons
+// OVERLAY == navbar + utility buttons
 mixin overlay(topics, isHome)
   div(id="overlay")
-    div(id="nav-bar-container")
+    div(id="navbar-container")
       div(id="nav-fold-btn" class="nav-btn")
         span.material-symbols-outlined= "navigate_next"
-      div(id="nav-bar")
+      div(id="navbar")
         +menu(isHome)
+        div(id="toc", class="hidden")
         +topicsList(topics)
 
     div(id="btns-container")
@@ -49,4 +50,4 @@ mixin overlay(topics, isHome)
 
   // get theme setting from local storage
   script.
-    document.body.classList = localStorage.getItem("theme") || "light";
+    document.body.classList = localStorage.getItem("theme");

@@ -5,12 +5,16 @@ import * as path from "path";
 import type { TopicCollection, TopicMetadata } from "./types.ts";
 import { capitalize, sortTopicCollectiontByPriority } from "./utils.ts";
 
+
+/**
+ * Extract the table of contents from the notes file
+ */
+
+
 /**
  * Parse the metadata found in the first few lines of a file
- * The parsing stops at the first occurence of a non-comment line (ie, one that doesn't
- * start with "[//]: #").
- * 
- * -> This function will be replaced when super-parser is functional
+ * Parsing stops at the first occurence of a non-comment line
+ * (ie, one that doesn't start with "[//]: #")
  */
 export async function getNoteFileMetadata(parentPath: string, filename: string): Promise<TopicMetadata> {
   const filepath = path.join(parentPath, filename);
@@ -52,8 +56,7 @@ export async function getNoteFileMetadata(parentPath: string, filename: string):
 }
 
 /**
- * Recursively parse the filepath to get a list of all markdown files (and their metadata)
- * sorted by subject.
+ * Parse the filepath to get a list of all markdown files (and their metadata) sorted by topic.
  */
 export async function getTopicsFromFilepath(filepath: string): Promise<TopicCollection> {
   const topics: TopicCollection = {};
@@ -61,25 +64,26 @@ export async function getTopicsFromFilepath(filepath: string): Promise<TopicColl
   const dirents = readdirSync(filepath, { withFileTypes: true, recursive: true });
 
   for (const dirent of dirents) {
+    // Add topic to topic list
     if (dirent.isDirectory()) {
       topics[dirent.name] = [];
       continue;
     }
-    
+
+    // Add file metadata to topic
     if (dirent.isFile() && dirent.name.match(".md$")) {
       const parentDirname = dirent.parentPath.match("([^/]*)/*$")?.[1] ?? '';
       const fileMetadata = await getNoteFileMetadata(dirent.parentPath, dirent.name);
-
-      if (parentDirname in topics) {
-        topics[parentDirname].push(fileMetadata);
-      }
-      else {
-        orphanTopics.push(fileMetadata);
-      }
+      const topic = parentDirname in topics ? topics[parentDirname] : orphanTopics;
+      
+      topic.push(fileMetadata);
     }
   }
 
+  // Add oprhan topics to the end of the topic list
   topics['Others'] = orphanTopics;
+
+  // Sort each file in a topic by priority
   sortTopicCollectiontByPriority(topics);
 
   return topics;

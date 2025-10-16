@@ -29,14 +29,15 @@ Every file is parsed for metadata and compiled to HTML, using `fs` and `marked`.
 - p0
     - [x] only parse pages on render
     - [x] use dirname to build a topic index page
-    - [ ] generate valid link fragments for TOC
+    - [x] generate valid link fragments for TOC
     - [ ] add GH links to index
 - p1
-    - [ ] add short descriptions in metadata (available in topic index or tooltip on navbar hover)
-    - [ ] turn navbar into a horizontal bar with only the topics
-    - [ ] make TOC a part of the overlay
+    - [x] add short descriptions in metadata (available in topic index or tooltip on navbar hover)
+    - [x] turn navbar into a horizontal bar with only the topics
+    - [x] make TOC a part of the overlay
     - [ ] re-design app
 - p2
     - [ ] add support for todo list checking from front
     - [ ] fold page sections
-    - [ ] migrate to TS
+    - [x] fix navbar clip-path
+    - [x] migrate to TS

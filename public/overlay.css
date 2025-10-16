@@ -12,7 +12,7 @@
   padding: 0em 2em 2.5em 0;
 }
 
-#nav-bar-container {
+#navbar-container {
   position: relative;
 }
 
@@ -56,9 +56,6 @@
   top: 0.65em;
   right: 1em;
   z-index: 1000;
-  transition:
-    background 0.2s ease,
-    box-shadow 0.2s ease;
 }
 
 #nav-fold-btn:not(.folded) {
@@ -68,11 +65,15 @@
 
 #nav-fold-btn.folded span {
   transform: rotate(180deg);
-  transition: transform 0.8s ease;
+  transition: transform 0.5s ease-in-out;
+}
+
+#nav-fold-btn:hover {
+  box-shadow: var(--soft-shadow-S);
 }
 
 /* Navbar */
-#nav-bar {
+#navbar {
   position: absolute;
   right: 0;
   z-index: 1;
@@ -88,50 +89,62 @@
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  scroll-margin-top: 200px;
 
   opacity: 0.6;
   color: var(--beige4);
   background-color: var(--white);
 
   transition:
-    all 0.6s ease-in-out,
-    opacity 0.2s ease-in-out,
-    min-height 0.2s ease-in-out,
-    width 0.1s ease-in-out;
+    all 0.2s ease-in-out,
+    right 0s ease-in-out,
+    border-radius 0.7s ease,
+    width 0.4s ease,
+    height 0.7s ease,
+    min-height 0.7s ease;
 }
 
-#nav-bar.folded {
+#navbar.folded {
   right: 1em;
-  top: 0.5em;
+  top: 0.65em;
 
   width: 2.5em;
   height: 2.5em;
   min-height: 0em;
 
+  box-shadow: none;
   border-radius: var(--border-radius-L);
-  opacity: 0;
+  animation: fade-out 0.5s steps(1, end) forwards;
 }
 
-#nav-bar.folded * {
-  opacity: 0;
-  pointer-events: none;
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
 }
 
-#nav-bar-container:hover #nav-bar:not(.folded) {
+#navbar.folded > * {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+#navbar-container:hover #navbar:not(.folded) {
   opacity: 1;
 }
 
-#nav-bar::-webkit-scrollbar {
+#navbar::-webkit-scrollbar {
   display: none;
 }
 
 /* Topic list */
-#nav-bar #topics {
+#navbar #topics {
   padding: 0 0 1em 1em;
+  display: block;
 }
 
-#nav-bar ul {
+#navbar #topics.hidden {
+  display: none;
+}
+
+#navbar ul {
   list-style-type: none;
   cursor: pointer;
 
@@ -139,36 +152,36 @@
   padding: 0;
 }
 
-#nav-bar .folder-title {
+#navbar .folder-title {
   color: var(--beige4);
   font-weight: 500;
   margin: 0.3em 0;
 }
 
-#nav-bar .active {
+#navbar .active {
   margin-bottom: 0;
 }
 
-#nav-bar .active,
-#nav-bar .folder-title:hover {
+#navbar .active,
+#navbar .folder-title:hover {
   font-weight: 700;
   color: var(--bright-lilac);
 }
 
-#nav-bar li:not(.folder-container) {
+#navbar li:not(.folder-container) {
   padding: 0 0.2em 0.3em;
   border-left: 1px solid var(--bright-red);
   position: relative;
 }
 
-#nav-bar .folder {
+#navbar .folder {
   display: grid;
   grid-template-columns: 5px 2fr;
   column-gap: 1em;
   padding: 0.2em 0 0.2em 0.5em;
 }
 
-#nav-bar .list-divider {
+#navbar .list-divider {
   display: block;
   height: 100%;
   width: 5px;
@@ -183,7 +196,7 @@
   transition: all cubic-bezier(1, 0, 0, 1);
 }
 
-#nav-bar a {
+#navbar a {
   display: block;
   width: 100%;
   height: 100%;
@@ -192,7 +205,7 @@
   text-decoration: none;
 }
 
-#nav-bar .current a {
+#navbar li.current a {
   color: var(--bright-lilac);
   font-weight: 600;
 
@@ -200,14 +213,14 @@
   z-index: 0;
 }
 
-#nav-bar .subject:hover a {
+#navbar .topic:hover a {
   color: var(--brown);
   font-weight: 600;
 }
 
 /* Add a cursor next to the current page */
-#nav-bar .current::before,
-#nav-bar .subject:hover::before {
+#navbar li.current::before,
+#navbar .topic:hover::before {
   content: "";
   width: 15px;
   height: 45px;
@@ -223,13 +236,13 @@
   transition: all cubic-bezier(1, 0, 0, 1);
 }
 
-/* When hovering any .subject, hide the cursor on .current */
-#nav-bar .folder:hover .current:not(:hover)::before {
+/* When hovering any .topic, hide the cursor on .current */
+#navbar .folder:hover li.current:not(:hover)::before {
   opacity: 0;
 }
 
 /* Navbar menu */
-#nav-bar #menu {
+#navbar #menu {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -248,7 +261,41 @@
   color: var(--beige4);
 }
 
-#nav-bar .menu-tab:hover {
+#navbar .menu-tab:hover {
   color: var(--brown);
   cursor: pointer;
+}
+
+/* Table of contents */
+#navbar #toc {
+  display: block;
+  color: var(--bright-pink);
+  padding: 0 1.2em 1.2em;
+}
+
+#navbar #toc.hidden {
+  display: none;
+}
+
+#navbar #toc * {
+  cursor: pointer;
+  font-size: 0.85em;
+
+  margin: 0.1em 0;
+  padding: 0;
+  transition: all 0.1s ease-in;
+}
+
+#navbar #toc > *:not(:hover):not(.current), #navbar #toc > *:not(:hover):not(.current) > * {
+  color: var(--beige4);
+  font-weight: 500;
+}
+
+#navbar #toc h2:not(:first-child) {
+  margin-top: 1em;
+  position: relative;
+}
+
+#navbar #toc h5 {
+  padding-left: 1em;
 }

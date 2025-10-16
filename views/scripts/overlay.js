@@ -1,31 +1,20 @@
 /**
- * Return the sibling Elements of the input
- */
-function getSiblings(element) {
-  const siblings = [];
-  let nextSibling = element.nextElementSibling;
-
-  while (nextSibling) {
-    siblings.push(nextSibling);
-    nextSibling = nextSibling.nextElementSibling;
-  }
-  return siblings;
-}
-
-/**
  * Handle swiching between light and dark theme
  */
-function handleTheme() {
+function toggleTheme() {
+  const body = $("body");
+
   $("#theme-btn").on("click", () => {
-    localStorage.setItem("theme", document.body.classList.contains("dark") ? "" : "dark");
-    $("body").toggleClass("dark");
+    body.toggleClass("dark");
+    console.log(body.hasClass("dark"));
+    localStorage.setItem("theme", body.hasClass("dark") ? "" : "dark");
   });
 }
 
 /**
  * Handle scrolling to top functionality
  */
-function handleScrollToTop() {
+function scrollToTop() {
   const scrollBtn = $("#to-top-btn");
 
   // Make button visible only after user has scrolled
@@ -43,7 +32,7 @@ function handleScrollToTop() {
 /**
  * Handle the folding/unfolding of topic folders when clicked, and highlight of current page
  */
-function handleFolders() {
+function toggleFolders() {
   const folders = $(".collapsible");
 
   // Hide all folder contents
@@ -58,10 +47,10 @@ function handleFolders() {
   });
 
   // Highlight current page
-  folders.find(".folder").find(".subject").each((_i, elem) => {
-    const subjectHref = elem.firstChild.href;
+  folders.find(".folder").find(".topic").each((_i, elem) => {
+    const topicHref = elem.firstChild.href;
 
-    if (subjectHref == window.location.href) {
+    if (topicHref == window.location.href) {
       const node = $(elem);
       const folder = node.closest(".folder");
       folder.show();
@@ -78,48 +67,69 @@ function handleFolders() {
 }
 
 /**
- *  Handle the display of the navbar
+ *  Show/hide the navbar when clicking the folding button
  */
-function handleNavbarDisplay() {
-  const navBar = $("#nav-bar");
+function toggleNavbarDisplay() {
+  const navbar = $("#navbar");
   const navFoldBtn = $("#nav-fold-btn");
 
   navFoldBtn.on("click", () => {
-    navBar.toggleClass("folded");
+    navbar.toggleClass("folded");
     navFoldBtn.toggleClass("folded");
   });
 }
 
-function meowOnClick(setting) {
-  const meowingSource = setting == 'all' ? '*' : "#peek-oe";
-  
-  $("body").on("click", meowingSource, () => { document.getElementById("meow-audio")?.play(); });
+/**
+ * Allow switching between the topics list and the TOC list
+ */
+function toggleNavbarLists() {
+  const toc = $("#toc");
+  const topics = $("#topics");
+
+  const menuToc = $("#menu-toc");
+  const menuTopics = $("#menu-topics");
+
+  menuToc.on("click", () => {
+    toc.removeClass("hidden");
+    menuToc.addClass("active");
+
+    topics.addClass("hidden");
+    menuTopics.removeClass("active");
+
+    $("#navbar")[0].scrollTo(0, 0);
+  })
+
+  menuTopics.on("click", () => {
+    topics.removeClass("hidden");
+    menuTopics.addClass("active");
+
+    toc.addClass("hidden");
+    menuToc.removeClass("active");
+  })
 }
 
 /**
  * Add interactions with overlay:
- * - fold navbar
- * - scroll to top
+ * - fold navbar and topic folders
+ * - switch between toc list and topics list
+ * - scroll to top button
  * - toggle dark/light mode
  */
 function overlay() {
   // Show/hide navbar
-  handleNavbarDisplay();
+  toggleNavbarDisplay();
 
   // Allow switching between TOC and topics in the navbar
-  // handleMenuBar();
+  toggleNavbarLists();
 
   // Fold/unfold topic folders
-  handleFolders();
+  toggleFolders();
 
   // Dark/light mode toggling
-  handleTheme();
+  toggleTheme();
 
   // Scroll to top functionality
-  handleScrollToTop();
-
-  // Play sound when clicking on pekoe
-  meowOnClick('');
+  scrollToTop();
 }
 
 overlay();

@@ -11,36 +11,6 @@ While it is most well-known as the **scripting language** for Web pages, many no
 
 JavaScript supports object-oriented, imperative, and declarative styles.
 
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-##### Table of contents
-
-- [Essential JavaScript](#essential-javascript)
-        - [Table of contents](#table-of-contents)
-  - [1 - Functions](#1---functions)
-    - [1.1 - Function declaration](#11---function-declaration)
-    - [1.2 - Function expression](#12---function-expression)
-  - [2 - Arguments and parameters](#2---arguments-and-parameters)
-    - [2.1 - Parameters](#21---parameters)
-    - [2.2 - The `arguments` object](#22---the-arguments-object)
-    - [2.3 - Destructuring](#23---destructuring)
-    - [2.4 - Call-by-sharing](#24---call-by-sharing)
-  - [3 - Arrow functions](#3---arrow-functions)
-  - [4 - Closures](#4---closures)
-  - [5 - Modules](#5---modules)
-    - [5.1 - Exporting](#51---exporting)
-    - [5.2 - Importing](#52---importing)
-    - [5.3 - Top level await](#53---top-level-await)
-  - [4 - Quirks](#4---quirks)
-    - [4.1 - Hoisting](#41---hoisting)
-    - [4.2 - Interpreted or compiled?](#42---interpreted-or-compiled)
-      - [\> Compilation](#-compilation)
-      - [\> Interpretation](#-interpretation)
-      - [\> JIT compilation](#-jit-compilation)
-      - [\> Compiler optimizations](#-compiler-optimizations)
-    - [4.3 - TS vs JS](#43---ts-vs-js)
-
-<!-- markdown-toc end -->
-
 ## 1 - Functions
 
 > **Sets of statements that perform a task or calculate a value**. In JS they are objects with methods such as `apply()` and `call()`.
@@ -339,7 +309,7 @@ The following behaviors can be regarded as hoisting:
 
 ### 4.2 - Interpreted or compiled?
 
-#### > Compilation
+#### 4.2.1 - Compilation
 
 When a program is compiled, the code is passed to a compiler that translates it into bytecode (binaries), which is then **executed by the machine**.
 
@@ -349,7 +319,7 @@ Compilation takes **longer to start up** but it's more **efficient**:
 
 `Source code --> COMPILER --> machine code --> output`
 
-#### > Interpretation
+#### 4.2.2 - Interpretation
 
 When a program is interpreted, the code is **read, translated, and executed by the interpreter**, not the machine.
 
@@ -359,7 +329,7 @@ The interpreter uses a concept called **REPL** (read-eval-print-loop). Interpret
 
 `Source code --> INTERPRETER --> output`
 
-#### > JIT compilation
+#### 4.2.3 - JIT compilation
 
 Modern JS engines use **JIT compilation to speed up the interpretation**. 
 
@@ -373,7 +343,7 @@ The engine uses a **monitor** or **profiler**, which watches the code as it runs
 4. According to how warm the code is, the **baseline compiler will also make optimizations**.
 5. When a part of the code is **very hot**, the **monitor will send it off to the optimizing compiler**. This will create another, even faster, version of the function that will also be stored.
 
-#### > Compiler optimizations
+#### 4.2.4 - Compiler optimizations
 
 - **On stack replacement**: pieces of unoptimized code are replaced with optimized code during execution.
 - **Constant folding**: constant expressions are replaced by their final value at compile-time, rather than doing the calculation at run-time.
