@@ -35,7 +35,7 @@ Every file is parsed for metadata and compiled to HTML, using `fs` and `marked`.
     - [x] add short descriptions in metadata (available in topic index or tooltip on navbar hover)
     - [x] turn navbar into a horizontal bar with only the topics
     - [x] make TOC a part of the overlay
-    - [ ] re-design app
+    - [x] re-design app
 - p2
     - [ ] add support for todo list checking from front
     - [ ] fold page sections
