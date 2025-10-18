@@ -16,7 +16,8 @@
   position: relative;
 }
 
-/* Buttons */
+
+/*************** Buttons ***************/
 #btns-container {
   display: flex;
   flex-direction: column;
@@ -72,7 +73,8 @@
   box-shadow: var(--soft-shadow-S);
 }
 
-/* Navbar */
+
+/*************** Navbar ***************/
 #navbar {
   position: absolute;
   right: 0;
@@ -139,7 +141,37 @@
   display: none;
 }
 
-/* Topic list */
+
+/*************** Navbar menu ***************/
+#navbar #menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 1em;
+  
+  position: sticky;
+  top: 0;
+  z-index: 420;
+  
+  height: 2em;
+  width: 100%;
+  font-weight: 600;
+  padding: 1.3em 1.3em 2em 1.3em;
+  
+  color: var(--beige4);
+  background: var(--white);
+}
+
+#navbar #menu-separator {
+  color: var(--beige3);
+}
+
+#navbar .menu-tab:hover {
+  color: var(--brown);
+  cursor: pointer;
+}
+
+/*************** Topics list ***************/
 #navbar #topics {
   padding: 0 0 1em 1em;
   display: block;
@@ -155,6 +187,11 @@
 
   margin: 0;
   padding: 0;
+}
+
+#navbar li {
+  max-width: 100%;
+  padding: 0.1em 0
 }
 
 #navbar .folder-title {
@@ -174,8 +211,8 @@
 }
 
 #navbar li:not(.folder-container) {
+  margin: 0;
   padding: 0 0.2em 0.3em;
-  border-left: 1px solid var(--bright-red);
   position: relative;
 }
 
@@ -207,7 +244,10 @@
   height: 100%;
 
   color: var(--beige4);
-  text-decoration: none;
+}
+
+#navbar a:hover::after {
+  display: none;
 }
 
 #navbar li.current a {
@@ -246,43 +286,20 @@
   opacity: 0;
 }
 
-/* Navbar menu */
-#navbar #menu {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  gap: 1em;
 
-  position: sticky;
-  top: 0;
-  z-index: 420;
-
-  height: 2em;
-  width: 100%;
-  font-weight: 600;
-  padding: 1.3em 1.3em 2em 1.3em;
-
-  background: var(--white);
-  color: var(--beige4);
-}
-
-#navbar .menu-tab:hover {
-  color: var(--brown);
-  cursor: pointer;
-}
-
-/* Table of contents */
+/*************** Table of contents ***************/
 #navbar #toc {
   display: block;
   color: var(--bright-pink);
   padding: 0 1.2em 1.2em;
+  text-align: left;
 }
 
 #navbar #toc.hidden {
   display: none;
 }
 
-#navbar #toc * {
+#navbar #toc > * {
   cursor: pointer;
   font-size: 0.85em;
 
@@ -298,7 +315,7 @@
 }
 
 #navbar #toc h2:not(:first-child) {
-  margin-top: 1em;
+  margin-top: 0.7em;
 }
 
 #navbar #toc h3 {

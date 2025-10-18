@@ -1,6 +1,7 @@
 // Navbar menu
 mixin menu(isHome)
   div(id="menu")
+    span(class="pekoe-head")
     if !isHome
       span(id="menu-toc", class="menu-tab") TOC
       span(id="menu-separator") |
@@ -43,11 +44,10 @@ mixin overlay(topics, isHome)
       div(id="theme-btn" class="nav-btn")
         span.material-symbols-outlined= "dark_mode"
 
+  // get theme setting from local storage
+  script.
+    document.body.classList = localStorage.getItem("theme");
   // import functionality scripts
   script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript")
   script
     include ../scripts/overlay.js
-
-  // get theme setting from local storage
-  script.
-    document.body.classList = localStorage.getItem("theme");
