@@ -4,7 +4,6 @@
 function toggleTheme() {
   const body = $("body");
 
-  console.log(body.hasClass("dark"));
   $("#theme-btn").on("click", () => {
     body.toggleClass("dark");
     localStorage.setItem("theme", body.hasClass("dark") ? "dark" : "");
