@@ -1,23 +1,9 @@
-[//]: # (TITLE Rust quickstart)
+[//]: # (TITLE Quickstart)
 [//]: # (ENDPOINT /rs-quickstart)
 [//]: # (PRIORITY 0)
 [//]: # (DESCRIPTION Get started with 🦀)
 
 # Quickstart
-
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-**Table of contents**
-
-- [1 - Installation](#1---installation)
-- [2 - Hello World](#2---hello-world)
-- [3 - Hello Cargo](#3---hello-cargo)
-  - [3.1 - Initializing](#31---initializing)
-  - [3.2 - Building and running](#32---building-and-running)
-  - [3.3 - Checking](#33---checking)
-  - [3.4 - Documentation](#34---documentation)
-
-<!-- markdown-toc end -->
-
 
 ## 1 - Installation
 

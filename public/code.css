@@ -1,0 +1,111 @@
+/*************** Code blocks ***************/
+pre {
+  position: relative;
+  max-width: 100%;
+
+  padding: 1em;
+  margin: 1.5em 0;
+
+  color: var(--white);
+  background-color: var(--black);
+  border-radius: var(--border-radius-S) !important;
+  font-family: 'Space Mono', sans-serif;
+}
+
+
+/*************** Inline code ***************/
+*:not(pre) > code {
+  padding: 0.3em 0.5em;
+  background-color: var(--beige1);
+  border-radius: var(--border-radius-S);
+}
+
+
+/*************** Side-to-side code blocks ***************/
+.code-siblings {
+  align-items: flex-start;
+  padding: 0.5em 0;
+  gap: 2em;
+}
+
+.code-siblings .container-column {
+  align-items: flex-start;
+  min-width: 40%;
+}
+
+.code-siblings .container-column:has(.container-column) {
+  gap: 2em;
+}
+
+
+/*************** Code block titles ***************/
+.code-title {
+  width: 100%;
+  color: var(--bright-lilac);
+  background-color: var(--transparent-lilac);
+  padding: 0.6em 1.2em;
+  border-radius: var(--border-radius-S) var(--border-radius-S) 0 0;
+}
+
+.code-title+pre {
+  margin: 0;
+  width: 100%;
+  border-radius: 0 0 var(--border-radius-S) var(--border-radius-S) !important;
+}
+
+
+/*************** Code highlights ***************/
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.hljs-comment {
+  color: var(--brown) !important;
+}
+
+.hljs-punctuation {
+  color: var(--white) !important;
+}
+
+.hljs-string {
+  color: var(--bright-yellow) !important;
+}
+
+.hljs-built_in,
+.hljs-meta,
+.hljs-number,
+.hljs-attr,
+.hljs-symbol,
+.hljs-title.class_ {
+  color: var(--bright-blue) !important;
+}
+
+.hljs-title.function_ {
+  color: var(--bright-green) !important;
+}
+
+.hljs-keyword,
+.hljs-type,
+.hljs-operator,
+.hljs-tag {
+  color: var(--bright-pink) !important;
+}
+
+.hljs-literal,
+.hljs-name {
+  color: var(--pink) !important;
+}
+
+.hljs-params {
+  color: var(--lilac) !important;
+}
+
+.hljs-selector-class,
+.hljs-variable,
+.hljs-variable.language_ {
+  color: var(--bright-lilac) !important;
+}

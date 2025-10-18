@@ -1,20 +1,11 @@
-[//]: # (TITLE Kubectl)
+[//]: # (TITLE Kubectl cheatsheet)
 [//]: # (ENDPOINT /kubectl)
+[//]: # (DESCRIPTION A cheatsheet of kubectl commands and options)
 [//]: # (PRIORITY 4)
 
 # Kubectl reference
 
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-##### Table of contents
-
-- [1 - Common options](#1---common-options)
-- [2 - Configuration](#2---configuration)
-
-<!-- markdown-toc end -->
-
-
 ## 1 - Common options
-
 
 <div class="vocab-list">
 
@@ -128,6 +119,3 @@ kubectl
 #
 kubectl
 ```
-
-
-

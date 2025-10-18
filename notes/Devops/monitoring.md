@@ -51,8 +51,8 @@ Grafana supports querying Prometheus. The Grafana data source for Prometheus is 
 By default, Grafana will be listening on `http://localhost:3000`. The default login is `admin`/`admin`.
 
 Here's a simple example of how to setup Prometheus with docker and automatically create a dashboard for metrics using IAC :
-1. Define the containers
 
+1. Define the containers
 
 ## 2 - Concepts
 
@@ -62,14 +62,11 @@ Here's a simple example of how to setup Prometheus with docker and automatically
 
 ### 2.3 - Jobs and instances
 
-
 ## 3 - Prometheus server
 
-## 4 - 
-
+## 4 -
 
 ## Sources
 
 - [Prometheus official documentation](https://prometheus.io/docs/introduction/overview/)
 - [Tom Riley's observability notes](https://observability.thomasriley.co.uk/introduction/)
-

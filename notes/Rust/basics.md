@@ -1,9 +1,9 @@
-[//]: # (TITLE Rust basics)
+[//]: # (TITLE Basics)
 [//]: # (ENDPOINT /rs-basics)
 [//]: # (PRIORITY 1)
 [//]: # (DESCRIPTION The fundamentals of Rust's syntax and concepts)
 
-# Rust basics
+# Essential Rust
 
 Rust is a **general-purpose programming language** emphasizing **performance**, **[type safety](https://en.wikipedia.org/wiki/Type_safety)**, and **[concurrency](https://en.wikipedia.org/wiki/Concurrency_(computer_science))**.
 
@@ -12,50 +12,6 @@ It **enforces memory safety**, meaning that all references point to valid memory
 Although Rust is a relatively low-level language, it has some functional concepts that are generally found in higher-level languages. This makes Rust not only **fast**, but also **easy** and **efficient** to code in.
 
 > Rust gives you the option to **control low-level details** without all the hassle traditionally associated with such control.
-
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-##### Table of contents
-
-  - [1 - Variables](#1---variables)
-    - [1.1 - Mutability](#11---mutability)
-    - [1.2 - Constants](#12---constants)
-    - [1.3 - Shadowing](#13---shadowing)
-    - [1.4 - Variable scope](#14---variable-scope)
-  - [2 - Basic data types](#2---basic-data-types)
-    - [2.1 - Scalar types](#21---scalar-types)
-      - [2.1.1 - Integers](#211---integers)
-      - [2.1.2 - Floating-points](#212---floating-points)
-      - [2.1.3 - Boolean](#213---boolean)
-      - [2.1.4 - Character](#214---character)
-      - [2.1.5 - Unit](#215---unit)
-    - [2.2 - Compound types](#22---compound-types)
-      - [2.2.1 - Tuple](#221---tuple)
-      - [2.2.2 - Array](#222---array)
-  - [3 - Functions](#3---functions)
-    - [3.1 - Statements vs expressions](#31---statements-vs-expressions)
-    - [3.2 - Return values](#32---return-values)
-    - [3.3 - Control flow](#33---control-flow)
-      - [3.3.1 - `if` expressions](#331---if-expressions)
-      - [3.3.2 - Loops](#332---loops)
-  - [4 - Ownership](#4---ownership)
-    - [4.1 - The stack and the heap](#41---the-stack-and-the-heap)
-    - [4.2 - Memory and allocation](#42---memory-and-allocation)
-      - [4.2.1 - Variables and data interacting with move](#421---variables-and-data-interacting-with-move)
-      - [4.2.2 - Scope and assignment ](#422---scope-and-assignment)
-      - [4.2.3 - Copying heap data with `clone`](#423---copying-heap-data-with-clone)
-      - [4.2.4 - Copying stack data with `copy`](#424---copying-stack-data-with-copy)
-    - [4.3 - Ownership and functions](#43---ownership-and-functions)
-  - [5 - Complex data types](#5---complex-data-types)
-    - [5.1 - Collections](#51---collections)
-      - [5.1.1 - Strings](#511---strings)
-      - [5.1.2 - Vectors](#512---vectors)
-      - [5.1.3 - Hash Maps](#513---hash-maps)
-      - [5.1.4 - Slice type](#514---slice-type)
-    - [5.2 - Structs](#52---structs)
-    - [5.3 - Enums](#53---enums)
-  - [Sources](#sources)
-
-<!-- markdown-toc end -->
 
 ## 1 - Variables
 
@@ -129,10 +85,10 @@ Shadowing is different from marking a variable as mutable. By using `let`, we ca
 
 > A scope is the **range within a program for which an item is valid**.
 
-In other words, a variable is valid from the **point at which it’s declared** until the end **of the current scope**. 
+In other words, a variable is valid from the **point at which it's declared** until the end **of the current scope**. 
 
 ``` rs
-{                      // s is not valid here, it’s not yet declared
+{                      // s is not valid here, it's not yet declared
 	let s = "hello";   // s is valid from this point forward
 	
 	// do stuff with s
@@ -595,11 +551,11 @@ End count = 2
 
 ## 4 - Ownership
 
-Ownership is Rust’s most unique feature and has deep implications for the rest of the language. It **enables Rust to make memory safety guarantees without needing a garbage collector**, so it’s important to understand how ownership works.
+Ownership is Rust's most unique feature and has deep implications for the rest of the language. It **enables Rust to make memory safety guarantees without needing a garbage collector**, so it's important to understand how ownership works.
 
 > Ownership is a **set of rules that govern how a Rust program manages memory**.
 
-All programs have to manage the way they use a computer’s memory while running. Instead of using a garbage collector or making the programmer explicitly allocate and free the memory, Rust uses a third approach: **memory is managed through a system of ownership with a set of rules that the compiler checks**.
+All programs have to manage the way they use a computer's memory while running. Instead of using a garbage collector or making the programmer explicitly allocate and free the memory, Rust uses a third approach: **memory is managed through a system of ownership with a set of rules that the compiler checks**.
 
 ##### Ownership rules
 
@@ -608,9 +564,9 @@ All programs have to manage the way they use a computer’s memory while running
 - When the owner goes **out of scope**, the **value will be dropped**.
 
 
-If any of the rules are **violated**, the program **won’t compile**.
+If any of the rules are **violated**, the program **won't compile**.
 
-None of the features of ownership will slow down your program while it’s running.
+None of the features of ownership will slow down your program while it's running.
 
 ### 4.1 - The stack and the heap
 
@@ -628,21 +584,21 @@ Because the pointer to the heap is a known, fixed size, you can **store the poin
 
 **Accessing data in the heap is slower** than accessing data on the stack because you have to follow a pointer to get there. Contemporary processors are **faster if they jump around less in memory**.
 
-When your code **calls a function**, the **values passed into the function** (including, potentially, pointers to data on the heap) and the **function’s local variables** get **pushed onto the stack**. When the function is over, those values get **popped off the stack**.
+When your code **calls a function**, the **values passed into the function** (including, potentially, pointers to data on the heap) and the **function's local variables** get **pushed onto the stack**. When the function is over, those values get **popped off the stack**.
 
-**Keeping track** of what parts of code are using what data on the **heap**, **minimizing the amount of duplicate** data on the heap, and **cleaning up unused data** on the heap so you don’t run out of space are all problems that **ownership** addresses.
+**Keeping track** of what parts of code are using what data on the **heap**, **minimizing the amount of duplicate** data on the heap, and **cleaning up unused data** on the heap so you don't run out of space are all problems that **ownership** addresses.
 
 ### 4.2 - Memory and allocation
 
-In the case of a **string literal**, we know the contents at **compile time**, so the text is **hardcoded** directly into the final executable. This is why string literals are **fast** and **efficient**. But these properties only come from the string literal’s **immutability**. 
+In the case of a **string literal**, we know the contents at **compile time**, so the text is **hardcoded** directly into the final executable. This is why string literals are **fast** and **efficient**. But these properties only come from the string literal's **immutability**. 
 
 With the `String` type, in order to support a **mutable**, growable piece of text, we need to:
 - **Request memory** from the **memory allocator** at **runtime**.
-- **Return** this memory **to the allocator** when we’re done with our `String`.
+- **Return** this memory **to the allocator** when we're done with our `String`.
 
 That first part is done by us when we call `String::from` its implementation requests the memory it needs. This is pretty much universal in programming languages.
 
-However, the second part is different. In languages with a **garbage collector** (GC), the GC **keeps track** of and **cleans up memory that isn’t being used** anymore, and we don’t need to think about it. In most languages without a GC, it’s **our responsibility** to **identify when memory is no longer being used** and to call code to **explicitly free it**, just as we did to request it. 
+However, the second part is different. In languages with a **garbage collector** (GC), the GC **keeps track** of and **cleans up memory that isn't being used** anymore, and we don't need to think about it. In most languages without a GC, it's **our responsibility** to **identify when memory is no longer being used** and to call code to **explicitly free it**, just as we did to request it. 
 
 Rust takes a different path: the **memory is automatically returned once the variable that owns it goes out of scope**.
 
@@ -678,17 +634,17 @@ When we assign `s1` to `s2`, the `String` data is copied, meaning we **copy the 
 
 Earlier, we said that when a variable goes **out of scope**, Rust automatically calls the `drop` function and **cleans up the heap memory** for that variable. What happens when both `s1` and `s2` get out of scope at the same time ?
 
-To **ensure memory safety** and prevent double frees, after the line `let s1 = s2;`, Rust considers `s1` as **no longer valid**. Therefore, Rust doesn’t need to free anything when `s1` goes out of scope.
+To **ensure memory safety** and prevent double frees, after the line `let s1 = s2;`, Rust considers `s1` as **no longer valid**. Therefore, Rust doesn't need to free anything when `s1` goes out of scope.
 
-Copying the pointer, length, and capacity **without copying the data** is **NOT** like making a shallow copy. Because Rust **invalidates the first variable**, instead of being called a shallow copy, it’s **known as a move**.
+Copying the pointer, length, and capacity **without copying the data** is **NOT** like making a shallow copy. Because Rust **invalidates the first variable**, instead of being called a shallow copy, it's **known as a move**.
 
 > In this example, we would say that `s1` was moved into `s2`.
 
-Rust will **never automatically create “deep” copies** of your data. Therefore, any automatic copying can be **assumed to be inexpensive** in terms of runtime performance.
+Rust will **never automatically create "deep" copies** of your data. Therefore, any automatic copying can be **assumed to be inexpensive** in terms of runtime performance.
 
 #### 4.2.2 - Scope and assignment 
 
-The inverse of this is true for the relationship between scoping, ownership, and memory being freed via the `drop` function as well. When you **assign a completely new value** to an **existing variable**, Rust will call `drop` and **free the original value’s memory immediately**. 
+The inverse of this is true for the relationship between scoping, ownership, and memory being freed via the `drop` function as well. When you **assign a completely new value** to an **existing variable**, Rust will call `drop` and **free the original value's memory immediately**. 
 
 ``` rs
 let mut s = String::from("hello");
@@ -711,7 +667,7 @@ let s2 = s1.clone();
 println!("s1 = {s1}, s2 = {s2}");
 ```
 
-When you see a call to `clone`, you know that some **arbitrary code is being executed** and that code **may be expensive**. It’s a visual indicator that something different is going on.
+When you see a call to `clone`, you know that some **arbitrary code is being executed** and that code **may be expensive**. It's a visual indicator that something different is going on.
 
 #### 4.2.4 - Copying stack data with `copy`
 
@@ -719,9 +675,9 @@ Copying the data of types stored on the stack (due to their known size at compil
 
 Rust has a special annotation called the `Copy` trait that we can place on **types that are stored on the stack**. If a type implements the `Copy` trait, **variables that use it do not move**, but rather **are trivially copied**.
 
-> On the stack, there’s no difference between deep and shallow copying.
+> On the stack, there's no difference between deep and shallow copying.
 
-Rust won’t let us annotate a type with `Copy` if the type, or any of its parts, has implemented the `Drop` trait. 
+Rust won't let us annotate a type with `Copy` if the type, or any of its parts, has implemented the `Drop` trait. 
 
 **All scalar types** implement the `Copy` trait (except Unit), and **tuples** that contain only types that also implement `Copy` (eg: `(i32, bool)`).
 
@@ -783,7 +739,7 @@ fn takes_and_gives_back(a_string: String) -> String { // a_string comes into sco
 
 > Rust has a feature called **references** for **using a value without transferring ownership**.
 
-A reference is like a pointer in that it’s an **address we can follow to access the data** stored at that address; that data is **owned by some other variable**. Unlike a pointer, a reference is **guaranteed to point to a valid value** of a particular type **for the life of that reference**.
+A reference is like a pointer in that it's an **address we can follow to access the data** stored at that address; that data is **owned by some other variable**. Unlike a pointer, a reference is **guaranteed to point to a valid value** of a particular type **for the life of that reference**.
 
 References are annoted with **ampersands** (`&`). The action of **creating a reference** is called **borrowing**.
 
@@ -803,7 +759,7 @@ fn calculate_length(s: &String) -> usize {
 
 <div class="note">The opposite of referencing by using <code>&</code> is <bold>dereferencing</bold>, which is accomplished with the <bold>dereference operator</bold> <code>*</code>.</div>
 
-Since a borrowing function doesn't own a reference, **references are immutble** by default. We can make a reference mutable by using the `mut` keyword, but the original variable must also be mutable:
+Since a borrowing function doesn't own a reference, **references are immutble** by default. We can **make a reference mutable** by using the `mut` keyword, but the **original** variable must **also be mutable**:
 
 ``` rs
 fn main() {
@@ -817,7 +773,42 @@ fn change(some_string: &mut String) {
 }
 ```
 
-> Mutable references have one big restriction: if you have a mutable reference to a value, you can have **no other references to that value**.
+> Mutable references have one big restriction: if you have a mutable reference to a value, you can have **no other references to that value**. The benefit of having this restriction is that Rust can **prevent data races** at **compile time**.
+
+A **data race** is similar to a race condition and happens when these three behaviors occur:
+
+- Two or more pointers **access the same data** at the **same time**.
+- At least one of the pointers is being used to **write to the data**.
+- There's **no mechanism** being used to **synchronize** access to the data.
+
+Data races cause **undefined behavior** and can be difficult to diagnose and fix when you're trying to track them down at runtime. Rust prevents this problem by refusing to compile code with data races.
+
+We can use curly brackets to **create a new scope**, allowing for **multiple mutable references**, just **not simultaneous** ones:
+
+```rs
+let mut s = String::from("hello");
+{
+    let r1 = &mut s;
+} // r1 goes out of scope here
+
+let r2 = &mut s; // so we can make a new reference here
+```
+
+We also **cannot have a mutable reference while we have an immutable one to the same value**. Users of an immutable reference don't expect the value to suddenly change out from under them! However, **multiple immutable references** are allowed because no one who is **just reading** the data has the ability to affect anyone else's reading of the data.
+
+Note that a **reference's scope starts from where it is introduced** and **continues through the last time that reference is used**. For instance, this code will compile because the last usage of the immutable references is in the `println!`, before the mutable reference is introduced:
+
+```rs
+let mut s = String::from("hello");
+
+let r1 = &s; // no problem
+let r2 = &s; // no problem
+println!("{r1} and {r2}");
+// variables r1 and r2 will not be used after this point
+
+let r3 = &mut s; // no problem
+println!("{r3}");
+```
 
 
 ## 5 - Complex data types

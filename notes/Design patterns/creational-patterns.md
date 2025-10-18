@@ -1,63 +1,12 @@
-[//]: # (TITLE Design Patterns)
-[//]: # (ENDPOINT /design)
+[//]: # (TITLE Creational patterns)
+[//]: # (ENDPOINT /creational-patterns)
+[//]: # (PRIORITY 1)
 
-# Design Patterns
+# Creational design patterns
 
-Design patterns are **typical solutions to commonly occurring problems** in software design. The pattern is not a specific piece of code, but a **general concept** for solving a particular problem.
+The purpose of creational design patterns is to **manage object creation in flexible and reusable ways**. They **abstract the instantiation process**, allowing systems to be **independent** of how objects are **created, composed, or represented**.
 
-While algorithms describe a clear set of actions to solve a given problem, patterns are intended to be abstract descriptions of a solution.
-
-Design patterns differ by their complexity, level of detail and scale of applicability to the entire system being designed.  The most **basic** and **low-level** patterns are often called **idioms**. They usually apply only to a single programming language.
-
-The most **universal** and **high-level** patterns are **architectural patterns**. Developers can implement these patterns in virtually any language. Unlike other patterns, they can be used to design the architecture of an entire application.
-
-In addition, all patterns can be categorized by their intent:
-
-- **Creational** patterns provide **object creation mechanisms** that increase **flexibility and reuse** of existing code.
-- **Structural** patterns explain how to assemble objects and classes into **larger structures**, while keeping these structures **flexible and efficient**.
-- **Behavioral** patterns take care of **effective communication** and the **assignment of responsibilities** between objects.
-
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-##### Table of contents
-
-- [Design Patterns](#design-patterns)
-        - [Table of contents](#table-of-contents)
-    - [1 - Creational patterns](#1---creational-patterns)
-        - [1.1 - Factory method](#11---factory-method)
-            - [Structure](#structure)
-            - [Applicability](#applicability)
-        - [1.2 - Abstract factory](#12---abstract-factory)
-            - [Structure](#structure-1)
-            - [Applicability](#applicability-1)
-        - [1.3 - Builder](#13---builder)
-        - [1.4 - Prototype](#14---prototype)
-        - [1.5 - Singleton](#15---singleton)
-    - [2 - Structural patterns](#2---structural-patterns)
-        - [2.1 - Adapter](#21---adapter)
-        - [2.2 - Bridge](#22---bridge)
-        - [2.3 - Composite](#23---composite)
-        - [2.4 - Decorator](#24---decorator)
-        - [2.5 - Facade](#25---facade)
-        - [2.6 - Flyweight](#26---flyweight)
-        - [2.7 - Proxy](#27---proxy)
-    - [3 - Behavioral patterns](#3---behavioral-patterns)
-        - [3.1 - Chain of responsibilities](#31---chain-of-responsibilities)
-        - [3.2 - Command](#32---command)
-        - [3.3 - Iterator](#33---iterator)
-        - [3.4 - Mediator](#34---mediator)
-        - [3.5 - Memento](#35---memento)
-        - [3.6 - Observer](#36---observer)
-        - [3.7 - State](#37---state)
-        - [3.8 - Strategy](#38---strategy)
-        - [3.9 - Template Method](#39---template-method)
-        - [3.10 - Visitor](#310---visitor)
-    - [Sources](#sources)
-
-<!-- markdown-toc end -->
-
-## 1 - Creational patterns
-
-### 1.1 - Factory method
+## 1 - Factory method
 
 Good to know: an **interface** is a **point of interaction between different components**.
 
@@ -69,7 +18,7 @@ The **code that uses the factory** method (often called the **client code**) doe
 
 The only limitation is that the **returned products** need to have a **common base class or interface** and the **factory method in the base class** should have its **return type declared as this interface**.
 
-#### Structure
+### 1.1 - Structure
 
 1. The **Product declares the interface**, which is common to all objects that can be produced by the creator and its subclasses.
 2. **Concrete Products** are **different implementations** of the product interface.
@@ -79,7 +28,7 @@ You can declare the factory method as `abstract` to **force all subclasses to im
 
 ![center-eg](factory-method.png)
 
-#### Applicability
+### 1.2 - Applicability
 
 Use when:
 
@@ -93,7 +42,7 @@ Use when:
 | Follows the **Single Responsibility Principle**                                               |                                              |
 | Follows the **Open/Close Principle**<br>New types of products without modifying existing code |                                              |
 
-### 1.2 - Abstract factory
+## 2 - Abstract factory
 
 > The **abstract factory pattern** lets you **produce families of related objects without specifying their concrete classes**.
 
@@ -105,53 +54,18 @@ For **each variant** of a product family, we **create a separate factory class**
 
 The client code has to work with both factories and products **via their respective abstract interfaces**. This lets you change the type of a factory that you pass to the client code, as well as the product variant that the client code receives, without breaking the actual client code.
 
-#### Structure
-
-1.
+### 2.1 - Structure
 
 ![center-eg](abstract-factory.png)
 
-#### Applicability
+### 2.1 - Applicability
 
 | Pros | Cons |
 |------|------|
 |      |      |
 
-### 1.3 - Builder
+## 3 - Builder
 
-### 1.4 - Prototype
+## 4 - Prototype
 
-### 1.5 - Singleton
-
-## 2 - Structural patterns
-
-### 2.1 - Adapter
-
-### 2.2 - Bridge
-
-### 2.3 - Composite
-
-### 2.4 - Decorator
-
-### 2.5 - Facade
-
-### 2.6 - Flyweight
-
-### 2.7 - Proxy
-
-## 3 - Behavioral patterns
-
-### 3.1 - Chain of responsibilities
-### 3.2 - Command
-### 3.3 - Iterator
-### 3.4 - Mediator
-### 3.5 - Memento
-### 3.6 - Observer
-### 3.7 - State
-### 3.8 - Strategy
-### 3.9 - Template Method
-### 3.10 - Visitor
-
-## Sources
-
-- [Refactoring Guru](https://refactoring.guru/design-patterns/what-is-pattern)
+## 5 - Singleton

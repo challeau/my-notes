@@ -9,47 +9,29 @@ Flask is a **micro web framework** written in Python. It is classified as a micr
 
 A Flask application can be as simple as a single file. However, as a project gets bigger, it becomes overwhelming to keep all the code in one file. Python projects use packages to organize code into multiple modules that can be imported where needed.
 
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-##### Table of contents
-
-- [X - Internationalization and localization](#x---internationalization-and-localization)
-    - [X.1 - Flask-Babel](#x1---flask-babel)
-        - [X.1.1 - Configuration](#x11---configuration)
-        - [X.1.2 - For complex applications](#x12---for-complex-applications)
-    - [X.2 - Formatting dates](#x2---formatting-dates)
-    - [X.3 - Formatting Numbers](#x3---formatting-numbers)
-    - [X.4 - Translations](#x4---translations)
-        - [X.4.1 - Using translations](#x41---using-translations)
-        - [X.4.2 - Translating Applications](#x42---translating-applications)
-- [Sources](#sources)
-
-<!-- markdown-toc end -->
-
-
- -  1: Hello, World! (this article)
- -  2: Templates
- -  3: Web Forms
- -  4: Database
- -  5: User Logins
- -  6: Profile Page and Avatars
- -  7: Error Handling
- -  8: Followers
- -  9: Pagination
- -  10: Email Support
- -  11: Facelift
- -  12: Dates and Times
- -  13: I18n and L10n
- -  14: Ajax
- -  15: A Better Application Structure
- -  16: Full-Text Search
- -  17: Deployment on Linux
- -  18: Deployment on Heroku
- -  19: Deployment on Docker Containers
- -  20: Some JavaScript Magic
- -  21: User Notifications
- -  22: Background Jobs
- -  23: Application Programming Interfaces (APIs)
-
+- 1: Hello, World! (this article)
+- 2: Templates
+- 3: Web Forms
+- 4: Database
+- 5: User Logins
+- 6: Profile Page and Avatars
+- 7: Error Handling
+- 8: Followers
+- 9: Pagination
+- 10: Email Support
+- 11: Facelift
+- 12: Dates and Times
+- 13: I18n and L10n
+- 14: Ajax
+- 15: A Better Application Structure
+- 16: Full-Text Search
+- 17: Deployment on Linux
+- 18: Deployment on Heroku
+- 19: Deployment on Docker Containers
+- 20: Some JavaScript Magic
+- 21: User Notifications
+- 22: Background Jobs
+- 23: Application Programming Interfaces (APIs)
 
 ## 1 - Application Setup
 
@@ -69,7 +51,7 @@ The script above simply **creates the application object** as an instance of cla
 
 The application then imports the `routes` module. The routes module is **imported at the bottom** as a **workaround to circular imports**. You are going to see that the `routes` module **needs to import the app** variable defined in this script, so putting one of the reciprocal imports at the bottom avoids the error that results from the mutual references between these two files.
 
-`app.config.from_pyfile()` overrides the default configuration with values taken from the config.py file in the instance folder if it exists. 
+`app.config.from_pyfile()` overrides the default configuration with values taken from the config.py file in the instance folder if it exists.
 
 ### 1.2 - Routing
 
@@ -86,13 +68,9 @@ def index():
     return "Hello, World!"
 ```
 
-The `@app.route` decorator **creates an association between the URL given as an argument and the function**. In this example there are two decorators associated with `index()`, so when a web browser requests either of these two URLs, Flask is going to invoke this function and pass the return value of it back to the browser as a response. 
+The `@app.route` decorator **creates an association between the URL given as an argument and the function**. In this example there are two decorators associated with `index()`, so when a web browser requests either of these two URLs, Flask is going to invoke this function and pass the return value of it back to the browser as a response.
 
 ### 1.3 - Env file
-
-
-
-
 
 ## X - Internationalization and localization
 
@@ -104,17 +82,16 @@ Localization is the process of adapting internationalized software for a specifi
 
 A locale is a set of parameters that defines the user's language, region and any special variant preferences that the user wants to see in their user interface. Usually a locale identifier consists of at least a language code and a country/region code.
 
-
 ### X.1 - Flask-Babel
 
 > Flask-Babel is an extension to Flask that adds i18n and l10n support to any Flask application with the help of babel, pytz and speaklater.
- 
-It has builtin support for date formatting with timezone support as well as a very simple and friendly interface to gettext translations.
 
+It has builtin support for date formatting with timezone support as well as a very simple and friendly interface to gettext translations.
 
 #### X.1.1 - Configuration
 
 To get started all you need to do is to instantiate a Babel object after configuring the application:
+
 ```python
 from flask import Flask
 from flask_babel import Babel
@@ -124,13 +101,12 @@ app.config.from_pyfile('mysettings.cfg')
 babel = Babel(app)
 ```
 
-
 The babel object itself can be used to configure the babel support further. Babel has the following configuration values that can be used to change some internal defaults:
+
 - `BABEL_DEFAULT_LOCALE`:  the default locale to use if no locale selector is registered. This defaults to `en`.
 - `BABEL_DEFAULT_TIMEZONE`:  the timezone to use for user facing dates. This defaults to `UTC` which also is the timezone your application must use internally.
 - `BABEL_TRANSLATION_DIRECTORIES`: a semi-colon (`;`) separated string of absolute and relative (to the app root) paths to translation folders. Defaults to `translations`.
 - `BABEL_DOMAIN`: the message domain used by the application. Defaults to `messages`.
-
 
 #### X.1.2 - For complex applications
 
@@ -143,6 +119,7 @@ If any of these methods return None the extension will automatically fall back t
 If you need to switch the language between a request, you can `refresh()` the cache.
 
 For example:
+
 ```python
 @babel.localeselector
 def get_locale():
@@ -162,21 +139,22 @@ def get_timezone():
         return user.timezone
 ```
 
-
 ### X.2 - Formatting dates
 
 To format dates you can use the `format_datetime()`, `format_date()`, `format_time()` and `format_timedelta()` functions.
 <br/>
-They all accept a `datetime.datetime` (or `datetime.date`, `datetime.time` and `datetime.timedelta`) object as first parameter and then optionally a format string. 
+They all accept a `datetime.datetime` (or `datetime.date`, `datetime.time` and `datetime.timedelta`) object as first parameter and then optionally a format string.
 
 > The application should use naive datetime objects internally that use UTC as timezone. On formatting it will automatically convert into the user's timezone in case it differs from UTC.
 
-
 To play with the date formatting from the console, you can use the `test_request_context()` method:
+
 ```python
 app.test_request_context().push()
 ```
+
 Here are some examples:
+
 ```python
 >>> from flask_babel import format_datetime
 >>> from datetime import datetime
@@ -191,6 +169,7 @@ u'05 12 1987'
 ```
 
 And again with a different language:
+
 ```python
 >>> app.config['BABEL_DEFAULT_LOCALE'] = 'de'
 >>> from flask_babel import refresh; refresh()
@@ -198,12 +177,12 @@ And again with a different language:
 u'Donnerstag, 5. M\xe4rz 1987 17:12'
 ```
 
-
 ### X.3 - Formatting Numbers
 
 To format numbers you can use the `format_number()`, `format_decimal()`, `format_currency()`, `format_percent()` and `format_scientific()` functions.
 
 Some examples using the `test_request_context()` method:
+
 ```python
 >>> app.test_request_context().push()
 >>> from flask_babel import format_number, format_currency, format_percent, format_scientific
@@ -218,6 +197,7 @@ Some examples using the `test_request_context()` method:
 ```
 
 With a different language:
+
 ```python
 >>> app.config['BABEL_DEFAULT_LOCALE'] = 'de'
 >>> from flask_babel import refresh; refresh()
@@ -228,7 +208,6 @@ With a different language:
 >>> format_scientific(10000)
 '1E4'
 ```
-
 
 ### X.4 - Translations
 
@@ -249,13 +228,13 @@ ngettext(u'%(num)s Apple', u'%(num)s Apples', number_of_apples)
 Additionally, if you want to use constant strings somewhere in your application and define them outside a request, you can use a lazy strings. Lazy strings will not be evaluated until they are actually used.
 
 To use such a lazy string, use the `lazy_gettext()` function:
+
 ```python
 from flask_babel import lazy_gettext
 
 class MyForm(formlibrary.FormBase):
     success_message = lazy_gettext(u'The form was successfully saved.')
 ```
-
 
 #### X.4.2 - Translating Applications
 
@@ -264,7 +243,6 @@ First you need to mark all the strings you want to translate in your application
 After that, it's time to create a `.pot` file: a file that contains all the strings and is the template for a `.po` file which contains the translated strings. Babel can do all that for you.
 
 More info [here](https://python-babel.github.io/flask-babel/#translating-applications)
-
 
 ## Sources
 

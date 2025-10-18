@@ -1,0 +1,143 @@
+/*************** Lists ***************/
+ul, ol {
+  position: relative;
+  margin: 0 0 1.5em;
+  line-height: 1.2em;
+}
+
+p:has(+ ul), p:has(+ ol) {
+  margin-bottom: 0.2em;
+}
+
+li {
+  padding: 0.3em 0;
+  max-width: 95%;
+  position: relative;
+}
+
+li::marker {
+  color: var(--beige2);
+}
+
+
+/*************** Tables ***************/
+table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-radius: var(--border-radius-S);
+
+  max-width: 100%;
+  margin: 0.5em auto;
+
+  color: var(--beige4);
+  background-color: var(--transparent-beige);
+}
+
+th {
+  background-color: var(--transparent-lilac);
+  color: var(--bright-lilac);
+}
+
+td,
+th {
+  padding: 0.5em 1em;
+}
+
+tbody tr td:not(:last-child) {
+  border-right: 2px dashed var(--beige3);
+}
+
+thead tr th:not(:last-child) {
+  border-right: 2px dashed var(--bright-lilac);
+}
+
+tbody tr th {
+  border-top: 2px dashed var(--bright-lilac);
+}
+
+tbody tr:not(:last-child) td {
+  border-bottom: 2px solid var(--beige3);
+}
+
+tbody tr:last-child td:first-child {
+  border-radius: 0 0 0 var(--border-radius-S);
+}
+
+thead tr th:first-child {
+  border-radius: var(--border-radius-S) 0 0;
+}
+
+thead tr th:last-child {
+  border-radius: 0 var(--border-radius-S) 0 0;
+}
+
+tbody tr:last-child td:last-child {
+  border-radius: 0 0 var(--border-radius-S) 0;
+}
+
+tbody tr:hover td {
+  color: var(--brown);
+  background-color: var(--beige1);
+}
+
+tbody tr:hover td code {
+  background-color: var(--beige2);
+}
+
+td>ul {
+  padding-left: 0.8em;
+}
+
+td li {
+  max-width: 100% !important;
+}
+
+tbody pre {
+  margin: 0;
+}
+
+/*************** Checkboxes ***************/
+li:has(input) {
+  display: block;
+}
+
+ul:has(li>input)::before {
+  width: 0;
+  padding-left: 0;
+}
+
+li:has(input)>input[type="checkbox"] {
+  appearance: none;
+  cursor: pointer;
+
+  margin: 0 .6em 0 0;
+
+  color: var(--beige1);
+
+  width: 2.1em;
+  height: 2.1em;
+
+  border: 0.2em solid var(--beige1);
+  border-radius: 14%;
+
+  overflow: hidden;
+  transform: translateY(0.5em);
+}
+
+li:has(input)>input[type="checkbox"]::before {
+  content: "";
+
+  font-family: "Material Icons";
+  font-size: var(--font-XL);
+  font-weight: 700;
+
+  color: var(--pink);
+}
+
+li:has(input)>input[type="checkbox"]:checked::before {
+  content: "check";
+}
+
+li:has(input:checked) {
+  color: var(--beige2)
+}

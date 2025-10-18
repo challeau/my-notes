@@ -1,4 +1,4 @@
-[//]: # (TITLE Rust advanced features)
+[//]: # (TITLE Advanced features)
 [//]: # (ENDPOINT /rs-advanced-features)
 [//]: # (PRIORITY 2)
 
@@ -11,4 +11,4 @@
 - Smart pointers
 - concurrency/async
 - patterns
-- macros 
+- macros

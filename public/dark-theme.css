@@ -1,0 +1,127 @@
+body.dark {
+  background: radial-gradient(circle at top, var(--pink), var(--blue));
+  background-size: cover;
+  color: var(--white);
+}
+
+body.dark .page,
+body.dark #navbar,
+body.dark #navbar #menu,
+body.dark .nav-btn {
+  background-color: var(--grey1);
+}
+
+body.dark h1 {
+  -webkit-text-fill-color: var(--bright-lilac);
+  color: var(--dark-lilac)
+}
+
+body.dark .index-list-title {
+  color: var(--grey4);
+  border-bottom: 2px solid var(--grey3);
+}
+
+body.dark .tooltip-text {
+  color: var(--white);
+  background-color: var(--grey2);
+}
+
+/*************** Overlay ***************/
+body.dark #navbar,
+body.dark #navbar #menu,
+body.dark #navbar #toc>*:not(:hover):not(.current),
+body.dark #navbar #toc>*:not(:hover):not(.current)>* {
+  color: var(--grey4);
+}
+
+body.dark #navbar .active,
+body.dark #navbar .folder-title:hover,
+body.dark #navbar li.current a {
+  color: var(--bright-lilac);
+}
+body.dark #navbar li.current::before,
+body.dark #navbar .topic:hover::before {
+  background-image: url("data:image/svg+xml;utf8,<svg width='26' height='48' viewBox='0 0 26 48' xmlns='http://www.w3.org/2000/svg'><path d='M26 24C26 42 23.4 48 13 48C2.6 48 0 42 0 24C0 6 2.6 0 13 0C23.4 0 26 6 26 24Z' fill='%23C8ADD7'/></svg>");
+}
+
+body.dark #navbar .topic:hover a,
+body.dark #navbar .menu-tab:hover {
+  color: var(--white);
+}
+
+body.dark #navbar .list-divider {
+  background-color: var(--dark-lilac);
+}
+
+body.dark #navbar #menu .active {
+  color: var(--dark-lilac);
+}
+
+body.dark #navbar #menu-separator {
+    color: var(--grey3);
+}
+
+body.dark .pekoe-head {
+  background-image: url("data:image/svg+xml;utf8,<svg width='141' height='127' viewBox='0 0 141 127' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M15.3636 3.26541C9.39023 5.17615 3.51096 19.2124 11.274 41.0158C-5.67306 71.4226 -0.946893 93.5328 13.9918 107.535C39.89 131.811 96.4818 131.719 124.052 108.245C140.582 94.1706 146.68 71.69 129.472 41.0158C135.367 24.0106 132.354 3.22039 125.226 0.960296C120.823 -0.865599 108.955 2.20965 91.0332 23.8652C80.5414 22.1005 71.0713 21.8783 63.6664 22.2659C61.5412 22.3772 59.5861 22.5386 57.8258 22.7283C54.1398 23.1254 51.3078 23.6462 49.5564 24.088C32.9961 7.0894 22.9763 0.515392 15.3636 3.26541Z' fill='%236A676B' stroke='%236A676B' stroke-width='1.03'/></svg>");
+}
+
+
+
+/*************** Data displayers ***************/
+body.dark li::marker {
+  color: var(--grey3);
+}
+
+body.dark table {
+  color: var(--grey4);
+  background-color: var(--grey2);
+}
+
+body.dark th {
+  background-color: var(--bright-blue);
+  color: var(--white);
+}
+
+body.dark tbody tr td:not(:last-child) {
+  border-right: 2px dashed var(--grey4);
+}
+
+body.dark thead tr th:not(:last-child) {
+  border-right: 2px dashed var(--white);
+}
+
+body.dark tbody tr th {
+  border-top: 2px dashed var(--white);
+}
+
+body.dark tbody tr:not(:last-child) td {
+  border-bottom: 2px solid var(--grey4);
+}
+
+body.dark tbody tr:hover td {
+  color: var(--white);
+  background-color: var(--grey3);
+}
+
+body.dark tbody tr td code {
+  background-color: var(--grey3);
+}
+
+body.dark tbody tr:hover td code {
+  background-color: var(--grey1);
+}
+
+body.dark li:has(input)>input[type="checkbox"] {
+  color: var(--grey2);
+  border: 0.2em solid var(--grey2);
+}
+
+body.dark li:has(input:checked) {
+  color: var(--grey3)
+}
+
+/*************** Code ***************/
+body.dark *:not(pre) > code {
+  color: var(--white);
+  background-color: var(--black);
+}

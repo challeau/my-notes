@@ -1,0 +1,335 @@
+#overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  position: fixed;
+  right: 0;
+  height: 95%;
+  z-index: 1;
+
+  padding: 0em 2em 2.5em 0;
+}
+
+#navbar-container {
+  position: relative;
+}
+
+
+/*************** Buttons ***************/
+#btns-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1em;
+  margin-top: auto;
+}
+
+.nav-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+
+  width: 2.5em;
+  height: 2.5em;
+
+  border-radius: var(--border-radius-L);
+  box-shadow: var(--soft-shadow-S);
+  background: var(--white);
+  cursor: pointer;
+
+  position: relative;
+  opacity: 0.6;
+}
+
+.nav-btn:hover {
+  opacity: 1;
+}
+
+#to-top-btn {
+  right: -25vw;
+}
+
+#nav-fold-btn {
+  position: absolute;
+  top: 0.65em;
+  right: 1em;
+  z-index: 1000;
+}
+
+#nav-fold-btn:not(.folded) {
+  background: none;
+  box-shadow: none;
+}
+
+#nav-fold-btn.folded span {
+  transform: rotate(180deg);
+  transition: transform 0.5s ease-in-out;
+}
+
+#nav-fold-btn:hover {
+  box-shadow: var(--soft-shadow-S);
+}
+
+
+/*************** Navbar ***************/
+#navbar {
+  position: absolute;
+  right: 0;
+  z-index: 1;
+
+  width: 16vw;
+  height: fit-content;
+  min-height: 11em;
+  max-height: 40vh;
+
+  border-radius: var(--border-radius-S);
+  box-shadow: var(--soft-shadow-S);
+
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  opacity: 0.6;
+  color: var(--beige4);
+  background-color: var(--white);
+
+  transition:
+    all 0.2s ease-in-out,
+    right 0s ease-in-out,
+    border-radius 0.7s ease,
+    width 0.4s ease,
+    height 0.7s ease,
+    min-height 0.7s ease;
+}
+
+#navbar.folded {
+  right: 1em;
+  top: 0.65em;
+
+  width: 2.5em;
+  height: 2.5em;
+  min-height: 0em;
+
+  box-shadow: none;
+  border-radius: var(--border-radius-L);
+  animation: fade-out 0.5s steps(1, end) forwards;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+#navbar.folded>* {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+#navbar-container:hover #navbar:not(.folded) {
+  opacity: 1;
+}
+
+#navbar::-webkit-scrollbar {
+  display: none;
+}
+
+
+/*************** Navbar menu ***************/
+#navbar #menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 1em;
+  
+  position: sticky;
+  top: 0;
+  z-index: 420;
+  
+  height: 2em;
+  width: 100%;
+  font-weight: 600;
+  padding: 1.3em 1.3em 2em 1.3em;
+  
+  color: var(--beige4);
+  background: var(--white);
+}
+
+#navbar #menu-separator {
+  color: var(--beige3);
+}
+
+#navbar .menu-tab:hover {
+  color: var(--brown);
+  cursor: pointer;
+}
+
+/*************** Topics list ***************/
+#navbar #topics {
+  padding: 0 0 1em 1em;
+  display: block;
+}
+
+#navbar #topics.hidden {
+  display: none;
+}
+
+#navbar ul {
+  list-style-type: none;
+  cursor: pointer;
+
+  margin: 0;
+  padding: 0;
+}
+
+#navbar li {
+  max-width: 100%;
+  padding: 0.1em 0
+}
+
+#navbar .folder-title {
+  color: var(--beige4);
+  font-weight: 500;
+  margin: 0.3em 0;
+}
+
+#navbar .active {
+  margin-bottom: 0;
+}
+
+#navbar .active,
+#navbar .folder-title:hover {
+  font-weight: 700;
+  color: var(--bright-lilac);
+}
+
+#navbar li:not(.folder-container) {
+  margin: 0;
+  padding: 0 0.2em 0.3em;
+  position: relative;
+}
+
+#navbar .folder {
+  display: grid;
+  grid-template-columns: 5px 2fr;
+  column-gap: 1em;
+  padding: 0.2em 0 0.2em 0.5em;
+}
+
+#navbar .list-divider {
+  display: block;
+  height: 100%;
+  width: 5px;
+
+  position: relative;
+  top: -1%;
+  margin-left: 0.6em;
+  margin-top: -1px;
+
+  background-color: var(--bright-lilac);
+  border-radius: var(--border-radius-S);
+  transition: all cubic-bezier(1, 0, 0, 1);
+}
+
+#navbar a {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  color: var(--beige4);
+}
+
+#navbar a:hover::after {
+  display: none;
+}
+
+#navbar li.current a {
+  color: var(--bright-lilac);
+  font-weight: 600;
+
+  position: relative;
+  z-index: 0;
+}
+
+#navbar .topic:hover a {
+  color: var(--brown);
+  font-weight: 600;
+}
+
+/* Add a cursor next to the current page */
+#navbar li.current::before,
+#navbar .topic:hover::before {
+  content: "";
+  width: 15px;
+  height: 45px;
+
+  position: absolute;
+  left: -18px;
+  top: 66%;
+
+  background-image: url("data:image/svg+xml;utf8,<svg width='26' height='48' viewBox='0 0 26 48' xmlns='http://www.w3.org/2000/svg'><path d='M26 24C26 42 23.4 48 13 48C2.6 48 0 42 0 24C0 6 2.6 0 13 0C23.4 0 26 6 26 24Z' fill='%23DAC8E4'/></svg>");
+  background-repeat: no-repeat;
+  background-size: contain;
+  transform: translateY(-50%);
+  transition: all cubic-bezier(1, 0, 0, 1);
+}
+
+/* When hovering any .topic, hide the cursor on .current */
+#navbar .folder:hover li.current:not(:hover)::before {
+  opacity: 0;
+}
+
+
+/*************** Table of contents ***************/
+#navbar #toc {
+  display: block;
+  color: var(--bright-pink);
+  padding: 0 1.2em 1.2em;
+  text-align: left;
+}
+
+#navbar #toc.hidden {
+  display: none;
+}
+
+#navbar #toc > * {
+  cursor: pointer;
+  font-size: 0.85em;
+
+  margin: 0.1em 0;
+  padding: 0;
+  transition: all 0.1s ease-in;
+}
+
+#navbar #toc>*:not(:hover):not(.current),
+#navbar #toc>*:not(:hover):not(.current)>* {
+  color: var(--beige4);
+  font-weight: 500;
+}
+
+#navbar #toc h2:not(:first-child) {
+  margin-top: 0.7em;
+}
+
+#navbar #toc h3 {
+  margin-left: 0.25em;
+}
+
+#navbar #toc h4 {
+  margin-left: 0.5em;
+}
+
+#navbar #toc h5 {
+  margin-left: 1em;
+}
+
+#navbar #toc h5::before {
+  display: none;
+}

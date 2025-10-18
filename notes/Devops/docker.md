@@ -6,51 +6,6 @@
 
 Docker is an open platform for **developing**, **shipping**, and **running applications**. Docker enables the **separation of applications from infrastructure** so software can be delivered quickly.
 
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-##### Table of contents
-
-- [Docker](#docker)
-        - [Table of contents](#table-of-contents)
-  - [1 - Containers](#1---containers)
-  - [2 - Images](#2---images)
-  - [3 - Dockerfile format](#3---dockerfile-format)
-    - [3.1 - FROM](#31---from)
-    - [3.2 - RUN](#32---run)
-      - [3.2.1 - RUN --mount](#321---run---mount)
-      - [3.2.2 - RUN --network](#322---run---network)
-    - [3.3 - CMD](#33---cmd)
-    - [3.4 - LABEL](#34---label)
-    - [3.5 - EXPOSE](#35---expose)
-    - [3.6 - ENV](#36---env)
-    - [3.7 - ADD](#37---add)
-    - [3.8 - COPY](#38---copy)
-      - [COPY --link and ADD --link](#copy---link-and-add---link)
-    - [3.9 - ENTRYPOINT](#39---entrypoint)
-      - [3.9.1 - The shell form](#391---the-shell-form)
-      - [3.9.2 - The exec form](#392---the-exec-form)
-      - [3.9.3 - CMD and ENTRYPOINT](#393---cmd-and-entrypoint)
-    - [3.10 - VOLUME](#310---volume)
-    - [3.11 - USER](#311---user)
-    - [3.12 - WORKDIR](#312---workdir)
-    - [3.13 - ARG](#313---arg)
-      - [3.13.1 - Using ARG variables](#3131---using-arg-variables)
-      - [3.13.2 - Predefined ARGs](#3132---predefined-args)
-      - [3.13.3 - Impact on build caching](#3133---impact-on-build-caching)
-    - [3.14 - ONBUILD](#314---onbuild)
-    - [3.15 - STOPSIGNA](#315---stopsigna)
-    - [3.16 - HEALTHCHECK](#316---healthcheck)
-    - [3.17 - SHELL](#317---shell)
-  - [4 - `.dockerignore`](#4---dockerignore)
-  - [5 - Best practices](#5---best-practices)
-  - [6 - Docker and Python](#6---docker-and-python)
-    - [6.1 Setup](#61-setup)
-    - [6.2 Run a database in a container](#62-run-a-database-in-a-container)
-    - [6.3 Connect the application to the database](#63-connect-the-application-to-the-database)
-  - [7 - Use Compose to develop locally](#7---use-compose-to-develop-locally)
-  - [Sources](#sources)
-
-<!-- markdown-toc end -->
-
 ## 1 - Containers
 
 > Containers are **isolated environments**: they can have their own processes, services, network interfaces, and mounts.
@@ -62,7 +17,7 @@ Containers differ from Virtual Machines in the sense that **VMs are completely i
 
 Generally, **containers boot up faster** and **can communicate between each other** thanks to networks, or **with the host** thanks to volumes and bind mounts.
 
-##### > Systems basics
+##### Systems basics
 
 A computer system usually includes hardware, system software, application software and peripheral equipement.
 

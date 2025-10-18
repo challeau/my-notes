@@ -1,0 +1,16 @@
+mixin head(title)
+  title= title
+
+  // code highlighting
+  link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css")
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js")
+  script(src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/languages/dockerfile.min.js")
+
+  script.
+    hljs.highlightAll();
+
+  // style
+  include ./styles.pug
+
+  // no indexing
+  meta(name="robots", content="noindex")

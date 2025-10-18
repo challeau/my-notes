@@ -9,53 +9,20 @@
 
 Eve is **powered by Flask and Cerberus**, and it offers **native support for MongoDB** data stores.
 
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-##### Table of contents
-
-- [1 - Configuration](#1---configuration)
-    - [1.1 - Setup](#11---setup)
-    - [1.2 - Global Configuration](#12---global-configuration)
-    - [1.3 - Domain configuration](#13---domain-configuration)
-- [2 - HATEOAS](#2---hateoas)
-- [3 - Interactions with the database](#3---interactions-with-the-database)
-    - [3.1 - Inserting](#31---inserting)
-        - [3.1.1 - Inserting a single document](#311---inserting-a-single-document)
-        - [3.1.2 - Bulk inserting](#312---bulk-inserting)
-        - [3.1.3 - Data validation](#313---data-validation)
-    - [3.2 - Updating](#32---updating)
-        - [3.2.1 - Conditional Requests](#321---conditional-requests)
-        - [3.2.2 - Data Integrity and Concurrency Control](#322---data-integrity-and-concurrency-control)
-- [4 - Rendering](#4---rendering)
-- [5 - Filtering and sorting](#5---filtering-and-sorting)
-    - [5.1 - Filtering](#51---filtering)
-    - [5.2 - Sorting](#52---sorting)
-- [6 - Event Hooks](#6---event-hooks)
-    - [6.1 - Pre-Request event hooks](#61---pre-request-event-hooks)
-        - [Dynamic lookup filters](#dynamic-lookup-filters)
-    - [6.2 - Post-Request Event Hooks](#62---post-request-event-hooks)
-    - [6.3 - Database event hooks](#63---database-event-hooks)
-        - [6.3.1 - Fetch events](#631---fetch-events)
-        - [6.3.2 - Insert events](#632---insert-events)
-        - [6.3.3 - Replace events](#633---replace-events)
-        - [6.3.4 - Update events](#634---update-events)
-        - [6.3.5 - Delete events](#635---delete-events)
-    - [6.4 - Aggregation event hooks](#64---aggregation-event-hooks)
-- [Sources](#sources)
-
-<!-- markdown-toc end -->
-
 ## 1 - Configuration
 
 ### 1.1 - Setup
 
 All you need to bring your API online is:
- - a **database**,
- - a **configuration file** or **dictionary**,
- - a **launch script**. 
- 
+
+- a **database**,
+- a **configuration file** or **dictionary**,
+- a **launch script**.
+
 Generally, Eve configuration is best done with configuration files. The configuration files themselves are actual Python files. However, Eve will give precedence to dictionary-based settings first, then it will try to locate a file passed in `EVE_SETTINGS` environmental variable (if set) and finally it will try to locate `settings.py` or a file with filename passed to ths `settings` flag in the constructor.
 
 Setting up with a dictionary:
+
 ```python
 from eve import Eve
 
@@ -66,6 +33,7 @@ app.run()
 ```
 
 Or with a configuration file:
+
 ```python
 # run.py                                # settings.py
 from eve import Eve                     DOMAIN = {'people': {}}
@@ -97,7 +65,7 @@ Besides defining the general API behavior, **most global configuration settings*
 | `RENDERERS`                                                                                           | Allows to change enabled renderers. Defaults to `['eve.render.JSONRenderer', 'eve.render.XMLRenderer']`.                                                                                                                                                                                                                                                                                               |
 | `VERSIONING`                                                                                          | Enabled documents version control when `True`. Can be overridden by resource settings. Defaults to `False`.                                                                                                                                                                                                                                                                                            |
 | `MONGO_URI`<br>`MONGO_HOST`<br>`MONGO_PORT`<br>`MONGO_USERNAME`<br>`MONGO_PASSWORD`<br>`MONGO_DBNAME` | MongoDB settings.                                                                                                                                                                                                                                                                                                                                                                                      |
-| `MONGO_OPTIONS`                                                                                       | MongoDB keyword arguments to be passed to MongoClient class `__init__`. Defaults to` {'connect': True, 'tz_aware': True, 'appname': 'flask_app_name', 'uuidRepresentation': 'standard'}`.                                                                                                                                                                                                              |
+| `MONGO_OPTIONS`                                                                                       | MongoDB keyword arguments to be passed to MongoClient class `__init__`. Defaults to`{'connect': True, 'tz_aware': True, 'appname': 'flask_app_name', 'uuidRepresentation': 'standard'}`.                                                                                                                                                                                                              |
 | `DOMAIN`                                                                                              | A dict holding the API domain definition.                                                                                                                                                                                                                                                                                                                                                              |
 | `OPLOG`                                                                                               | Set it to `True` to enable the Operations Log. Defaults to `False`.                                                                                                                                                                                                                                                                                                                                    |
 | `SOFT_DELETE`                                                                                         | Enables soft delete when set to `True`. Defaults to `False`.                                                                                                                                                                                                                                                                                                                                           |
@@ -125,18 +93,17 @@ Endpoint customization is mostly done by **overriding** some global settings, bu
 
 See full list of customizations [here](https://docs.python-eve.org/en/stable/config.html#resource-item-endpoints).
 
-
 ## 2 - HATEOAS
 
-> Hypermedia as the Engine of Application State 
+> Hypermedia as the Engine of Application State
 
 **API entry points adhere to the HATEOAS principle**, a constraint of the REST application architecture that lets us use the hypermedia links in the API response contents. It **allows the client to dynamically navigate to the appropriate resources by traversing the hypermedia links**.
 
-The term **'hypermedia'** refers to **any content that contains links to other forms of media** such as images, movies, and text. 
+The term **'hypermedia'** refers to **any content that contains links to other forms of media** such as images, movies, and text.
 
 Entrypoints also provide **information about the resources accessible through the API**. In our case there's only one child resource available: `people`.
 
-HATEOAS is **enabled by default**. Each GET response includes a `_links` section. Links **provide details on their relation relative to the resource being accessed**, and a **title**. Relations and titles can then be used by clients to **dynamically updated their UI**, or to **navigate the API** without knowing its structure beforehand. 
+HATEOAS is **enabled by default**. Each GET response includes a `_links` section. Links **provide details on their relation relative to the resource being accessed**, and a **title**. Relations and titles can then be used by clients to **dynamically updated their UI**, or to **navigate the API** without knowing its structure beforehand.
 
 An example:
 
@@ -165,7 +132,6 @@ An example:
 
 HATEOAS links are **always relative to the API entry point**, so if your API home is at `examples.com/api/v1`, the `self` link in the above example would mean that the `people` endpoint is located at `examples.com/api/v1/people`.
 
-
 ## 3 - Interactions with the database
 
 > By default, Eve APIs are **read-only**.
@@ -188,6 +154,7 @@ MONGO_DBNAME = 'apitest'
 ```
 
 You can **enable the full spectrum of CRUD operations**:
+
 ```python
 # Enable GET, POST and DELETE at resource endpoints
 RESOURCE_METHODS = ['GET', 'POST', 'DELETE']
@@ -206,7 +173,6 @@ curl -d '{"firstname": "barack", "lastname": "obama"}' -H 'Content-Type: applica
 The response payload will just contain the relevant document metadata (`status`, `_updated`, `_id`, `etag`, and `links`).
 
 When a `201 Created` is returned following a POST request, the `Location` header is also included with the response. Its value is the URI to the new document.
-
 
 #### 3.1.2 - Bulk inserting
 
@@ -261,7 +227,7 @@ schema = {
 }
 ```
 
-Data validation is **based on the Cerberus validation system**, therefore it is extensible: you can adapt it to your specific use case. Say that your API can only accept odd numbers for a certain field value; you can extend the validation class to validate that. Or say you want to make sure that a VAT field actually matches your own country VAT algorithm; you can do that too. As a matter of fact, **Eve's MongoDB data-layer itself extends Cerberus validation** by implementing the unique **schema field** constraint. 
+Data validation is **based on the Cerberus validation system**, therefore it is extensible: you can adapt it to your specific use case. Say that your API can only accept odd numbers for a certain field value; you can extend the validation class to validate that. Or say you want to make sure that a VAT field actually matches your own country VAT algorithm; you can do that too. As a matter of fact, **Eve's MongoDB data-layer itself extends Cerberus validation** by implementing the unique **schema field** constraint.
 
 ### 3.2 - Updating
 
@@ -281,7 +247,6 @@ Or the `If-None-Match` header:
 curl -H "If-None-Match: 1234567890123456789012345678901234567890" -i http://myapi.com/people/521d6840c437dc0002d1203c
 ```
 
-
 #### 3.2.2 - Data Integrity and Concurrency Control
 
 API responses include a `ETag` header which also **allows for proper concurrency control**. An `ETag` is a **hash value representing the current state** of the resource on the server. Concurrency control **applies to all edition methods**: PATCH (edit), PUT (replace), DELETE (delete).
@@ -289,13 +254,13 @@ API responses include a `ETag` header which also **allows for proper concurrency
 Consumers are **not allowed to edit** or delete a resource **unless they provide an up-to-date `ETag`** for the resource they are attempting to edit. This prevents overwriting items with obsolete versions.
 
 When attempting one of these operations, you can get these responses:
+
 - `428 PRECONDITION REQUIRED`. Problem: you didn't provide an `ETag`.
 - `412 PRECONDITION FAILED`. Problem: the `ETag` provided does not match the `ETag` computed on the representation of the item currently stored.
 
-Upon success of a patch, the server **returns the new `ETag`**, and the `_updated` value is changed. 
+Upon success of a patch, the server **returns the new `ETag`**, and the `_updated` value is changed.
 
-If your use case requires, you can opt to completely **disable concurrency control**. `ETag` match checks can be disabled by setting the `IF_MATCH` configuration variable to `False`. Alternatively, `ETag` match checks can be made optional by the client if `ENFORCE_IF_MATCH` is disabled. 
-
+If your use case requires, you can opt to completely **disable concurrency control**. `ETag` match checks can be disabled by setting the `IF_MATCH` configuration variable to `False`. Alternatively, `ETag` match checks can be made optional by the client if `ENFORCE_IF_MATCH` is disabled.
 
 ## 4 - Rendering
 
@@ -319,7 +284,6 @@ RENDERERS = [
 Or you can **create your own renderer** by **subclassing** `eve.render.Renderer`. Each renderer should **set valid `mime` attribute and have `.render()` method implemented**.
 
 > At least one renderer must always be enabled.
-
 
 ## 5 - Filtering and sorting
 
@@ -350,12 +314,12 @@ http://myapi.com/people?where={"born": {"$gte":"Wed, 25 Feb 1987 17:00:00 GMT"}}
 ```
 curl -i http://myapi.com/people?where=lastname=="Doe"
 ```
+
 Both syntaxes allow for conditional and logical `And`/`Or` operators, however nested and combined.
 
 Filters are enabled by default on all document fields. However, the API maintainer can choose to **blacklist** some, disable them all and/or whitelist allowed ones by setting the `ALLOWED_FILTERS` global configuration setting.
 
 > If API scraping or DB DoS attacks are a concern, then globally disabling filters and whitelisting valid ones at the local level is the way to go.
-
 
 ### 5.2 - Sorting
 
@@ -369,7 +333,6 @@ This would return documents sorted by city and then by lastname (descending).
 
 > Prepending a minus sign to the field name reverses the sorting order for that field.
 
-
 The MongoDB data layer also supports native MongoDB syntax:
 
 ```
@@ -377,7 +340,6 @@ http://myapi.com/people?sort=[("lastname", -1)]
 ```
 
 **Sorting is enabled by default** and **can be disabled both globally and/or at resource level** by setting the `SORTING` global configuration setting. It is also possible to **set the default sort** at every API endpoints by setting the `default_sort` field of the `DOMAIN` global configuration setting.
-
 
 ## 6 - Event Hooks
 
@@ -403,13 +365,11 @@ app.run()
 
 Callbacks will **receive the resource** being requested, the **original `flask.request` object** and the **current lookup dictionary** as arguments (only exception being the `on_pre_POST` hook which does not provide a lookup argument).
 
-
 #### Dynamic lookup filters
 
 Since the lookup dictionary will be used by the data layer to retrieve resource documents, developers may choose to alter it in order to **add custom logic to the lookup query.**
 
 Altering the lookup dictionary at runtime would have similar effects to applying Predefined Database Filters via configuration. However, you can only set static filters via configuration whereas by hooking to the `on_pre_<METHOD>` events you are **allowed to set dynamic filters** instead, which allows for additional flexibility.
-
 
 ### 6.2 - Post-Request Event Hooks
 
@@ -432,7 +392,6 @@ app.run()
 ```
 
 Callbacks will receive the resource accessed, original `flask.request` object and the response payload.
-
 
 ### 6.3 - Database event hooks
 
@@ -459,6 +418,7 @@ app.on_insert_item += check_update_access
 ```
 
 The events are fired for resources and items **if the action is available for both**. And for each action two events will be fired:
+
 - `on_<action_name>`: generic,
 - `on_<action_name>_<resource_name>`: with the name of the resource.
 
@@ -470,41 +430,37 @@ The events are fired for resources and items **if the action is available for bo
 | Update  | items                                    | before<br/><br/>after                                               | `on_update(resource_name, updates, original)`<br/>`on_update_<resource_name>(updates, original)`<br/>`on_updated(resource_name, updates, original)`<br/>`on_updated_<resource_name>(updates, original)`                                                                                                                                                                                                                                                                          |
 | Delete  | items<br/><br/><br/><br/><br/>ressources | before<br/><br/>after<br/><br/><br/>before<br/><br/><br/><br/>after | `on_delete_item(resource_name, item)`<br/>`on_delete_item_<resource_name>(item)`<br/>`on_deleted_item(resource_name, item)`<br/>`on_deleted_item_<resource_name>(item)`<br/><br/>`on_delete_resource(resource_name)`<br/>`on_delete_resource_<resource_name>()`<br/>`on_delete_resource_originals(originals, lookup)`<br/>`on_delete_resource_originals_<resource_name>(originals, lookup)`<br/>`on_deleted_resource(resource_name)`<br/>`on_deleted_resource_<resource_name>()` |
 
-
-
 #### 6.3.1 - Fetch events
 
 They are **raised when items have just been read** from the database and are **about to be sent** to the client. Registered callback functions can manipulate the items as needed before they are returned to the client.
 
->  Item fetch events will work with Document Versioning for specific document versions like `?version=5` and all document versions with `?version=all.` 
-
+> Item fetch events will work with Document Versioning for specific document versions like `?version=5` and all document versions with `?version=all.`
 
 #### 6.3.2 - Insert events
 
 When a POST requests hits the API and **new items are about to be stored** in the database, these events are fired:
+
 - `on_insert` for every resource endpoint.
 - `on_insert_<resource_name>` for the specific `<resource_name>` resource endpoint.
 
 Callback functions could hook into these events to arbitrarily add new fields or edit existing ones.
 
 After the items have been inserted, these two events are fired:
+
 - `on_inserted` for every resource endpoint.
 - `on_inserted_<resource_name>` for the specific `<resource_name>` resource endpoint.
 
 > Items passed to these events as arguments come in a list. And only those items that passed validation are sent.
 
-
 #### 6.3.3 - Replace events
 
 In the method signatures, `item` is the new item which is about to be stored and `original` is the item in the database that is being replaced. Callback functions could hook into these events to arbitrarily add or update item fields, or to perform other accessory action.
-
 
 #### 6.3.4 - Update events
 
 In the method signatures, updates stands for updates being applied to the item and original is the item in the database that is about to be updated. Callback functions could hook into these events to arbitrarily add or update fields in updates, or to perform other accessory action.
 
 > `last_modified` and `etag` headers will **always be consistent** with the state of the items on the database (they won't be updated to reflect changes eventually applied by the callback functions).
-
 
 #### 6.3.5 - Delete events
 
@@ -513,7 +469,6 @@ Callback functions could hook into these events to perform accessory actions, bu
 If you were brave enough to enable the DELETE command on resource endpoints (allowing for wipe-out of the entire collection in one go), then you can be notified of such a disastrous occurrence by hooking a callback function to the `on_delete_resource(resource_name)` or `on_delete_resource_<resource_name>()` hooks.
 
 Note that those two events are are useful in order to perform some **business logic before the actual remove operation** given the look-up and the list of originals.
-
 
 ### 6.4 - Aggregation event hooks
 

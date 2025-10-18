@@ -1,51 +1,15 @@
 
-[//]: # (TITLE TS basics)
+[//]: # (TITLE Basics)
 [//]: # (ENDPOINT /ts-basics)
+[//]: # (DESCRIPTION The fundamentals of TS's syntax and concepts)
 [//]: # (PRIORITY 0)
 
 # Essential TypeScript
 
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-##### Table of contents
-
-- [Essential TypeScript](#essential-typescript)
-        - [Table of contents](#table-of-contents)
-  - [1 - Typing](#1---typing)
-    - [1.1 Simple types](#11-simple-types)
-    - [1.2 Special types](#12-special-types)
-    - [1.3 Arrays and Tuples](#13-arrays-and-tuples)
-    - [1.4 Objects](#14-objects)
-    - [1.5 Enums](#15-enums)
-  - [2 - Type Aliases and Interfaces](#2---type-aliases-and-interfaces)
-  - [3 - Union types](#3---union-types)
-  - [4 - Functions](#4---functions)
-  - [5 - Type casting](#5---type-casting)
-  - [6 - Classes](#6---classes)
-    - [6.1 Basics](#61-basics)
-    - [6.2 Inheritance](#62-inheritance)
-    - [6.3 Abstract classes](#63-abstract-classes)
-  - [7 - Generics](#7---generics)
-    - [7.1 Functions](#71-functions)
-    - [7.2 Classes](#72-classes)
-    - [7.3 Type Aliases](#73-type-aliases)
-    - [7.4 Default Value](#74-default-value)
-  - [8 - Utility Types](#8---utility-types)
-    - [8.1 Partial](#81-partial)
-    - [8.2 Required](#82-required)
-    - [8.3 Record](#83-record)
-    - [8.4 Omit](#84-omit)
-    - [8.5 Pick](#85-pick)
-    - [8.6 Exclude](#86-exclude)
-    - [8.7 ReturnType](#87-returntype)
-    - [8.8 Parameters](#88-parameters)
-  - [9 - keyof](#9---keyof)
-
-<!-- markdown-toc end -->
-
-
 ## 1 - Typing
 
 Type assignment can be explicit or implicit:
+
 ```typescript
 // explicit
 let firstName: string = "Jake";
@@ -56,13 +20,11 @@ let firstName = "Amir";
 
 Implicit assignment forces TypeScript to infer the value. TypeScript may not always properly infer what the type of a variable may be. In such cases, it will set the type to `any`, which disables type checking.
 
-
 ### 1.1 Simple types
 
 `booleans`, `number`, `string`.
 
 ❌ Don't ever use the types `Number`, `String`, `Boolean`, `Symbol`, or `Object`. These types refer to non-primitive boxed objects that are almost never used appropriately in JavaScript code.
-
 
 ### 1.2 Special types
 
@@ -75,10 +37,10 @@ TypeScript has special types that may not refer to any specific type of data:
 | `never`                | throws an error whenever it is defined                                                 |
 | `undefined`<br/>`null` | refer to the Javascript primitives.                                                    |
 
-
 ### 1.3 Arrays and Tuples
 
 Arrays can only contain data of the same type:
+
 ```typescript
 // array of strings
 const names: string[] = [];
@@ -94,6 +56,7 @@ names.push("Amir");      // error
 ```
 
 In Typescript, tuples are a typed array with a pre-defined length and type for each index:
+
 ```typescript
 // definition
 let myTuple: [number, boolean, string];
@@ -110,7 +73,6 @@ const [x, y] = graph;
 ```
 
 *Note: you can use `.push()` on an initialized tuple but there won't be any type safety after the last defined member.*
-
 
 ### 1.4 Objects
 
@@ -137,7 +99,6 @@ const nameAgeMap: { [index: string]: number } = {};
 nameAgeMap.Jake = 25;                                   // no error
 nameAgeMap.Amir = "Fifty";                              // throws an error
 ```
-
 
 ### 1.5 Enums
 
@@ -169,8 +130,8 @@ enum CardinalDirections {
     West = "West"
 };
 ```
-*Note: technically, you can mix and match string and numeric enum values, but it is **not** recommended to do so.*
 
+*Note: technically, you can mix and match string and numeric enum values, but it is **not** recommended to do so.*
 
 ## 2 - Type Aliases and Interfaces
 
@@ -214,8 +175,8 @@ const rectangle: Rectangle = {
 };
 ```
 
-
 Interfaces can extend each other's definition thanks to the `extends` keyword:
+
 ```typescript
 interface ColoredRectangle extends Rectangle {
     color: string
@@ -227,7 +188,6 @@ const coloredRectangle: ColoredRectangle = {
     color: "red"
 };
 ```
-
 
 ## 3 - Union types
 
@@ -241,7 +201,6 @@ function printStatusCode(code: string | number) {
 printStatusCode(404);       // works
 printStatusCode('404');     // also works
 ```
-
 
 ## 4 - Functions
 
@@ -286,10 +245,10 @@ type Negate = (value: number) => number;
 
 const negateFunction: Negate = (value) => value * -1;
 ```
+
 *Note: avoid using optional parameters in callbacks.*
 
 Use the return type `void` for callbacks whose value will be ignored, NOT `any`. Using void is safer because it prevents you from accidentally using a return value in an unchecked way.
-
 
 ## 5 - Type casting
 
@@ -314,8 +273,8 @@ console.log((x as string).length);      // undefined
 let x = 3;
 console.log(((x as unknown) as string).length)  // undefined
 ```
-*Note: casting with `<>` doesn't work in TSX, the Typescript equivalent to JSX.*
 
+*Note: casting with `<>` doesn't work in TSX, the Typescript equivalent to JSX.*
 
 ## 6 - Classes
 
@@ -358,14 +317,14 @@ class Person{
 }
 ```
 
-
 ### 6.2 Inheritance
 
 A class can inherit from another class in two ways: with the `extends` keyword, or with the `implements` keyword.
 
 <br/>
 
-Using `implements` is a form of polymorphism (the provision of a single interface to entities of different types). 
+Using `implements` is a form of polymorphism (the provision of a single interface to entities of different types).
+
 ```typescript
 // implements
 interface Shape {
@@ -380,10 +339,11 @@ class Rectangle implements Shape {
     }
 }
 ```
+
 Here, the new class `Rectangle` can be treated as the same "sort of thing" as `Shape`, but it is not a child of it. It could be passed to any method where `Shape` is required, regardless of having a different parent than `Shape`.
 
-
 In contrast, `extends`is more like classic inheritance:
+
 ```typescript
 class Square extends Rectangle {
     public constructor(width: number) {
@@ -391,15 +351,14 @@ class Square extends Rectangle {
     }
 }
 ```
+
 The new class `Square` is a child of `Rectangle`. It has all the properties and methods of its parent, but these can be overridden, or others can be implemented.
 
 *Note: newer versions of TypeScript allow explicitly marking the re-implementations with the `override` keyword.*
 
-
 ### 6.3 Abstract classes
 
 Classes can be written in a way that allows them to be used as a base class for other classes without having to implement all the members. This is done by using the `abstract` keyword. Members that are left unimplemented also use the `abstract` keyword.
-
 
 ```typescript
 abstract class Polygon {
@@ -443,7 +402,6 @@ console.log(result);                                   // ['hello', 420]
 
 ```
 
-
 ### 7.2 Classes
 
 ```typescript
@@ -471,7 +429,6 @@ value.setValue(10);
 console.log(value.toString());        // myNumber: 10
 ```
 
-
 ### 7.3 Type Aliases
 
 ```typescript
@@ -480,10 +437,10 @@ type Wrapped<T> = { value: varType };
 const wrappedValue: Wrapped<number> = { value: 10 };
 ```
 
-
 ### 7.4 Default Value
 
 Generics can be assigned default values which apply if no other value is specified or inferred:
+
 ```typescript
 class NamedValue<varType = string> {
     private _value: varType | undefined;
@@ -496,7 +453,6 @@ class NamedValue<varType = string> {
 }
 ```
 
-
 ## 8 - Utility Types
 
 > TypeScript comes with a large number of types that can help with some common type manipulation, usually referred to as utility types.
@@ -504,6 +460,7 @@ class NamedValue<varType = string> {
 ### 8.1 Partial
 
 `Partial` changes all the properties in an object to be optional.
+
 ```typescript
 interface Point {
     x: number;
@@ -514,10 +471,10 @@ let pointPart: Partial<Point> = {};
 pointPart.x = 10;
 ```
 
-
 ### 8.2 Required
 
 `Required` changes all the properties in an object to be required.
+
 ```typescript
 interface Car {
     make: string;
@@ -532,10 +489,10 @@ let myCar: Required<Car> = {
 }
 ```
 
-
 ### 8.3 Record
 
 `Record` is a shortcut to defining an object type with a specific key type and value type.
+
 ```typescript
 const nameAgeMap: Record<string, number> = {
     'Alice': 21,
@@ -545,10 +502,10 @@ const nameAgeMap: Record<string, number> = {
 
 > `Record<string, number>` is equivalent to `{ [key: string]: number }`.
 
-
 ### 8.4 Omit
 
 `Omit` removes keys from an object type.
+
 ```typescript
 interface Person {
     name: string;
@@ -561,10 +518,10 @@ const bob: Omit<Person, 'age' | 'location'> = {
 };
 ```
 
-
 ### 8.5 Pick
 
 `Pick` removes all but the specified keys from an object type.
+
 ```typescript
 interface Person {
     name: string;
@@ -580,6 +537,7 @@ const bob: Pick<Person, 'name'> = {
 ### 8.6 Exclude
 
 `Exclude` removes types from a union.
+
 ```typescript
 type Primitive = string | number | boolean
 const value: Exclude<Primitive, string> = true;
@@ -590,6 +548,7 @@ const value: Exclude<Primitive, string> = true;
 ### 8.7 ReturnType
 
 `ReturnType` extracts the return type of a function type.
+
 ```typescript
 type PointGenerator = () => { x: number; y: number; };
 const point: ReturnType<PointGenerator> = {
@@ -598,10 +557,10 @@ const point: ReturnType<PointGenerator> = {
 };
 ```
 
-
 ### 8.8 Parameters
 
 `Parameters` extracts the parameter types of a function type as an array.
+
 ```typescript
 type PointPrinter = (p: { x: number; y: number; }) => void;
 const point: Parameters<PointPrinter>[0] = {
@@ -610,12 +569,12 @@ const point: Parameters<PointPrinter>[0] = {
 };
 ```
 
-
 ## 9 - keyof
 
 `keyof` is a keyword in TypeScript which is used to extract the key type from an object type.
 
 When used on an object type with explicit keys, `keyof` creates a union type with those keys:
+
 ```typescript
 interface Person {
     name: string;
@@ -635,10 +594,10 @@ printPersonProperty(person, "name");      // Printing person property name: "Max
 ```
 
 `keyof` can also be used with index signatures to extract the index type:
+
 ```typescript
 type StringMap = { [key: string]: unknown };
 function createStringPair(property: keyof StringMap, value: string): StringMap {
     return { [property]: value };
 }
 ```
-

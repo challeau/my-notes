@@ -1,50 +1,10 @@
 
-[//]: # (TITLE PY basics)
+[//]: # (TITLE Basics)
 [//]: # (ENDPOINT /py-basics)
+[//]: # (DESCRIPTION The fundamentals of Python's syntax and concepts)
 [//]: # (PRIORITY 0)
 
 # Essential Python
-
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-##### Table of contents
-
-- [Essential Python](#essential-python)
-        - [Table of contents](#table-of-contents)
-  - [1 - Data](#1---data)
-    - [1.1 - Argument types](#11---argument-types)
-    - [1.2 - Data types: sequences](#12---data-types-sequences)
-        - [Sequences list](#sequences-list)
-  - [2 - Classes](#2---classes)
-    - [2.1 - Class objects](#21---class-objects)
-    - [2.2 - Instance objects](#22---instance-objects)
-    - [2.3 - Methods](#23---methods)
-      - [2.3.1 - Instance methods](#231---instance-methods)
-      - [2.3.2 - Class methods](#232---class-methods)
-      - [2.3.3 - Static methods](#233---static-methods)
-      - [2.3.4 - Special methods](#234---special-methods)
-      - [2.3.5 - In sum](#235---in-sum)
-    - [2.4 - Inheritance](#24---inheritance)
-    - [2.5 - Private Variables](#25---private-variables)
-    - [2.6 - Keywords](#26---keywords)
-      - [2.6.1 - `super()`](#261---super)
-      - [2.6.2 - `__new__()` vs `__init__()`](#262---__new__-vs-__init__)
-    - [2.7 - Generators](#27---generators)
-  - [3 - Decorators](#3---decorators)
-    - [3.1 - Syntax](#31---syntax)
-    - [3.2 - Decorate functions with arguments](#32---decorate-functions-with-arguments)
-    - [3.3 - Returning Values From Decorated Functions](#33---returning-values-from-decorated-functions)
-    - [3.4 - Decorating classes](#34---decorating-classes)
-    - [3.5 - Stateful Decorators](#35---stateful-decorators)
-    - [3.6 - Fun facts](#36---fun-facts)
-  - [4 - Logging](#4---logging)
-    - [4.1 - Logging functions](#41---logging-functions)
-    - [4.2 - Logging to a file](#42---logging-to-a-file)
-    - [4.3 - Advantages over `print()`](#43---advantages-over-print)
-  - [Sources](#sources)
-
-<!-- markdown-toc end -->
-
-
 
 ## 1 - Data
 
@@ -75,12 +35,13 @@
 			<td>
 
 Allows **multiple arguments** to be passed to a function.
+
 - Positional: `*args`. Treat like a regular tuple.
 - Keyword: `**kwargs`. Treat like a regular dict.
- 
+
 </td>
 <td>
-			
+
 ```python
 def percentage(**kwargs):
     for sub in kwargs:
@@ -98,14 +59,14 @@ def percentage(**kwargs):
 
 ### 1.2 - Data types: sequences
 
-> Sequences are iterables which support **efficient element access** using **integer indices** via the `__getitem__()` special method and define a `__len__()` method that returns the length of the sequence. Some built-in sequence types are **list, str, tuple, and bytes**. 
+> Sequences are iterables which support **efficient element access** using **integer indices** via the `__getitem__()` special method and define a `__len__()` method that returns the length of the sequence. Some built-in sequence types are **list, str, tuple, and bytes**.
 
 Other iterable data types: strings, dicts, file objects, and objects of any classes you define with an `__iter__()` method or with a `__getitem__()` method that implements Sequence semantics.
 
 Iterables that aren't sequences:
+
 - dicts also support `__getitem__()` and `__len__()`, but are considered a **mapping** because the **lookups use arbitrary immutable keys** rather than integers.
 - sets, they have no order, and they can't be indexed.
-
 
 Data is **packed** in sequences, and can be unpacked like this:
 
@@ -113,7 +74,6 @@ Data is **packed** in sequences, and can be unpacked like this:
 t = 12345, 54321, 'hello!'
 x, y, z = t
 ```
-
 
 ##### Sequences list
 
@@ -131,7 +91,7 @@ empty = []
 squares = [1, 4, 9]
 squares = [x**2 for x in range(10)]
 ```
-			
+
 </td>
 <td>
 
@@ -185,7 +145,6 @@ a = {x for x in 'str' if x not in 'abc'}
 </tbody>
 </table>
 
-
 ## 2 - Classes
 
 > Classes provide a means of **bundling data and functionality together**. Each class instance can have **attributes** attached to it for **maintaining its state**, and **methods** (defined by its class) for **modifying its state**.
@@ -193,9 +152,9 @@ a = {x for x in 'str' if x not in 'abc'}
 New class == new type of object.<br/>
 New instance == new object of that type.
 
-
 Python implements:
-- **Class inheritance** (--> multiple base classes), 
+
+- **Class inheritance** (--> multiple base classes),
 - **Overriding** of base class.es methods by derived classes,
 - Methods able to **call the method of a base class** with the same name,
 
@@ -215,7 +174,7 @@ class MyClass:
 ```
 
 - Attribute reference: `MyClass.i` or `MyClass.f`.
-- Class instantiation uses function notation: `x = MyClass()`. 
+- Class instantiation uses function notation: `x = MyClass()`.
 
 The **instantiation** operation ("calling" a class object) **creates an empty object**. Many classes like to create objects with instances customized to a specific initial state.  Therefore, a class may define a special method named `__init__()`, like this:
 
@@ -227,6 +186,7 @@ x = MyClass()
 ```
 
 Or with arguments:
+
 ```python
 def __init__(self, x, y):
     self.x = x
@@ -237,10 +197,10 @@ x = MyClass(6, 9)
 
 ### 2.2 - Instance objects
 
-The only operations understood by instance objects are **attribute references**. There are two kinds of valid attribute names: 
+The only operations understood by instance objects are **attribute references**. There are two kinds of valid attribute names:
+
 - **data attributes**: instance variables. They don't require declaration and are "sprung into existence" at the first assignment.
 - **methods**: functions that belong to an object. Method objects can be stored in variables and called later.
-
 
 ### 2.3 - Methods
 
@@ -262,6 +222,7 @@ Instance methods are used to **access or modify the object state**. If we use in
 def my_method(cls):
     # do stuff
 ```
+
 Class methods **receive the class as an implicit first argument**, just like an instance method receives the instance (`self`).
 They can **access and modify a class state** that would apply across all the instances of the class.
 
@@ -272,6 +233,7 @@ They can **access and modify a class state** that would apply across all the ins
 def my_method():
     # do stuff
 ```
+
 **Static methods aren't bound to an instance**. They **don't receive an implicit first argument**, and they **can't access or modify the class state**.
 
 They are present in a class because it makes sense for the method to be present in class. They can be called on the class, in the instance, or as regular functions.
@@ -282,6 +244,7 @@ They are present in a class because it makes sense for the method to be present 
 def __my_special_method__(self):
     # do stuff
 ```
+
 Special (or magic) methods are **methods called implicitly by Python** to execute a certain operation on a type. Examples: `__init__`, `__get_attr__`, `__next__`...
 
 #### 2.3.5 - In sum
@@ -289,7 +252,6 @@ Special (or magic) methods are **methods called implicitly by Python** to execut
 - **Static** methods and **class** methods are both **bound to a class rather than an object**.
 - Generally, **class** methods are used to create **factories**, and **static** methods are used to create **utility** functions.
 - **Special** methods can be used for **type emulation**.
-
 
 ### 2.4 - Inheritance
 
@@ -300,6 +262,7 @@ class DerivedClassName(BaseClassName):
 class DerivedClassName(modname.BaseClassName):
     # statements here
 ```
+
 Classes can **inherit from other classes**, if the base class is defined in a scope containing the derived class definition.
 
 In place of a base class name, **other arbitrary expressions are also allowed**. This can be useful, for example, when the base class is defined in another module.
@@ -309,9 +272,9 @@ In place of a base class name, **other arbitrary expressions are also allowed**.
 Derived classes may **override methods of their base classes**. An overriding method in a derived class may in fact want to **extend rather than simply replace** the base class method of the same name. To do so, **methods can call the base class method directly** with `super()`.
 
 Python has two built-in functions that work with inheritance:
+
 - Use `isinstance()` to check an instance's type.
 - Use `issubclass()` to check class inheritance.
-
 
 Python supports a form of multiple inheritance as well. A class definition with multiple base classes looks like this:
 
@@ -339,8 +302,9 @@ However, there is a **convention** that is followed by most Python code: a name 
 **Returns a proxy object that delegates method calls to a parent or sibling class of type**. This is useful for **accessing inherited methods** that have been overridden in a class.
 
 There are two typical use cases for `super()`:
+
 - In a **class hierarchy with single inheritance**, it can be used to **refer to parent classes** without naming them explicitly, thus making the code more maintainable.
-- It allows **support of cooperative multiple inheritance in a dynamic execution environment**. This makes it possible to implement "diamond diagrams" where multiple base classes implement the same method. 
+- It allows **support of cooperative multiple inheritance in a dynamic execution environment**. This makes it possible to implement "diamond diagrams" where multiple base classes implement the same method.
 
 In addition to method lookups, `super()` **also works for attribute lookups**. One possible use case for this is **calling descriptors in a parent or sibling class**.
 
@@ -362,6 +326,7 @@ Generators are a simple and powerful tool for **creating iterators**. They are w
 **Each iteration**, the generator **resumes where it left off**: the `for` statement calls `iter()` on the container object first, and then successively calls `__next__()`.
 
 Some simple **generators can be coded succinctly** as expressions using a **syntax similar to list comprehensions but with parentheses** instead of square brackets:
+
 ```python
 comp = [i for i in range(10000)]
 gen = (i for i in range(10000))
@@ -370,7 +335,6 @@ gen = (i for i in range(10000))
 These expressions are designed for situations where the generator is **used right away** by an **enclosing function**.
 
 Generator expressions are **more compact** but **less versatile** than full generator definitions, and tend to be **more memory and time friendly than equivalent list comprehensions**.
-
 
 ## 3 - Decorators
 
@@ -391,7 +355,9 @@ def my_decorator_with_a_verbose_name(ft):
 def func1(args):
     pass
 ```
-Define the decorator function: 
+
+Define the decorator function:
+
 - Receive a **function as argument**: functions are first class objects that can be passed and returned (they're references :) ).
 - Define an **inner function**: functions that are defined within another function. They're **bound to the parent's scope**.
 
@@ -479,13 +445,15 @@ With decorators, you can **control the setting/getting/deleting of a class attri
 Decorators can **keep track of a state**.
 
 About functools
+
 - For higher-order functions: functions that act on or return other functions.
 - `.update_wrapper(wrapper, wrapped, assigned=ARGS, updated=ARGS)`: update a wrapper function to look like the wrapped function. Optional arguments (tuples):
-  - assigned: which attributes of the og function are assigned directly to the matching attributes on the wrapper function.
-  - updated: which attributes of the wrapper function are updated with the corresponding attributes from the og function.
+    - assigned: which attributes of the og function are assigned directly to the matching attributes on the wrapper function.
+    - updated: which attributes of the wrapper function are updated with the corresponding attributes from the og function.
 - `.wraps()` : convenience function for invoking `.update_wrapper()` as a function decorator when defining a wrapper function.
 
 Using function attributes:
+
 ```python
 import functools
 
@@ -504,6 +472,7 @@ def say_whee():
 ```
 
 Using a class as decorator (standard):
+
 ```python
 import functools
 
@@ -521,6 +490,7 @@ class CountCalls:
 def say_whee():
     print("Whee!")
 ```
+
 `__init__()` and `__call__()` need to be implemented.
 
 ### 3.6 - Fun facts
@@ -529,10 +499,9 @@ def say_whee():
 - Use `@<decorator>.wraps(func)` to preserve the original function's introspection (`__wrapper__` attribute automatically created).
 - `@functools.lru_cache`: decorator that stores the Least Recently Used cache.
 
-
 ## 4 - Logging
 
-> `Logging` is a means of **tracking events that happen when some software runs**. 
+> `Logging` is a means of **tracking events that happen when some software runs**.
 
 An event is described by a descriptive message which can optionally contain variable data (i.e. data that is potentially different for each occurrence of the event).
 Events also have an importance (or severity) which the developer ascribes to the event.
@@ -540,6 +509,7 @@ Events also have an importance (or severity) which the developer ascribes to the
 ### 4.1 - Logging functions
 
 Logging provides a set of convenience functions for simple logging usage: `debug()`, `info()`, `warning()`, `error()` and `critical()`:
+
 - **DEBUG**: detailed information, typically of interest only when diagnosing problems.
 - **INFO**: confirmation that things are working as expected.
 - **WARNING**: an indication that something unexpected happened, or indicative of some problem in the near future (e.g. ‘disk space low'). The software is still working as expecte.
@@ -556,26 +526,26 @@ logging.basicConfig(filename='example.log', encoding='utf-8', level=logging.DEBU
 logging.debug('This message should go to the log file')
 ```
 
-
 ### 4.3 - Advantages over `print()`
+
 - More verbose/different severity == easier to maintain and debug efficiently.
 - Can log everything to a file, even when working with/logging from different modules.
-
-
 
 ## Sources
 
 Classes:
+
 - [Decorators <3](https://realpython.com/primer-on-python-decorators/#stateful-decorators)
 - [`__new__` vs `__init__`](https://stackoverflow.com/questions/35452178/what-can-init-do-that-new-cannot)
 - [`type()` returns classes](https://python.plainenglish.io/creating-a-class-in-python-without-the-class-keyword-67ce84bae22)
 
 Python related:
+
 - [Scopes](https://realpython.com/python-scope-legb-rule/)
 - [Packaging for distribution](https://bbc.github.io/cloudfit-public-docs/packaging/this_way_up.html)
 - [Gotchas](https://docs.python-guide.org/writing/gotchas/#mutable-default-arguments)
 
+Others:
 
-Others: 
 - [`lxml etree`](https://lxml.de/tutorial.html) or [lxml parsing](https://lxml.de/parsing.html)
 - [`sqlite` tutorial](https://www.sqlitetutorial.net/)

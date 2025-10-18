@@ -6,26 +6,9 @@
 
 PEP 8 is a document that provides **guidelines and best practices** on how to write Python code. The primary focus of PEP 8 is to **improve the readability and consistency** of Python code.
 
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-##### Table of contents
-
-- [1 - Naming styles](#1---naming-styles)
-- [2 - Code layout](#2---code-layout)
-- [3 - Comments](#3---comments)
-    - [3.1 - Block comments](#31---block-comments)
-    - [3.2 - Inline comments](#32---inline-comments)
-    - [3.3 - Docstrings](#33---docstrings)
-- [4 - Whitespaces](#4---whitespaces)
-- [5 - Other recommendations](#5---other-recommendations)
-- [Sources](#sources)
-
-<!-- markdown-toc end -->
-
-
 ## 1 - Naming styles
 
 Names should be **short** and **descriptive**, **reflect usage** rather than implementation. Avoid abbreviations.
-
 
 | Type     | Naming convention                                    | Examples                    |
 |----------|------------------------------------------------------|-----------------------------|
@@ -37,12 +20,11 @@ Names should be **short** and **descriptive**, **reflect usage** rather than imp
 | Module   | Short lowercase word.s separated by underscores.     | `module.py`, `my_module.py` |
 | Package  | Short, lowercase words NOT separated                 | `package`, `my_package`     |
 
-
 ## 2 - Code layout
 
 - Surround top-level **functions and classes** with **two** blank lines.
-- Surround **method** definitions inside classes with **one** blank line. 
-- Use blank lines sparingly inside functions to show **clear logical steps**. 
+- Surround **method** definitions inside classes with **one** blank line.
+- Use blank lines sparingly inside functions to show **clear logical steps**.
 - Lines should be limited to **79 characters** or break lines with **backslashes**. It's fine to go a little over since we have bigger monitors now.
 - Use **4** consecutive **spaces** to indicate indentation.
 
@@ -131,14 +113,12 @@ list[x+1 : x+2 :]
 
 ## 5 - Other recommendations
 
-- Don't compare Boolean values to `True` or `False` using the equivalence operator. 
-- Use the fact that empty sequences are falsy in `if` statements. 
+- Don't compare Boolean values to `True` or `False` using the equivalence operator.
+- Use the fact that empty sequences are falsy in `if` statements.
 - Use `is not` rather than `not ... is` in `if` statements.
 - Don't use `if x:` when you mean `if x is not None:`.
 - Use `.startswith()` and `.endswith()` instead of slicing.\
 
-
 ## Sources
 
 - [PEP8 doc](https://peps.python.org/pep-0008/) and [Real Python](https://realpython.com/python-pep8/)
-

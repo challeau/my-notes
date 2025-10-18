@@ -36,8 +36,21 @@
   --bright-green: #B8D770;
   --bright-yellow: #FFE085;
 
+  /* dark accents */
+  --dark-pink: #C74774;
+  --dark-blue: #4674A0;
+  --dark-lilac: #945985;
+
+  /* transparent accents */
+  --transparent-pink: #FFC8DD38;
+  --transparent-lilac: #CDB4DB4F;
+  --transparent-blue: #BDE0FE66;
+  --transparent-beige: #efe7dd87;
+  --transparent-grey: #6A676B;
+
   /* shadows */
-  --soft-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  --soft-shadow-S: rgba(0, 0, 0, 0.2) 0px 5px 15px;
+  --soft-shadow-L: rgba(0, 0, 0, 0.2) 5px 10px 20px;
 }
 
 /* NUMERICALS */
