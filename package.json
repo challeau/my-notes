@@ -44,5 +44,8 @@
     "nodemon": "3.1.10",
     "sanitize-html": "2.16.0",
     "ts-node": "10.9.2"
+  },
+  "engines": {
+    "node": ">=18.x"
   }
 }
