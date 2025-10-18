@@ -30,6 +30,7 @@ Every file is parsed for metadata and compiled to HTML, using `fs` and `marked`.
     - [x] use dirname to build a topic index page
     - [x] generate valid link fragments for TOC
     - [ ] add GH links to index
+    - [ ] mobile-friendly version
 - p1
     - [x] add short descriptions in metadata (available in topic index or tooltip on navbar hover)
     - [x] turn navbar into a horizontal bar with only the topics

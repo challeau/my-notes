@@ -1,4 +1,4 @@
-import { PrioritizedObject, TopicCollection } from "./types.ts";
+import { PrioritizedObject, TopicCollection } from "./types";
 
 /**
  * Return the input string capitalized

@@ -2,8 +2,8 @@ import { readdirSync } from "node:fs";
 import { open } from "node:fs/promises";
 import * as path from "path";
 
-import type { TopicCollection, TopicMetadata } from "./types.ts";
-import { capitalize, sortTopicCollectiontByPriority } from "./utils.ts";
+import type { TopicCollection, TopicMetadata } from "./types";
+import { capitalize, sortTopicCollectiontByPriority } from "./utils";
 
 
 /**

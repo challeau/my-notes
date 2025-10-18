@@ -11,8 +11,8 @@
 import express, { Express, Request, Response } from "express";
 import * as path from "path";
 
-import { getTopicsFromFilepath } from "./fileParsing.ts";
-import { parseMdToHtml } from "./customMarked.ts";
+import { getTopicsFromFilepath } from "./fileParsing";
+import { parseMdToHtml } from "./customMarked";
 
 async function serve(): Promise<void> {
   // File paths
